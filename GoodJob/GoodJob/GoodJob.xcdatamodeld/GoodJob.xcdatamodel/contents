@@ -2,20 +2,21 @@
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="22522" systemVersion="23C71" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Company" representedClassName="Company" syncable="YES" codeGenerationType="class">
         <attribute name="name" optional="YES" attributeType="String"/>
-        <relationship name="hasManyJobPostings" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="JobPosting"/>
+        <relationship name="jobPostings" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="JobPosting" inverseName="company" inverseEntity="JobPosting"/>
     </entity>
     <entity name="JobPosting" representedClassName="JobPosting" syncable="YES" codeGenerationType="class">
         <attribute name="endDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="positionName" optional="YES" attributeType="String"/>
-        <attribute name="recruitNumbers" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="recruitNumbers" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="startDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
-        <attribute name="timestamp" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="webLink" optional="YES" attributeType="URI"/>
         <attribute name="workplaceLocation" optional="YES" attributeType="String"/>
-        <relationship name="hasManyTests" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Test"/>
+        <relationship name="company" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Company" inverseName="jobPostings" inverseEntity="Company"/>
+        <relationship name="tests" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Test" inverseName="jobPosting" inverseEntity="Test"/>
     </entity>
     <entity name="Test" representedClassName="Test" syncable="YES" codeGenerationType="class">
         <attribute name="name" optional="YES" attributeType="String"/>
-        <attribute name="testType" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="testType" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <relationship name="jobPosting" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="JobPosting" inverseName="tests" inverseEntity="JobPosting"/>
     </entity>
 </model>

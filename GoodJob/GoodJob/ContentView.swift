@@ -11,19 +11,17 @@ import CoreData
 struct ContentView: View {
     @Environment(\.managedObjectContext) private var viewContext
 
-    @FetchRequest(
-        sortDescriptors: [NSSortDescriptor(keyPath: \Item.timestamp, ascending: true)],
-        animation: .default)
-    private var items: FetchedResults<Item>
+    @FetchRequest(entity: JobPosting.entity(), sortDescriptors: [])
+    private var jobPostings: FetchedResults<JobPosting>
 
     var body: some View {
         NavigationView {
             List {
-                ForEach(items) { item in
+                ForEach(jobPostings) { posting in
                     NavigationLink {
-                        Text("Item at \(item.timestamp!, formatter: itemFormatter)")
+                        Text(posting.positionName ?? "")
                     } label: {
-                        Text(item.timestamp!, formatter: itemFormatter)
+                        Text(posting.positionName ?? "")
                     }
                 }
                 .onDelete(perform: deleteItems)
@@ -46,8 +44,8 @@ struct ContentView: View {
 
     private func addItem() {
         withAnimation {
-            let newItem = Item(context: viewContext)
-            newItem.timestamp = Date()
+//            let newItem = Item(context: viewContext)
+//            newItem.timestamp = Date()
 
             do {
                 try viewContext.save()
@@ -62,7 +60,7 @@ struct ContentView: View {
 
     private func deleteItems(offsets: IndexSet) {
         withAnimation {
-            offsets.map { items[$0] }.forEach(viewContext.delete)
+//            offsets.map { items[$0] }.forEach(viewContext.delete)
 
             do {
                 try viewContext.save()
