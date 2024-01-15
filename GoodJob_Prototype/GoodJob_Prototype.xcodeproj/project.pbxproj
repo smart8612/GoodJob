@@ -13,6 +13,7 @@
 		C1504EFA2B53E4290070F3AE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C1504EF82B53E4290070F3AE /* Main.storyboard */; };
 		C1504EFC2B53E42A0070F3AE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C1504EFB2B53E42A0070F3AE /* Assets.xcassets */; };
 		C1504EFF2B53E42A0070F3AE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C1504EFD2B53E42A0070F3AE /* LaunchScreen.storyboard */; };
+		C1F999932B543F8700259FB5 /* NewJobTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F999922B543F8700259FB5 /* NewJobTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		C1504EFB2B53E42A0070F3AE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C1504EFE2B53E42A0070F3AE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C1504F002B53E42A0070F3AE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C1F999922B543F8700259FB5 /* NewJobTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewJobTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +61,7 @@
 				C1504EF22B53E4290070F3AE /* AppDelegate.swift */,
 				C1504EF42B53E4290070F3AE /* SceneDelegate.swift */,
 				C1504EF62B53E4290070F3AE /* ViewController.swift */,
+				C1F999922B543F8700259FB5 /* NewJobTableViewController.swift */,
 				C1504EF82B53E4290070F3AE /* Main.storyboard */,
 				C1504EFB2B53E42A0070F3AE /* Assets.xcassets */,
 				C1504EFD2B53E42A0070F3AE /* LaunchScreen.storyboard */,
@@ -140,6 +143,7 @@
 			files = (
 				C1504EF72B53E4290070F3AE /* ViewController.swift in Sources */,
 				C1504EF32B53E4290070F3AE /* AppDelegate.swift in Sources */,
+				C1F999932B543F8700259FB5 /* NewJobTableViewController.swift in Sources */,
 				C1504EF52B53E4290070F3AE /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
