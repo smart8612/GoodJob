@@ -1,0 +1,643 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		C1F999AE2B55068E00259FB5 /* GoodJobApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F999AD2B55068E00259FB5 /* GoodJobApp.swift */; };
+		C1F999B02B55068E00259FB5 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F999AF2B55068E00259FB5 /* Persistence.swift */; };
+		C1F999B32B55068E00259FB5 /* GoodJob.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C1F999B12B55068E00259FB5 /* GoodJob.xcdatamodeld */; };
+		C1F999B52B55068E00259FB5 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F999B42B55068E00259FB5 /* ContentView.swift */; };
+		C1F999B72B55069000259FB5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C1F999B62B55069000259FB5 /* Assets.xcassets */; };
+		C1F999BB2B55069000259FB5 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C1F999BA2B55069000259FB5 /* Preview Assets.xcassets */; };
+		C1F999C52B55069000259FB5 /* GoodJobTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F999C42B55069000259FB5 /* GoodJobTests.swift */; };
+		C1F999CF2B55069000259FB5 /* GoodJobUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F999CE2B55069000259FB5 /* GoodJobUITests.swift */; };
+		C1F999D12B55069000259FB5 /* GoodJobUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F999D02B55069000259FB5 /* GoodJobUITestsLaunchTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		C1F999C12B55069000259FB5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C1F999A22B55068E00259FB5 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C1F999A92B55068E00259FB5;
+			remoteInfo = GoodJob;
+		};
+		C1F999CB2B55069000259FB5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C1F999A22B55068E00259FB5 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C1F999A92B55068E00259FB5;
+			remoteInfo = GoodJob;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		C1F999AA2B55068E00259FB5 /* GoodJob.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GoodJob.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C1F999AD2B55068E00259FB5 /* GoodJobApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoodJobApp.swift; sourceTree = "<group>"; };
+		C1F999AF2B55068E00259FB5 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
+		C1F999B22B55068E00259FB5 /* GoodJob.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = GoodJob.xcdatamodel; sourceTree = "<group>"; };
+		C1F999B42B55068E00259FB5 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		C1F999B62B55069000259FB5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		C1F999B82B55069000259FB5 /* GoodJob.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = GoodJob.entitlements; sourceTree = "<group>"; };
+		C1F999BA2B55069000259FB5 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		C1F999C02B55069000259FB5 /* GoodJobTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GoodJobTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C1F999C42B55069000259FB5 /* GoodJobTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoodJobTests.swift; sourceTree = "<group>"; };
+		C1F999CA2B55069000259FB5 /* GoodJobUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GoodJobUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C1F999CE2B55069000259FB5 /* GoodJobUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoodJobUITests.swift; sourceTree = "<group>"; };
+		C1F999D02B55069000259FB5 /* GoodJobUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoodJobUITestsLaunchTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		C1F999A72B55068E00259FB5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C1F999BD2B55069000259FB5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C1F999C72B55069000259FB5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		C1F999A12B55068E00259FB5 = {
+			isa = PBXGroup;
+			children = (
+				C1F999AC2B55068E00259FB5 /* GoodJob */,
+				C1F999C32B55069000259FB5 /* GoodJobTests */,
+				C1F999CD2B55069000259FB5 /* GoodJobUITests */,
+				C1F999AB2B55068E00259FB5 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		C1F999AB2B55068E00259FB5 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C1F999AA2B55068E00259FB5 /* GoodJob.app */,
+				C1F999C02B55069000259FB5 /* GoodJobTests.xctest */,
+				C1F999CA2B55069000259FB5 /* GoodJobUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C1F999AC2B55068E00259FB5 /* GoodJob */ = {
+			isa = PBXGroup;
+			children = (
+				C1F999AD2B55068E00259FB5 /* GoodJobApp.swift */,
+				C1F999AF2B55068E00259FB5 /* Persistence.swift */,
+				C1F999B42B55068E00259FB5 /* ContentView.swift */,
+				C1F999B62B55069000259FB5 /* Assets.xcassets */,
+				C1F999B82B55069000259FB5 /* GoodJob.entitlements */,
+				C1F999B12B55068E00259FB5 /* GoodJob.xcdatamodeld */,
+				C1F999B92B55069000259FB5 /* Preview Content */,
+			);
+			path = GoodJob;
+			sourceTree = "<group>";
+		};
+		C1F999B92B55069000259FB5 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				C1F999BA2B55069000259FB5 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		C1F999C32B55069000259FB5 /* GoodJobTests */ = {
+			isa = PBXGroup;
+			children = (
+				C1F999C42B55069000259FB5 /* GoodJobTests.swift */,
+			);
+			path = GoodJobTests;
+			sourceTree = "<group>";
+		};
+		C1F999CD2B55069000259FB5 /* GoodJobUITests */ = {
+			isa = PBXGroup;
+			children = (
+				C1F999CE2B55069000259FB5 /* GoodJobUITests.swift */,
+				C1F999D02B55069000259FB5 /* GoodJobUITestsLaunchTests.swift */,
+			);
+			path = GoodJobUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		C1F999A92B55068E00259FB5 /* GoodJob */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C1F999D42B55069000259FB5 /* Build configuration list for PBXNativeTarget "GoodJob" */;
+			buildPhases = (
+				C1F999A62B55068E00259FB5 /* Sources */,
+				C1F999A72B55068E00259FB5 /* Frameworks */,
+				C1F999A82B55068E00259FB5 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = GoodJob;
+			productName = GoodJob;
+			productReference = C1F999AA2B55068E00259FB5 /* GoodJob.app */;
+			productType = "com.apple.product-type.application";
+		};
+		C1F999BF2B55069000259FB5 /* GoodJobTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C1F999D72B55069000259FB5 /* Build configuration list for PBXNativeTarget "GoodJobTests" */;
+			buildPhases = (
+				C1F999BC2B55069000259FB5 /* Sources */,
+				C1F999BD2B55069000259FB5 /* Frameworks */,
+				C1F999BE2B55069000259FB5 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C1F999C22B55069000259FB5 /* PBXTargetDependency */,
+			);
+			name = GoodJobTests;
+			productName = GoodJobTests;
+			productReference = C1F999C02B55069000259FB5 /* GoodJobTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		C1F999C92B55069000259FB5 /* GoodJobUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C1F999DA2B55069000259FB5 /* Build configuration list for PBXNativeTarget "GoodJobUITests" */;
+			buildPhases = (
+				C1F999C62B55069000259FB5 /* Sources */,
+				C1F999C72B55069000259FB5 /* Frameworks */,
+				C1F999C82B55069000259FB5 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C1F999CC2B55069000259FB5 /* PBXTargetDependency */,
+			);
+			name = GoodJobUITests;
+			productName = GoodJobUITests;
+			productReference = C1F999CA2B55069000259FB5 /* GoodJobUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		C1F999A22B55068E00259FB5 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1520;
+				LastUpgradeCheck = 1520;
+				TargetAttributes = {
+					C1F999A92B55068E00259FB5 = {
+						CreatedOnToolsVersion = 15.2;
+					};
+					C1F999BF2B55069000259FB5 = {
+						CreatedOnToolsVersion = 15.2;
+						TestTargetID = C1F999A92B55068E00259FB5;
+					};
+					C1F999C92B55069000259FB5 = {
+						CreatedOnToolsVersion = 15.2;
+						TestTargetID = C1F999A92B55068E00259FB5;
+					};
+				};
+			};
+			buildConfigurationList = C1F999A52B55068E00259FB5 /* Build configuration list for PBXProject "GoodJob" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = C1F999A12B55068E00259FB5;
+			productRefGroup = C1F999AB2B55068E00259FB5 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				C1F999A92B55068E00259FB5 /* GoodJob */,
+				C1F999BF2B55069000259FB5 /* GoodJobTests */,
+				C1F999C92B55069000259FB5 /* GoodJobUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		C1F999A82B55068E00259FB5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C1F999BB2B55069000259FB5 /* Preview Assets.xcassets in Resources */,
+				C1F999B72B55069000259FB5 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C1F999BE2B55069000259FB5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C1F999C82B55069000259FB5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		C1F999A62B55068E00259FB5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C1F999B32B55068E00259FB5 /* GoodJob.xcdatamodeld in Sources */,
+				C1F999AE2B55068E00259FB5 /* GoodJobApp.swift in Sources */,
+				C1F999B52B55068E00259FB5 /* ContentView.swift in Sources */,
+				C1F999B02B55068E00259FB5 /* Persistence.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C1F999BC2B55069000259FB5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C1F999C52B55069000259FB5 /* GoodJobTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C1F999C62B55069000259FB5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C1F999CF2B55069000259FB5 /* GoodJobUITests.swift in Sources */,
+				C1F999D12B55069000259FB5 /* GoodJobUITestsLaunchTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		C1F999C22B55069000259FB5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C1F999A92B55068E00259FB5 /* GoodJob */;
+			targetProxy = C1F999C12B55069000259FB5 /* PBXContainerItemProxy */;
+		};
+		C1F999CC2B55069000259FB5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C1F999A92B55068E00259FB5 /* GoodJob */;
+			targetProxy = C1F999CB2B55069000259FB5 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		C1F999D22B55069000259FB5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		C1F999D32B55069000259FB5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SWIFT_COMPILATION_MODE = wholemodule;
+			};
+			name = Release;
+		};
+		C1F999D52B55069000259FB5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = GoodJob/GoodJob.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"GoodJob/Preview Content\"";
+				DEVELOPMENT_TEAM = MLY2NY4CXP;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
+				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 14.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.tistory.singularis7.GoodJob;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		C1F999D62B55069000259FB5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = GoodJob/GoodJob.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"GoodJob/Preview Content\"";
+				DEVELOPMENT_TEAM = MLY2NY4CXP;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
+				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 14.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.tistory.singularis7.GoodJob;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		C1F999D82B55069000259FB5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = MLY2NY4CXP;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				MACOSX_DEPLOYMENT_TARGET = 14.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.tistory.singularis7.GoodJobTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GoodJob.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/GoodJob";
+			};
+			name = Debug;
+		};
+		C1F999D92B55069000259FB5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = MLY2NY4CXP;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				MACOSX_DEPLOYMENT_TARGET = 14.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.tistory.singularis7.GoodJobTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GoodJob.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/GoodJob";
+			};
+			name = Release;
+		};
+		C1F999DB2B55069000259FB5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = MLY2NY4CXP;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				MACOSX_DEPLOYMENT_TARGET = 14.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.tistory.singularis7.GoodJobUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = GoodJob;
+			};
+			name = Debug;
+		};
+		C1F999DC2B55069000259FB5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = MLY2NY4CXP;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				MACOSX_DEPLOYMENT_TARGET = 14.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.tistory.singularis7.GoodJobUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = GoodJob;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		C1F999A52B55068E00259FB5 /* Build configuration list for PBXProject "GoodJob" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C1F999D22B55069000259FB5 /* Debug */,
+				C1F999D32B55069000259FB5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C1F999D42B55069000259FB5 /* Build configuration list for PBXNativeTarget "GoodJob" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C1F999D52B55069000259FB5 /* Debug */,
+				C1F999D62B55069000259FB5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C1F999D72B55069000259FB5 /* Build configuration list for PBXNativeTarget "GoodJobTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C1F999D82B55069000259FB5 /* Debug */,
+				C1F999D92B55069000259FB5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C1F999DA2B55069000259FB5 /* Build configuration list for PBXNativeTarget "GoodJobUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C1F999DB2B55069000259FB5 /* Debug */,
+				C1F999DC2B55069000259FB5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		C1F999B12B55068E00259FB5 /* GoodJob.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				C1F999B22B55068E00259FB5 /* GoodJob.xcdatamodel */,
+			);
+			currentVersion = C1F999B22B55068E00259FB5 /* GoodJob.xcdatamodel */;
+			path = GoodJob.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = C1F999A22B55068E00259FB5 /* Project object */;
+}
