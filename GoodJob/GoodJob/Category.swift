@@ -7,10 +7,29 @@
 
 import SwiftUI
 
-struct Category: Identifiable, Hashable {
+enum Category: String, Identifiable, Hashable, CaseIterable {
     
-    let id = UUID()
-    var name: String
-    var symboleName: String
+    case summary
+    case applications
+    case jobPostings
     
+    var id: UUID {
+        UUID()
+    }
+    
+    var name: String {
+        self.rawValue.capitalized
+    }
+    
+    var symboleName: String {
+        switch self {
+        case .summary:
+            return "house.fill"
+        case .applications:
+            return "list.bullet.clipboard.fill"
+        case .jobPostings:
+            return "figure.run"
+        }
+        
+    }
 }

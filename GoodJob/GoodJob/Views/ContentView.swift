@@ -15,21 +15,16 @@ struct ContentView: View {
     private var jobPostings: FetchedResults<JobPosting>
     
     @State private var selectedCategory: Category?
-    @State private var categories: [Category] = [
-        Category(name: "Summary", 
-                 symboleName: "house.fill"),
-        Category(name: "Applications",
-                 symboleName: "list.bullet.clipboard.fill"),
-        Category(name: "JobPosings", 
-                 symboleName: "figure.run")
-    ]
+    @State private var categories = Category.allCases
 
     var body: some View {
         NavigationSplitView {
-            SidebarView(categories: categories,
-                        selectedCategory: $selectedCategory)
+            SidebarListView(
+                categories: categories,
+                selectedCategory: $selectedCategory
+            )
         } content: {
-            Text("Hello World")
+            Text(selectedCategory?.name ?? "Hello World")
         } detail: {
             Text("Hello World")
         }
@@ -96,13 +91,6 @@ struct ContentView: View {
         }
     }
 }
-
-private let itemFormatter: DateFormatter = {
-    let formatter = DateFormatter()
-    formatter.dateStyle = .short
-    formatter.timeStyle = .medium
-    return formatter
-}()
 
 #Preview {
     ContentView().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
