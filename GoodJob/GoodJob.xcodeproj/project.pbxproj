@@ -16,6 +16,7 @@
 		C1F999C52B55069000259FB5 /* GoodJobTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F999C42B55069000259FB5 /* GoodJobTests.swift */; };
 		C1F999CF2B55069000259FB5 /* GoodJobUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F999CE2B55069000259FB5 /* GoodJobUITests.swift */; };
 		C1F999D12B55069000259FB5 /* GoodJobUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F999D02B55069000259FB5 /* GoodJobUITestsLaunchTests.swift */; };
+		C1F999DE2B55202300259FB5 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F999DD2B55202300259FB5 /* Category.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		C1F999CA2B55069000259FB5 /* GoodJobUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GoodJobUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C1F999CE2B55069000259FB5 /* GoodJobUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoodJobUITests.swift; sourceTree = "<group>"; };
 		C1F999D02B55069000259FB5 /* GoodJobUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoodJobUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		C1F999DD2B55202300259FB5 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +104,7 @@
 				C1F999AD2B55068E00259FB5 /* GoodJobApp.swift */,
 				C1F999AF2B55068E00259FB5 /* Persistence.swift */,
 				C1F999B42B55068E00259FB5 /* ContentView.swift */,
+				C1F999DD2B55202300259FB5 /* Category.swift */,
 				C1F999B62B55069000259FB5 /* Assets.xcassets */,
 				C1F999B82B55069000259FB5 /* GoodJob.entitlements */,
 				C1F999B12B55068E00259FB5 /* GoodJob.xcdatamodeld */,
@@ -266,6 +269,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C1F999B32B55068E00259FB5 /* GoodJob.xcdatamodeld in Sources */,
+				C1F999DE2B55202300259FB5 /* Category.swift in Sources */,
 				C1F999AE2B55068E00259FB5 /* GoodJobApp.swift in Sources */,
 				C1F999B52B55068E00259FB5 /* ContentView.swift in Sources */,
 				C1F999B02B55068E00259FB5 /* Persistence.swift in Sources */,

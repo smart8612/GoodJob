@@ -13,8 +13,18 @@ struct ContentView: View {
 
     @FetchRequest(entity: JobPosting.entity(), sortDescriptors: [])
     private var jobPostings: FetchedResults<JobPosting>
+    
+    
+    @State private var categories: [Category] = [
+        Category(name: "Summary", symboleName: "house.fill"),
+        Category(name: "Applications", symboleName: "list.bullet.clipboard.fill"),
+        Category(name: "JobPosings", symboleName: "figure.run")
+    ]
 
     var body: some View {
+       
+        
+        /*
         NavigationView {
             List {
                 ForEach(jobPostings) { posting in
@@ -40,6 +50,8 @@ struct ContentView: View {
             }
             Text("Select an item")
         }
+         */
+
     }
 
     private func addItem() {
