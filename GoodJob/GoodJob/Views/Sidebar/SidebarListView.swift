@@ -10,11 +10,10 @@ import SwiftUI
 
 struct SidebarListView: View {
     
-    var categories: [Category]
     @Binding var selectedCategory: Category?
     
     var body: some View {
-        List(categories, selection: $selectedCategory) { category in
+        List(Category.allCategories, selection: $selectedCategory) { category in
             SidebarCellView(category: category)
                 .tag(category)
         }

@@ -13,7 +13,7 @@ struct GoodJobApp: App {
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            MainSplitView()
                 .environment(\.managedObjectContext,
                               persistenceController.managedObjectContext)
         }

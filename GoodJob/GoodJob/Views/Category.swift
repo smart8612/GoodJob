@@ -11,11 +11,9 @@ enum Category: String, Identifiable, Hashable, CaseIterable {
     
     case summary
     case applications
-    case jobPostings
+    case jobs
     
-    var id: UUID {
-        UUID()
-    }
+    var id: Category { self }
     
     var name: String {
         self.rawValue.capitalized
@@ -27,9 +25,11 @@ enum Category: String, Identifiable, Hashable, CaseIterable {
             return "house.fill"
         case .applications:
             return "list.bullet.clipboard.fill"
-        case .jobPostings:
+        case .jobs:
             return "figure.run"
         }
         
     }
+    
+    static var allCategories: [Self] = Self.allCases
 }

@@ -1,0 +1,17 @@
+[
+  {
+    "name" : "Company",
+    "positionX" : "540.3046875",
+    "positionY" : "147.0"
+  },
+  {
+    "name" : "JobPosting",
+    "positionX" : "175.0",
+    "positionY" : "360.70703125"
+  },
+  {
+    "name" : "Test",
+    "positionX" : "535.45703125",
+    "positionY" : "566.69140625"
+  }
+]
