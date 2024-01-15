@@ -14,15 +14,26 @@ struct ContentView: View {
     @FetchRequest(entity: JobPosting.entity(), sortDescriptors: [])
     private var jobPostings: FetchedResults<JobPosting>
     
-    
+    @State private var selectedCategory: Category?
     @State private var categories: [Category] = [
-        Category(name: "Summary", symboleName: "house.fill"),
-        Category(name: "Applications", symboleName: "list.bullet.clipboard.fill"),
-        Category(name: "JobPosings", symboleName: "figure.run")
+        Category(name: "Summary", 
+                 symboleName: "house.fill"),
+        Category(name: "Applications",
+                 symboleName: "list.bullet.clipboard.fill"),
+        Category(name: "JobPosings", 
+                 symboleName: "figure.run")
     ]
 
     var body: some View {
-       
+        NavigationSplitView {
+            SidebarView(categories: categories,
+                        selectedCategory: $selectedCategory)
+        } content: {
+            Text("Hello World")
+        } detail: {
+            Text("Hello World")
+        }
+
         
         /*
         NavigationView {
