@@ -21,17 +21,16 @@ struct JobPostingsListView: View {
     var body: some View {
         
         List {
-            ForEach(jobPostings) { post in
-                Text(post.positionName ?? "")
+            ForEach(jobPostings) {
+                JobPostingCellView(jobPosting: $0)
             }
             .onDelete(perform: deleteItems)
         }
+        .listStyle(.insetGrouped)
         .toolbar {
-#if os(iOS)
             ToolbarItem(placement: .navigationBarTrailing) {
                 EditButton()
             }
-#endif
             
             ToolbarItem {
                 Button(action: addItem, label: {

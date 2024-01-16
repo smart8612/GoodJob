@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C1087AD62B56553200ED520A /* JobPostingCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1087AD52B56553200ED520A /* JobPostingCellView.swift */; };
 		C1A68C432B55367000CE92D4 /* SidebarCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1A68C422B55367000CE92D4 /* SidebarCellView.swift */; };
 		C1A68C462B553FD100CE92D4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1A68C452B553FD100CE92D4 /* ContentView.swift */; };
 		C1A68C492B55419000CE92D4 /* JobPostingsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1A68C482B55419000CE92D4 /* JobPostingsListView.swift */; };
@@ -43,6 +44,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C1087AD52B56553200ED520A /* JobPostingCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobPostingCellView.swift; sourceTree = "<group>"; };
 		C1A68C422B55367000CE92D4 /* SidebarCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarCellView.swift; sourceTree = "<group>"; };
 		C1A68C452B553FD100CE92D4 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		C1A68C482B55419000CE92D4 /* JobPostingsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobPostingsListView.swift; sourceTree = "<group>"; };
@@ -105,6 +107,7 @@
 				C1A68C452B553FD100CE92D4 /* ContentView.swift */,
 				C1A68C482B55419000CE92D4 /* JobPostingsListView.swift */,
 				C1E8692B2B555B0900FDD6DA /* NewJobPostingView.swift */,
+				C1087AD52B56553200ED520A /* JobPostingCellView.swift */,
 			);
 			path = Content;
 			sourceTree = "<group>";
@@ -315,6 +318,7 @@
 				C1E8692C2B555B0900FDD6DA /* NewJobPostingView.swift in Sources */,
 				C1A68C462B553FD100CE92D4 /* ContentView.swift in Sources */,
 				C1F999AE2B55068E00259FB5 /* GoodJobApp.swift in Sources */,
+				C1087AD62B56553200ED520A /* JobPostingCellView.swift in Sources */,
 				C1A68C492B55419000CE92D4 /* JobPostingsListView.swift in Sources */,
 				C1F999B52B55068E00259FB5 /* MainSplitView.swift in Sources */,
 				C1A68C432B55367000CE92D4 /* SidebarCellView.swift in Sources */,

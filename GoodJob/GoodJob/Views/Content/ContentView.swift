@@ -13,24 +13,25 @@ struct ContentView: View {
     @Binding var selectedCategory: Category?
     
     var body: some View {
-        
-        switch selectedCategory {
-        
-        case .summary:
-            SummaryView()
-        
-        case .jobs:
-            JobPostingsListView()
+        Group {
+            switch selectedCategory {
             
-        
-        case .none:
-            Text("Select a category")
+            case .summary:
+                SummaryView()
             
-        default:
-            Text("Hello, World!")
+            case .jobs:
+                JobPostingsListView()
+                
             
+            case .none:
+                Text("Select a category")
+                
+            default:
+                Text("Hello, World!")
+                
+            }
         }
-        
+        .navigationTitle(selectedCategory?.name ?? "")
     }
     
 }
