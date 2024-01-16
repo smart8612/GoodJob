@@ -10,6 +10,8 @@ import SwiftUI
 
 struct NewJobPostingView: View {
     
+    @EnvironmentObject var jobPostingManager: JobPostingManager
+    
     @Binding var isPresentingNewJobPosting: Bool
     @State private var isShowingConfirmationlDialog = false
     
@@ -68,13 +70,23 @@ struct NewJobPostingView: View {
                     
                 }
                 ToolbarItem(placement: .topBarTrailing) {
-                    Button("Add") {
-                        print("Add Button Clicked")
-                    }
+                    Button("Add", action: createJobPosting)
                 }
             }
         }
         
+    }
+    
+    private func createJobPosting() {
+        jobPostingManager.createJobPosting { jobPosting in
+            jobPosting.company?.name = companyName
+            jobPosting.positionName = jobPosition
+            jobPosting.workplaceLocation = workplaceLocation
+            jobPosting.recruitNumbers = Int64(recruitNumbers) ?? 0
+            jobPosting.webLink = URL(string: link)
+            jobPosting.startDate = startDate
+            jobPosting.endDate = endDate
+        }
     }
     
 }
