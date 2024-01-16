@@ -8,15 +8,18 @@
 
 /* Begin PBXBuildFile section */
 		C1087AD62B56553200ED520A /* JobPostingCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1087AD52B56553200ED520A /* JobPostingCellView.swift */; };
-		C1414DE82B56687800EA180F /* JobPostingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1414DE72B56687800EA180F /* JobPostingManager.swift */; };
+		C1414DEB2B5698AA00EA180F /* JobPostingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1414DE72B56687800EA180F /* JobPostingManager.swift */; };
+		C1414DEC2B5698FD00EA180F /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F999AF2B55068E00259FB5 /* Persistence.swift */; };
+		C1414DED2B56990900EA180F /* GoodJob.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C1F999B12B55068E00259FB5 /* GoodJob.xcdatamodeld */; };
+		C17498B42B56A9070079927F /* JobPostingsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1A68C482B55419000CE92D4 /* JobPostingsListView.swift */; };
+		C17498B52B56A9200079927F /* GoodJob.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C1F999B12B55068E00259FB5 /* GoodJob.xcdatamodeld */; };
+		C17498B62B56A93E0079927F /* JobPostingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1414DE72B56687800EA180F /* JobPostingManager.swift */; };
 		C1A68C432B55367000CE92D4 /* SidebarCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1A68C422B55367000CE92D4 /* SidebarCellView.swift */; };
 		C1A68C462B553FD100CE92D4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1A68C452B553FD100CE92D4 /* ContentView.swift */; };
-		C1A68C492B55419000CE92D4 /* JobPostingsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1A68C482B55419000CE92D4 /* JobPostingsListView.swift */; };
 		C1E8692C2B555B0900FDD6DA /* NewJobPostingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E8692B2B555B0900FDD6DA /* NewJobPostingView.swift */; };
 		C1E8692E2B558DE800FDD6DA /* SummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E8692D2B558DE800FDD6DA /* SummaryView.swift */; };
 		C1F999AE2B55068E00259FB5 /* GoodJobApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F999AD2B55068E00259FB5 /* GoodJobApp.swift */; };
 		C1F999B02B55068E00259FB5 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F999AF2B55068E00259FB5 /* Persistence.swift */; };
-		C1F999B32B55068E00259FB5 /* GoodJob.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C1F999B12B55068E00259FB5 /* GoodJob.xcdatamodeld */; };
 		C1F999B52B55068E00259FB5 /* MainSplitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F999B42B55068E00259FB5 /* MainSplitView.swift */; };
 		C1F999B72B55069000259FB5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C1F999B62B55069000259FB5 /* Assets.xcassets */; };
 		C1F999BB2B55069000259FB5 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C1F999BA2B55069000259FB5 /* Preview Assets.xcassets */; };
@@ -340,14 +343,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C1F999B32B55068E00259FB5 /* GoodJob.xcdatamodeld in Sources */,
+				C17498B52B56A9200079927F /* GoodJob.xcdatamodeld in Sources */,
 				C1F999DE2B55202300259FB5 /* Category.swift in Sources */,
+				C17498B42B56A9070079927F /* JobPostingsListView.swift in Sources */,
+				C17498B62B56A93E0079927F /* JobPostingManager.swift in Sources */,
 				C1E8692C2B555B0900FDD6DA /* NewJobPostingView.swift in Sources */,
-				C1414DE82B56687800EA180F /* JobPostingManager.swift in Sources */,
 				C1A68C462B553FD100CE92D4 /* ContentView.swift in Sources */,
 				C1F999AE2B55068E00259FB5 /* GoodJobApp.swift in Sources */,
 				C1087AD62B56553200ED520A /* JobPostingCellView.swift in Sources */,
-				C1A68C492B55419000CE92D4 /* JobPostingsListView.swift in Sources */,
 				C1F999B52B55068E00259FB5 /* MainSplitView.swift in Sources */,
 				C1A68C432B55367000CE92D4 /* SidebarCellView.swift in Sources */,
 				C1F999B02B55068E00259FB5 /* Persistence.swift in Sources */,
@@ -360,6 +363,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C1414DED2B56990900EA180F /* GoodJob.xcdatamodeld in Sources */,
+				C1414DEC2B5698FD00EA180F /* Persistence.swift in Sources */,
+				C1414DEB2B5698AA00EA180F /* JobPostingManager.swift in Sources */,
 				C1F999C52B55069000259FB5 /* GoodJobTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

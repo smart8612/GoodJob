@@ -17,9 +17,7 @@ final class JobPostingManager: ObservableObject {
         self.persistenceController = persistenceController
     }
     
-    private var managedObjectContext: NSManagedObjectContext {
-        PersistenceController.shared.managedObjectContext
-    }
+    private lazy var managedObjectContext = persistenceController.container.viewContext
     
     func createJobPosting(with handler: (JobPosting) -> Void) {
         let newJobPosting = JobPosting(context: managedObjectContext)
@@ -33,6 +31,7 @@ final class JobPostingManager: ObservableObject {
     }
     
     func delete(jobPosting: JobPosting) {
+        managedObjectContext.delete(jobPosting)
         save()
     }
     

@@ -34,9 +34,9 @@ struct JobPostingsListView: View {
             }
             
             ToolbarItem {
-                Button(action: addItem, label: {
+                Button(action: { isPresentingNewJobPosting.toggle() }) {
                     Label("Add Item", systemImage: "plus")
-                })
+                }
             }
         }
         .sheet(isPresented: $isPresentingNewJobPosting) {
@@ -47,19 +47,11 @@ struct JobPostingsListView: View {
         }
        
     }
-    
-    private func addItem() {
-        isPresentingNewJobPosting.toggle()
-        
-        withAnimation {
-//            let newItem = Item(context: viewContext)
-//            newItem.timestamp = Date()
-        }
-    }
 
     private func deleteItems(offsets: IndexSet) {
         withAnimation {
-            //offsets.map { jobPostings[$0] }.forEach(viewContext.delete)
+            offsets.map { jobPostings[$0] }
+                .forEach(jobPostingManager.delete)
         }
     }
     

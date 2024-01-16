@@ -78,15 +78,19 @@ struct NewJobPostingView: View {
     }
     
     private func createJobPosting() {
-        jobPostingManager.createJobPosting { jobPosting in
-            jobPosting.company?.name = companyName
-            jobPosting.positionName = jobPosition
-            jobPosting.workplaceLocation = workplaceLocation
-            jobPosting.recruitNumbers = Int64(recruitNumbers) ?? 0
-            jobPosting.webLink = URL(string: link)
-            jobPosting.startDate = startDate
-            jobPosting.endDate = endDate
+        withAnimation {
+            jobPostingManager.createJobPosting { jobPosting in
+                jobPosting.company?.name = companyName
+                jobPosting.positionName = jobPosition
+                jobPosting.workplaceLocation = workplaceLocation
+                jobPosting.recruitNumbers = Int64(recruitNumbers) ?? 0
+                jobPosting.webLink = URL(string: link)
+                jobPosting.startDate = startDate
+                jobPosting.endDate = endDate
+            }
+            isPresentingNewJobPosting.toggle()
         }
+        
     }
     
 }
