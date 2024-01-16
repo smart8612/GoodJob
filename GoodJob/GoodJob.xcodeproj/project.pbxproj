@@ -7,15 +7,22 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C1A68C432B55367000CE92D4 /* SidebarCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1A68C422B55367000CE92D4 /* SidebarCellView.swift */; };
+		C1A68C462B553FD100CE92D4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1A68C452B553FD100CE92D4 /* ContentView.swift */; };
+		C1A68C492B55419000CE92D4 /* JobPostingsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1A68C482B55419000CE92D4 /* JobPostingsListView.swift */; };
+		C1E8692C2B555B0900FDD6DA /* NewJobPostingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E8692B2B555B0900FDD6DA /* NewJobPostingView.swift */; };
+		C1E8692E2B558DE800FDD6DA /* SummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E8692D2B558DE800FDD6DA /* SummaryView.swift */; };
 		C1F999AE2B55068E00259FB5 /* GoodJobApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F999AD2B55068E00259FB5 /* GoodJobApp.swift */; };
 		C1F999B02B55068E00259FB5 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F999AF2B55068E00259FB5 /* Persistence.swift */; };
 		C1F999B32B55068E00259FB5 /* GoodJob.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C1F999B12B55068E00259FB5 /* GoodJob.xcdatamodeld */; };
-		C1F999B52B55068E00259FB5 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F999B42B55068E00259FB5 /* ContentView.swift */; };
+		C1F999B52B55068E00259FB5 /* MainSplitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F999B42B55068E00259FB5 /* MainSplitView.swift */; };
 		C1F999B72B55069000259FB5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C1F999B62B55069000259FB5 /* Assets.xcassets */; };
 		C1F999BB2B55069000259FB5 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C1F999BA2B55069000259FB5 /* Preview Assets.xcassets */; };
 		C1F999C52B55069000259FB5 /* GoodJobTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F999C42B55069000259FB5 /* GoodJobTests.swift */; };
 		C1F999CF2B55069000259FB5 /* GoodJobUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F999CE2B55069000259FB5 /* GoodJobUITests.swift */; };
 		C1F999D12B55069000259FB5 /* GoodJobUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F999D02B55069000259FB5 /* GoodJobUITestsLaunchTests.swift */; };
+		C1F999DE2B55202300259FB5 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F999DD2B55202300259FB5 /* Category.swift */; };
+		C1F999E02B5526C200259FB5 /* SidebarListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F999DF2B5526C200259FB5 /* SidebarListView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,11 +43,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C1A68C422B55367000CE92D4 /* SidebarCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarCellView.swift; sourceTree = "<group>"; };
+		C1A68C452B553FD100CE92D4 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		C1A68C482B55419000CE92D4 /* JobPostingsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobPostingsListView.swift; sourceTree = "<group>"; };
+		C1E8692B2B555B0900FDD6DA /* NewJobPostingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewJobPostingView.swift; sourceTree = "<group>"; };
+		C1E8692D2B558DE800FDD6DA /* SummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SummaryView.swift; path = GoodJob/Views/Content/SummaryView.swift; sourceTree = "<group>"; };
 		C1F999AA2B55068E00259FB5 /* GoodJob.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GoodJob.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C1F999AD2B55068E00259FB5 /* GoodJobApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoodJobApp.swift; sourceTree = "<group>"; };
 		C1F999AF2B55068E00259FB5 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		C1F999B22B55068E00259FB5 /* GoodJob.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = GoodJob.xcdatamodel; sourceTree = "<group>"; };
-		C1F999B42B55068E00259FB5 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		C1F999B42B55068E00259FB5 /* MainSplitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSplitView.swift; sourceTree = "<group>"; };
 		C1F999B62B55069000259FB5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C1F999B82B55069000259FB5 /* GoodJob.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = GoodJob.entitlements; sourceTree = "<group>"; };
 		C1F999BA2B55069000259FB5 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -49,6 +61,8 @@
 		C1F999CA2B55069000259FB5 /* GoodJobUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GoodJobUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C1F999CE2B55069000259FB5 /* GoodJobUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoodJobUITests.swift; sourceTree = "<group>"; };
 		C1F999D02B55069000259FB5 /* GoodJobUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoodJobUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		C1F999DD2B55202300259FB5 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
+		C1F999DF2B5526C200259FB5 /* SidebarListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarListView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,9 +90,29 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C1A68C442B55369300CE92D4 /* Sidebar */ = {
+			isa = PBXGroup;
+			children = (
+				C1F999DF2B5526C200259FB5 /* SidebarListView.swift */,
+				C1A68C422B55367000CE92D4 /* SidebarCellView.swift */,
+			);
+			path = Sidebar;
+			sourceTree = "<group>";
+		};
+		C1A68C472B55414500CE92D4 /* Content */ = {
+			isa = PBXGroup;
+			children = (
+				C1A68C452B553FD100CE92D4 /* ContentView.swift */,
+				C1A68C482B55419000CE92D4 /* JobPostingsListView.swift */,
+				C1E8692B2B555B0900FDD6DA /* NewJobPostingView.swift */,
+			);
+			path = Content;
+			sourceTree = "<group>";
+		};
 		C1F999A12B55068E00259FB5 = {
 			isa = PBXGroup;
 			children = (
+				C1E8692D2B558DE800FDD6DA /* SummaryView.swift */,
 				C1F999AC2B55068E00259FB5 /* GoodJob */,
 				C1F999C32B55069000259FB5 /* GoodJobTests */,
 				C1F999CD2B55069000259FB5 /* GoodJobUITests */,
@@ -100,8 +134,8 @@
 			isa = PBXGroup;
 			children = (
 				C1F999AD2B55068E00259FB5 /* GoodJobApp.swift */,
+				C1F999E12B5526CB00259FB5 /* Views */,
 				C1F999AF2B55068E00259FB5 /* Persistence.swift */,
-				C1F999B42B55068E00259FB5 /* ContentView.swift */,
 				C1F999B62B55069000259FB5 /* Assets.xcassets */,
 				C1F999B82B55069000259FB5 /* GoodJob.entitlements */,
 				C1F999B12B55068E00259FB5 /* GoodJob.xcdatamodeld */,
@@ -133,6 +167,17 @@
 				C1F999D02B55069000259FB5 /* GoodJobUITestsLaunchTests.swift */,
 			);
 			path = GoodJobUITests;
+			sourceTree = "<group>";
+		};
+		C1F999E12B5526CB00259FB5 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				C1F999B42B55068E00259FB5 /* MainSplitView.swift */,
+				C1F999DD2B55202300259FB5 /* Category.swift */,
+				C1A68C442B55369300CE92D4 /* Sidebar */,
+				C1A68C472B55414500CE92D4 /* Content */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -266,9 +311,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				C1F999B32B55068E00259FB5 /* GoodJob.xcdatamodeld in Sources */,
+				C1F999DE2B55202300259FB5 /* Category.swift in Sources */,
+				C1E8692C2B555B0900FDD6DA /* NewJobPostingView.swift in Sources */,
+				C1A68C462B553FD100CE92D4 /* ContentView.swift in Sources */,
 				C1F999AE2B55068E00259FB5 /* GoodJobApp.swift in Sources */,
-				C1F999B52B55068E00259FB5 /* ContentView.swift in Sources */,
+				C1A68C492B55419000CE92D4 /* JobPostingsListView.swift in Sources */,
+				C1F999B52B55068E00259FB5 /* MainSplitView.swift in Sources */,
+				C1A68C432B55367000CE92D4 /* SidebarCellView.swift in Sources */,
 				C1F999B02B55068E00259FB5 /* Persistence.swift in Sources */,
+				C1F999E02B5526C200259FB5 /* SidebarListView.swift in Sources */,
+				C1E8692E2B558DE800FDD6DA /* SummaryView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -1,5 +1,5 @@
 //
-//  ContentView.swift
+//  JobPostingsListView.swift
 //  GoodJob
 //
 //  Created by JeongTaek Han on 1/15/24.
@@ -8,40 +8,40 @@
 import SwiftUI
 import CoreData
 
-struct ContentView: View {
+
+struct JobPostingsListView: View {
+    
     @Environment(\.managedObjectContext) private var viewContext
 
     @FetchRequest(entity: JobPosting.entity(), sortDescriptors: [])
     private var jobPostings: FetchedResults<JobPosting>
-
+    
+    @State var selectedJobPosting: JobPosting?
+    
     var body: some View {
-        NavigationView {
-            List {
-                ForEach(jobPostings) { posting in
-                    NavigationLink {
-                        Text(posting.positionName ?? "")
-                    } label: {
-                        Text(posting.positionName ?? "")
-                    }
-                }
-                .onDelete(perform: deleteItems)
+        
+        List {
+            ForEach(jobPostings) { post in
+                Text(post.positionName ?? "")
             }
-            .toolbar {
-#if os(iOS)
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    EditButton()
-                }
-#endif
-                ToolbarItem {
-                    Button(action: addItem) {
-                        Label("Add Item", systemImage: "plus")
-                    }
-                }
-            }
-            Text("Select an item")
+            .onDelete(perform: deleteItems)
         }
+        .toolbar {
+#if os(iOS)
+            ToolbarItem(placement: .navigationBarTrailing) {
+                EditButton()
+            }
+#endif
+            
+            ToolbarItem {
+                Button(action: addItem, label: {
+                    Label("Add Item", systemImage: "plus")
+                })
+            }
+        }
+       
     }
-
+    
     private func addItem() {
         withAnimation {
 //            let newItem = Item(context: viewContext)
@@ -60,7 +60,7 @@ struct ContentView: View {
 
     private func deleteItems(offsets: IndexSet) {
         withAnimation {
-//            offsets.map { items[$0] }.forEach(viewContext.delete)
+            offsets.map { jobPostings[$0] }.forEach(viewContext.delete)
 
             do {
                 try viewContext.save()
@@ -72,15 +72,5 @@ struct ContentView: View {
             }
         }
     }
-}
-
-private let itemFormatter: DateFormatter = {
-    let formatter = DateFormatter()
-    formatter.dateStyle = .short
-    formatter.timeStyle = .medium
-    return formatter
-}()
-
-#Preview {
-    ContentView().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+    
 }
