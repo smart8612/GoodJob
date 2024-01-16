@@ -22,7 +22,6 @@ struct ContentView: View {
             case .jobs:
                 JobPostingsListView()
                 
-            
             case .none:
                 Text("Select a category")
                 

@@ -106,8 +106,8 @@
 			children = (
 				C1A68C452B553FD100CE92D4 /* ContentView.swift */,
 				C1A68C482B55419000CE92D4 /* JobPostingsListView.swift */,
-				C1E8692B2B555B0900FDD6DA /* NewJobPostingView.swift */,
 				C1087AD52B56553200ED520A /* JobPostingCellView.swift */,
+				C1E8692B2B555B0900FDD6DA /* NewJobPostingView.swift */,
 			);
 			path = Content;
 			sourceTree = "<group>";
