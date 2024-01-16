@@ -49,7 +49,7 @@
 		C1A68C452B553FD100CE92D4 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		C1A68C482B55419000CE92D4 /* JobPostingsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobPostingsListView.swift; sourceTree = "<group>"; };
 		C1E8692B2B555B0900FDD6DA /* NewJobPostingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewJobPostingView.swift; sourceTree = "<group>"; };
-		C1E8692D2B558DE800FDD6DA /* SummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SummaryView.swift; path = GoodJob/Views/Content/SummaryView.swift; sourceTree = "<group>"; };
+		C1E8692D2B558DE800FDD6DA /* SummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryView.swift; sourceTree = "<group>"; };
 		C1F999AA2B55068E00259FB5 /* GoodJob.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GoodJob.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C1F999AD2B55068E00259FB5 /* GoodJobApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoodJobApp.swift; sourceTree = "<group>"; };
 		C1F999AF2B55068E00259FB5 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
@@ -92,6 +92,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C1414DE52B56673900EA180F /* Model Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				C1F999AF2B55068E00259FB5 /* Persistence.swift */,
+			);
+			path = "Model Controllers";
+			sourceTree = "<group>";
+		};
 		C1A68C442B55369300CE92D4 /* Sidebar */ = {
 			isa = PBXGroup;
 			children = (
@@ -105,6 +113,7 @@
 			isa = PBXGroup;
 			children = (
 				C1A68C452B553FD100CE92D4 /* ContentView.swift */,
+				C1E8692D2B558DE800FDD6DA /* SummaryView.swift */,
 				C1A68C482B55419000CE92D4 /* JobPostingsListView.swift */,
 				C1087AD52B56553200ED520A /* JobPostingCellView.swift */,
 				C1E8692B2B555B0900FDD6DA /* NewJobPostingView.swift */,
@@ -115,7 +124,6 @@
 		C1F999A12B55068E00259FB5 = {
 			isa = PBXGroup;
 			children = (
-				C1E8692D2B558DE800FDD6DA /* SummaryView.swift */,
 				C1F999AC2B55068E00259FB5 /* GoodJob */,
 				C1F999C32B55069000259FB5 /* GoodJobTests */,
 				C1F999CD2B55069000259FB5 /* GoodJobUITests */,
@@ -138,7 +146,7 @@
 			children = (
 				C1F999AD2B55068E00259FB5 /* GoodJobApp.swift */,
 				C1F999E12B5526CB00259FB5 /* Views */,
-				C1F999AF2B55068E00259FB5 /* Persistence.swift */,
+				C1414DE52B56673900EA180F /* Model Controllers */,
 				C1F999B62B55069000259FB5 /* Assets.xcassets */,
 				C1F999B82B55069000259FB5 /* GoodJob.entitlements */,
 				C1F999B12B55068E00259FB5 /* GoodJob.xcdatamodeld */,
