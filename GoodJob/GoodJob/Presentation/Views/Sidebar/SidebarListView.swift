@@ -10,10 +10,10 @@ import SwiftUI
 
 struct SidebarListView: View {
     
-    @Binding var selectedCategory: Category?
+    @Binding var selectedCategory: GJAppCategory?
     
     var body: some View {
-        List(Category.allCategories, selection: $selectedCategory) { category in
+        List(GJAppCategory.allCategories, selection: $selectedCategory) { category in
             SidebarCellView(category: category)
                 .tag(category)
         }

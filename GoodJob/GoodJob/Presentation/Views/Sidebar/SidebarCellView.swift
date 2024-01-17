@@ -10,7 +10,7 @@ import SwiftUI
 
 struct SidebarCellView: View {
     
-    let category: Category
+    let category: GJAppCategory
     
     var body: some View {
         HStack {

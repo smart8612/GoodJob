@@ -10,7 +10,7 @@ import SwiftUI
 
 struct MainSplitView: View {
     
-    @State private var selectedCategory: Category? = .summary
+    @State private var selectedCategory: GJAppCategory? = .summary
     @State private var columnVisibility: NavigationSplitViewVisibility = .all
 
     var body: some View {

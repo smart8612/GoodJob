@@ -1,5 +1,5 @@
 //
-//  Category.swift
+//  GJAppCategory.swift
 //  GoodJob
 //
 //  Created by JeongTaek Han on 1/15/24.
@@ -7,13 +7,13 @@
 
 import SwiftUI
 
-enum Category: String, Identifiable, Hashable, CaseIterable {
+enum GJAppCategory: String, Identifiable, Hashable, CaseIterable {
     
     case summary
     case applications
     case jobs
     
-    var id: Category { self }
+    var id: GJAppCategory { self }
     
     var name: String {
         self.rawValue.capitalized

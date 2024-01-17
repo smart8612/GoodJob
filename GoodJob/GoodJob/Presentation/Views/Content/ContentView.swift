@@ -10,7 +10,7 @@ import SwiftUI
 
 struct ContentView: View {
     
-    @Binding var selectedCategory: Category?
+    @Binding var selectedCategory: GJAppCategory?
     
     var body: some View {
         Group {
