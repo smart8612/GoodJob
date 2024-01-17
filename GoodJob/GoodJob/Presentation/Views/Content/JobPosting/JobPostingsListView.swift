@@ -17,9 +17,11 @@ struct JobPostingsListView: View {
     
     var body: some View {
         
-        List(model.jobPostings) {
-            JobPostingCellView(jobPosting: $0)
-                // .onDelete(perform: deleteItems)
+        List {
+            ForEach(model.jobPostings) {
+                JobPostingCellView(jobPosting: $0)
+            }
+            .onDelete(perform: model.deleteJobPostings)
         }
         .listStyle(.insetGrouped)
         .toolbar {
@@ -40,13 +42,6 @@ struct JobPostingsListView: View {
             .environmentObject(model)
         }
        
-    }
-
-    private func deleteItems(offsets: IndexSet) {
-        withAnimation {
-            //offsets.map { jobPostings[$0] }
-            //    .forEach(jobPostingManager.delete)
-        }
     }
     
 }

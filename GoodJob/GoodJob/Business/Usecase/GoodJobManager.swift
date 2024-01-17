@@ -32,6 +32,7 @@ final class GoodJobManager: NSObject, ObservableObject {
         jobPostingController.jobPostings
             .map {
                 GJJobPosting(
+                    id: $0.id ?? .init(),
                     companyName: $0.company?.name ?? .init(),
                     jobPostitionName: $0.positionName ?? .init(),
                     workplaceLocation: $0.workplaceLocation ?? .init(),
@@ -45,11 +46,13 @@ final class GoodJobManager: NSObject, ObservableObject {
     
     func create(jobPosting: GJJobPosting) {
         let newCompany = CDCompany(context: managedObectContext)
+        newCompany.id = UUID()
         newCompany.name = jobPosting.companyName
         
         let newJobPosting = CDJobPosting(context: managedObectContext)
         newJobPosting.company = newCompany
         
+        newJobPosting.id = jobPosting.id
         newJobPosting.positionName = jobPosting.jobPostitionName
         newJobPosting.recruitNumbers = Int64(jobPosting.recruitNumbers) ?? 0
         newJobPosting.webLink = URL(string: jobPosting.link)
@@ -58,6 +61,16 @@ final class GoodJobManager: NSObject, ObservableObject {
         newJobPosting.endDate = jobPosting.endDate
         
         try? managedObectContext.save()
+    }
+    
+    func deleteJobPostings(on offsets: IndexSet) {
+        let postIds = offsets
+            .compactMap { jobPostings[$0].id }
+            .reduce(into: Set<UUID>()) { $0.insert($1) }
+        
+        jobPostingController.jobPostings
+            .filter { postIds.contains($0.id ?? .init()) }
+            .forEach { managedObectContext.delete($0) }
     }
     
 }
