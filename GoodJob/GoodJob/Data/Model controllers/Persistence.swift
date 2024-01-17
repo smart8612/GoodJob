@@ -14,19 +14,21 @@ struct PersistenceController {
         let result = PersistenceController(inMemory: true)
         let viewContext = result.container.viewContext
         
+        let newCompany = CDCompany(
+            name: "Apple",
+            context: viewContext
+        )
         
-        let newCompany = CDCompany(context: viewContext)
-        newCompany.name = "Apple"
-        
-        let newJobPosting = CDJobPosting(context: viewContext)
-        newJobPosting.positionName = "iOS Developer"
-        newJobPosting.recruitNumbers = 10
-        newJobPosting.workplaceLocation = "USA"
-        newJobPosting.startDate = Date()
-        newJobPosting.endDate = Date(timeInterval: 259200, since: newJobPosting.startDate ?? Date())
-        newJobPosting.webLink = URL(string: "https://www.apple.com")
-        
-        newCompany.addToJobPostings(newJobPosting)
+        let newJobPosting = CDJobPosting(
+            company: newCompany,
+            positionName: "iOS Developer",
+            workplaceLocation: "USA",
+            recruitNumbers: 10,
+            webLink: "https://www.apple.com",
+            startDate: .now,
+            endDate: Date(timeInterval: 259200, since: .now),
+            context: viewContext
+        )
             
         do {
             try viewContext.save()

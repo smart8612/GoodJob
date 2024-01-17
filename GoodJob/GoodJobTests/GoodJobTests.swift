@@ -26,7 +26,7 @@ final class GoodJobTests: XCTestCase {
         model = nil
     }
 
-    func test_JobPosting이_생성_검증() throws {
+    func test_JobPosting_신규_생성_검증() throws {
         // Given
         let newJobPosting = GJJobPosting(
             companyName: "Apple",
@@ -38,14 +38,49 @@ final class GoodJobTests: XCTestCase {
             endDate: Date(timeInterval: 259200, since: .now)
         )
         
-        // when
+        // When
         model.create(jobPosting: newJobPosting)
         
-        // then
+        // Then
+        guard let result = model.jobPostings.first else {
+            XCTFail()
+            return
+        }
+        
+        XCTAssertTrue(
+            result.companyName == newJobPosting.companyName &&
+            result.jobPostitionName == newJobPosting.jobPostitionName &&
+            result.workplaceLocation == newJobPosting.workplaceLocation &&
+            result.recruitNumbers == newJobPosting.recruitNumbers &&
+            result.link == newJobPosting.link &&
+            result.startDate == newJobPosting.startDate &&
+            result.endDate == newJobPosting.endDate
+        )
+    }
+    
+    /*
+    func test_JobPosting_제거_검증() throws {
+        // Given
+        let newJobPosting = GJJobPosting(
+            companyName: "Apple",
+            jobPostitionName: "iOS Developer",
+            workplaceLocation: "USA",
+            recruitNumbers: "10",
+            link: "https://www.apple.com",
+            startDate: .now,
+            endDate: Date(timeInterval: 259200, since: .now)
+        )
+        
+        // When
+        model.create(jobPosting: newJobPosting)
+        model.deleteJobPostings(on: )
+        
+        // Then
         let result = model.jobPostings
         print(result)
         
         XCTAssertTrue(result.count == 1)
     }
+     */
 
 }
