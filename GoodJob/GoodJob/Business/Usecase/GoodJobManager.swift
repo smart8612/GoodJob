@@ -9,12 +9,19 @@ import Foundation
 import CoreData
 
 
-final class GoodJobManager: ObservableObject {
+final class GoodJobManager: NSObject, ObservableObject {
     
     private let persistenceController: PersistenceController
     
+    private let jobPostingController: CDJobPostingFetchedResultsControlller
+    
     init(persistenceController: PersistenceController = PersistenceController.shared) {
         self.persistenceController = persistenceController
+        self.jobPostingController = CDJobPostingFetchedResultsControlller(
+            managedObjectContext: persistenceController.managedObjectContext
+        )
+        super.init()
+        jobPostingController.delegate = self
     }
     
     private var managedObectContext: NSManagedObjectContext {
@@ -22,7 +29,18 @@ final class GoodJobManager: ObservableObject {
     }
     
     var jobPostings: [GJJobPosting] {
-        return []
+        jobPostingController.jobPostings
+            .map {
+                GJJobPosting(
+                    companyName: $0.company?.name ?? .init(),
+                    jobPostitionName: $0.positionName ?? .init(),
+                    workplaceLocation: $0.workplaceLocation ?? .init(),
+                    recruitNumbers: String(Int($0.recruitNumbers)),
+                    link: $0.webLink?.absoluteString ?? .init(),
+                    startDate: $0.startDate ?? .now,
+                    endDate: $0.endDate ?? .now
+                )
+            }
     }
     
     func create(jobPosting: GJJobPosting) {
@@ -40,6 +58,15 @@ final class GoodJobManager: ObservableObject {
         newJobPosting.endDate = jobPosting.endDate
         
         try? managedObectContext.save()
+    }
+    
+}
+
+
+extension GoodJobManager: NSFetchedResultsControllerDelegate {
+    
+    func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        objectWillChange.send()
     }
     
 }

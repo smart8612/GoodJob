@@ -10,7 +10,7 @@ import SwiftUI
 
 struct NewJobPostingView: View {
     
-    @EnvironmentObject var goodJobManager: GoodJobManager
+    @EnvironmentObject var model: GoodJobManager
     
     @Binding var isPresentingNewJobPosting: Bool
     @State private var isShowingConfirmationlDialog = false
@@ -18,7 +18,7 @@ struct NewJobPostingView: View {
     
     private let title = "Are you sure want to discard this new job posting?"
     
-    @State private var jobPosting = GJJobPosting()
+    @State private var jobPosting = GJJobPosting.initWithEmpty()
     
     var body: some View {
         NavigationStack {
@@ -71,6 +71,7 @@ struct NewJobPostingView: View {
     
     private func createJobPosting() {
         withAnimation {
+            model.create(jobPosting: jobPosting)
             isPresentingNewJobPosting.toggle()
         }
     }
