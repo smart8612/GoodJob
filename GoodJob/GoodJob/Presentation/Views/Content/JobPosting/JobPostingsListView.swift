@@ -6,26 +6,20 @@
 //
 
 import SwiftUI
-import CoreData
 
 
 struct JobPostingsListView: View {
     
-    @StateObject private var jobPostingManager = JobPostingManager()
-
-    @FetchRequest(entity: JobPosting.entity(), sortDescriptors: [])
-    private var jobPostings: FetchedResults<JobPosting>
+    @StateObject private var model = GoodJobManager()
     
-    @State var selectedJobPosting: JobPosting?
+    @State var selectedJobPosting: GJJobPosting?
     @State var isPresentingNewJobPosting = false
     
     var body: some View {
         
-        List {
-            ForEach(jobPostings) {
-                JobPostingCellView(jobPosting: $0)
-            }
-            .onDelete(perform: deleteItems)
+        List(model.jobPostings) {
+            JobPostingCellView(jobPosting: $0)
+                // .onDelete(perform: deleteItems)
         }
         .listStyle(.insetGrouped)
         .toolbar {
@@ -43,15 +37,15 @@ struct JobPostingsListView: View {
             NewJobPostingView(
                 isPresentingNewJobPosting: $isPresentingNewJobPosting
             )
-            .environmentObject(jobPostingManager)
+            .environmentObject(model)
         }
        
     }
 
     private func deleteItems(offsets: IndexSet) {
         withAnimation {
-            offsets.map { jobPostings[$0] }
-                .forEach(jobPostingManager.delete)
+            //offsets.map { jobPostings[$0] }
+            //    .forEach(jobPostingManager.delete)
         }
     }
     

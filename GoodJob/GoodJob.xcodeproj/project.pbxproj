@@ -8,12 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		C1087AD62B56553200ED520A /* JobPostingCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1087AD52B56553200ED520A /* JobPostingCellView.swift */; };
-		C1414DEB2B5698AA00EA180F /* JobPostingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1414DE72B56687800EA180F /* JobPostingManager.swift */; };
-		C1414DEC2B5698FD00EA180F /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F999AF2B55068E00259FB5 /* Persistence.swift */; };
-		C1414DED2B56990900EA180F /* GoodJob.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C1F999B12B55068E00259FB5 /* GoodJob.xcdatamodeld */; };
 		C17498B42B56A9070079927F /* JobPostingsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1A68C482B55419000CE92D4 /* JobPostingsListView.swift */; };
 		C17498B52B56A9200079927F /* GoodJob.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C1F999B12B55068E00259FB5 /* GoodJob.xcdatamodeld */; };
-		C17498B62B56A93E0079927F /* JobPostingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1414DE72B56687800EA180F /* JobPostingManager.swift */; };
+		C19BC5302B57A4F3004E78F6 /* GoodJobManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C19BC52F2B57A4F3004E78F6 /* GoodJobManager.swift */; };
+		C19BC5322B57A67D004E78F6 /* GJJobPosting.swift in Sources */ = {isa = PBXBuildFile; fileRef = C19BC5312B57A67D004E78F6 /* GJJobPosting.swift */; };
 		C1A68C432B55367000CE92D4 /* SidebarCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1A68C422B55367000CE92D4 /* SidebarCellView.swift */; };
 		C1A68C462B553FD100CE92D4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1A68C452B553FD100CE92D4 /* ContentView.swift */; };
 		C1E8692C2B555B0900FDD6DA /* NewJobPostingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E8692B2B555B0900FDD6DA /* NewJobPostingView.swift */; };
@@ -49,7 +47,8 @@
 
 /* Begin PBXFileReference section */
 		C1087AD52B56553200ED520A /* JobPostingCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobPostingCellView.swift; sourceTree = "<group>"; };
-		C1414DE72B56687800EA180F /* JobPostingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobPostingManager.swift; sourceTree = "<group>"; };
+		C19BC52F2B57A4F3004E78F6 /* GoodJobManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoodJobManager.swift; sourceTree = "<group>"; };
+		C19BC5312B57A67D004E78F6 /* GJJobPosting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GJJobPosting.swift; sourceTree = "<group>"; };
 		C1A68C422B55367000CE92D4 /* SidebarCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarCellView.swift; sourceTree = "<group>"; };
 		C1A68C452B553FD100CE92D4 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		C1A68C482B55419000CE92D4 /* JobPostingsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobPostingsListView.swift; sourceTree = "<group>"; };
@@ -115,12 +114,45 @@
 			path = JobPosting;
 			sourceTree = "<group>";
 		};
-		C1414DEA2B56696C00EA180F /* View models */ = {
+		C1414DEA2B56696C00EA180F /* Usecase */ = {
 			isa = PBXGroup;
 			children = (
-				C1414DE72B56687800EA180F /* JobPostingManager.swift */,
+				C19BC52F2B57A4F3004E78F6 /* GoodJobManager.swift */,
 			);
-			path = "View models";
+			path = Usecase;
+			sourceTree = "<group>";
+		};
+		C19BC52B2B57A3F2004E78F6 /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				C1F999E12B5526CB00259FB5 /* Views */,
+				C19BC5332B57A6A4004E78F6 /* Models */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		C19BC52D2B57A43A004E78F6 /* Business */ = {
+			isa = PBXGroup;
+			children = (
+				C1414DEA2B56696C00EA180F /* Usecase */,
+			);
+			path = Business;
+			sourceTree = "<group>";
+		};
+		C19BC52E2B57A453004E78F6 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				C1414DE52B56673900EA180F /* Model controllers */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		C19BC5332B57A6A4004E78F6 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				C19BC5312B57A67D004E78F6 /* GJJobPosting.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		C1A68C442B55369300CE92D4 /* Sidebar */ = {
@@ -166,9 +198,9 @@
 			isa = PBXGroup;
 			children = (
 				C1F999AD2B55068E00259FB5 /* GoodJobApp.swift */,
-				C1F999E12B5526CB00259FB5 /* Views */,
-				C1414DEA2B56696C00EA180F /* View models */,
-				C1414DE52B56673900EA180F /* Model controllers */,
+				C19BC52B2B57A3F2004E78F6 /* Presentation */,
+				C19BC52D2B57A43A004E78F6 /* Business */,
+				C19BC52E2B57A453004E78F6 /* Data */,
 				C1F999B62B55069000259FB5 /* Assets.xcassets */,
 				C1F999B82B55069000259FB5 /* GoodJob.entitlements */,
 				C1F999B12B55068E00259FB5 /* GoodJob.xcdatamodeld */,
@@ -346,9 +378,10 @@
 				C17498B52B56A9200079927F /* GoodJob.xcdatamodeld in Sources */,
 				C1F999DE2B55202300259FB5 /* Category.swift in Sources */,
 				C17498B42B56A9070079927F /* JobPostingsListView.swift in Sources */,
-				C17498B62B56A93E0079927F /* JobPostingManager.swift in Sources */,
+				C19BC5322B57A67D004E78F6 /* GJJobPosting.swift in Sources */,
 				C1E8692C2B555B0900FDD6DA /* NewJobPostingView.swift in Sources */,
 				C1A68C462B553FD100CE92D4 /* ContentView.swift in Sources */,
+				C19BC5302B57A4F3004E78F6 /* GoodJobManager.swift in Sources */,
 				C1F999AE2B55068E00259FB5 /* GoodJobApp.swift in Sources */,
 				C1087AD62B56553200ED520A /* JobPostingCellView.swift in Sources */,
 				C1F999B52B55068E00259FB5 /* MainSplitView.swift in Sources */,
@@ -363,9 +396,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C1414DED2B56990900EA180F /* GoodJob.xcdatamodeld in Sources */,
-				C1414DEC2B5698FD00EA180F /* Persistence.swift in Sources */,
-				C1414DEB2B5698AA00EA180F /* JobPostingManager.swift in Sources */,
 				C1F999C52B55069000259FB5 /* GoodJobTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

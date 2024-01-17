@@ -10,19 +10,19 @@ import SwiftUI
 
 struct JobPostingCellView: View {
     
-    let jobPosting: JobPosting
+    let jobPosting: GJJobPosting
     
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
             Spacer()
             HStack {
-                Text(jobPosting.positionName ?? "")
+                Text(jobPosting.jobPostitionName)
             }
             Spacer()
             HStack(alignment: .center) {
-                Label(jobPosting.company?.name ?? "", systemImage: "building")
+                Label(jobPosting.companyName, systemImage: "building")
                 Divider()
-                Label(jobPosting.endDate?.formatted() ?? "", systemImage: "calendar")
+                Label(jobPosting.endDate.formatted(), systemImage: "calendar")
             }
             Spacer()
         }

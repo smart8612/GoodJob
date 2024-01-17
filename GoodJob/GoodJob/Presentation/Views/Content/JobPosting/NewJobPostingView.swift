@@ -10,41 +10,33 @@ import SwiftUI
 
 struct NewJobPostingView: View {
     
-    @EnvironmentObject var jobPostingManager: JobPostingManager
+    @EnvironmentObject var goodJobManager: GoodJobManager
     
     @Binding var isPresentingNewJobPosting: Bool
     @State private var isShowingConfirmationlDialog = false
+    @State private var isEditing = false
     
     private let title = "Are you sure want to discard this new job posting?"
     
-    @State private var isEditing = false
-    
-    @State private var companyName: String = ""
-    @State private var jobPosition: String = ""
-    @State private var workplaceLocation: String = ""
-    @State private var recruitNumbers: String = ""
-    @State private var link: String = ""
-    
-    @State private var startDate: Date = Date()
-    @State private var endDate: Date = Date()
+    @State private var jobPosting = GJJobPosting()
     
     var body: some View {
         NavigationStack {
             Form {
                 Section {
-                    TextField("Company Name", text: $companyName)
+                    TextField("Company Name", text: $jobPosting.companyName)
                 }
                 
                 Section {
-                    TextField("Job Position", text: $jobPosition)
-                    TextField("Workplace Location", text: $workplaceLocation)
-                    TextField("Recruitment Numbers", text: $recruitNumbers)
-                    TextField("Job Posting Link", text: $link)
+                    TextField("Job Position", text: $jobPosting.jobPostitionName)
+                    TextField("Workplace Location", text: $jobPosting.workplaceLocation)
+                    TextField("Recruitment Numbers", text: $jobPosting.recruitNumbers)
+                    TextField("Job Posting Link", text: $jobPosting.link)
                 }
                 
                 Section {
-                    DatePicker(selection: $startDate, label: { Text("Starts") })
-                    DatePicker(selection: $endDate, label: { Text("Ends") })
+                    DatePicker(selection: $jobPosting.startDate, label: { Text("Starts") })
+                    DatePicker(selection: $jobPosting.endDate, label: { Text("Ends") })
                 }
             }
             .navigationTitle("Hello World")
@@ -79,18 +71,8 @@ struct NewJobPostingView: View {
     
     private func createJobPosting() {
         withAnimation {
-            jobPostingManager.createJobPosting { jobPosting in
-                jobPosting.company?.name = companyName
-                jobPosting.positionName = jobPosition
-                jobPosting.workplaceLocation = workplaceLocation
-                jobPosting.recruitNumbers = Int64(recruitNumbers) ?? 0
-                jobPosting.webLink = URL(string: link)
-                jobPosting.startDate = startDate
-                jobPosting.endDate = endDate
-            }
             isPresentingNewJobPosting.toggle()
         }
-        
     }
     
 }

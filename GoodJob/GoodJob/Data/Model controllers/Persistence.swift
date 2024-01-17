@@ -15,10 +15,10 @@ struct PersistenceController {
         let viewContext = result.container.viewContext
         
         
-        let newCompany = Company(context: viewContext)
+        let newCompany = CDCompany(context: viewContext)
         newCompany.name = "Apple"
         
-        let newJobPosting = JobPosting(context: viewContext)
+        let newJobPosting = CDJobPosting(context: viewContext)
         newJobPosting.positionName = "iOS Developer"
         newJobPosting.recruitNumbers = 10
         newJobPosting.workplaceLocation = "USA"

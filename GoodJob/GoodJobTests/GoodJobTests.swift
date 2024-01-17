@@ -6,20 +6,24 @@
 //
 
 import XCTest
+@testable import GoodJob
+
 
 final class GoodJobTests: XCTestCase {
     
     // 지금은 데이터 모델 관계 제약이 정상적으로 동작하는지만 본다.
-    private var jobPostingManager: JobPostingManager!
+    private var persistenceController: GoodJob.PersistenceController!
+    private var jobPostingManager: GoodJob.JobPostingViewModel!
 
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
-        let persistenceController = PersistenceController(inMemory: true)
-        jobPostingManager = JobPostingManager(persistenceController: persistenceController)
+        persistenceController = GoodJob.PersistenceController(inMemory: true)
+        jobPostingManager = GoodJob.JobPostingViewModel(persistenceController: persistenceController)
     }
 
     override func tearDownWithError() throws {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
+        persistenceController = nil
         jobPostingManager = nil
     }
 
@@ -31,7 +35,7 @@ final class GoodJobTests: XCTestCase {
         // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
         
         // Create Dummy Data
-        jobPostingManager.createJobPosting { postData in
+        jobPostingManager.createJobPosting { (postData: GoodJob.JobPosting) in
             postData.company?.name = "Apple"
             postData.positionName = "iOS Developer"
             postData.recruitNumbers = 10
@@ -41,9 +45,9 @@ final class GoodJobTests: XCTestCase {
             postData.webLink = URL(string: "https://www.apple.com")
         }
         
-//        let fetchRequest = JobPosting.fetchRequest()
-//        let result = try persistenceController.managedObjectContext.fetch(fetchRequest)
-//        print(result)
+        let fetchRequest = JobPosting.fetchRequest()
+        let result = try persistenceController.managedObjectContext.fetch(fetchRequest)
+        print(result)
         
         // XCTAssertTrue(result.count != 0)
     }
