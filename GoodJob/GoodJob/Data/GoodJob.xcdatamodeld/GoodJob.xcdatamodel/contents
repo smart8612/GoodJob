@@ -19,8 +19,8 @@
     </entity>
     <entity name="CDTest" representedClassName=".CDTest" syncable="YES" codeGenerationType="class">
         <attribute name="id_" attributeType="UUID" usesScalarValueType="NO"/>
-        <attribute name="name_" optional="YES" attributeType="String"/>
-        <attribute name="testType_" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="name_" attributeType="String"/>
+        <attribute name="testType_" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <relationship name="jobPosting" maxCount="1" deletionRule="Nullify" destinationEntity="CDJobPosting" inverseName="tests" inverseEntity="CDJobPosting"/>
     </entity>
 </model>
