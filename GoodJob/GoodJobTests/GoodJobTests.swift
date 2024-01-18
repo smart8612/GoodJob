@@ -100,7 +100,7 @@ final class GoodJobTests: XCTestCase {
         )
         
         // When
-        let createdJobPosting = model.create(jobPosting: newJobPosting)
+        let _ = model.create(jobPosting: newJobPosting)
         model.deleteJobPostings(on: .init(integer: .zero))
         
         // Then

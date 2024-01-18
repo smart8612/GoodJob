@@ -8,7 +8,7 @@
 import Foundation
 
 
-struct GJTest: Identifiable {
+struct GJTest: Identifiable, Hashable {
     
     var id: UUID = UUID()
     

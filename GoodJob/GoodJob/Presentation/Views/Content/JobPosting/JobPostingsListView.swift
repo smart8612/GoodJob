@@ -12,18 +12,26 @@ struct JobPostingsListView: View {
     
     @EnvironmentObject private var model: GoodJobManager
     
-    @State var selectedJobPosting: GJJobPosting?
     @State var isPresentingNewJobPosting = false
     
     var body: some View {
-        
         List {
-            ForEach(model.jobPostings) {
-                JobPostingCellView(jobPosting: $0)
+            ForEach(model.jobPostings) { jobPost in
+                NavigationLink {
+                    JobPostingDetailView(jobPostingId: jobPost.id)
+                } label: {
+                    JobPostingCellView(jobPosting: jobPost)
+                }
             }
             .onDelete(perform: model.deleteJobPostings)
         }
         .listStyle(.insetGrouped)
+        .sheet(isPresented: $isPresentingNewJobPosting) {
+            NewJobPostingView(
+                isPresentingNewJobPosting: $isPresentingNewJobPosting
+            )
+            .environmentObject(model)
+        }
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
                 EditButton()
@@ -35,13 +43,6 @@ struct JobPostingsListView: View {
                 }
             }
         }
-        .sheet(isPresented: $isPresentingNewJobPosting) {
-            NewJobPostingView(
-                isPresentingNewJobPosting: $isPresentingNewJobPosting
-            )
-            .environmentObject(model)
-        }
-       
     }
     
 }

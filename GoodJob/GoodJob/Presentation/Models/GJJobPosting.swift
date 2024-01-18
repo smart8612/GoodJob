@@ -8,7 +8,7 @@
 import Foundation
 
 
-struct GJJobPosting: Identifiable {
+struct GJJobPosting: Identifiable, Hashable {
     
     var id: UUID = UUID()
     
