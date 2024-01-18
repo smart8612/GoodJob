@@ -10,7 +10,7 @@ import SwiftUI
 
 struct JobPostingsListView: View {
     
-    @StateObject private var model = GoodJobManager()
+    @EnvironmentObject private var model: GoodJobManager
     
     @State var selectedJobPosting: GJJobPosting?
     @State var isPresentingNewJobPosting = false

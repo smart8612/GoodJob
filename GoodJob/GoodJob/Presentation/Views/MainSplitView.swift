@@ -34,6 +34,9 @@ struct MainSplitView: View {
 
 #Preview {
     MainSplitView()
-        .environment(\.managedObjectContext,
-                      PersistenceController.preview.container.viewContext)
+        .environmentObject(
+            GoodJobManager(
+                persistenceController: .init(inMemory: true)
+            )
+        )
 }

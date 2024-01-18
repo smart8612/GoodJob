@@ -10,10 +10,13 @@ import SwiftUI
 
 @main
 struct GoodJobApp: App {
+    
+    @StateObject private var model = GoodJobManager()
 
     var body: some Scene {
         WindowGroup {
             MainSplitView()
+                .environmentObject(model)
         }
     }
     
