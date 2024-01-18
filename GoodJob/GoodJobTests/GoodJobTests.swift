@@ -60,6 +60,12 @@ final class GoodJobTests: XCTestCase {
         )
     }
     
+    func test_특정_ID를_가진_JobPosting_fetch_검증() throws {
+        
+        XCTFail()
+        
+    }
+    
     /*
     func test_JobPosting_제거_검증() throws {
         // Given
