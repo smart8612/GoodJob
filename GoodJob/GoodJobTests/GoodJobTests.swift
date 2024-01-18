@@ -104,5 +104,9 @@ final class GoodJobTests: XCTestCase {
         let result = model.jobPostings
         XCTAssertTrue(result.count == 0)
     }
+    
+    func test_채용시험정보_Test_포함_JobPosting_생성_검증() {
+        XCTFail()
+    }
 
 }
