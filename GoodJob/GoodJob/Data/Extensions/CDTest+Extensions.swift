@@ -16,6 +16,11 @@ extension CDTest {
         set { id_ = newValue }
     }
     
+    var order: Int {
+        get { Int(order_) }
+        set { order_ = Int64(newValue) }
+    }
+    
     var name: String {
         get { name_ ?? .init() }
         set { name_ = newValue }
@@ -26,8 +31,9 @@ extension CDTest {
         set { testType_ = Int64(newValue.rawValue) }
     }
     
-    convenience init(name: String, testType: TestType, context: NSManagedObjectContext) {
+    convenience init(order: Int, name: String, testType: TestType, context: NSManagedObjectContext) {
         self.init(context: context)
+        self.order = order
         self.name = name
         self.testType = testType
     }

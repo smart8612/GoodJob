@@ -128,9 +128,20 @@ final class GoodJobTests: XCTestCase {
         
         // When
         let createdJobPosting = model.create(jobPosting: newJobPosting)
+        guard let fetchedJobPosting = model.fetchJobPostings(ids: [createdJobPosting.id]).first else {
+            XCTFail()
+            return
+        }
+        let fetchedTests = fetchedJobPosting.tests
         
         // Then
-        XCTFail()
+        XCTAssertTrue(
+            fetchedTests[0].name == newTests[0].name &&
+            fetchedTests[0].type == fetchedTests[0].type &&
+            fetchedTests[1].name == newTests[1].name &&
+            fetchedTests[1].type == newTests[1].type
+        )
+        
     }
 
 }

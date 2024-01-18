@@ -48,11 +48,13 @@ final class GoodJobManager: NSObject, ObservableObject {
             context: managedObjectContext
         )
         
-        let newTests = jobPosting.tests.reduce(into: Set<CDTest>()) {
-            $0.insert(
+        let newTests = jobPosting.tests.enumerated().reduce(into: Set<CDTest>()) { (partialResult, enumeratedData) in
+            let (index, test) = enumeratedData
+            partialResult.insert(
                 CDTest(
-                    name: $1.name,
-                    testType: CDTest.TestType(rawValue: $1.type.rawValue) ?? .writtenTest,
+                    order: index,
+                    name: test.name,
+                    testType: CDTest.TestType(rawValue: test.type.rawValue) ?? .writtenTest,
                     context: managedObjectContext
                 )
             )
@@ -100,8 +102,10 @@ extension GoodJobManager: NSFetchedResultsControllerDelegate {
 fileprivate extension CDJobPosting {
     
     func convertToGJJobPosting() -> GJJobPosting {
-        let convertedTests = Array(self.tests).map { $0.convertToGJTest() }
-        
+        let convertedTests = Array(self.tests)
+            .sorted { lhs, rhs in lhs.order < rhs.order }
+            .map { $0.convertToGJTest() }
+    
         return GJJobPosting(
             id: self.id,
             companyName: self.company.name,

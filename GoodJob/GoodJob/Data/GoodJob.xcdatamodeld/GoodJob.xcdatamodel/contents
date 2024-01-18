@@ -25,6 +25,7 @@
     <entity name="CDTest" representedClassName=".CDTest" syncable="YES" codeGenerationType="class">
         <attribute name="id_" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="name_" attributeType="String"/>
+        <attribute name="order_" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="testType_" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <relationship name="jobPosting_" maxCount="1" deletionRule="Nullify" destinationEntity="CDJobPosting" inverseName="tests_" inverseEntity="CDJobPosting"/>
     </entity>
