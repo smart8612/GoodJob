@@ -16,39 +16,9 @@ extension CDJobPosting {
         set { id_ = newValue }
     }
     
-    var company: CDCompany {
-        get { company_! }
-        set { company_ = newValue }
-    }
-    
-    var positionName: String {
-        get { positionName_ ?? .init() }
-        set { positionName_ = newValue }
-    }
-    
-    var workplaceLocation: String {
-        get { workplaceLocation_ ?? .init() }
-        set { workplaceLocation_ = newValue }
-    }
-    
-    var recruitNumbers: Int {
-        get { Int(recruitNumbers_) }
-        set { recruitNumbers_ = Int64(newValue) }
-    }
-    
-    var webLink: String {
-        get { webLink_ ?? .init() }
-        set { webLink_ = newValue }
-    }
-    
-    var startDate: Date {
-        get { startDate_ ?? .now }
-        set { startDate_ = newValue }
-    }
-    
-    var endDate: Date {
-        get { endDate_ ?? .now }
-        set { endDate_ = newValue }
+    var link: String {
+        get { link_ ?? .init() }
+        set { link_ = newValue }
     }
     
     var createdAt: Date {
@@ -56,15 +26,21 @@ extension CDJobPosting {
         set { createdAt_ = newValue }
     }
     
-    convenience init(company: CDCompany, positionName: String, workplaceLocation: String, recruitNumbers: Int, webLink: String, startDate: Date, endDate: Date, context: NSManagedObjectContext) {
+    var company: CDCompany {
+        get { company_! }
+        set { company_ = newValue }
+    }
+    
+    var jobPosition: CDJobPosition {
+        get { jobPosition_! }
+        set { jobPosition_ = newValue }
+    }
+    
+    convenience init(link: String, company: CDCompany, jobPosition: CDJobPosition, context: NSManagedObjectContext) {
         self.init(context: context)
+        self.link = link
         self.company = company
-        self.positionName = positionName
-        self.workplaceLocation = workplaceLocation
-        self.recruitNumbers = recruitNumbers
-        self.webLink = webLink
-        self.startDate = startDate
-        self.endDate = endDate
+        self.jobPosition = jobPosition
     }
     
     public override func awakeFromInsert() {

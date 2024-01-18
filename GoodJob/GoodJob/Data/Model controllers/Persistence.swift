@@ -19,17 +19,15 @@ struct PersistenceController {
             context: viewContext
         )
         
-        let newJobPosting = CDJobPosting(
-            company: newCompany,
-            positionName: "iOS Developer",
+        let newJobPosition = CDJobPosition(
+            name: "iOS Developer",
             workplaceLocation: "USA",
             recruitNumbers: 10,
-            webLink: "https://www.apple.com",
             startDate: .now,
             endDate: Date(timeInterval: 259200, since: .now),
             context: viewContext
         )
-            
+        
         do {
             try viewContext.save()
         } catch {

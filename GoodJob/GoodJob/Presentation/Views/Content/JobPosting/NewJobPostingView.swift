@@ -27,7 +27,7 @@ struct NewJobPostingView: View {
                 }
                 
                 Section {
-                    TextField("Job Position", text: $jobPosting.jobPostitionName)
+                    TextField("Job Position", text: $jobPosting.jobPositionName)
                     TextField("Workplace Location", text: $jobPosting.workplaceLocation)
                     TextField("Recruitment Numbers", text: $jobPosting.recruitNumbers)
                     TextField("Job Posting Link", text: $jobPosting.link)

@@ -13,7 +13,7 @@ struct GJJobPosting: Identifiable {
     var id: UUID = UUID()
     
     var companyName: String
-    var jobPostitionName: String
+    var jobPositionName: String
     var workplaceLocation: String
     var recruitNumbers: String
     var link: String
@@ -24,7 +24,7 @@ struct GJJobPosting: Identifiable {
     static func initWithEmpty() -> Self {
         Self(
             companyName: .init(),
-            jobPostitionName: .init(),
+            jobPositionName: .init(),
             workplaceLocation: .init(),
             recruitNumbers: .init(),
             link: .init(),

@@ -24,7 +24,7 @@ final class GoodJobManager: NSObject, ObservableObject {
         jobPostingController.delegate = self
     }
     
-    private var managedObectContext: NSManagedObjectContext {
+    private var managedObjectContext: NSManagedObjectContext {
         persistenceController.managedObjectContext
     }
     
@@ -34,12 +34,12 @@ final class GoodJobManager: NSObject, ObservableObject {
                 GJJobPosting(
                     id: $0.id,
                     companyName: $0.company.name,
-                    jobPostitionName: $0.positionName,
-                    workplaceLocation: $0.workplaceLocation,
-                    recruitNumbers: String($0.recruitNumbers),
-                    link: $0.webLink,
-                    startDate: $0.startDate,
-                    endDate: $0.endDate
+                    jobPositionName: $0.jobPosition.name,
+                    workplaceLocation: $0.jobPosition.workplaceLocation,
+                    recruitNumbers: String($0.jobPosition.recruitNumbers),
+                    link: $0.link,
+                    startDate: $0.jobPosition.startDate,
+                    endDate: $0.jobPosition.endDate
                 )
             }
     }
@@ -47,21 +47,26 @@ final class GoodJobManager: NSObject, ObservableObject {
     func create(jobPosting: GJJobPosting) {
         let newCompany = CDCompany(
             name: jobPosting.companyName,
-            context: managedObectContext
+            context: managedObjectContext
+        )
+        
+        let newJobPosition = CDJobPosition(
+            name: jobPosting.jobPositionName,
+            workplaceLocation: jobPosting.workplaceLocation,
+            recruitNumbers: Int(jobPosting.recruitNumbers) ?? .zero,
+            startDate: jobPosting.startDate,
+            endDate: jobPosting.endDate,
+            context: managedObjectContext
         )
         
         let newJobPosting = CDJobPosting(
+            link: jobPosting.link,
             company: newCompany,
-            positionName: jobPosting.jobPostitionName,
-            workplaceLocation: jobPosting.workplaceLocation,
-            recruitNumbers: Int(jobPosting.recruitNumbers) ?? .zero,
-            webLink: jobPosting.link,
-            startDate: jobPosting.startDate,
-            endDate: jobPosting.endDate,
-            context: managedObectContext
+            jobPosition: newJobPosition,
+            context: managedObjectContext
         )
         
-        try? managedObectContext.save()
+        try? managedObjectContext.save()
     }
     
     func deleteJobPostings(on offsets: IndexSet) {
@@ -71,7 +76,7 @@ final class GoodJobManager: NSObject, ObservableObject {
         
         jobPostingController.jobPostings
             .filter { postIds.contains($0.id) }
-            .forEach { managedObectContext.delete($0) }
+            .forEach { managedObjectContext.delete($0) }
     }
     
 }

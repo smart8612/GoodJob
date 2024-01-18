@@ -2,25 +2,30 @@
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="22522" systemVersion="23C71" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="CDCompany" representedClassName=".CDCompany" syncable="YES" codeGenerationType="class">
         <attribute name="id_" attributeType="UUID" usesScalarValueType="NO"/>
-        <attribute name="name_" optional="YES" attributeType="String"/>
-        <relationship name="jobPostings_" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="CDJobPosting" inverseName="company_" inverseEntity="CDJobPosting"/>
+        <attribute name="name_" attributeType="String" defaultValueString=""/>
+        <relationship name="jobPostings_" toMany="YES" deletionRule="Cascade" destinationEntity="CDJobPosting" inverseName="company_" inverseEntity="CDJobPosting"/>
+    </entity>
+    <entity name="CDJobPosition" representedClassName=".CDJobPosition" syncable="YES" codeGenerationType="class">
+        <attribute name="endDate_" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="id_" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="name_" attributeType="String" defaultValueString=""/>
+        <attribute name="recruitNumbers_" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="startDate_" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="workplaceLocation_" attributeType="String" defaultValueString=""/>
+        <relationship name="jobPosting_" maxCount="1" deletionRule="Nullify" destinationEntity="CDJobPosting" inverseName="jobPosition_" inverseEntity="CDJobPosting"/>
     </entity>
     <entity name="CDJobPosting" representedClassName=".CDJobPosting" syncable="YES" codeGenerationType="class">
-        <attribute name="createdAt_" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
-        <attribute name="endDate_" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="createdAt_" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="id_" attributeType="UUID" usesScalarValueType="NO"/>
-        <attribute name="positionName_" optional="YES" attributeType="String"/>
-        <attribute name="recruitNumbers_" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
-        <attribute name="startDate_" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
-        <attribute name="webLink_" optional="YES" attributeType="String"/>
-        <attribute name="workplaceLocation_" optional="YES" attributeType="String"/>
+        <attribute name="link_" optional="YES" attributeType="String"/>
         <relationship name="company_" maxCount="1" deletionRule="Nullify" destinationEntity="CDCompany" inverseName="jobPostings_" inverseEntity="CDCompany"/>
-        <relationship name="tests" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="CDTest" inverseName="jobPosting" inverseEntity="CDTest"/>
+        <relationship name="jobPosition_" maxCount="1" deletionRule="Nullify" destinationEntity="CDJobPosition" inverseName="jobPosting_" inverseEntity="CDJobPosition"/>
+        <relationship name="tests_" toMany="YES" deletionRule="Cascade" destinationEntity="CDTest" inverseName="jobPosting_" inverseEntity="CDTest"/>
     </entity>
     <entity name="CDTest" representedClassName=".CDTest" syncable="YES" codeGenerationType="class">
         <attribute name="id_" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="name_" attributeType="String"/>
         <attribute name="testType_" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
-        <relationship name="jobPosting" maxCount="1" deletionRule="Nullify" destinationEntity="CDJobPosting" inverseName="tests" inverseEntity="CDJobPosting"/>
+        <relationship name="jobPosting_" maxCount="1" deletionRule="Nullify" destinationEntity="CDJobPosting" inverseName="tests_" inverseEntity="CDJobPosting"/>
     </entity>
 </model>

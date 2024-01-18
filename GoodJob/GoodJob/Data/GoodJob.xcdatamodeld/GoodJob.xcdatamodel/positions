@@ -1,17 +1,22 @@
 [
   {
-    "name" : "Company",
-    "positionX" : "540.3046875",
-    "positionY" : "147.0"
+    "name" : "CDCompany",
+    "positionX" : "378.078125",
+    "positionY" : "155.0"
   },
   {
-    "name" : "JobPosting",
+    "name" : "CDJobPosition",
+    "positionX" : "555.015625",
+    "positionY" : "237.82421875"
+  },
+  {
+    "name" : "CDJobPosting",
     "positionX" : "175.0",
-    "positionY" : "360.70703125"
+    "positionY" : "353.66796875"
   },
   {
-    "name" : "Test",
-    "positionX" : "535.45703125",
-    "positionY" : "566.69140625"
+    "name" : "CDTest",
+    "positionX" : "561.40234375",
+    "positionY" : "509.58203125"
   }
 ]

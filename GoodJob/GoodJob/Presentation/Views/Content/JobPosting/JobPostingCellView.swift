@@ -16,7 +16,7 @@ struct JobPostingCellView: View {
         VStack(alignment: .leading, spacing: 8) {
             Spacer()
             HStack {
-                Text(jobPosting.jobPostitionName)
+                Text(jobPosting.jobPositionName)
             }
             Spacer()
             HStack(alignment: .center) {

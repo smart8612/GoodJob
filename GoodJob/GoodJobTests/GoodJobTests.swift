@@ -30,7 +30,7 @@ final class GoodJobTests: XCTestCase {
         // Given
         let newJobPosting = GJJobPosting(
             companyName: "Apple",
-            jobPostitionName: "iOS Developer",
+            jobPositionName: "iOS Developer",
             workplaceLocation: "USA",
             recruitNumbers: "10",
             link: "https://www.apple.com",
@@ -47,9 +47,11 @@ final class GoodJobTests: XCTestCase {
             return
         }
         
+        print(result)
+        
         XCTAssertTrue(
             result.companyName == newJobPosting.companyName &&
-            result.jobPostitionName == newJobPosting.jobPostitionName &&
+            result.jobPositionName == newJobPosting.jobPositionName &&
             result.workplaceLocation == newJobPosting.workplaceLocation &&
             result.recruitNumbers == newJobPosting.recruitNumbers &&
             result.link == newJobPosting.link &&
@@ -63,7 +65,7 @@ final class GoodJobTests: XCTestCase {
         // Given
         let newJobPosting = GJJobPosting(
             companyName: "Apple",
-            jobPostitionName: "iOS Developer",
+            jobPositionName: "iOS Developer",
             workplaceLocation: "USA",
             recruitNumbers: "10",
             link: "https://www.apple.com",
