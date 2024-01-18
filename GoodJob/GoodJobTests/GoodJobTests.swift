@@ -61,9 +61,37 @@ final class GoodJobTests: XCTestCase {
     }
     
     func test_특정_ID를_가진_JobPosting_fetch_검증() throws {
+        // Given
+        let newJobPosting = GJJobPosting(
+            companyName: "Apple",
+            jobPositionName: "iOS Developer",
+            workplaceLocation: "USA",
+            recruitNumbers: "10",
+            link: "https://www.apple.com",
+            startDate: .now,
+            endDate: Date(timeInterval: 259200, since: .now)
+        )
         
-        XCTFail()
+        // When
+        model.create(jobPosting: newJobPosting)
+        let target = model.jobPostings.first
         
+        print(target!.id)
+        guard let result = model.fetchJobPosting(id: target!.id) else {
+            XCTFail()
+            return
+        }
+        
+        // Then
+        XCTAssertTrue(
+            result.companyName == newJobPosting.companyName &&
+            result.jobPositionName == newJobPosting.jobPositionName &&
+            result.workplaceLocation == newJobPosting.workplaceLocation &&
+            result.recruitNumbers == newJobPosting.recruitNumbers &&
+            result.link == newJobPosting.link &&
+            result.startDate == newJobPosting.startDate &&
+            result.endDate == newJobPosting.endDate
+        )
     }
     
     /*

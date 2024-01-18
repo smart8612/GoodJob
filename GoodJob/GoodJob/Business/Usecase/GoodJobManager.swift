@@ -69,6 +69,30 @@ final class GoodJobManager: NSObject, ObservableObject {
         try? managedObjectContext.save()
     }
     
+    func fetchJobPosting(id: UUID) -> GJJobPosting? {
+        let fetchRequest = CDJobPosting.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "id_ == %@", id as CVarArg)
+        
+        let fetchedResults = try? managedObjectContext.fetch(fetchRequest)
+        
+        guard let fetchedJobPosting = fetchedResults?.first else {
+            return nil
+        }
+        
+        let jobPosting = GJJobPosting(
+            id: fetchedJobPosting.id,
+            companyName: fetchedJobPosting.company.name,
+            jobPositionName: fetchedJobPosting.jobPosition.name,
+            workplaceLocation: fetchedJobPosting.jobPosition.workplaceLocation,
+            recruitNumbers: String(fetchedJobPosting.jobPosition.recruitNumbers),
+            link: fetchedJobPosting.link,
+            startDate: fetchedJobPosting.jobPosition.startDate,
+            endDate: fetchedJobPosting.jobPosition.endDate
+        )
+        
+        return jobPosting
+    }
+    
     func deleteJobPostings(on offsets: IndexSet) {
         let postIds = offsets
             .compactMap { jobPostings[$0].id }
