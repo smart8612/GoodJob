@@ -29,22 +29,10 @@ final class GoodJobManager: NSObject, ObservableObject {
     }
     
     var jobPostings: [GJJobPosting] {
-        jobPostingController.jobPostings
-            .map {
-                GJJobPosting(
-                    id: $0.id,
-                    companyName: $0.company.name,
-                    jobPositionName: $0.jobPosition.name,
-                    workplaceLocation: $0.jobPosition.workplaceLocation,
-                    recruitNumbers: String($0.jobPosition.recruitNumbers),
-                    link: $0.link,
-                    startDate: $0.jobPosition.startDate,
-                    endDate: $0.jobPosition.endDate
-                )
-            }
+        jobPostingController.jobPostings.map { $0.convertToGJJobPosting()}
     }
     
-    func create(jobPosting: GJJobPosting) {
+    func create(jobPosting: GJJobPosting) -> GJJobPosting {
         let newCompany = CDCompany(
             name: jobPosting.companyName,
             context: managedObjectContext
@@ -67,40 +55,25 @@ final class GoodJobManager: NSObject, ObservableObject {
         )
         
         try? managedObjectContext.save()
+        
+        let result = newJobPosting.convertToGJJobPosting()
+        
+        return result
     }
     
-    func fetchJobPosting(id: UUID) -> GJJobPosting? {
-        let fetchRequest = CDJobPosting.fetchRequest()
-        fetchRequest.predicate = NSPredicate(format: "id_ == %@", id as CVarArg)
-        
-        let fetchedResults = try? managedObjectContext.fetch(fetchRequest)
-        
-        guard let fetchedJobPosting = fetchedResults?.first else {
-            return nil
+    func fetchJobPostings(ids: [UUID]) -> [GJJobPosting] {
+        guard let fetchedJobPostings = try? CDJobPosting.fetch(ids: ids, in: managedObjectContext) else {
+            return .init()
         }
         
-        let jobPosting = GJJobPosting(
-            id: fetchedJobPosting.id,
-            companyName: fetchedJobPosting.company.name,
-            jobPositionName: fetchedJobPosting.jobPosition.name,
-            workplaceLocation: fetchedJobPosting.jobPosition.workplaceLocation,
-            recruitNumbers: String(fetchedJobPosting.jobPosition.recruitNumbers),
-            link: fetchedJobPosting.link,
-            startDate: fetchedJobPosting.jobPosition.startDate,
-            endDate: fetchedJobPosting.jobPosition.endDate
-        )
+        let convertedJobPostings = fetchedJobPostings.map { $0.convertToGJJobPosting() }
         
-        return jobPosting
+        return convertedJobPostings
     }
     
     func deleteJobPostings(on offsets: IndexSet) {
-        let postIds = offsets
-            .compactMap { jobPostings[$0].id }
-            .reduce(into: Set<UUID>()) { $0.insert($1) }
-        
-        jobPostingController.jobPostings
-            .filter { postIds.contains($0.id) }
-            .forEach { managedObjectContext.delete($0) }
+        let postIds = offsets.compactMap { jobPostings[$0].id }
+        try? CDJobPosting.delete(ids: postIds, in: managedObjectContext)
     }
     
 }
@@ -110,6 +83,23 @@ extension GoodJobManager: NSFetchedResultsControllerDelegate {
     
     func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         objectWillChange.send()
+    }
+    
+}
+
+fileprivate extension CDJobPosting {
+    
+    func convertToGJJobPosting() -> GJJobPosting {
+        GJJobPosting(
+            id: self.id,
+            companyName: self.company.name,
+            jobPositionName: self.jobPosition.name,
+            workplaceLocation: self.jobPosition.workplaceLocation,
+            recruitNumbers: String(self.jobPosition.recruitNumbers),
+            link: self.link,
+            startDate: self.jobPosition.startDate,
+            endDate: self.jobPosition.endDate
+        )
     }
     
 }

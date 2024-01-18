@@ -39,24 +39,17 @@ final class GoodJobTests: XCTestCase {
         )
         
         // When
-        model.create(jobPosting: newJobPosting)
+        let createdJobPosting = model.create(jobPosting: newJobPosting)
         
         // Then
-        guard let result = model.jobPostings.first else {
-            XCTFail()
-            return
-        }
-        
-        print(result)
-        
         XCTAssertTrue(
-            result.companyName == newJobPosting.companyName &&
-            result.jobPositionName == newJobPosting.jobPositionName &&
-            result.workplaceLocation == newJobPosting.workplaceLocation &&
-            result.recruitNumbers == newJobPosting.recruitNumbers &&
-            result.link == newJobPosting.link &&
-            result.startDate == newJobPosting.startDate &&
-            result.endDate == newJobPosting.endDate
+            createdJobPosting.companyName == newJobPosting.companyName &&
+            createdJobPosting.jobPositionName == newJobPosting.jobPositionName &&
+            createdJobPosting.workplaceLocation == newJobPosting.workplaceLocation &&
+            createdJobPosting.recruitNumbers == newJobPosting.recruitNumbers &&
+            createdJobPosting.link == newJobPosting.link &&
+            createdJobPosting.startDate == newJobPosting.startDate &&
+            createdJobPosting.endDate == newJobPosting.endDate
         )
     }
     
@@ -73,11 +66,8 @@ final class GoodJobTests: XCTestCase {
         )
         
         // When
-        model.create(jobPosting: newJobPosting)
-        let target = model.jobPostings.first
-        
-        print(target!.id)
-        guard let result = model.fetchJobPosting(id: target!.id) else {
+        let createdJobPosting = model.create(jobPosting: newJobPosting)
+        guard let result = model.fetchJobPostings(ids: [createdJobPosting.id]).first else {
             XCTFail()
             return
         }
@@ -94,7 +84,6 @@ final class GoodJobTests: XCTestCase {
         )
     }
     
-    /*
     func test_JobPosting_제거_검증() throws {
         // Given
         let newJobPosting = GJJobPosting(
@@ -108,15 +97,12 @@ final class GoodJobTests: XCTestCase {
         )
         
         // When
-        model.create(jobPosting: newJobPosting)
-        model.deleteJobPostings(on: )
+        let createdJobPosting = model.create(jobPosting: newJobPosting)
+        model.deleteJobPostings(on: .init(integer: .zero))
         
         // Then
         let result = model.jobPostings
-        print(result)
-        
-        XCTAssertTrue(result.count == 1)
+        XCTAssertTrue(result.count == 0)
     }
-     */
 
 }

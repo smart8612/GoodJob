@@ -49,3 +49,23 @@ extension CDJobPosting {
     }
     
 }
+
+
+extension CDJobPosting {
+    
+    static func fetch(ids: [UUID], in context: NSManagedObjectContext) throws -> [CDJobPosting] {
+        let fetchRequest = Self.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "id_ IN %@", ids)
+        
+        let fetchedResult = try context.fetch(fetchRequest)
+        
+        return fetchedResult
+    }
+    
+    static func delete(ids: [UUID], in context: NSManagedObjectContext) throws {
+        try Self.fetch(ids: ids, in: context)
+            .forEach { context.delete($0) }
+        try context.save()
+    }
+    
+}
