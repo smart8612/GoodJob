@@ -21,12 +21,12 @@ extension CDTest {
         set { name_ = newValue }
     }
     
-    var testType: Int {
-        get { Int(testType_) }
-        set { testType_ = Int64(newValue) }
+    var testType: TestType {
+        get { TestType(rawValue: Int(testType_))! }
+        set { testType_ = Int64(newValue.rawValue) }
     }
     
-    convenience init(name: String, testType: Int, context: NSManagedObjectContext) {
+    convenience init(name: String, testType: TestType, context: NSManagedObjectContext) {
         self.init(context: context)
         self.name = name
         self.testType = testType
@@ -34,6 +34,11 @@ extension CDTest {
     
     public override func awakeFromInsert() {
         self.id = UUID()
+    }
+    
+    enum TestType: Int {
+        case writtenTest = 0
+        case interview
     }
     
 }
