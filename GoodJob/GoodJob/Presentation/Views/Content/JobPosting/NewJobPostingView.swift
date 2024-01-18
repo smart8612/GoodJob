@@ -12,9 +12,7 @@ struct NewJobPostingView: View {
     
     @EnvironmentObject var model: GoodJobManager
     
-    @Binding var isPresentingNewJobPosting: Bool {
-        willSet
-    }
+    @Binding var isPresentingNewJobPosting: Bool
     @State private var isShowingConfirmationlDialog = false
     
     private let title = "Are you sure want to discard this new job posting?"

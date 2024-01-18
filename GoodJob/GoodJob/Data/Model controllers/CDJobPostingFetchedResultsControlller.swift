@@ -20,7 +20,9 @@ final class CDJobPostingFetchedResultsControlller: NSObject, ObservableObject {
     
     init(managedObjectContext: NSManagedObjectContext) {
         let fetchRequest = CDJobPosting.fetchRequest()
-        fetchRequest.sortDescriptors = []
+        fetchRequest.sortDescriptors = [
+            NSSortDescriptor(key: "createdAt_", ascending: false)
+        ]
         
         controller = NSFetchedResultsController(
             fetchRequest: fetchRequest,

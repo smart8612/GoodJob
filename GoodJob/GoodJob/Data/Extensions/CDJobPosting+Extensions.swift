@@ -51,6 +51,11 @@ extension CDJobPosting {
         set { endDate_ = newValue }
     }
     
+    var createdAt: Date {
+        get { createdAt_ ?? .now }
+        set { createdAt_ = newValue }
+    }
+    
     convenience init(company: CDCompany, positionName: String, workplaceLocation: String, recruitNumbers: Int, webLink: String, startDate: Date, endDate: Date, context: NSManagedObjectContext) {
         self.init(context: context)
         self.company = company
@@ -64,6 +69,7 @@ extension CDJobPosting {
     
     public override func awakeFromInsert() {
         self.id = UUID()
+        self.createdAt = .now
     }
     
 }

@@ -6,6 +6,7 @@
         <relationship name="jobPostings_" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="CDJobPosting" inverseName="company_" inverseEntity="CDJobPosting"/>
     </entity>
     <entity name="CDJobPosting" representedClassName=".CDJobPosting" syncable="YES" codeGenerationType="class">
+        <attribute name="createdAt_" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="endDate_" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="id_" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="positionName_" optional="YES" attributeType="String"/>
