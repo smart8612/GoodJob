@@ -32,6 +32,7 @@ final class GoodJobManager: NSObject, ObservableObject {
         jobPostingController.jobPostings.map { $0.convertToGJJobPosting()}
     }
     
+    @discardableResult
     func create(jobPosting: GJJobPosting) -> GJJobPosting {
         let newCompany = CDCompany(
             name: jobPosting.companyName,
@@ -47,17 +48,27 @@ final class GoodJobManager: NSObject, ObservableObject {
             context: managedObjectContext
         )
         
+        let newTests = jobPosting.tests.reduce(into: Set<CDTest>()) {
+            $0.insert(
+                CDTest(
+                    name: $1.name,
+                    testType: CDTest.TestType(rawValue: $1.type.rawValue) ?? .writtenTest,
+                    context: managedObjectContext
+                )
+            )
+        }
+        
         let newJobPosting = CDJobPosting(
             link: jobPosting.link,
             company: newCompany,
-            jobPosition: newJobPosition,
+            jobPosition: newJobPosition, 
+            tests: newTests,
             context: managedObjectContext
         )
         
         try? managedObjectContext.save()
         
         let result = newJobPosting.convertToGJJobPosting()
-        
         return result
     }
     
@@ -67,7 +78,6 @@ final class GoodJobManager: NSObject, ObservableObject {
         }
         
         let convertedJobPostings = fetchedJobPostings.map { $0.convertToGJJobPosting() }
-        
         return convertedJobPostings
     }
     
@@ -90,7 +100,9 @@ extension GoodJobManager: NSFetchedResultsControllerDelegate {
 fileprivate extension CDJobPosting {
     
     func convertToGJJobPosting() -> GJJobPosting {
-        GJJobPosting(
+        let convertedTests = Array(self.tests).map { $0.convertToGJTest() }
+        
+        return GJJobPosting(
             id: self.id,
             companyName: self.company.name,
             jobPositionName: self.jobPosition.name,
@@ -98,7 +110,22 @@ fileprivate extension CDJobPosting {
             recruitNumbers: String(self.jobPosition.recruitNumbers),
             link: self.link,
             startDate: self.jobPosition.startDate,
-            endDate: self.jobPosition.endDate
+            endDate: self.jobPosition.endDate, 
+            tests: convertedTests
+        )
+    }
+    
+}
+
+fileprivate extension CDTest {
+    
+    func convertToGJTest() -> GJTest {
+        let testType = GJTest.TestType(rawValue: self.testType.rawValue) ?? .writtenTest
+        
+        return GJTest(
+            id: self.id,
+            name: self.name,
+            type: testType
         )
     }
     

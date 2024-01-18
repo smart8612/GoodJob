@@ -19,6 +19,7 @@ struct NewJobPostingView: View {
     
     @State private var jobPosting = GJJobPosting.initWithEmpty()
     
+    
     var body: some View {
         NavigationStack {
             Form {
@@ -37,8 +38,13 @@ struct NewJobPostingView: View {
                     DatePicker(selection: $jobPosting.startDate, label: { Text("Starts") })
                     DatePicker(selection: $jobPosting.endDate, label: { Text("Ends") })
                 }
+                
+                Section {
+                    TestSectionView(jobPosting: $jobPosting)
+                    Button("Add Tests", action: addTest)
+                }
             }
-            .navigationTitle("Hello World")
+            .navigationTitle("New Job")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
@@ -73,6 +79,54 @@ struct NewJobPostingView: View {
             model.create(jobPosting: jobPosting)
             isPresentingNewJobPosting.toggle()
         }
+    }
+    
+    private func addTest() {
+        withAnimation {
+            jobPosting.tests.append(.initWithEmpty())
+        }
+    }
+    
+}
+
+#Preview {
+    NewJobPostingView(isPresentingNewJobPosting: .constant(true))
+        .environmentObject(
+            GoodJobManager(
+                persistenceController: .init(inMemory: true)
+            )
+        )
+}
+
+struct TestSectionView: View {
+    
+    @Binding var jobPosting: GJJobPosting
+    
+    private var enumeratedTests: [(Int, GJTest)] {
+        Array(jobPosting.tests.enumerated())
+    }
+    
+    var body: some View {
+        ForEach(enumeratedTests, id: \.1.id) { index, _ in
+            HStack {
+                Menu(jobPosting.tests[index].type.description) {
+                    ForEach(GJTest.TestType.allCases) { (testType: GJTest.TestType) in
+                        Button(action: { changeTestType(to: testType, at: index) }) {
+                            Text(testType.description)
+                        }
+                    }
+                }
+                Divider()
+                TextField(
+                    "Test Name",
+                    text: $jobPosting.tests[index].name
+                )
+            }
+        }
+    }
+    
+    private func changeTestType(to newTestType: GJTest.TestType, at index: Int) {
+        jobPosting.tests[index].type = newTestType
     }
     
 }

@@ -36,11 +36,17 @@ extension CDJobPosting {
         set { jobPosition_ = newValue }
     }
     
-    convenience init(link: String, company: CDCompany, jobPosition: CDJobPosition, context: NSManagedObjectContext) {
+    var tests: Set<CDTest> {
+        get { tests_ as? Set<CDTest> ?? .init() }
+        set { tests_ = newValue as NSSet }
+    }
+    
+    convenience init(link: String, company: CDCompany, jobPosition: CDJobPosition, tests: Set<CDTest>, context: NSManagedObjectContext) {
         self.init(context: context)
         self.link = link
         self.company = company
         self.jobPosition = jobPosition
+        self.tests = tests
     }
     
     public override func awakeFromInsert() {

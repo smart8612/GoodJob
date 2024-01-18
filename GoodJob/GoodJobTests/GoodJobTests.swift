@@ -35,7 +35,8 @@ final class GoodJobTests: XCTestCase {
             recruitNumbers: "10",
             link: "https://www.apple.com",
             startDate: .now,
-            endDate: Date(timeInterval: 259200, since: .now)
+            endDate: Date(timeInterval: 259200, since: .now), 
+            tests: []
         )
         
         // When
@@ -62,7 +63,8 @@ final class GoodJobTests: XCTestCase {
             recruitNumbers: "10",
             link: "https://www.apple.com",
             startDate: .now,
-            endDate: Date(timeInterval: 259200, since: .now)
+            endDate: Date(timeInterval: 259200, since: .now),
+            tests: []
         )
         
         // When
@@ -93,7 +95,8 @@ final class GoodJobTests: XCTestCase {
             recruitNumbers: "10",
             link: "https://www.apple.com",
             startDate: .now,
-            endDate: Date(timeInterval: 259200, since: .now)
+            endDate: Date(timeInterval: 259200, since: .now), 
+            tests: []
         )
         
         // When
@@ -106,6 +109,27 @@ final class GoodJobTests: XCTestCase {
     }
     
     func test_채용시험정보_Test_포함_JobPosting_생성_검증() {
+        // Given
+        let newTests = [
+            GJTest(name: "first written test", type: .writtenTest),
+            GJTest(name: "second meeting interview test", type: .inteview)
+        ]
+        
+        let newJobPosting = GJJobPosting(
+            companyName: "Apple",
+            jobPositionName: "iOS Developer",
+            workplaceLocation: "USA",
+            recruitNumbers: "10",
+            link: "https://www.apple.com",
+            startDate: .now,
+            endDate: Date(timeInterval: 259200, since: .now),
+            tests: newTests
+        )
+        
+        // When
+        let createdJobPosting = model.create(jobPosting: newJobPosting)
+        
+        // Then
         XCTFail()
     }
 

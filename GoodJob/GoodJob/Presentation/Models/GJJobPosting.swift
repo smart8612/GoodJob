@@ -21,6 +21,8 @@ struct GJJobPosting: Identifiable {
     var startDate: Date
     var endDate: Date
     
+    var tests: [GJTest]
+    
     static func initWithEmpty() -> Self {
         Self(
             companyName: .init(),
@@ -29,7 +31,8 @@ struct GJJobPosting: Identifiable {
             recruitNumbers: .init(),
             link: .init(),
             startDate: .now,
-            endDate: .now
+            endDate: .now,
+            tests: .init()
         )
     }
     
