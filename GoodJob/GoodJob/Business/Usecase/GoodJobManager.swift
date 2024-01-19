@@ -30,6 +30,14 @@ final class GoodJobManager: NSObject, ObservableObject {
     
 }
 
+// MARK: JobApplication Handler {
+
+extension GoodJobManager {
+    
+    
+    
+}
+
 // MARK: User Handler
 
 extension GoodJobManager {
