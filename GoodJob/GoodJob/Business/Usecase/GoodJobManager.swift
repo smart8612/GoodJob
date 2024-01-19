@@ -28,6 +28,12 @@ final class GoodJobManager: NSObject, ObservableObject {
         persistenceController.managedObjectContext
     }
     
+}
+
+// MARK: JobPosting Handler
+
+extension GoodJobManager {
+    
     var jobPostings: [GJJobPosting] {
         jobPostingController.jobPostings.map { $0.convertToGJJobPosting()}
     }
@@ -63,7 +69,7 @@ final class GoodJobManager: NSObject, ObservableObject {
         let newJobPosting = CDJobPosting(
             link: jobPosting.link,
             company: newCompany,
-            jobPosition: newJobPosition, 
+            jobPosition: newJobPosition,
             tests: newTests,
             context: managedObjectContext
         )
@@ -90,7 +96,6 @@ final class GoodJobManager: NSObject, ObservableObject {
     
 }
 
-
 extension GoodJobManager: NSFetchedResultsControllerDelegate {
     
     func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
@@ -98,6 +103,8 @@ extension GoodJobManager: NSFetchedResultsControllerDelegate {
     }
     
 }
+
+// MARK: Entity Converter
 
 fileprivate extension CDJobPosting {
     
