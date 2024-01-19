@@ -26,9 +26,11 @@ extension CDUser {
         set { jobApplications_ = newValue as NSSet }
     }
     
-    convenience init(name: String, context: NSManagedObjectContext) {
+    convenience init(name: String, jobApplications: Set<CDJobApplication>,
+                     context: NSManagedObjectContext) {
         self.init(context: context)
         self.name = name
+        self.jobApplications = jobApplications
     }
     
     public override func awakeFromInsert() {
