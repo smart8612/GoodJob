@@ -8,7 +8,7 @@
 import Foundation
 
 
-struct GJUser: Identifiable {
+struct GJUser: Identifiable, Hashable {
     
     var id: UUID = UUID()
     var name: String
