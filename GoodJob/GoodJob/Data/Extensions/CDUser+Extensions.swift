@@ -21,6 +21,11 @@ extension CDUser {
         set { name_ = newValue }
     }
     
+    var jobApplications: Set<CDJobApplication> {
+        get { jobApplications_ as? Set<CDJobApplication> ?? .init() }
+        set { jobApplications_ = newValue as NSSet }
+    }
+    
     convenience init(name: String, context: NSManagedObjectContext) {
         self.init(context: context)
         self.name = name
