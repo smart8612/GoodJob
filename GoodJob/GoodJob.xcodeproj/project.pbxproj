@@ -142,7 +142,6 @@
 			isa = PBXGroup;
 			children = (
 				C19BC52F2B57A4F3004E78F6 /* GoodJobManager.swift */,
-				C133F0D92B5A5B7B00AF574C /* GJUser.swift */,
 			);
 			path = Usecase;
 			sourceTree = "<group>";
@@ -194,6 +193,7 @@
 				C1F999DD2B55202300259FB5 /* GJAppCategory.swift */,
 				C19BC5312B57A67D004E78F6 /* GJJobPosting.swift */,
 				C1CFB6362B5945C800515DEA /* GJTest.swift */,
+				C133F0D92B5A5B7B00AF574C /* GJUser.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
