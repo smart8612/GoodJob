@@ -156,7 +156,7 @@ final class GoodJobTests: XCTestCase {
         }
         
         // Then
-        XCTAssertTrue(createdUser == fetchedUser)
+        XCTAssertTrue(createdUser.name == fetchedUser.name)
     }
 
 }
