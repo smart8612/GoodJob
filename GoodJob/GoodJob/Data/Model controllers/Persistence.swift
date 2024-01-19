@@ -8,37 +8,8 @@
 import CoreData
 
 struct PersistenceController {
-    static let shared = PersistenceController()
     
-    static var preview: PersistenceController = {
-        let result = PersistenceController(inMemory: true)
-        let viewContext = result.container.viewContext
-        
-        let newCompany = CDCompany(
-            name: "Apple",
-            context: viewContext
-        )
-        
-        let newJobPosition = CDJobPosition(
-            name: "iOS Developer",
-            workplaceLocation: "USA",
-            recruitNumbers: 10,
-            startDate: .now,
-            endDate: Date(timeInterval: 259200, since: .now),
-            context: viewContext
-        )
-        
-        do {
-            try viewContext.save()
-        } catch {
-            // Replace this implementation with code to handle the error appropriately.
-            // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-            let nsError = error as NSError
-            fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
-        }
-        
-        return result
-    }()
+    static let shared = PersistenceController()
 
     let container: NSPersistentContainer
 
@@ -65,6 +36,7 @@ struct PersistenceController {
         })
         container.viewContext.automaticallyMergesChangesFromParent = true
     }
+    
 }
 
 extension PersistenceController {
