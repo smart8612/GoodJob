@@ -44,9 +44,9 @@
         <relationship name="jobApplication_" maxCount="1" deletionRule="Nullify" destinationEntity="CDJobApplication" inverseName="testRecords_" inverseEntity="CDJobApplication"/>
         <relationship name="test_" maxCount="1" deletionRule="Nullify" destinationEntity="CDTest" inverseName="testRecord_" inverseEntity="CDTest"/>
     </entity>
-    <entity name="CDUser" representedClassName="CDUser" syncable="YES" codeGenerationType="class">
-        <attribute name="id_" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
-        <attribute name="name_" optional="YES" attributeType="String"/>
+    <entity name="CDUser" representedClassName=".CDUser" syncable="YES" codeGenerationType="class">
+        <attribute name="id_" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="name_" attributeType="String" defaultValueString=""/>
         <relationship name="jobApplications_" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="CDJobApplication" inverseName="user_" inverseEntity="CDJobApplication"/>
     </entity>
 </model>
