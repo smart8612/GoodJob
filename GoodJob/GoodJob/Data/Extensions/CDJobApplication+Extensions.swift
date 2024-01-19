@@ -31,10 +31,23 @@ extension CDJobApplication {
         set { jobPosting_ = newValue }
     }
     
-    convenience init(title: String, jobPosting: CDJobPosting, context: NSManagedObjectContext) {
+    var testRecords: Set<CDTestRecord> {
+        get { testRecords_ as? Set<CDTestRecord> ?? .init() }
+        set { testRecords_ = newValue as NSSet }
+    }
+    
+    var user: CDUser {
+        get { user_! }
+        set { user_ = newValue }
+    }
+    
+    convenience init(title: String, user: CDUser, jobPosting: CDJobPosting,
+                     testRecords: Set<CDTestRecord>, context: NSManagedObjectContext) {
         self.init(context: context)
         self.title = title
+        self.user = user
         self.jobPosting = jobPosting
+        self.testRecords = testRecords
     }
     
     public override func awakeFromInsert() {

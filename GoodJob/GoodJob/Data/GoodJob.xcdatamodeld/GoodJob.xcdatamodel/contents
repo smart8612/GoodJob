@@ -10,7 +10,7 @@
         <attribute name="id_" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="title_" optional="YES" attributeType="String"/>
         <relationship name="jobPosting_" maxCount="1" deletionRule="Nullify" destinationEntity="CDJobPosting" inverseName="jobApplication_" inverseEntity="CDJobPosting"/>
-        <relationship name="testRecords_" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="CDTestRecord" inverseName="jobApplication_" inverseEntity="CDTestRecord"/>
+        <relationship name="testRecords_" toMany="YES" deletionRule="Cascade" destinationEntity="CDTestRecord" inverseName="jobApplication_" inverseEntity="CDTestRecord"/>
         <relationship name="user_" maxCount="1" deletionRule="Nullify" destinationEntity="CDUser" inverseName="jobApplications_" inverseEntity="CDUser"/>
     </entity>
     <entity name="CDJobPosition" representedClassName=".CDJobPosition" syncable="YES" codeGenerationType="class">
