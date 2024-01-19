@@ -143,5 +143,9 @@ final class GoodJobTests: XCTestCase {
         )
         
     }
+    
+    func test_로컬_사용자_신규_생성_검증() {
+        
+    }
 
 }

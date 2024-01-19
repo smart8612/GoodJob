@@ -1,37 +1,37 @@
 [
   {
     "name" : "CDCompany",
-    "positionX" : "945.90625",
+    "positionX" : "953.49609375",
     "positionY" : "155.0"
   },
   {
     "name" : "CDJobApplication",
-    "positionX" : "479.671875",
-    "positionY" : "369.8515625"
+    "positionX" : "403.203125",
+    "positionY" : "563.634765625"
   },
   {
     "name" : "CDJobPosition",
-    "positionX" : "949.69140625",
-    "positionY" : "390.53515625"
+    "positionX" : "967.87109375",
+    "positionY" : "338.994140625"
   },
   {
     "name" : "CDJobPosting",
-    "positionX" : "680.59765625",
-    "positionY" : "363.21484375"
+    "positionX" : "677.744140625",
+    "positionY" : "389.345703125"
   },
   {
     "name" : "CDTest",
-    "positionX" : "941.85546875",
-    "positionY" : "609.87890625"
+    "positionX" : "981.09375",
+    "positionY" : "555.263671875"
   },
   {
     "name" : "CDTestRecord",
-    "positionX" : "192.1328125",
-    "positionY" : "626.4140625"
+    "positionX" : "683.818359375",
+    "positionY" : "686.81640625"
   },
   {
     "name" : "CDUser",
     "positionX" : "175.0",
-    "positionY" : "155.859375"
+    "positionY" : "566.466796875"
   }
 ]
