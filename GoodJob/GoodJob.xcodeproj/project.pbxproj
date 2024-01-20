@@ -23,6 +23,7 @@
 		C17EB5872B58F4FF00DA9C34 /* CDJobPosition+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C17EB5862B58F4FF00DA9C34 /* CDJobPosition+Extensions.swift */; };
 		C18037E12B5BA2F0000FFC97 /* DataCreationContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C18037E02B5BA2F0000FFC97 /* DataCreationContainer.swift */; };
 		C18037E32B5BA565000FFC97 /* NewJobApplicaitonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C18037E22B5BA565000FFC97 /* NewJobApplicaitonView.swift */; };
+		C18037E52B5BABD4000FFC97 /* CDJobApplicationFetchedResultsControlller.swift in Sources */ = {isa = PBXBuildFile; fileRef = C18037E42B5BABD4000FFC97 /* CDJobApplicationFetchedResultsControlller.swift */; };
 		C19BC5302B57A4F3004E78F6 /* GoodJobManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C19BC52F2B57A4F3004E78F6 /* GoodJobManager.swift */; };
 		C19BC5322B57A67D004E78F6 /* GJJobPosting.swift in Sources */ = {isa = PBXBuildFile; fileRef = C19BC5312B57A67D004E78F6 /* GJJobPosting.swift */; };
 		C19BC5352B57BA32004E78F6 /* CDJobPostingFetchedResultsControlller.swift in Sources */ = {isa = PBXBuildFile; fileRef = C19BC5342B57BA32004E78F6 /* CDJobPostingFetchedResultsControlller.swift */; };
@@ -76,6 +77,7 @@
 		C17EB5862B58F4FF00DA9C34 /* CDJobPosition+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CDJobPosition+Extensions.swift"; sourceTree = "<group>"; };
 		C18037E02B5BA2F0000FFC97 /* DataCreationContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DataCreationContainer.swift; path = GoodJob/Presentation/Views/Template/DataCreationContainer.swift; sourceTree = SOURCE_ROOT; };
 		C18037E22B5BA565000FFC97 /* NewJobApplicaitonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewJobApplicaitonView.swift; sourceTree = "<group>"; };
+		C18037E42B5BABD4000FFC97 /* CDJobApplicationFetchedResultsControlller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CDJobApplicationFetchedResultsControlller.swift; sourceTree = "<group>"; };
 		C19BC52F2B57A4F3004E78F6 /* GoodJobManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoodJobManager.swift; sourceTree = "<group>"; };
 		C19BC5312B57A67D004E78F6 /* GJJobPosting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GJJobPosting.swift; sourceTree = "<group>"; };
 		C19BC5342B57BA32004E78F6 /* CDJobPostingFetchedResultsControlller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CDJobPostingFetchedResultsControlller.swift; sourceTree = "<group>"; };
@@ -151,6 +153,7 @@
 			children = (
 				C1F999AF2B55068E00259FB5 /* Persistence.swift */,
 				C19BC5342B57BA32004E78F6 /* CDJobPostingFetchedResultsControlller.swift */,
+				C18037E42B5BABD4000FFC97 /* CDJobApplicationFetchedResultsControlller.swift */,
 			);
 			path = "Model controllers";
 			sourceTree = "<group>";
@@ -473,6 +476,7 @@
 				C17EB5872B58F4FF00DA9C34 /* CDJobPosition+Extensions.swift in Sources */,
 				C1CFB6392B598B6400515DEA /* JobPostingDetailView.swift in Sources */,
 				C1704EA32B57EF9000146201 /* CDJobPosting+Extensions.swift in Sources */,
+				C18037E52B5BABD4000FFC97 /* CDJobApplicationFetchedResultsControlller.swift in Sources */,
 				C1F999B52B55068E00259FB5 /* MainSplitView.swift in Sources */,
 				C1A68C432B55367000CE92D4 /* SidebarCellView.swift in Sources */,
 				C133F0D82B5A501600AF574C /* CDTestRecord+Extensions.swift in Sources */,
