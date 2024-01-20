@@ -14,18 +14,53 @@ final class GoodJobManager: NSObject, ObservableObject {
     private let persistenceController: PersistenceController
     
     private let jobPostingController: CDJobPostingFetchedResultsControlller
+    private let jobApplicationController: CDJobApplicationFetchedResultsControlller
     
     init(persistenceController: PersistenceController = PersistenceController.shared) {
         self.persistenceController = persistenceController
+        
         self.jobPostingController = CDJobPostingFetchedResultsControlller(
             managedObjectContext: persistenceController.managedObjectContext
         )
+        self.jobApplicationController = CDJobApplicationFetchedResultsControlller(
+            managedObjectContext: persistenceController.managedObjectContext
+        )
+        
         super.init()
+        
         jobPostingController.delegate = self
+        jobApplicationController.delegate = self
     }
     
     private var managedObjectContext: NSManagedObjectContext {
         persistenceController.managedObjectContext
+    }
+    
+    static func initWithPreview() -> Self {
+        let model = Self.init(persistenceController: .init(inMemory: true))
+        
+        let post = model.create(jobPosting: .init(
+            companyName: "Apple",
+            jobPositionName: "iOS Developer",
+            workplaceLocation: "USA",
+            recruitNumbers: "100",
+            link: "https://www.apple.com",
+            startDate: .now,
+            endDate: .init(timeIntervalSinceNow: 259200),
+            tests: [
+                .init(name: "test1", type: .writtenTest),
+                .init(name: "test2", type: .inteview)
+            ]
+        ))
+        
+        let user = model.create(user: .init(name: "singularis7"))
+        let _ = model.create(jobApplication: .init(
+            jobPostingId: post.id,
+            userId: user.id,
+            title: "My Job Application"
+        ))
+        
+        return model
     }
     
 }
@@ -33,6 +68,10 @@ final class GoodJobManager: NSObject, ObservableObject {
 // MARK: JobApplication Handler {
 
 extension GoodJobManager {
+    
+    var jobApplications: [GJJobApplication] {
+        jobApplicationController.jobApplications.map { $0.convertToGJJobApplication() }
+    }
     
     func create(jobApplication: GJJobApplication) -> GJJobApplication {
         let fetchedUser = try! CDUser.fetch(ids: [jobApplication.userId], in: managedObjectContext).first!

@@ -9,12 +9,27 @@ import SwiftUI
 
 struct JobApplicationView: View {
     
+    @EnvironmentObject private var model: GoodJobManager
+    
     var body: some View {
-        Text("This is job application view")
+        List {
+            
+            ForEach(model.jobApplications) { jobApplication in
+                VStack(alignment: .leading) {
+                    Text(jobApplication.title)
+                    Text(jobApplication.id.uuidString)
+                }
+            }
+            
+        }
+        
     }
     
 }
 
 #Preview {
     JobApplicationView()
+        .environmentObject(
+            GoodJobManager.initWithPreview()
+        )
 }
