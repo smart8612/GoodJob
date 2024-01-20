@@ -13,20 +13,20 @@ final class GoodJobManager: NSObject, ObservableObject {
     
     private let persistenceController: PersistenceController
     
-    private let jobPostingController: CDJobPostingFetchedResultsControlller
-    private let jobApplicationController: CDJobApplicationFetchedResultsControlller
-    private let userController: GoodJobUserController
+    private let jobPostingController: GJJobPostingControlller
+    private let jobApplicationController: GJJobApplicationControlller
+    private let userController: GJUserController
     
     init(persistenceController: PersistenceController = PersistenceController.shared) {
         self.persistenceController = persistenceController
         
-        self.jobPostingController = CDJobPostingFetchedResultsControlller(
+        self.jobPostingController = GJJobPostingControlller(
             managedObjectContext: persistenceController.managedObjectContext
         )
-        self.jobApplicationController = CDJobApplicationFetchedResultsControlller(
+        self.jobApplicationController = GJJobApplicationControlller(
             managedObjectContext: persistenceController.managedObjectContext
         )
-        self.userController = GoodJobUserController(
+        self.userController = GJUserController(
             managedObjectContext: persistenceController.managedObjectContext
         )
         
@@ -65,16 +65,6 @@ final class GoodJobManager: NSObject, ObservableObject {
         ))
         
         return model
-    }
-    
-}
-
-// MARK: User Handler
-
-extension GoodJobManager {
-    
-    var currentUser: GJUser {
-        userController.current.convertToGJUser()
     }
     
 }
@@ -120,6 +110,10 @@ extension GoodJobManager {
 // MARK: User Handler
 
 extension GoodJobManager {
+    
+    var currentUser: GJUser {
+        userController.current.convertToGJUser()
+    }
     
     func create(user: GJUser) -> GJUser {
         let newUser = CDUser(

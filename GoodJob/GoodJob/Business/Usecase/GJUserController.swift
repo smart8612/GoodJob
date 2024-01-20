@@ -1,5 +1,5 @@
 //
-//  GoodJobUserController.swift
+//  GJUserController.swift
 //  GoodJob
 //
 //  Created by JeongTaek Han on 1/20/24.
@@ -9,7 +9,7 @@ import Foundation
 import CoreData
 
 
-final class GoodJobUserController {
+final class GJUserController {
     
     private(set) var current: CDUser
     

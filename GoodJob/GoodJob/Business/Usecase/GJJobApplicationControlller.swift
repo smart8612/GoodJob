@@ -1,17 +1,17 @@
 //
-//  CDJobPostingFetchedResultsControlller.swift
+//  GJJobApplicationControlller.swift
 //  GoodJob
 //
-//  Created by JeongTaek Han on 1/17/24.
+//  Created by JeongTaek Han on 1/20/24.
 //
 
 import Foundation
 import CoreData
 
 
-final class CDJobPostingFetchedResultsControlller: NSObject, ObservableObject {
+final class GJJobApplicationControlller: NSObject, ObservableObject {
     
-    private let controller: NSFetchedResultsController<CDJobPosting>
+    private let controller: NSFetchedResultsController<CDJobApplication>
     
     var delegate: NSFetchedResultsControllerDelegate? {
         get { controller.delegate }
@@ -19,9 +19,9 @@ final class CDJobPostingFetchedResultsControlller: NSObject, ObservableObject {
     }
     
     init(managedObjectContext: NSManagedObjectContext) {
-        let fetchRequest = CDJobPosting.fetchRequest()
+        let fetchRequest = CDJobApplication.fetchRequest()
         fetchRequest.sortDescriptors = [
-            NSSortDescriptor(keyPath: \CDJobPosting.createdAt_, ascending: false)
+            NSSortDescriptor(keyPath: \CDJobApplication.createdAt_, ascending: false)
         ]
         
         controller = NSFetchedResultsController(
@@ -31,10 +31,11 @@ final class CDJobPostingFetchedResultsControlller: NSObject, ObservableObject {
             cacheName: nil
         )
         try? controller.performFetch()
+        
         super.init()
     }
     
-    var jobPostings: [CDJobPosting] {
+    var jobApplications: [CDJobApplication] {
         controller.fetchedObjects ?? []
     }
     
