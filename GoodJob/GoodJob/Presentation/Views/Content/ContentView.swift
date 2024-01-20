@@ -20,7 +20,7 @@ struct ContentView: View {
                 SummaryView()
                 
             case .applications:
-                JobApplicationView()
+                JobApplicationsListView()
             
             case .jobs:
                 JobPostingsListView()
