@@ -12,7 +12,7 @@ struct NewJobPostingView: View {
     
     @EnvironmentObject var model: GoodJobManager
     
-    @Binding var isPresentingNewJobPosting: Bool
+    @Binding var isShowingSheet: Bool
     @State private var isShowingConfirmationlDialog = false
     
     private let title = "Are you sure want to discard this new job posting?"
@@ -58,7 +58,7 @@ struct NewJobPostingView: View {
                         titleVisibility: .visible
                     ) {
                         Button("Discard Changes", role: .destructive) {
-                            isPresentingNewJobPosting = false
+                            isShowingSheet = false
                         }
                         Button("Keep Editing", role: .cancel) {
                             isShowingConfirmationlDialog = false
@@ -77,7 +77,7 @@ struct NewJobPostingView: View {
     private func createJobPosting() {
         withAnimation {
             model.create(jobPosting: jobPosting)
-            isPresentingNewJobPosting.toggle()
+            isShowingSheet.toggle()
         }
     }
     
@@ -90,7 +90,7 @@ struct NewJobPostingView: View {
 }
 
 #Preview {
-    NewJobPostingView(isPresentingNewJobPosting: .constant(true))
+    NewJobPostingView(isShowingSheet: .constant(true))
         .environmentObject(
             GoodJobManager(
                 persistenceController: .init(inMemory: true)
