@@ -122,6 +122,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C1052E3D2B5B89D100B27620 /* JobApplication */ = {
+			isa = PBXGroup;
+			children = (
+				C1052E3B2B5B800500B27620 /* JobApplicationView.swift */,
+			);
+			path = JobApplication;
+			sourceTree = "<group>";
+		};
 		C1414DE52B56673900EA180F /* Model controllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -227,7 +235,7 @@
 			children = (
 				C1A68C452B553FD100CE92D4 /* ContentView.swift */,
 				C1E8692D2B558DE800FDD6DA /* SummaryView.swift */,
-				C1052E3B2B5B800500B27620 /* JobApplicationView.swift */,
+				C1052E3D2B5B89D100B27620 /* JobApplication */,
 				C1414DE62B5667FE00EA180F /* JobPosting */,
 			);
 			path = Content;

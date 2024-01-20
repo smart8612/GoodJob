@@ -33,3 +33,11 @@ struct ContentView: View {
     }
     
 }
+
+#Preview {
+    ContentView(selectedCategory: .constant(.applications))
+        .environmentObject(
+            GoodJobManager.initWithPreview()
+        )
+}
+

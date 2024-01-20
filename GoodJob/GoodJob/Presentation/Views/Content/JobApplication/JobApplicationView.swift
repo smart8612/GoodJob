@@ -26,10 +26,3 @@ struct JobApplicationView: View {
     }
     
 }
-
-#Preview {
-    JobApplicationView()
-        .environmentObject(
-            GoodJobManager.initWithPreview()
-        )
-}
