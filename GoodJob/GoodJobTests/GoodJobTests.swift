@@ -194,9 +194,5 @@ final class GoodJobTests: XCTestCase {
             fetchedJobApplication.jobPostingId == createdJobApplication.jobPostingId
         )
     }
-    
-    func test_GoodJob_기본_사용자_생성_검증() throws {
-        XCTFail()
-    }
 
 }

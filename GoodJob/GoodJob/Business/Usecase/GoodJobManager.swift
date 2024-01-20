@@ -9,15 +9,13 @@ import Foundation
 import CoreData
 
 
-
-
-
 final class GoodJobManager: NSObject, ObservableObject {
     
     private let persistenceController: PersistenceController
     
     private let jobPostingController: CDJobPostingFetchedResultsControlller
     private let jobApplicationController: CDJobApplicationFetchedResultsControlller
+    private let userController: GoodJobUserController
     
     init(persistenceController: PersistenceController = PersistenceController.shared) {
         self.persistenceController = persistenceController
@@ -26,6 +24,9 @@ final class GoodJobManager: NSObject, ObservableObject {
             managedObjectContext: persistenceController.managedObjectContext
         )
         self.jobApplicationController = CDJobApplicationFetchedResultsControlller(
+            managedObjectContext: persistenceController.managedObjectContext
+        )
+        self.userController = GoodJobUserController(
             managedObjectContext: persistenceController.managedObjectContext
         )
         
@@ -67,6 +68,17 @@ final class GoodJobManager: NSObject, ObservableObject {
     }
     
 }
+
+// MARK: User Handler
+
+extension GoodJobManager {
+    
+    var currentUser: GJUser {
+        userController.current.convertToGJUser()
+    }
+    
+}
+
 
 // MARK: JobApplication Handler {
 
