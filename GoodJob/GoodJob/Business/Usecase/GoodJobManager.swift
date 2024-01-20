@@ -9,6 +9,9 @@ import Foundation
 import CoreData
 
 
+
+
+
 final class GoodJobManager: NSObject, ObservableObject {
     
     private let persistenceController: PersistenceController
