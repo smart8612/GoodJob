@@ -13,15 +13,12 @@ struct NewJobPostingView: View {
     @EnvironmentObject var model: GoodJobManager
     
     @Binding var isShowingSheet: Bool
-    @State private var isShowingConfirmationlDialog = false
-    
-    private let title = "Are you sure want to discard this new job posting?"
     
     @State private var jobPosting = GJJobPosting.initWithEmpty()
     
-    
     var body: some View {
-        NavigationStack {
+        
+        DataCreationContainer(isShowingSheet: $isShowingSheet, addAction: addAction) {
             Form {
                 Section {
                     TextField("Company Name", text: $jobPosting.companyName)
@@ -46,39 +43,13 @@ struct NewJobPostingView: View {
             }
             .navigationTitle("New Job")
             .navigationBarTitleDisplayMode(.inline)
-            .toolbar {
-                ToolbarItem(placement: .topBarLeading) {
-                    Button("Cancel") {
-                        isShowingConfirmationlDialog = true
-                        print("Cancel Button Clicked")
-                    }
-                    .confirmationDialog(
-                        title,
-                        isPresented: $isShowingConfirmationlDialog,
-                        titleVisibility: .visible
-                    ) {
-                        Button("Discard Changes", role: .destructive) {
-                            isShowingSheet = false
-                        }
-                        Button("Keep Editing", role: .cancel) {
-                            isShowingConfirmationlDialog = false
-                        }
-                    }
-                    
-                }
-                ToolbarItem(placement: .topBarTrailing) {
-                    Button("Add", action: createJobPosting)
-                }
-            }
         }
         
     }
     
-    private func createJobPosting() {
-        withAnimation {
-            model.create(jobPosting: jobPosting)
-            isShowingSheet.toggle()
-        }
+    private func addAction() {
+        model.create(jobPosting: jobPosting)
+        isShowingSheet.toggle()
     }
     
     private func addTest() {
