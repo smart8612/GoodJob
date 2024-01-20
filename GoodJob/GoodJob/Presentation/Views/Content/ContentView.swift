@@ -18,16 +18,15 @@ struct ContentView: View {
             
             case .summary:
                 SummaryView()
+                
+            case .applications:
+                JobApplicationView()
             
             case .jobs:
                 JobPostingsListView()
                 
             case .none:
                 Text("Select a category")
-                
-            default:
-                Text("Hello, World!")
-                
             }
         }
         .navigationTitle(selectedCategory?.name ?? "")
