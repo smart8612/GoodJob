@@ -9,7 +9,7 @@ import SwiftUI
 
 struct JobPostingDetailView: View {
     
-    @EnvironmentObject private var model: GoodJobManager
+    @EnvironmentObject private var model: GJAppController
     
     let jobPostingId: UUID
     @State private var jobPosting: GJJobPosting = .initWithEmpty()

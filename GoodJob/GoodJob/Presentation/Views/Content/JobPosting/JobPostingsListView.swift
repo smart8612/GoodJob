@@ -10,7 +10,7 @@ import SwiftUI
 
 struct JobPostingsListView: View {
     
-    @EnvironmentObject private var model: GoodJobManager
+    @EnvironmentObject private var model: GJAppController
     
     var body: some View {
         DataContainer {

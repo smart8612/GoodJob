@@ -1,5 +1,5 @@
 //
-//  GoodJobManager.swift
+//  GJAppController.swift
 //  GoodJob
 //
 //  Created by JeongTaek Han on 1/17/24.
@@ -9,7 +9,7 @@ import Foundation
 import CoreData
 
 
-final class GoodJobManager: NSObject, ObservableObject {
+final class GJAppController: NSObject, ObservableObject {
     
     private let persistenceController: PersistenceController
     
@@ -72,7 +72,7 @@ final class GoodJobManager: NSObject, ObservableObject {
 
 // MARK: JobApplication Handler {
 
-extension GoodJobManager {
+extension GJAppController {
     
     var jobApplications: [GJJobApplication] {
         jobApplicationController.jobApplications.map { $0.convertToGJJobApplication() }
@@ -109,7 +109,7 @@ extension GoodJobManager {
 
 // MARK: User Handler
 
-extension GoodJobManager {
+extension GJAppController {
     
     var currentUser: GJUser {
         userController.current.convertToGJUser()
@@ -140,7 +140,7 @@ extension GoodJobManager {
 
 // MARK: JobPosting Handler
 
-extension GoodJobManager {
+extension GJAppController {
     
     var jobPostings: [GJJobPosting] {
         jobPostingController.jobPostings.map { $0.convertToGJJobPosting()}
@@ -204,7 +204,7 @@ extension GoodJobManager {
     
 }
 
-extension GoodJobManager: NSFetchedResultsControllerDelegate {
+extension GJAppController: NSFetchedResultsControllerDelegate {
     
     func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         objectWillChange.send()

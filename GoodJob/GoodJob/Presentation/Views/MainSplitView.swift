@@ -34,5 +34,5 @@ struct MainSplitView: View {
 
 #Preview {
     MainSplitView()
-        .environmentObject(GoodJobManager.initWithPreview())
+        .environmentObject(GJAppController.initWithPreview())
 }

@@ -10,7 +10,7 @@ import SwiftUI
 
 struct NewJobPostingView: View {
     
-    @EnvironmentObject var model: GoodJobManager
+    @EnvironmentObject var model: GJAppController
     
     @Binding var isShowingSheet: Bool
     
@@ -63,7 +63,7 @@ struct NewJobPostingView: View {
 #Preview {
     NewJobPostingView(isShowingSheet: .constant(true))
         .environmentObject(
-            GoodJobManager(
+            GJAppController(
                 persistenceController: .init(inMemory: true)
             )
         )

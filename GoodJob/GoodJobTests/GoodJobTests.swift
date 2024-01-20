@@ -12,12 +12,12 @@ import XCTest
 final class GoodJobTests: XCTestCase {
     
     private var persistenceController: PersistenceController!
-    private var model: GoodJobManager!
+    private var model: GJAppController!
 
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
         persistenceController = PersistenceController(inMemory: true)
-        model = GoodJobManager(persistenceController: persistenceController)
+        model = GJAppController(persistenceController: persistenceController)
     }
 
     override func tearDownWithError() throws {

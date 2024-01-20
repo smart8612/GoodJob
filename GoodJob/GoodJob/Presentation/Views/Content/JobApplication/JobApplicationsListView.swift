@@ -9,7 +9,7 @@ import SwiftUI
 
 struct JobApplicationsListView: View {
     
-    @EnvironmentObject private var model: GoodJobManager
+    @EnvironmentObject private var model: GJAppController
     
     var body: some View {
         
