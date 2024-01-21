@@ -57,10 +57,8 @@ final class GJAppController: NSObject, ObservableObject {
             ]
         ))
         
-        let user = model.create(user: .init(name: "singularis7"))
         let _ = model.create(jobApplication: .init(
             jobPostingId: post.id,
-            userId: user.id,
             title: "My Job Application"
         ))
         
@@ -70,7 +68,7 @@ final class GJAppController: NSObject, ObservableObject {
 }
 
 
-// MARK: JobApplication Handler {
+// MARK: JobApplication Handler
 
 extension GJAppController {
     
@@ -79,7 +77,7 @@ extension GJAppController {
     }
     
     func create(jobApplication: GJJobApplication) -> GJJobApplication {
-        return jobApplicationController.create(jobApplication: jobApplication)
+        return jobApplicationController.create(jobApplication: jobApplication, userId: currentUser.id)
     }
     
     func fetchJobApplications(ids: [UUID]) -> [GJJobApplication] {

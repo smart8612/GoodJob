@@ -13,7 +13,6 @@ struct GJJobApplication: Identifiable, Hashable {
     var id: UUID = UUID()
     
     var jobPostingId: UUID
-    var userId: UUID
     
     var title: String
     var createdAt: Date = Date()

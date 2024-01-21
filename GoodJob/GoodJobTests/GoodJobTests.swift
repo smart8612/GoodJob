@@ -161,7 +161,6 @@ final class GoodJobTests: XCTestCase {
     
     func test_생성된_User와_JobPosting에_종속된_JobApplication_신규_생성_검증() throws {
         // Given
-        let createdUser = model.create(user: .init(name: "singularis7"))
         let createdJobPosting = model.create(jobPosting: .init(
             companyName: "Apple",
             jobPositionName: "iOS Developer",
@@ -179,7 +178,6 @@ final class GoodJobTests: XCTestCase {
         // When
         let createdJobApplication = model.create(jobApplication: .init(
             jobPostingId: createdJobPosting.id,
-            userId: createdUser.id,
             title: "My Job Application"
         ))
         guard let fetchedJobApplication = model.fetchJobApplications(ids: [createdJobApplication.id]).first else {
@@ -190,7 +188,6 @@ final class GoodJobTests: XCTestCase {
         // Then
         XCTAssertTrue(
             fetchedJobApplication.title == createdJobApplication.title &&
-            fetchedJobApplication.userId == createdJobApplication.userId &&
             fetchedJobApplication.jobPostingId == createdJobApplication.jobPostingId
         )
     }
