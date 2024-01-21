@@ -5,7 +5,7 @@
         <attribute name="name_" attributeType="String" defaultValueString=""/>
         <relationship name="jobPostings_" toMany="YES" deletionRule="Cascade" destinationEntity="CDJobPosting" inverseName="company_" inverseEntity="CDJobPosting"/>
     </entity>
-    <entity name="CDJobApplication" representedClassName="CDJobApplication" syncable="YES" codeGenerationType="class">
+    <entity name="CDJobApplication" representedClassName=".CDJobApplication" syncable="YES" codeGenerationType="class">
         <attribute name="createdAt_" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="id_" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="title_" optional="YES" attributeType="String"/>
@@ -39,7 +39,7 @@
         <relationship name="jobPosting_" maxCount="1" deletionRule="Nullify" destinationEntity="CDJobPosting" inverseName="tests_" inverseEntity="CDJobPosting"/>
         <relationship name="testRecord_" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="CDTestRecord" inverseName="test_" inverseEntity="CDTestRecord"/>
     </entity>
-    <entity name="CDTestRecord" representedClassName="CDTestRecord" syncable="YES" codeGenerationType="class">
+    <entity name="CDTestRecord" representedClassName=".CDTestRecord" syncable="YES" codeGenerationType="class">
         <attribute name="id_" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="memo_" optional="YES" attributeType="String"/>
         <relationship name="jobApplication_" maxCount="1" deletionRule="Nullify" destinationEntity="CDJobApplication" inverseName="testRecords_" inverseEntity="CDJobApplication"/>

@@ -124,7 +124,7 @@ extension GJAppController {
     // MARK: To-Do
     
     func fetchJobApplicationRegistableJobPostings() -> [GJJobPosting]  {
-        return []
+        return jobPostingController.fetchJobApplicationRegistableJobPostings()
     }
     
     func deleteJobPostings(on offsets: IndexSet) {

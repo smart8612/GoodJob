@@ -93,6 +93,20 @@ final class GJJobPostingControlller: NSObject, ObservableObject {
         return convertedJobPostings
     }
     
+    func fetchJobApplicationRegistableJobPostings() -> [GJJobPosting] {
+        let fetchRequest = CDJobPosting.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "jobApplication_ == nil")
+        fetchRequest.sortDescriptors = [
+            NSSortDescriptor(keyPath: \CDJobPosting.createdAt_, ascending: false)
+        ]
+        
+        guard let fetchedJobPostings = try? managedObjectContext.fetch(fetchRequest) else {
+            return .init()
+        }
+        
+        return fetchedJobPostings.map { $0.convertToGJJobPosting() }
+    }
+    
     func deleteJobPostings(ids: [UUID]) {
         try? CDJobPosting.delete(ids: ids, in: managedObjectContext)
     }

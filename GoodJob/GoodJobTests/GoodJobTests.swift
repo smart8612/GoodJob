@@ -192,7 +192,7 @@ final class GoodJobTests: XCTestCase {
         )
     }
     
-    func test_JobApplication_미등록_JobPosting_명단_조회_검증() throws {
+    func test_JobApplication_등록_가능_JobPosting_명단_조회_검증() throws {
         // Given
         let createdJobPostings: [GJJobPosting] = [
             .init(
@@ -234,6 +234,7 @@ final class GoodJobTests: XCTestCase {
         // Then
         // 삼성 포스트만 명단에 보여야 한다.
         let result = model.fetchJobApplicationRegistableJobPostings()
+        print(result)
         XCTAssert(!result.isEmpty)
         
         
