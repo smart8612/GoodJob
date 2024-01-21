@@ -17,7 +17,7 @@ struct NewJobApplicaitonView: View {
     @State private var isShowingJobPostingSelectionSheet = false
     
     var body: some View {
-        DataCreationContainer(isShowingSheet: $isShowingSheet) {
+        DataCreationContainer(isShowingSheet: $isShowingSheet, addAction: save) {
             Form {
                 Section {
                     TextField("Job Application Title", text: $title)
@@ -39,6 +39,18 @@ struct NewJobApplicaitonView: View {
         }
     }
     
+    private func save() {
+        if let selectedJobPosting = selectedJobPosting {
+            let _ = model.create(
+                jobApplication: .init(
+                    jobPostingId: selectedJobPosting.id,
+                    title: title
+                )
+            )
+        }
+        isShowingSheet.toggle()
+    }
+    
 }
 
 struct JobPostingSelectionView: View {
@@ -55,7 +67,14 @@ struct JobPostingSelectionView: View {
     var body: some View {
         NavigationStack {
             List(jobPostings) { post in
-                Text(post.jobPositionName)
+                Button(action: { selectedJobPosting = post }, label: {
+                    HStack {
+                        if let _ = selectedJobPosting {
+                            Text("✅")
+                        }
+                        Text("\(post.jobPositionName) @ \(post.companyName)")
+                    }
+                })
             }
             .navigationTitle("Choose a Job Posting")
             .navigationBarTitleDisplayMode(.inline)
