@@ -18,6 +18,10 @@ final class GJJobApplicationControlller: NSObject, ObservableObject {
         set { controller.delegate = newValue }
     }
     
+    var managedObjectContext: NSManagedObjectContext {
+        controller.managedObjectContext
+    }
+    
     init(managedObjectContext: NSManagedObjectContext) {
         let fetchRequest = CDJobApplication.fetchRequest()
         fetchRequest.sortDescriptors = [
@@ -35,8 +39,50 @@ final class GJJobApplicationControlller: NSObject, ObservableObject {
         super.init()
     }
     
-    var jobApplications: [CDJobApplication] {
-        controller.fetchedObjects ?? []
+    var jobApplications: [GJJobApplication] {
+        (controller.fetchedObjects ?? [])
+            .map { $0.convertToGJJobApplication() }
+    }
+    
+    func create(jobApplication: GJJobApplication) -> GJJobApplication {
+        let fetchedUser = try! CDUser.fetch(ids: [jobApplication.userId], in: managedObjectContext).first!
+        let fetchedJobPosting = try! CDJobPosting.fetch(ids: [jobApplication.jobPostingId], in: managedObjectContext).first!
+        
+        let newJobApplication = CDJobApplication(
+            title: jobApplication.title,
+            user: fetchedUser,
+            jobPosting: fetchedJobPosting,
+            testRecords: .init(),
+            context: managedObjectContext
+        )
+        
+        try? managedObjectContext.save()
+        
+        return newJobApplication.convertToGJJobApplication()
+    }
+    
+    func fetchJobApplications(ids: [UUID]) -> [GJJobApplication] {
+        guard let fetchedJobApplications = try? CDJobApplication.fetch(ids: ids, in: managedObjectContext) else {
+            return []
+        }
+        
+        let convertedJobApplications = fetchedJobApplications.map { $0.convertToGJJobApplication() }
+        return convertedJobApplications
+    }
+    
+}
+
+
+fileprivate extension CDJobApplication {
+    
+    func convertToGJJobApplication() -> GJJobApplication {
+        GJJobApplication(
+            id: self.id,
+            jobPostingId: self.jobPosting.id,
+            userId: self.user.id,
+            title: self.title,
+            createdAt: self.createdAt
+        )
     }
     
 }
