@@ -112,28 +112,15 @@ extension GJAppController {
 extension GJAppController {
     
     var currentUser: GJUser {
-        userController.current.convertToGJUser()
+        userController.current
     }
     
     func create(user: GJUser) -> GJUser {
-        let newUser = CDUser(
-            name: user.name,
-            jobApplications: .init(),
-            context: managedObjectContext
-        )
-        
-        try? managedObjectContext.save()
-        
-        return newUser.convertToGJUser()
+        return userController.create(user: user)
     }
     
     func fetchUsers(ids: [UUID]) -> [GJUser] {
-        guard let fetchedUsers = try? CDUser.fetch(ids: ids, in: managedObjectContext) else {
-            return []
-        }
-        
-        let convertedUsers = fetchedUsers.map { $0.convertToGJUser() }
-        return convertedUsers
+        return userController.fetchUsers(ids: ids)
     }
     
 }
@@ -246,14 +233,6 @@ fileprivate extension CDTest {
             name: self.name,
             type: testType
         )
-    }
-    
-}
-
-fileprivate extension CDUser {
-    
-    func convertToGJUser() -> GJUser {
-        GJUser(id: self.id, name: self.name)
     }
     
 }
