@@ -50,7 +50,7 @@ struct DataCreationContainer<Content: View>: View {
                         
                     }
                     ToolbarItem(placement: .topBarTrailing) {
-                        Button("Add", action: { addAction?() })
+                        Button("Save", action: { addAction?() })
                     }
                 }
         }
