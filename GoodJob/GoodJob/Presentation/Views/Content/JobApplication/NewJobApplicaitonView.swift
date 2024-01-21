@@ -69,7 +69,7 @@ struct JobPostingSelectionView: View {
             List(jobPostings) { post in
                 Button(action: { selectedJobPosting = post }, label: {
                     HStack {
-                        if let _ = selectedJobPosting {
+                        if let _ = selectedJobPosting, post == selectedJobPosting {
                             Text("✅")
                         }
                         Text("\(post.jobPositionName) @ \(post.companyName)")
