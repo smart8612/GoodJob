@@ -121,6 +121,12 @@ extension GJAppController {
         return jobPostingController.fetchJobPostings(ids: ids)
     }
     
+    // MARK: To-Do
+    
+    func fetchJobApplicationRegistableJobPostings() -> [GJJobPosting]  {
+        return []
+    }
+    
     func deleteJobPostings(on offsets: IndexSet) {
         let postIds = offsets.compactMap { jobPostings[$0].id }
         jobPostingController.deleteJobPostings(ids: postIds)

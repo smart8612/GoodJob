@@ -191,5 +191,52 @@ final class GoodJobTests: XCTestCase {
             fetchedJobApplication.jobPostingId == createdJobApplication.jobPostingId
         )
     }
+    
+    func test_JobApplication_미등록_JobPosting_명단_조회_검증() throws {
+        // Given
+        let createdJobPostings: [GJJobPosting] = [
+            .init(
+                companyName: "Apple",
+                jobPositionName: "iOS Developer",
+                workplaceLocation: "USA",
+                recruitNumbers: "10",
+                link: "https://www.apple.com",
+                startDate: .now,
+                endDate: Date(timeIntervalSinceNow: 259200),
+                tests: [
+                    .init(name: "first written test", type: .writtenTest),
+                    .init(name: "second meeting interview test", type: .inteview)
+                ]),
+            .init(
+                companyName: "Samsung",
+                jobPositionName: "Android Developer",
+                workplaceLocation: "Seoul",
+                recruitNumbers: "100",
+                link: "https://www.samsung.com",
+                startDate: .now,
+                endDate: Date(timeIntervalSinceNow: 259200),
+                tests: [
+                    .init(name: "first written test", type: .writtenTest),
+                    .init(name: "second meeting interview test", type: .inteview)
+                ])
+        ].map { model.create(jobPosting: $0) }
+        
+        // When
+        guard let applePost = createdJobPostings.first else {
+            XCTFail()
+            return
+        }
+        let createdJobApplication = model.create(jobApplication: .init(
+            jobPostingId: applePost.id,
+            title: "Apple Job Position Application"
+        ))
+        
+        // Then
+        // 삼성 포스트만 명단에 보여야 한다.
+        let result = model.fetchJobApplicationRegistableJobPostings()
+        XCTAssert(!result.isEmpty)
+        
+        
+    }
 
 }
