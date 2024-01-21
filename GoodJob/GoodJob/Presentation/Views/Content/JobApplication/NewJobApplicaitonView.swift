@@ -14,6 +14,7 @@ struct NewJobApplicaitonView: View {
     
     @State private var title: String = .init()
     @State private var selectedJobPosting: GJJobPosting? = nil
+    @State private var isShowingJobPostingSelectionSheet = false
     
     var body: some View {
         DataCreationContainer(isShowingSheet: $isShowingSheet) {
@@ -23,7 +24,14 @@ struct NewJobApplicaitonView: View {
                 }
                 
                 Section {
-                    JobPostingSelectionView()
+                    Button(action: { isShowingJobPostingSelectionSheet.toggle() }) {
+                        Text(selectedJobPosting?.jobPositionName ?? "Select a posting")
+                    }
+                    .sheet(isPresented: $isShowingJobPostingSelectionSheet) {
+                        JobPostingSelectionView(
+                            selectedJobPosting: $selectedJobPosting
+                        )
+                    }
                 }
             }
             .navigationTitle("New Job Application")
@@ -35,8 +43,31 @@ struct NewJobApplicaitonView: View {
 
 struct JobPostingSelectionView: View {
     
+    @EnvironmentObject private var model: GJAppController
+    
+    @Binding var selectedJobPosting: GJJobPosting?
+    @Environment(\.dismiss) private var dismiss
+    
+    private var jobPostings: [GJJobPosting] {
+        model.fetchJobApplicationRegistableJobPostings()
+    }
+    
     var body: some View {
-        Text("Hello World")
+        NavigationStack {
+            List(jobPostings) { post in
+                Text(post.jobPositionName)
+            }
+            .navigationTitle("Choose a Job Posting")
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button(action: { dismiss() }) {
+                        Text("Cancel")
+                    }
+                }
+            }
+        }
+        
     }
     
 }

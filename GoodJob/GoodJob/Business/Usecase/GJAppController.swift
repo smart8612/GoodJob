@@ -52,8 +52,22 @@ final class GJAppController: NSObject, ObservableObject {
             startDate: .now,
             endDate: .init(timeIntervalSinceNow: 259200),
             tests: [
-                .init(name: "test1", type: .writtenTest),
-                .init(name: "test2", type: .inteview)
+                .init(name: "apple test1", type: .writtenTest),
+                .init(name: "apple test2", type: .inteview)
+            ]
+        ))
+        
+        let _ = model.create(jobPosting: .init(
+            companyName: "Samsung",
+            jobPositionName: "Android Developer",
+            workplaceLocation: "South Korea",
+            recruitNumbers: "100",
+            link: "https://www.samsung.com",
+            startDate: .init(timeIntervalSinceNow: 259200),
+            endDate: .init(timeIntervalSinceNow: 259200 * 2),
+            tests: [
+                .init(name: "samsung test1", type: .writtenTest),
+                .init(name: "samsung test2", type: .inteview)
             ]
         ))
         
