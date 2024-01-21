@@ -17,7 +17,7 @@ struct JobPostingDetailView: View {
     var body: some View {
         List {
             Section {
-                Text("Company Name")
+                Text("Company Name: \(jobPosting.companyName)")
             }
             
             Section {
