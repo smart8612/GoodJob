@@ -16,9 +16,12 @@ struct JobApplicationsListView: View {
         DataContainer {
             List {
                 ForEach(model.jobApplications) { jobApplication in
-                    VStack(alignment: .leading) {
-                        Text(jobApplication.title)
-                        Text(jobApplication.id.uuidString)
+                    NavigationLink {
+                        JobApplicationDetailView()
+                    } label: {
+                        JobApplicationCellView(
+                            jobApplication: jobApplication
+                        )
                     }
                 }
             }

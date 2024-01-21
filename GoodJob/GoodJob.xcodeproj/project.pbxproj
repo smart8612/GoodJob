@@ -28,6 +28,8 @@
 		C19BC5302B57A4F3004E78F6 /* GJAppController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C19BC52F2B57A4F3004E78F6 /* GJAppController.swift */; };
 		C19BC5322B57A67D004E78F6 /* GJJobPosting.swift in Sources */ = {isa = PBXBuildFile; fileRef = C19BC5312B57A67D004E78F6 /* GJJobPosting.swift */; };
 		C19BC5352B57BA32004E78F6 /* GJJobPostingControlller.swift in Sources */ = {isa = PBXBuildFile; fileRef = C19BC5342B57BA32004E78F6 /* GJJobPostingControlller.swift */; };
+		C1A0F35B2B5D36D900F27CFA /* JobApplicationDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1A0F35A2B5D36D900F27CFA /* JobApplicationDetailView.swift */; };
+		C1A0F35D2B5D37D800F27CFA /* JobApplicationCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1A0F35C2B5D37D800F27CFA /* JobApplicationCellView.swift */; };
 		C1A68C432B55367000CE92D4 /* SidebarCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1A68C422B55367000CE92D4 /* SidebarCellView.swift */; };
 		C1A68C462B553FD100CE92D4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1A68C452B553FD100CE92D4 /* ContentView.swift */; };
 		C1CFB6372B5945C800515DEA /* GJTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1CFB6362B5945C800515DEA /* GJTest.swift */; };
@@ -83,6 +85,8 @@
 		C19BC52F2B57A4F3004E78F6 /* GJAppController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GJAppController.swift; sourceTree = "<group>"; };
 		C19BC5312B57A67D004E78F6 /* GJJobPosting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GJJobPosting.swift; sourceTree = "<group>"; };
 		C19BC5342B57BA32004E78F6 /* GJJobPostingControlller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GJJobPostingControlller.swift; sourceTree = "<group>"; };
+		C1A0F35A2B5D36D900F27CFA /* JobApplicationDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = JobApplicationDetailView.swift; path = GoodJob/Presentation/Views/Content/JobApplication/JobApplicationDetailView.swift; sourceTree = SOURCE_ROOT; };
+		C1A0F35C2B5D37D800F27CFA /* JobApplicationCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobApplicationCellView.swift; sourceTree = "<group>"; };
 		C1A68C422B55367000CE92D4 /* SidebarCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarCellView.swift; sourceTree = "<group>"; };
 		C1A68C452B553FD100CE92D4 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		C1A68C482B55419000CE92D4 /* JobPostingsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobPostingsListView.swift; sourceTree = "<group>"; };
@@ -136,7 +140,9 @@
 			isa = PBXGroup;
 			children = (
 				C1052E3B2B5B800500B27620 /* JobApplicationsListView.swift */,
+				C1A0F35C2B5D37D800F27CFA /* JobApplicationCellView.swift */,
 				C18037E22B5BA565000FFC97 /* NewJobApplicaitonView.swift */,
+				C1A0F35A2B5D36D900F27CFA /* JobApplicationDetailView.swift */,
 			);
 			path = JobApplication;
 			sourceTree = "<group>";
@@ -468,6 +474,7 @@
 				C1F999DE2B55202300259FB5 /* GJAppCategory.swift in Sources */,
 				C17498B42B56A9070079927F /* JobPostingsListView.swift in Sources */,
 				C18037E12B5BA2F0000FFC97 /* DataCreationContainer.swift in Sources */,
+				C1A0F35D2B5D37D800F27CFA /* JobApplicationCellView.swift in Sources */,
 				C19BC5322B57A67D004E78F6 /* GJJobPosting.swift in Sources */,
 				C1E8692C2B555B0900FDD6DA /* NewJobPostingView.swift in Sources */,
 				C1A68C462B553FD100CE92D4 /* ContentView.swift in Sources */,
@@ -481,6 +488,7 @@
 				C1704EA32B57EF9000146201 /* CDJobPosting+Extensions.swift in Sources */,
 				C18037E52B5BABD4000FFC97 /* GJJobApplicationControlller.swift in Sources */,
 				C1F999B52B55068E00259FB5 /* MainSplitView.swift in Sources */,
+				C1A0F35B2B5D36D900F27CFA /* JobApplicationDetailView.swift in Sources */,
 				C1A68C432B55367000CE92D4 /* SidebarCellView.swift in Sources */,
 				C133F0D82B5A501600AF574C /* CDTestRecord+Extensions.swift in Sources */,
 				C1F999B02B55068E00259FB5 /* Persistence.swift in Sources */,
