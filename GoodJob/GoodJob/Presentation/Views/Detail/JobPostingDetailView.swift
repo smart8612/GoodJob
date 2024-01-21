@@ -10,11 +10,40 @@ import SwiftUI
 struct JobPostingDetailView: View {
     
     @EnvironmentObject private var model: GJAppController
+    @EnvironmentObject private var navigationModel: GJNavigationModel
     
-    let jobPostingId: UUID
-    @State private var jobPosting: GJJobPosting = .initWithEmpty()
+    private var selectedJobPostingId: UUID? {
+        navigationModel.selectedJobPosting?.id
+    }
+    
+    private var jobPosting: GJJobPosting? {
+        guard let selectedJobPostingId = selectedJobPostingId else {
+            return nil
+        }
+        
+        let fetchedJobPostings = model.fetchJobPostings(
+            ids: [selectedJobPostingId]
+        )
+        
+        return fetchedJobPostings.first
+    }
     
     var body: some View {
+        if let jobPosting = jobPosting {
+            JobPostingDetailListView(jobPosting: jobPosting)
+        } else {
+            Text("Select a Job Posting")
+        }
+    }
+    
+}
+
+fileprivate struct JobPostingDetailListView: View {
+    
+    let jobPosting: GJJobPosting
+    
+    var body: some View {
+        
         List {
             Section {
                 Text("Company Name: \(jobPosting.companyName)")
@@ -43,15 +72,6 @@ struct JobPostingDetailView: View {
             }
         }
         .navigationTitle(jobPosting.jobPositionName)
-        .onAppear {
-            fetchJobPosting()
-        }
+        
     }
-    
-    private func fetchJobPosting() {
-        self.jobPosting = model.fetchJobPostings(
-            ids: [jobPostingId]
-        ).first ?? .initWithEmpty()
-    }
-    
 }

@@ -11,14 +11,14 @@ import SwiftUI
 struct JobPostingsListView: View {
     
     @EnvironmentObject private var model: GJAppController
+    @EnvironmentObject private var navigationModel: GJNavigationModel
     
     var body: some View {
+        
         DataContainer {
-            List {
+            List(selection: $navigationModel.selectedJobPosting) {
                 ForEach(model.jobPostings) { jobPost in
-                    NavigationLink {
-                        JobPostingDetailView(jobPostingId: jobPost.id)
-                    } label: {
+                    NavigationLink(value: jobPost) {
                         JobPostingCellView(jobPosting: jobPost)
                     }
                 }
@@ -28,6 +28,7 @@ struct JobPostingsListView: View {
         } sheet: { isShowingSheet in
             NewJobPostingView(isShowingSheet: isShowingSheet)
         }
+       
     }
     
 }

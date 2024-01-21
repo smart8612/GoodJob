@@ -10,27 +10,26 @@ import SwiftUI
 
 struct MainSplitView: View {
     
-    @State private var selectedCategory: GJAppCategory? = .applications
-    @State private var columnVisibility: NavigationSplitViewVisibility = .all
+    @StateObject private var navigationModel = GJNavigationModel()
 
     var body: some View {
         
-        NavigationSplitView(columnVisibility: $columnVisibility) {
-            SidebarListView(
-                selectedCategory: $selectedCategory
-            )
+        NavigationSplitView(
+            columnVisibility: $navigationModel.columnVisibility
+        ) {
+            SidebarListView()
         } content: {
-            ContentView(
-                selectedCategory: $selectedCategory
-            )
+            ContentView()
         } detail: {
-            Text("Hello World")
+            DetailView()
         }
         .navigationSplitViewStyle(.balanced)
+        .environmentObject(navigationModel)
 
     }
 
 }
+
 
 #Preview {
     MainSplitView()

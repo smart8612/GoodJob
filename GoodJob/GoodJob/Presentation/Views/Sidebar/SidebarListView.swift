@@ -10,10 +10,15 @@ import SwiftUI
 
 struct SidebarListView: View {
     
-    @Binding var selectedCategory: GJAppCategory?
+    @EnvironmentObject private var navigationModel: GJNavigationModel
+    
+    private var categories = GJAppCategory.allCategories
     
     var body: some View {
-        List(GJAppCategory.allCategories, selection: $selectedCategory) { category in
+        List(
+            categories,
+            selection: $navigationModel.selectedCategory
+        ) { category in
             NavigationLink(value: category) {
                 SidebarCellView(category: category)
             }

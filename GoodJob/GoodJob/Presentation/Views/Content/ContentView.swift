@@ -10,10 +10,18 @@ import SwiftUI
 
 struct ContentView: View {
     
-    @Binding var selectedCategory: GJAppCategory?
+    @EnvironmentObject private var navigationModel: GJNavigationModel
+    
+    private var navigationTitle: String {
+        navigationModel.selectedCategory?.name ?? ""
+    }
+    
+    private var selectedCategory: GJAppCategory? {
+        navigationModel.selectedCategory
+    }
     
     var body: some View {
-        Group {
+        ZStack {
             switch selectedCategory {
             
             case .summary:
@@ -28,16 +36,9 @@ struct ContentView: View {
             case .none:
                 Text("Select a category")
             }
+            
         }
-        .navigationTitle(selectedCategory?.name ?? "")
+        .navigationTitle(navigationTitle)
     }
     
 }
-
-#Preview {
-    ContentView(selectedCategory: .constant(.applications))
-        .environmentObject(
-            GJAppController.initWithPreview()
-        )
-}
-

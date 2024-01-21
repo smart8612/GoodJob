@@ -10,26 +10,24 @@ import SwiftUI
 struct JobApplicationsListView: View {
     
     @EnvironmentObject private var model: GJAppController
+    @EnvironmentObject private var navigationModel: GJNavigationModel
     
     var body: some View {
         
         DataContainer {
-            List {
+            List(selection: $navigationModel.selectedJobApplication) {
                 ForEach(model.jobApplications) { jobApplication in
-                    NavigationLink {
-                        JobApplicationDetailView(jobApplicationId: jobApplication.id)
-                    } label: {
+                    NavigationLink(value: jobApplication) {
                         JobApplicationCellView(
                             jobApplication: jobApplication
                         )
                     }
                 }
             }
-            .listStyle(.insetGrouped)
         } sheet: { isShowingSheet in
             NewJobApplicaitonView(isShowingSheet: isShowingSheet)
         }
-        
+      
     }
     
 }
