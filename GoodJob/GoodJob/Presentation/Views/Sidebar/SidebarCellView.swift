@@ -13,13 +13,7 @@ struct SidebarCellView: View {
     let category: GJAppCategory
     
     var body: some View {
-        HStack {
-            Image(systemName: category.symboleName)
-                .resizable()
-                .scaledToFit()
-                .frame(width: 15, height: 15)
-            Text(category.name)
-        }
+        Label(category.name,systemImage: category.symboleName)
     }
     
 }

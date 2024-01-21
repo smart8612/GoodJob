@@ -252,8 +252,8 @@
 		C1A68C442B55369300CE92D4 /* Sidebar */ = {
 			isa = PBXGroup;
 			children = (
-				C1F999DF2B5526C200259FB5 /* SidebarListView.swift */,
 				C1A68C422B55367000CE92D4 /* SidebarCellView.swift */,
+				C1F999DF2B5526C200259FB5 /* SidebarListView.swift */,
 			);
 			path = Sidebar;
 			sourceTree = "<group>";

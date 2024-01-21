@@ -17,4 +17,8 @@ struct GJJobApplication: Identifiable, Hashable {
     var title: String
     var createdAt: Date = Date()
     
+    static func initWithEmpty() -> Self {
+        Self.init(jobPostingId: .init(), title: .init())
+    }
+    
 }

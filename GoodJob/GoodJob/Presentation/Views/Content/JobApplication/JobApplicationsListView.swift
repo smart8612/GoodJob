@@ -17,7 +17,7 @@ struct JobApplicationsListView: View {
             List {
                 ForEach(model.jobApplications) { jobApplication in
                     NavigationLink {
-                        JobApplicationDetailView()
+                        JobApplicationDetailView(jobApplicationId: jobApplication.id)
                     } label: {
                         JobApplicationCellView(
                             jobApplication: jobApplication

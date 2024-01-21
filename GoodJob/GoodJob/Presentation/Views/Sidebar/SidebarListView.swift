@@ -14,8 +14,9 @@ struct SidebarListView: View {
     
     var body: some View {
         List(GJAppCategory.allCategories, selection: $selectedCategory) { category in
-            SidebarCellView(category: category)
-                .tag(category)
+            NavigationLink(value: category) {
+                SidebarCellView(category: category)
+            }
         }
         .navigationTitle("GoodJob")
     }

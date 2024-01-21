@@ -9,12 +9,40 @@ import SwiftUI
 
 struct JobApplicationDetailView: View {
     
+    @EnvironmentObject private var model: GJAppController
+    
+    let jobApplicationId: UUID
+    @State private var jobApplication: GJJobApplication = .initWithEmpty()
+    @State private var jobPosting: GJJobPosting = .initWithEmpty()
+    
     var body: some View {
-        Text("Hello, World!")
+        Form {
+            Section {
+                Text(jobApplication.title)
+            }
+            
+            Section {
+                NavigationLink {
+                    JobPostingDetailView(
+                        jobPostingId: jobApplication.jobPostingId
+                    )
+                } label: {
+                    Text("JobPosting \(jobPosting.jobPositionName) @ \(jobPosting.companyName)")
+                }
+
+            }
+        }
+        .onAppear(perform: fetchJobApplication)
     }
     
-}
-
-#Preview {
-    JobApplicationDetailView()
+    private func fetchJobApplication() {
+        jobApplication = model.fetchJobApplications(
+            ids: [jobApplicationId]
+        ).first ?? .initWithEmpty()
+        
+        jobPosting = model.fetchJobPostings(
+            ids: [jobApplication.jobPostingId]
+        ).first ?? .initWithEmpty()
+    }
+    
 }
