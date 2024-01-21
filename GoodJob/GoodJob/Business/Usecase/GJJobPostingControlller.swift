@@ -1,5 +1,5 @@
 //
-//  GoodJobManager.swift
+//  GJJobPostingControlller.swift
 //  GoodJob
 //
 //  Created by JeongTaek Han on 1/17/24.
@@ -9,30 +9,40 @@ import Foundation
 import CoreData
 
 
-final class GoodJobManager: NSObject, ObservableObject {
+final class GJJobPostingControlller: NSObject, ObservableObject {
     
-    private let persistenceController: PersistenceController
+    private let controller: NSFetchedResultsController<CDJobPosting>
     
-    private let jobPostingController: CDJobPostingFetchedResultsControlller
-    
-    init(persistenceController: PersistenceController = PersistenceController.shared) {
-        self.persistenceController = persistenceController
-        self.jobPostingController = CDJobPostingFetchedResultsControlller(
-            managedObjectContext: persistenceController.managedObjectContext
-        )
-        super.init()
-        jobPostingController.delegate = self
+    var delegate: NSFetchedResultsControllerDelegate? {
+        get { controller.delegate }
+        set { controller.delegate = newValue }
     }
     
-    private var managedObjectContext: NSManagedObjectContext {
-        persistenceController.managedObjectContext
+    var managedObjectContext: NSManagedObjectContext {
+        controller.managedObjectContext
+    }
+    
+    init(managedObjectContext: NSManagedObjectContext) {
+        let fetchRequest = CDJobPosting.fetchRequest()
+        fetchRequest.sortDescriptors = [
+            NSSortDescriptor(keyPath: \CDJobPosting.createdAt_, ascending: false)
+        ]
+        
+        controller = NSFetchedResultsController(
+            fetchRequest: fetchRequest,
+            managedObjectContext: managedObjectContext,
+            sectionNameKeyPath: nil,
+            cacheName: nil
+        )
+        try? controller.performFetch()
+        super.init()
     }
     
     var jobPostings: [GJJobPosting] {
-        jobPostingController.jobPostings.map { $0.convertToGJJobPosting()}
+        (controller.fetchedObjects ?? [])
+            .map { $0.convertToGJJobPosting() }
     }
     
-    @discardableResult
     func create(jobPosting: GJJobPosting) -> GJJobPosting {
         let newCompany = CDCompany(
             name: jobPosting.companyName,
@@ -63,7 +73,7 @@ final class GoodJobManager: NSObject, ObservableObject {
         let newJobPosting = CDJobPosting(
             link: jobPosting.link,
             company: newCompany,
-            jobPosition: newJobPosition, 
+            jobPosition: newJobPosition,
             tests: newTests,
             context: managedObjectContext
         )
@@ -83,21 +93,26 @@ final class GoodJobManager: NSObject, ObservableObject {
         return convertedJobPostings
     }
     
-    func deleteJobPostings(on offsets: IndexSet) {
-        let postIds = offsets.compactMap { jobPostings[$0].id }
-        try? CDJobPosting.delete(ids: postIds, in: managedObjectContext)
+    func fetchJobApplicationRegistableJobPostings() -> [GJJobPosting] {
+        let fetchRequest = CDJobPosting.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "jobApplication_ == nil")
+        fetchRequest.sortDescriptors = [
+            NSSortDescriptor(keyPath: \CDJobPosting.createdAt_, ascending: false)
+        ]
+        
+        guard let fetchedJobPostings = try? managedObjectContext.fetch(fetchRequest) else {
+            return .init()
+        }
+        
+        return fetchedJobPostings.map { $0.convertToGJJobPosting() }
+    }
+    
+    func deleteJobPostings(ids: [UUID]) {
+        try? CDJobPosting.delete(ids: ids, in: managedObjectContext)
     }
     
 }
 
-
-extension GoodJobManager: NSFetchedResultsControllerDelegate {
-    
-    func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-        objectWillChange.send()
-    }
-    
-}
 
 fileprivate extension CDJobPosting {
     
@@ -114,7 +129,7 @@ fileprivate extension CDJobPosting {
             recruitNumbers: String(self.jobPosition.recruitNumbers),
             link: self.link,
             startDate: self.jobPosition.startDate,
-            endDate: self.jobPosition.endDate, 
+            endDate: self.jobPosition.endDate,
             tests: convertedTests
         )
     }

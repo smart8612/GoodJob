@@ -10,7 +10,7 @@ import SwiftUI
 
 struct MainSplitView: View {
     
-    @State private var selectedCategory: GJAppCategory? = .summary
+    @State private var selectedCategory: GJAppCategory? = .applications
     @State private var columnVisibility: NavigationSplitViewVisibility = .all
 
     var body: some View {
@@ -34,9 +34,5 @@ struct MainSplitView: View {
 
 #Preview {
     MainSplitView()
-        .environmentObject(
-            GoodJobManager(
-                persistenceController: .init(inMemory: true)
-            )
-        )
+        .environmentObject(GJAppController.initWithPreview())
 }

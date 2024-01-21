@@ -18,19 +18,26 @@ struct ContentView: View {
             
             case .summary:
                 SummaryView()
+                
+            case .applications:
+                JobApplicationsListView()
             
             case .jobs:
                 JobPostingsListView()
                 
             case .none:
                 Text("Select a category")
-                
-            default:
-                Text("Hello, World!")
-                
             }
         }
         .navigationTitle(selectedCategory?.name ?? "")
     }
     
 }
+
+#Preview {
+    ContentView(selectedCategory: .constant(.applications))
+        .environmentObject(
+            GJAppController.initWithPreview()
+        )
+}
+

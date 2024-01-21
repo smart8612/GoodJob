@@ -9,7 +9,7 @@ import SwiftUI
 
 struct JobPostingDetailView: View {
     
-    @EnvironmentObject private var model: GoodJobManager
+    @EnvironmentObject private var model: GJAppController
     
     let jobPostingId: UUID
     @State private var jobPosting: GJJobPosting = .initWithEmpty()
@@ -17,7 +17,7 @@ struct JobPostingDetailView: View {
     var body: some View {
         List {
             Section {
-                Text("Company Name")
+                Text("Company Name: \(jobPosting.companyName)")
             }
             
             Section {
