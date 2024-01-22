@@ -13,21 +13,21 @@ struct JobApplicationsListView: View {
     @EnvironmentObject private var navigationModel: GJNavigationModel
     
     var body: some View {
-        
-        DataContainer {
-            List(selection: $navigationModel.selectedJobApplication) {
-                ForEach(model.jobApplications) { jobApplication in
-                    NavigationLink(value: jobApplication) {
-                        JobApplicationCellView(
-                            jobApplication: jobApplication
-                        )
+        NavigationStack {
+            DataContainer {
+                List(selection: $navigationModel.selectedJobApplication) {
+                    ForEach(model.jobApplications) { jobApplication in
+                        NavigationLink(value: jobApplication) {
+                            JobApplicationCellView(
+                                jobApplication: jobApplication
+                            )
+                        }
                     }
                 }
+            } sheet: { isShowingSheet in
+                NewJobApplicaitonView(isShowingSheet: isShowingSheet)
             }
-        } sheet: { isShowingSheet in
-            NewJobApplicaitonView(isShowingSheet: isShowingSheet)
         }
-      
     }
     
 }

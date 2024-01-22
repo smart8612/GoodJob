@@ -15,7 +15,7 @@ struct GoodJobApp: App {
 
     var body: some Scene {
         WindowGroup {
-            MainSplitView()
+            MainTabView()
                 .environmentObject(model)
         }
     }

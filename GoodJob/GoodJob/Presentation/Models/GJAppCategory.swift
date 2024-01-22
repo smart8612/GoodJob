@@ -31,5 +31,16 @@ enum GJAppCategory: String, Identifiable, Hashable, CaseIterable {
         
     }
     
+    @ViewBuilder var contentView: some View {
+        switch self {
+        case .summary:
+            SummaryView()
+        case .applications:
+            JobApplicationsListView()
+        case .jobs:
+            JobPostingsListView()
+        }
+    }
+    
     static var allCategories: [Self] = Self.allCases
 }

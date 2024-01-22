@@ -11,12 +11,7 @@ import Combine
 
 final class GJNavigationModel: ObservableObject {
     
-    @Published var selectedCategory: GJAppCategory? = .applications {
-        didSet {
-            selectedJobPosting = nil
-            selectedJobApplication = nil
-        }
-    }
+    @Published var selectedCategory: GJAppCategory? = .summary
     
     @Published var selectedJobApplication: GJJobApplication? = nil
     @Published var selectedJobPosting: GJJobPosting? = nil
