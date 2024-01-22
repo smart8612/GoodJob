@@ -69,6 +69,7 @@ fileprivate struct JobApplicationDetailListView: View {
                 Text("JobPosting \(jobPosting.jobPositionName) @ \(jobPosting.companyName)")
             }
         }
+        .navigationTitle("Job Application Detail")
         .navigationBarTitleDisplayMode(.inline)
     }
     

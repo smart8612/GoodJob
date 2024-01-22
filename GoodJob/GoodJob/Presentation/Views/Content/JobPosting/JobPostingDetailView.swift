@@ -55,8 +55,8 @@ fileprivate struct JobPostingDetailListView: View {
             }
             
             Section {
-                Text("Starts: \(jobPosting.startDate)")
-                Text("Ends: \(jobPosting.endDate)")
+                Text("Starts: \(jobPosting.startDate.formatted())")
+                Text("Ends: \(jobPosting.endDate.formatted())")
             }
             
             Section {
@@ -69,7 +69,7 @@ fileprivate struct JobPostingDetailListView: View {
                 }
             }
         }
-        .navigationTitle(jobPosting.jobPositionName)
+        .navigationTitle("Jobs Details")
         .navigationBarTitleDisplayMode(.inline)
         
     }
