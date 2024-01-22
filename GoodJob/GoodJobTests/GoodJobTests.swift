@@ -236,8 +236,35 @@ final class GoodJobTests: XCTestCase {
         let result = model.fetchJobApplicationRegistableJobPostings()
         print(result)
         XCTAssert(!result.isEmpty)
+    }
+    
+    func test_특정_JobApplication의_Test에_TestRecord_생성_검증() throws {
+        // Given
+        let createdJobPosting = model.create(jobPosting: .init(
+            companyName: "Apple",
+            jobPositionName: "iOS Developer",
+            workplaceLocation: "USA",
+            recruitNumbers: "10",
+            link: "https://www.apple.com",
+            startDate: .now,
+            endDate: Date(timeIntervalSinceNow: 259200),
+            tests: [
+                .init(name: "first written test", type: .writtenTest),
+                .init(name: "second meeting interview test", type: .inteview)
+            ])
+        )
         
+        let createdJobApplication = model.create(jobApplication: .init(
+            jobPostingId: createdJobPosting.id,
+            title: "Apple Job Application"
+        ))
         
+        // When
+        // JobPosting의 0번 테스트에 대한 메모를 생성하면
+        
+        // Then
+        // 특정 JobApplication의 테스트에 대한 기록 명단을 조회할 수 있다.
+        XCTFail()
     }
 
 }
