@@ -42,7 +42,6 @@ struct NewJobPostingView: View {
                 }
             }
             .navigationTitle("New Job")
-            .navigationBarTitleDisplayMode(.inline)
         }
         
     }

@@ -63,14 +63,30 @@ fileprivate struct JobApplicationDetailListView: View {
         List {
             Section {
                 Text(jobApplication.title)
+                Text(jobApplication.createdAt.formatted())
             }
             
             Section {
-                Text("JobPosting \(jobPosting.jobPositionName) @ \(jobPosting.companyName)")
+                Text(jobPosting.companyName)
+                Text(jobPosting.jobPositionName)
+            }
+            
+            Section {
+                ForEach(jobPosting.tests) { test in
+                    NavigationLink(value: test) {
+                        VStack(alignment: .leading) {
+                            Text(test.type.description)
+                            Text(test.name)
+                        }
+                    }
+                }
             }
         }
         .navigationTitle("Job Application Detail")
         .navigationBarTitleDisplayMode(.inline)
+        .navigationDestination(for: GJTest.self) {
+            TestRecordView(testId: $0.id)
+        }
     }
     
 }

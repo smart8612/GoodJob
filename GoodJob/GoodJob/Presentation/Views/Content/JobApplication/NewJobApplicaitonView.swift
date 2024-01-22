@@ -35,7 +35,6 @@ struct NewJobApplicaitonView: View {
                 }
             }
             .navigationTitle("New Job Application")
-            .navigationBarTitleDisplayMode(.inline)
         }
     }
     

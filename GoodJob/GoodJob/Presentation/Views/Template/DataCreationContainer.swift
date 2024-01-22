@@ -30,6 +30,7 @@ struct DataCreationContainer<Content: View>: View {
     var body: some View {
         NavigationStack {
             content()
+                .navigationBarTitleDisplayMode(.inline)
                 .toolbar {
                     ToolbarItem(placement: .topBarLeading) {
                         Button("Cancel") {

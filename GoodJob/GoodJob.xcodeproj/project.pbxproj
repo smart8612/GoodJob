@@ -32,6 +32,8 @@
 		C1CFB6372B5945C800515DEA /* GJTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1CFB6362B5945C800515DEA /* GJTest.swift */; };
 		C1CFB6392B598B6400515DEA /* JobPostingDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1CFB6382B598B6400515DEA /* JobPostingDetailView.swift */; };
 		C1DFAEE32B5E29ED007CACA7 /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1DFAEE22B5E29ED007CACA7 /* MainTabView.swift */; };
+		C1DFAEE62B5E4DBC007CACA7 /* GJTestRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1DFAEE52B5E4DBC007CACA7 /* GJTestRecord.swift */; };
+		C1DFAEE82B5E4EB5007CACA7 /* TestRecordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1DFAEE72B5E4EB5007CACA7 /* TestRecordView.swift */; };
 		C1E8692C2B555B0900FDD6DA /* NewJobPostingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E8692B2B555B0900FDD6DA /* NewJobPostingView.swift */; };
 		C1E8692E2B558DE800FDD6DA /* SummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E8692D2B558DE800FDD6DA /* SummaryView.swift */; };
 		C1F999AE2B55068E00259FB5 /* GoodJobApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F999AD2B55068E00259FB5 /* GoodJobApp.swift */; };
@@ -86,6 +88,8 @@
 		C1CFB6362B5945C800515DEA /* GJTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GJTest.swift; sourceTree = "<group>"; };
 		C1CFB6382B598B6400515DEA /* JobPostingDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobPostingDetailView.swift; sourceTree = "<group>"; };
 		C1DFAEE22B5E29ED007CACA7 /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
+		C1DFAEE52B5E4DBC007CACA7 /* GJTestRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GJTestRecord.swift; sourceTree = "<group>"; };
+		C1DFAEE72B5E4EB5007CACA7 /* TestRecordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestRecordView.swift; sourceTree = "<group>"; };
 		C1E8692B2B555B0900FDD6DA /* NewJobPostingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewJobPostingView.swift; sourceTree = "<group>"; };
 		C1E8692D2B558DE800FDD6DA /* SummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryView.swift; sourceTree = "<group>"; };
 		C1F999AA2B55068E00259FB5 /* GoodJob.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GoodJob.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -134,6 +138,7 @@
 				C1052E3B2B5B800500B27620 /* JobApplicationsListView.swift */,
 				C18037E22B5BA565000FFC97 /* NewJobApplicaitonView.swift */,
 				C16116C52B5D841C003501A4 /* JobApplicationDetailView.swift */,
+				C1DFAEE92B5E4EBB007CACA7 /* TestRecord */,
 			);
 			path = JobApplication;
 			sourceTree = "<group>";
@@ -226,6 +231,7 @@
 				C1CFB6362B5945C800515DEA /* GJTest.swift */,
 				C133F0D92B5A5B7B00AF574C /* GJUser.swift */,
 				C133F0DB2B5A6B8A00AF574C /* GJJobApplication.swift */,
+				C1DFAEE52B5E4DBC007CACA7 /* GJTestRecord.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -256,6 +262,14 @@
 				C1E8692D2B558DE800FDD6DA /* SummaryView.swift */,
 			);
 			path = Summary;
+			sourceTree = "<group>";
+		};
+		C1DFAEE92B5E4EBB007CACA7 /* TestRecord */ = {
+			isa = PBXGroup;
+			children = (
+				C1DFAEE72B5E4EB5007CACA7 /* TestRecordView.swift */,
+			);
+			path = TestRecord;
 			sourceTree = "<group>";
 		};
 		C1F999A12B55068E00259FB5 = {
@@ -456,6 +470,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C133F0D62B5A4D2B00AF574C /* CDJobApplication+Extensions.swift in Sources */,
+				C1DFAEE62B5E4DBC007CACA7 /* GJTestRecord.swift in Sources */,
 				C133F0DA2B5A5B7B00AF574C /* GJUser.swift in Sources */,
 				C16116C62B5D841C003501A4 /* JobApplicationDetailView.swift in Sources */,
 				C17498B52B56A9200079927F /* GoodJob.xcdatamodeld in Sources */,
@@ -483,6 +498,7 @@
 				C16116C32B5D7C7B003501A4 /* GJNavigationModel.swift in Sources */,
 				C1E8692E2B558DE800FDD6DA /* SummaryView.swift in Sources */,
 				C10655312B5BCFAC008C2A86 /* GJUserController.swift in Sources */,
+				C1DFAEE82B5E4EB5007CACA7 /* TestRecordView.swift in Sources */,
 				C18037E32B5BA565000FFC97 /* NewJobApplicaitonView.swift in Sources */,
 				C133F0DC2B5A6B8A00AF574C /* GJJobApplication.swift in Sources */,
 			);
