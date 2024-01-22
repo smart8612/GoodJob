@@ -40,3 +40,17 @@ struct JobApplicationsListView: View {
     }
     
 }
+
+
+fileprivate struct JobApplicationCellView: View {
+    
+    let jobApplication: GJJobApplication
+    
+    var body: some View {
+        VStack(alignment: .leading) {
+            Text(jobApplication.title)
+            Text(jobApplication.id.uuidString)
+        }
+    }
+}
+

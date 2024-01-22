@@ -38,3 +38,27 @@ struct JobPostingsListView: View {
     }
     
 }
+
+
+fileprivate struct JobPostingCellView: View {
+    
+    let jobPosting: GJJobPosting
+    
+    var body: some View {
+        VStack(alignment: .leading) {
+            Spacer()
+            HStack {
+                Text(jobPosting.jobPositionName)
+            }
+            Spacer()
+            HStack {
+                Label(jobPosting.companyName, systemImage: "building")
+                Divider()
+                Label(jobPosting.endDate.formatted(), systemImage: "calendar")
+            }
+            .lineLimit(1)
+            Spacer()
+        }
+    }
+}
+
