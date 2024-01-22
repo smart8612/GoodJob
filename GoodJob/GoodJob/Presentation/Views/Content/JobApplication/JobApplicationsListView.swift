@@ -7,15 +7,17 @@
 
 import SwiftUI
 
+
 struct JobApplicationsListView: View {
     
     @EnvironmentObject private var model: GJAppController
     @EnvironmentObject private var navigationModel: GJNavigationModel
     
     var body: some View {
+        
         NavigationStack {
             DataContainer {
-                List(selection: $navigationModel.selectedJobApplication) {
+                List {
                     ForEach(model.jobApplications) { jobApplication in
                         NavigationLink(value: jobApplication) {
                             JobApplicationCellView(
@@ -24,10 +26,17 @@ struct JobApplicationsListView: View {
                         }
                     }
                 }
+                .navigationDestination(for: GJJobApplication.self) {
+                    JobApplicationDetailView(
+                        selectedJobApplicationId: $0.id
+                    )
+                }
             } sheet: { isShowingSheet in
                 NewJobApplicaitonView(isShowingSheet: isShowingSheet)
             }
+            .navigationTitle(navigationModel.selectedCategory.name)
         }
+        
     }
     
 }

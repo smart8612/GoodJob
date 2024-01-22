@@ -9,12 +9,3 @@ import SwiftUI
 import Combine
 
 
-final class GJNavigationModel: ObservableObject {
-    
-    @Published var selectedCategory: GJAppCategory? = .summary
-    
-    @Published var selectedJobApplication: GJJobApplication? = nil
-    @Published var selectedJobPosting: GJJobPosting? = nil
-    @Published var columnVisibility: NavigationSplitViewVisibility = .all
-    
-}

@@ -7,14 +7,23 @@
 
 import SwiftUI
 
+final class GJNavigationModel: ObservableObject {
+    
+    @Published var selectedCategory: GJAppCategory = .summary
+        
+}
+
+
 struct MainTabView: View {
     
     @StateObject private var navigationModel = GJNavigationModel()
     
+    private let categories = GJAppCategory.allCategories
+    
     var body: some View {
         
-        TabView {
-            ForEach(GJAppCategory.allCases) { category in
+        TabView(selection: $navigationModel.selectedCategory) {
+            ForEach(categories) { category in
                 category.contentView
                     .tabItem {
                         Label(
@@ -22,14 +31,11 @@ struct MainTabView: View {
                             systemImage: category.symboleName
                         )
                     }
+                    .tag(category)
             }
         }
         .environmentObject(navigationModel)
         
     }
     
-}
-
-#Preview {
-    MainTabView()
 }

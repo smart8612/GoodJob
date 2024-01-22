@@ -7,14 +7,12 @@
 
 import SwiftUI
 
+
 struct JobPostingDetailView: View {
     
     @EnvironmentObject private var model: GJAppController
-    @EnvironmentObject private var navigationModel: GJNavigationModel
     
-    private var selectedJobPostingId: UUID? {
-        navigationModel.selectedJobPosting?.id
-    }
+    let selectedJobPostingId: UUID?
     
     private var jobPosting: GJJobPosting? {
         guard let selectedJobPostingId = selectedJobPostingId else {
@@ -72,6 +70,7 @@ fileprivate struct JobPostingDetailListView: View {
             }
         }
         .navigationTitle(jobPosting.jobPositionName)
+        .navigationBarTitleDisplayMode(.inline)
         
     }
 }
