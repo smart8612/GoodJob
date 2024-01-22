@@ -8,9 +8,13 @@
 import Foundation
 
 
-struct GJTestRecord: Identifiable {
+struct GJTestRecord: Identifiable, Hashable {
     
     var id: UUID = UUID()
+    
+    var jobApplicationId: UUID
+    var testId: UUID
+    
     var memo: String
     
 }

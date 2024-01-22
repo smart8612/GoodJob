@@ -261,10 +261,23 @@ final class GoodJobTests: XCTestCase {
         
         // When
         // JobPosting의 0번 테스트에 대한 메모를 생성하면
+        let createdTestRecord = model.create(testRecord: .init(
+            jobApplicationId: createdJobApplication.id,
+            testId: createdJobPosting.tests[0].id,
+            memo: "Hello World"
+        ))
         
         // Then
         // 특정 JobApplication의 테스트에 대한 기록 명단을 조회할 수 있다.
-        XCTFail()
+        let fetchedTestRecords = model.fetchTestRecords(
+            jobApplicationId: createdTestRecord.jobApplicationId,
+            testId: createdTestRecord.testId
+        ).first!
+        
+        XCTAssertTrue(
+            createdTestRecord == fetchedTestRecords &&
+            createdTestRecord.memo == "Hello World"
+        )
     }
 
 }

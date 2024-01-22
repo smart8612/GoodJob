@@ -81,6 +81,60 @@ final class GJAppController: NSObject, ObservableObject {
     
 }
 
+// MARK: Test Record Handler
+
+extension GJAppController {
+    
+    func create(testRecord: GJTestRecord) -> GJTestRecord {
+        let fetchedJobApplications = try! CDJobApplication.fetch(
+            ids: [testRecord.jobApplicationId], in: managedObjectContext
+        )
+        
+        let fetchedJobApplication = fetchedJobApplications.first!
+        
+        let fetchedTests = try! CDTest.fetch(
+            ids: [testRecord.testId], in: managedObjectContext
+        )
+        
+        let fetchedTest = fetchedTests.first!
+        
+        let createdTestRecord = CDTestRecord(
+            memo: testRecord.memo,
+            jobApplication: fetchedJobApplication,
+            test: fetchedTest,
+            context: managedObjectContext
+        )
+        
+        return createdTestRecord.convertToGJTestRecord()
+    }
+    
+    func fetchTestRecords(jobApplicationId: UUID, testId: UUID) -> [GJTestRecord] {
+        let fetchRequest = CDTestRecord.fetchRequest()
+        fetchRequest.predicate = .init(
+            format: "test_.id_ = %@",
+            testId as CVarArg
+        )
+        
+        let result = try! managedObjectContext.fetch(fetchRequest)
+        
+        return result.map { $0.convertToGJTestRecord() }
+    }
+    
+}
+
+extension CDTestRecord {
+    
+    func convertToGJTestRecord() -> GJTestRecord {
+        GJTestRecord(
+            id: self.id,
+            jobApplicationId: self.jobApplication.id,
+            testId: self.test.id,
+            memo: self.memo
+        )
+    }
+    
+}
+
 
 // MARK: JobApplication Handler
 
