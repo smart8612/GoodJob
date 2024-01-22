@@ -9,3 +9,8 @@ import SwiftUI
 import Combine
 
 
+final class GJNavigationModel: ObservableObject {
+    
+    @Published var selectedCategory: GJAppCategory = .summary
+        
+}

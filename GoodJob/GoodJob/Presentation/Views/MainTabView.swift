@@ -7,12 +7,6 @@
 
 import SwiftUI
 
-final class GJNavigationModel: ObservableObject {
-    
-    @Published var selectedCategory: GJAppCategory = .summary
-        
-}
-
 
 struct MainTabView: View {
     
