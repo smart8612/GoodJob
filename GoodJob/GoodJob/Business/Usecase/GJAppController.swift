@@ -105,17 +105,21 @@ extension GJAppController {
             context: managedObjectContext
         )
         
+        try? managedObjectContext.save()
+        
         return createdTestRecord.convertToGJTestRecord()
     }
     
     func fetchTestRecords(jobApplicationId: UUID, testId: UUID) -> [GJTestRecord] {
-        let fetchRequest = CDTestRecord.fetchRequest()
+        let fetchRequest = CDJobApplication.fetchRequest()
         fetchRequest.predicate = .init(
-            format: "test_.id_ = %@",
-            testId as CVarArg
+            format: "id_ = %@",
+            jobApplicationId as CVarArg
         )
         
-        let result = try! managedObjectContext.fetch(fetchRequest)
+        let fetchedJobApplication = try! managedObjectContext.fetch(fetchRequest).first!
+        
+        let result = fetchedJobApplication.testRecords
         
         return result.map { $0.convertToGJTestRecord() }
     }

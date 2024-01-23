@@ -84,8 +84,11 @@ fileprivate struct JobApplicationDetailListView: View {
         }
         .navigationTitle("Job Application Detail")
         .navigationBarTitleDisplayMode(.inline)
-        .navigationDestination(for: GJTest.self) {
-            TestRecordView(testId: $0.id)
+        .navigationDestination(for: GJTest.self) { test in
+            TestRecordView(
+                jobApplication: jobApplication,
+                test: test
+            )
         }
     }
     
