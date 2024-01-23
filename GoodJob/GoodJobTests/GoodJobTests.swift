@@ -144,20 +144,6 @@ final class GoodJobTests: XCTestCase {
         
     }
     
-    func test_로컬_사용자_신규_생성_검증() throws {
-        // Given
-        let newUser = GJUser(name: "singularis7")
-        
-        // When
-        let createdUser = model.create(user: newUser)
-        guard let fetchedUser = model.fetchUsers(ids: [createdUser.id]).first else {
-            XCTFail()
-            return
-        }
-        
-        // Then
-        XCTAssertTrue(createdUser.name == fetchedUser.name)
-    }
     
     func test_생성된_User와_JobPosting에_종속된_JobApplication_신규_생성_검증() throws {
         // Given

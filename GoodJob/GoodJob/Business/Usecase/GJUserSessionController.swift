@@ -23,7 +23,7 @@ final class GJUserSessionController {
         return user
     }
     
-    init(userRepository: GJUserRepository = .init(persistenceController: .shared)) {
+    init(userRepository: GJUserRepository = .init()) {
         self.userRepository = userRepository
         let user = try? createUserIfNotExist()
         self.currentUserId = user?.id

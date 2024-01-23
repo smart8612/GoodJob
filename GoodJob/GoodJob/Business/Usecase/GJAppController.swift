@@ -17,7 +17,7 @@ final class GJAppController: NSObject, ObservableObject {
     private let jobApplicationController: GJJobApplicationControlller
     private let userSessionController: GJUserSessionController
     
-    init(persistenceController: PersistenceController = PersistenceController.shared) {
+    init(persistenceController: PersistenceController = .init()) {
         self.persistenceController = persistenceController
         
         self.jobPostingController = GJJobPostingControlller(

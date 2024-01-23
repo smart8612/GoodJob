@@ -26,7 +26,7 @@ final class GJUserRepository: GJRepository {
         let fetchRequest = CDUser.fetchRequest()
         fetchRequest.predicate = NSPredicate(value: true)
         fetchRequest.sortDescriptors = [
-            NSSortDescriptor(keyPath: \CDUser.name, ascending: true)
+            NSSortDescriptor(keyPath: \CDUser.name_, ascending: true)
         ]
         
         let fetchedUsers = try managedObjectContext.fetch(fetchRequest)
@@ -37,7 +37,7 @@ final class GJUserRepository: GJRepository {
     func fetch(objectsWith ids: [UUID]) throws -> [GJUser] {
         let fetchRequest = CDUser.fetchRequest()
         fetchRequest.predicate = NSPredicate(
-            format: "%k IN %@", \CDUser.id_ as! CVarArg, ids
+            format: "id_ IN %@", ids
         )
         
         let fetchedResults = try managedObjectContext.fetch(fetchRequest)
@@ -60,7 +60,7 @@ final class GJUserRepository: GJRepository {
     func update(objectWith id: UUID, to object: GJUser) throws -> Entity {
         let userFetchRequest = CDUser.fetchRequest()
         userFetchRequest.predicate = NSPredicate(
-            format: "%k = %@", \CDUser.id_ as! CVarArg, id as CVarArg
+            format: "id_ = %@", id as CVarArg
         )
         
         let fetchedUsers = try managedObjectContext.fetch(userFetchRequest)
@@ -70,7 +70,7 @@ final class GJUserRepository: GJRepository {
         
         let jobApplicationFetchRequest = CDJobApplication.fetchRequest()
         userFetchRequest.predicate = NSPredicate(
-            format: "%k IN %@", \CDJobApplication.id_ as! CVarArg, object.jobApplicationIds
+            format: "id_ IN %@", object.jobApplicationIds
         )
         
         let fetchedJobApplications = try managedObjectContext.fetch(jobApplicationFetchRequest)
@@ -86,7 +86,7 @@ final class GJUserRepository: GJRepository {
     func delete(objectWith id: UUID) throws {
         let fetchRequest = CDUser.fetchRequest()
         fetchRequest.predicate = NSPredicate(
-            format: "%k = %@", \CDUser.id_ as! CVarArg, id as CVarArg
+            format: "id_ = %@", id as CVarArg
         )
         
         let fetchedUsers = try managedObjectContext.fetch(fetchRequest)
