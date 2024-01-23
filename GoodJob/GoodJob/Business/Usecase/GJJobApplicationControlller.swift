@@ -45,20 +45,10 @@ final class GJJobApplicationControlller: NSObject, ObservableObject {
     }
     
     func create(jobApplication: GJJobApplication, userId: UUID) -> GJJobApplication {
-        let fetchedUser = try! CDUser(context: managedObjectContext)
-        let fetchedJobPosting = try! CDJobPosting.fetch(ids: [jobApplication.jobPostingId], in: managedObjectContext).first!
-        
-        let newJobApplication = CDJobApplication(
-            title: jobApplication.title,
-            user: fetchedUser,
-            jobPosting: fetchedJobPosting,
-            testRecords: .init(),
-            context: managedObjectContext
-        )
         
         try? managedObjectContext.save()
         
-        return newJobApplication.convertToGJJobApplication()
+        return .initWithEmpty()
     }
     
     func fetchJobApplications(ids: [UUID]) -> [GJJobApplication] {

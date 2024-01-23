@@ -37,7 +37,7 @@ struct NewJobPostingView: View {
                 }
                 
                 Section {
-                    TestSectionView(jobPosting: $jobPosting)
+                    // TestSectionView(jobPosting: $jobPosting)
                     Button("Add Tests", action: addTest)
                 }
             }
@@ -53,7 +53,7 @@ struct NewJobPostingView: View {
     
     private func addTest() {
         withAnimation {
-            jobPosting.tests.append(.initWithEmpty())
+            //jobPosting.tests.append(.initWithEmpty())
         }
     }
     
@@ -68,35 +68,35 @@ struct NewJobPostingView: View {
         )
 }
 
-struct TestSectionView: View {
-    
-    @Binding var jobPosting: GJJobPosting
-    
-    private var enumeratedTests: [(Int, GJTest)] {
-        Array(jobPosting.tests.enumerated())
-    }
-    
-    var body: some View {
-        ForEach(enumeratedTests, id: \.1.id) { index, _ in
-            HStack {
-                Menu(jobPosting.tests[index].type.description) {
-                    ForEach(GJTest.TestType.allCases) { (testType: GJTest.TestType) in
-                        Button(action: { changeTestType(to: testType, at: index) }) {
-                            Text(testType.description)
-                        }
-                    }
-                }
-                Divider()
-                TextField(
-                    "Test Name",
-                    text: $jobPosting.tests[index].name
-                )
-            }
-        }
-    }
-    
-    private func changeTestType(to newTestType: GJTest.TestType, at index: Int) {
-        jobPosting.tests[index].type = newTestType
-    }
-    
-}
+//struct TestSectionView: View {
+//    
+//    @Binding var jobPosting: GJJobPosting
+//    
+//    private var enumeratedTests: [(Int, GJTest)] {
+//        Array(jobPosting.tests.enumerated())
+//    }
+//    
+//    var body: some View {
+//        ForEach(enumeratedTests, id: \.1.id) { index, _ in
+//            HStack {
+//                Menu(jobPosting.tests[index].type.description) {
+//                    ForEach(GJTest.TestType.allCases) { (testType: GJTest.TestType) in
+//                        Button(action: { changeTestType(to: testType, at: index) }) {
+//                            Text(testType.description)
+//                        }
+//                    }
+//                }
+//                Divider()
+//                TextField(
+//                    "Test Name",
+//                    text: $jobPosting.tests[index].name
+//                )
+//            }
+//        }
+//    }
+//    
+//    private func changeTestType(to newTestType: GJTest.TestType, at index: Int) {
+//        jobPosting.tests[index].type = newTestType
+//    }
+//    
+//}

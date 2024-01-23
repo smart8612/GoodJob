@@ -6,146 +6,38 @@
 //
 
 import Foundation
-import CoreData
 
 
-final class GJJobPostingControlller: NSObject, ObservableObject {
+final class GJJobPostingControlller {
     
-    private let controller: NSFetchedResultsController<CDJobPosting>
+    private let jobPostingRepository: any GJRepository<GJJobPosting>
     
-    var delegate: NSFetchedResultsControllerDelegate? {
-        get { controller.delegate }
-        set { controller.delegate = newValue }
-    }
-    
-    var managedObjectContext: NSManagedObjectContext {
-        controller.managedObjectContext
-    }
-    
-    init(managedObjectContext: NSManagedObjectContext) {
-        let fetchRequest = CDJobPosting.fetchRequest()
-        fetchRequest.sortDescriptors = [
-            NSSortDescriptor(keyPath: \CDJobPosting.createdAt_, ascending: false)
-        ]
-        
-        controller = NSFetchedResultsController(
-            fetchRequest: fetchRequest,
-            managedObjectContext: managedObjectContext,
-            sectionNameKeyPath: nil,
-            cacheName: nil
-        )
-        try? controller.performFetch()
-        super.init()
+    init(jobPostingRepository: any GJRepository<GJJobPosting>) {
+        self.jobPostingRepository = jobPostingRepository
     }
     
     var jobPostings: [GJJobPosting] {
-        (controller.fetchedObjects ?? [])
-            .map { $0.convertToGJJobPosting() }
+        (try? jobPostingRepository.fetchAll()) ?? .init()
     }
     
-    func create(jobPosting: GJJobPosting) -> GJJobPosting {
-        let newCompany = CDCompany(
-            name: jobPosting.companyName,
-            context: managedObjectContext
-        )
-        
-        let newJobPosition = CDJobPosition(
-            name: jobPosting.jobPositionName,
-            workplaceLocation: jobPosting.workplaceLocation,
-            recruitNumbers: Int(jobPosting.recruitNumbers) ?? .zero,
-            startDate: jobPosting.startDate,
-            endDate: jobPosting.endDate,
-            context: managedObjectContext
-        )
-        
-        let newTests = jobPosting.tests.enumerated().reduce(into: Set<CDTest>()) { (partialResult, enumeratedData) in
-            let (index, test) = enumeratedData
-            partialResult.insert(
-                CDTest(
-                    order: index,
-                    name: test.name,
-                    testType: CDTest.TestType(rawValue: test.type.rawValue) ?? .writtenTest,
-                    context: managedObjectContext
-                )
-            )
-        }
-        
-        let newJobPosting = CDJobPosting(
-            link: jobPosting.link,
-            company: newCompany,
-            jobPosition: newJobPosition,
-            tests: newTests,
-            context: managedObjectContext
-        )
-        
-        try? managedObjectContext.save()
-        
-        let result = newJobPosting.convertToGJJobPosting()
-        return result
-    }
-    
-    func fetchJobPostings(ids: [UUID]) -> [GJJobPosting] {
-        guard let fetchedJobPostings = try? CDJobPosting.fetch(ids: ids, in: managedObjectContext) else {
-            return .init()
-        }
-        
-        let convertedJobPostings = fetchedJobPostings.map { $0.convertToGJJobPosting() }
-        return convertedJobPostings
+    func fetchJobPostings(ids: [UUID]) throws -> [GJJobPosting] {
+        try jobPostingRepository.fetch(objectsWith: ids)
     }
     
     func fetchJobApplicationRegistableJobPostings() -> [GJJobPosting] {
-        let fetchRequest = CDJobPosting.fetchRequest()
-        fetchRequest.predicate = NSPredicate(format: "jobApplication_ == nil")
-        fetchRequest.sortDescriptors = [
-            NSSortDescriptor(keyPath: \CDJobPosting.createdAt_, ascending: false)
-        ]
-        
-        guard let fetchedJobPostings = try? managedObjectContext.fetch(fetchRequest) else {
-            return .init()
-        }
-        
-        return fetchedJobPostings.map { $0.convertToGJJobPosting() }
+        jobPostings.filter { $0.jobApplicationId == nil }
     }
     
-    func deleteJobPostings(ids: [UUID]) {
-        try? CDJobPosting.delete(ids: ids, in: managedObjectContext)
+    func create(jobPosting: GJJobPosting) throws -> GJJobPosting {
+        try jobPostingRepository.create(object: jobPosting)
     }
     
-}
-
-
-fileprivate extension CDJobPosting {
-    
-    func convertToGJJobPosting() -> GJJobPosting {
-        let convertedTests = Array(self.tests)
-            .sorted { lhs, rhs in lhs.order < rhs.order }
-            .map { $0.convertToGJTest() }
-    
-        return GJJobPosting(
-            id: self.id,
-            companyName: self.company.name,
-            jobPositionName: self.jobPosition.name,
-            workplaceLocation: self.jobPosition.workplaceLocation,
-            recruitNumbers: String(self.jobPosition.recruitNumbers),
-            link: self.link,
-            startDate: self.jobPosition.startDate,
-            endDate: self.jobPosition.endDate,
-            tests: convertedTests
-        )
+    func updateJobPosting(id: UUID, to object: GJJobPosting) throws -> GJJobPosting {
+        try jobPostingRepository.update(objectWith: id, to: object)
     }
     
-}
-
-fileprivate extension CDTest {
-    
-    func convertToGJTest() -> GJTest {
-        let testType = GJTest.TestType(rawValue: self.testType.rawValue) ?? .writtenTest
-        
-        return GJTest(
-            id: self.id,
-            name: self.name,
-            type: testType
-        )
+    func deleteJobPosting(id: UUID) throws {
+        try jobPostingRepository.delete(objectWith: id)
     }
     
 }

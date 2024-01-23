@@ -72,14 +72,14 @@ fileprivate struct JobApplicationDetailListView: View {
             }
             
             Section {
-                ForEach(jobPosting.tests) { test in
-                    NavigationLink(value: test) {
-                        VStack(alignment: .leading) {
-                            Text(test.type.description)
-                            Text(test.name)
-                        }
-                    }
-                }
+//                ForEach(jobPosting.tests) { test in
+//                    NavigationLink(value: test) {
+//                        VStack(alignment: .leading) {
+//                            Text(test.type.description)
+//                            Text(test.name)
+//                        }
+//                    }
+//                }
             }
         }
         .navigationTitle("Job Application Detail")

@@ -15,6 +15,9 @@ struct GJTest: Identifiable, Hashable {
     var name: String
     var type: TestType
     
+    var jobPosting: GJJobPosting
+    var testRecord: GJTestRecord?
+    
     enum TestType: Int, Identifiable, CaseIterable, CustomStringConvertible {
         
         case writtenTest = 0
@@ -37,7 +40,9 @@ struct GJTest: Identifiable, Hashable {
     static func initWithEmpty() -> Self {
         Self(
             name: .init(),
-            type: .writtenTest
+            type: .writtenTest,
+            jobPosting: .initWithEmpty(),
+            testRecord: nil
         )
     }
     

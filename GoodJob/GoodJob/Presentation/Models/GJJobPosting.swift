@@ -12,7 +12,7 @@ struct GJJobPosting: Identifiable, Hashable {
     
     var id: UUID = UUID()
     var link: String
-    var createdAt: Date
+    var createdAt: Date = .now
     
     var companyName: String
     

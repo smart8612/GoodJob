@@ -12,7 +12,7 @@ final class GJUserSessionController {
     
     static let shared: GJUserSessionController = .init()
     
-    private let userRepository: GJUserRepository
+    private let userRepository: any GJRepository<GJUser>
     private var currentUserId: UUID?
     
     var currentUser: GJUser? {
@@ -23,7 +23,7 @@ final class GJUserSessionController {
         return user
     }
     
-    init(userRepository: GJUserRepository = .init()) {
+    init(userRepository: any GJRepository<GJUser> = GJUserRepository()) {
         self.userRepository = userRepository
         let user = try? createUserIfNotExist()
         self.currentUserId = user?.id

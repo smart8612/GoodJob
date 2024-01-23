@@ -131,7 +131,7 @@ fileprivate extension CDJobPosting {
     func convertToGJJobPosting() -> GJJobPosting {
         GJJobPosting(
             id: self.id,
-            link: self.company.name,
+            link: self.link,
             createdAt: self.createdAt,
             companyName: self.company.name,
             jobPositionName: self.jobPosition.name,

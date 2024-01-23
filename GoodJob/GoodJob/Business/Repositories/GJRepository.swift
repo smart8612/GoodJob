@@ -8,7 +8,7 @@
 import Foundation
 
 
-protocol GJRepository {
+protocol GJRepository<Entity> {
     
     associatedtype Entity: Identifiable
     

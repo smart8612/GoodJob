@@ -13,26 +13,30 @@ final class GJAppController: NSObject, ObservableObject {
     
     private let persistenceController: PersistenceController
     
+    private let userSessionController: GJUserSessionController
     private let jobPostingController: GJJobPostingControlller
     private let jobApplicationController: GJJobApplicationControlller
-    private let userSessionController: GJUserSessionController
     
     init(persistenceController: PersistenceController = .init()) {
         self.persistenceController = persistenceController
         
-        self.jobPostingController = GJJobPostingControlller(
-            managedObjectContext: persistenceController.managedObjectContext
+        self.userSessionController = GJUserSessionController(
+            userRepository: GJUserRepository(
+                persistenceController: persistenceController
+            )
         )
+        
+        self.jobPostingController = GJJobPostingControlller(
+            jobPostingRepository: GJJobPostingRepository(
+                persistenceController: persistenceController
+            )
+        )
+        
         self.jobApplicationController = GJJobApplicationControlller(
             managedObjectContext: persistenceController.managedObjectContext
         )
-        self.userSessionController = GJUserSessionController(
-            userRepository: .init(persistenceController: persistenceController)
-        )
         
         super.init()
-        
-        jobPostingController.delegate = self
         jobApplicationController.delegate = self
     }
     
@@ -40,44 +44,44 @@ final class GJAppController: NSObject, ObservableObject {
         persistenceController.managedObjectContext
     }
     
-    static func initWithPreview() -> Self {
-        let model = Self.init(persistenceController: .init(inMemory: true))
-        
-        let post = model.create(jobPosting: .init(
-            companyName: "Apple",
-            jobPositionName: "iOS Developer",
-            workplaceLocation: "USA",
-            recruitNumbers: "100",
-            link: "https://www.apple.com",
-            startDate: .now,
-            endDate: .init(timeIntervalSinceNow: 259200),
-            tests: [
-                .init(name: "apple test1", type: .writtenTest),
-                .init(name: "apple test2", type: .inteview)
-            ]
-        ))
-        
-        let _ = model.create(jobPosting: .init(
-            companyName: "Samsung",
-            jobPositionName: "Android Developer",
-            workplaceLocation: "South Korea",
-            recruitNumbers: "100",
-            link: "https://www.samsung.com",
-            startDate: .init(timeIntervalSinceNow: 259200),
-            endDate: .init(timeIntervalSinceNow: 259200 * 2),
-            tests: [
-                .init(name: "samsung test1", type: .writtenTest),
-                .init(name: "samsung test2", type: .inteview)
-            ]
-        ))
-        
-        let _ = model.create(jobApplication: .init(
-            jobPostingId: post.id,
-            title: "My Job Application"
-        ))
-        
-        return model
-    }
+//    static func initWithPreview() -> Self {
+//        let model = Self.init(persistenceController: .init(inMemory: true))
+//        
+//        let post = model.create(jobPosting: .init(
+//            companyName: "Apple",
+//            jobPositionName: "iOS Developer",
+//            workplaceLocation: "USA",
+//            recruitNumbers: "100",
+//            link: "https://www.apple.com",
+//            startDate: .now,
+//            endDate: .init(timeIntervalSinceNow: 259200),
+//            tests: [
+//                .init(name: "apple test1", type: .writtenTest),
+//                .init(name: "apple test2", type: .inteview)
+//            ]
+//        ))
+//        
+//        let _ = model.create(jobPosting: .init(
+//            companyName: "Samsung",
+//            jobPositionName: "Android Developer",
+//            workplaceLocation: "South Korea",
+//            recruitNumbers: "100",
+//            link: "https://www.samsung.com",
+//            startDate: .init(timeIntervalSinceNow: 259200),
+//            endDate: .init(timeIntervalSinceNow: 259200 * 2),
+//            tests: [
+//                .init(name: "samsung test1", type: .writtenTest),
+//                .init(name: "samsung test2", type: .inteview)
+//            ]
+//        ))
+//        
+//        let _ = model.create(jobApplication: .init(
+//            jobPostingId: post.id,
+//            title: "My Job Application"
+//        ))
+//        
+//        return model
+//    }
     
 }
 
@@ -172,11 +176,11 @@ extension GJAppController {
     
     @discardableResult
     func create(jobPosting: GJJobPosting) -> GJJobPosting {
-        return jobPostingController.create(jobPosting: jobPosting)
+        return try! jobPostingController.create(jobPosting: jobPosting)
     }
     
     func fetchJobPostings(ids: [UUID]) -> [GJJobPosting] {
-        return jobPostingController.fetchJobPostings(ids: ids)
+        return try! jobPostingController.fetchJobPostings(ids: ids)
     }
     
     // MARK: To-Do
@@ -186,8 +190,9 @@ extension GJAppController {
     }
     
     func deleteJobPostings(on offsets: IndexSet) {
-        let postIds = offsets.compactMap { jobPostings[$0].id }
-        jobPostingController.deleteJobPostings(ids: postIds)
+        offsets
+            .compactMap { jobPostings[$0].id }
+            .forEach { try! jobPostingController.deleteJobPosting(id: $0) }
     }
     
 }

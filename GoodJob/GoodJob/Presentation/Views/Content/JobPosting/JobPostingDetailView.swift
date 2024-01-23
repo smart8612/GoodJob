@@ -60,13 +60,13 @@ fileprivate struct JobPostingDetailListView: View {
             }
             
             Section {
-                ForEach(jobPosting.tests) { test in
-                    HStack {
-                        Text(test.type.description)
-                        Divider()
-                        Text(test.name)
-                    }
-                }
+//                ForEach(jobPosting.tests) { test in
+//                    HStack {
+//                        Text(test.type.description)
+//                        Divider()
+//                        Text(test.name)
+//                    }
+//                }
             }
         }
         .navigationTitle("Jobs Details")

@@ -29,7 +29,7 @@ struct JobPostingsListView: View {
                     JobPostingDetailView(selectedJobPostingId: $0.id)
                 }
             } sheet: { isShowingSheet in
-                NewJobPostingView(isShowingSheet: isShowingSheet)
+                 NewJobPostingView(isShowingSheet: isShowingSheet)
             }
             .navigationTitle(navigationModel.selectedCategory.name)
             
