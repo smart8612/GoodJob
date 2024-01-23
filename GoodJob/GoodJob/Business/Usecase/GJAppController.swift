@@ -15,7 +15,7 @@ final class GJAppController: NSObject, ObservableObject {
     
     private let jobPostingController: GJJobPostingControlller
     private let jobApplicationController: GJJobApplicationControlller
-    private let userController: GJUserSessionController
+    private let userSessionController: GJUserSessionController
     
     init(persistenceController: PersistenceController = PersistenceController.shared) {
         self.persistenceController = persistenceController
@@ -26,7 +26,7 @@ final class GJAppController: NSObject, ObservableObject {
         self.jobApplicationController = GJJobApplicationControlller(
             managedObjectContext: persistenceController.managedObjectContext
         )
-        self.userController = GJUserSessionController(
+        self.userSessionController = GJUserSessionController(
             userRepository: .init(persistenceController: persistenceController)
         )
         
@@ -148,8 +148,12 @@ extension GJAppController {
         jobApplicationController.jobApplications
     }
     
+    var currentUser: GJUser? {
+        userSessionController.currentUser
+    }
+    
     func create(jobApplication: GJJobApplication) -> GJJobApplication {
-        return jobApplicationController.create(jobApplication: jobApplication, userId: currentUser.id)
+        return jobApplicationController.create(jobApplication: jobApplication, userId: currentUser!.id)
     }
     
     func fetchJobApplications(ids: [UUID]) -> [GJJobApplication] {

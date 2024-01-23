@@ -13,11 +13,20 @@ final class GJUserSessionController {
     static let shared: GJUserSessionController = .init()
     
     private let userRepository: GJUserRepository
-    private var currentUser: GJUser?
+    private var currentUserId: UUID?
+    
+    var currentUser: GJUser? {
+        guard let currentUserId = currentUserId else {
+            return nil
+        }
+        let user = try? userRepository.fetch(objectsWith: [currentUserId]).first
+        return user
+    }
     
     init(userRepository: GJUserRepository = .init(persistenceController: .shared)) {
         self.userRepository = userRepository
-        self.currentUser = try? createUserIfNotExist()
+        let user = try? createUserIfNotExist()
+        self.currentUserId = user?.id
     }
     
     private func createUserIfNotExist() throws -> GJUser {
