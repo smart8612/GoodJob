@@ -11,31 +11,38 @@ import CoreData
 
 final class GJUserController {
     
-    private var currentUser: CDUser
+    static let shared: GJUserController = .init()
     
-    private let managedObjectContext: NSManagedObjectContext
+    private var currentUser: CDUser?
     
-    init(managedObjectContext: NSManagedObjectContext) {
-        self.managedObjectContext = managedObjectContext
+    private let persistencController: PersistenceController
+    private var managedObjectContext: NSManagedObjectContext {
+        persistencController.managedObjectContext
+    }
+    
+    init(persistenceController: PersistenceController = .shared) {
+        self.persistencController = persistenceController
+        self.currentUser = Self.createUserOnFirstLaunch(
+            persistenceController: persistenceController
+        )
+    }
+    
+    private static func createUserOnFirstLaunch(persistenceController: PersistenceController) -> CDUser? {
+        let managedObjectContext = persistenceController.managedObjectContext
         
         let fetchRequest = CDUser.fetchRequest()
         let fetchedUsers = try? managedObjectContext.fetch(fetchRequest)
         
         guard let user = fetchedUsers?.first else {
-            self.currentUser = Self.createUserIfNeeded(context: managedObjectContext)
-            return
+            let username = "User" + String(Int.random(in: 1000...9999))
+            return CDUser(
+                name: username,
+                jobApplications: .init(),
+                context: managedObjectContext
+            )
         }
         
-        self.currentUser = user
-    }
-    
-    private static func createUserIfNeeded(context: NSManagedObjectContext) -> CDUser {
-        let username = "User" + String(Int.random(in: 1000...9999))
-        return CDUser(
-            name: username,
-            jobApplications: .init(),
-            context: context
-        )
+        return user
     }
     
 }
@@ -45,8 +52,8 @@ final class GJUserController {
 
 extension GJUserController {
     
-    var current: GJUser {
-        currentUser.convertToGJUser()
+    var current: GJUser? {
+        currentUser?.convertToGJUser()
     }
     
     func create(user: GJUser) -> GJUser {
