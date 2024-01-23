@@ -88,7 +88,7 @@ struct NewTestRecordView: View {
     }
     
     private func addAction() {
-        let _ = model.create(testRecord: testRecord)
+        //let _ = model.create(testRecord: testRecord)
         isShowingSheet.toggle()
     }
     

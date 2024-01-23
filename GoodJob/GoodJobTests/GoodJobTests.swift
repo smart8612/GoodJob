@@ -24,43 +24,7 @@ final class GoodJobTests: XCTestCase {
     }
     
 
-//    
-//    func test_채용시험정보_Test_포함_JobPosting_생성_검증() {
-//        // Given
-//        let newTests = [
-//            GJTest(name: "first written test", type: .writtenTest),
-//            GJTest(name: "second meeting interview test", type: .inteview)
-//        ]
-//        
-//        let newJobPosting = GJJobPosting(
-//            companyName: "Apple",
-//            jobPositionName: "iOS Developer",
-//            workplaceLocation: "USA",
-//            recruitNumbers: "10",
-//            link: "https://www.apple.com",
-//            startDate: .now,
-//            endDate: Date(timeInterval: 259200, since: .now),
-//            tests: newTests
-//        )
-//        
-//        // When
-//        let createdJobPosting = model.create(jobPosting: newJobPosting)
-//        guard let fetchedJobPosting = model.fetchJobPostings(ids: [createdJobPosting.id]).first else {
-//            XCTFail()
-//            return
-//        }
-//        let fetchedTests = fetchedJobPosting.tests
-//        
-//        // Then
-//        XCTAssertTrue(
-//            fetchedTests[0].name == newTests[0].name &&
-//            fetchedTests[0].type == fetchedTests[0].type &&
-//            fetchedTests[1].name == newTests[1].name &&
-//            fetchedTests[1].type == newTests[1].type
-//        )
-//        
-//    }
-//    
+
 //    
 //    func test_생성된_User와_JobPosting에_종속된_JobApplication_신규_생성_검증() throws {
 //        // Given

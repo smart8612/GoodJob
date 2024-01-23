@@ -89,30 +89,30 @@ final class GJAppController: NSObject, ObservableObject {
 
 extension GJAppController {
     
-    func create(testRecord: GJTestRecord) -> GJTestRecord {
-        let fetchedJobApplications = try! CDJobApplication.fetch(
-            ids: [testRecord.jobApplicationId], in: managedObjectContext
-        )
-        
-        let fetchedJobApplication = fetchedJobApplications.first!
-        
-        let fetchedTests = try! CDTest.fetch(
-            ids: [testRecord.testId], in: managedObjectContext
-        )
-        
-        let fetchedTest = fetchedTests.first!
-        
-        let createdTestRecord = CDTestRecord(
-            memo: testRecord.memo,
-            jobApplication: fetchedJobApplication,
-            test: fetchedTest,
-            context: managedObjectContext
-        )
-        
-        try? managedObjectContext.save()
-        
-        return createdTestRecord.convertToGJTestRecord()
-    }
+//    func create(testRecord: GJTestRecord) -> GJTestRecord {
+//        let fetchedJobApplications = try! CDJobApplication.fetch(
+//            ids: [testRecord.jobApplicationId], in: managedObjectContext
+//        )
+//        
+//        let fetchedJobApplication = fetchedJobApplications.first!
+//        
+//        let fetchedTests = try! CDTest.fetch(
+//            ids: [testRecord.testId], in: managedObjectContext
+//        )
+//        
+//        let fetchedTest = fetchedTests.first!
+//        
+//        let createdTestRecord = CDTestRecord(
+//            memo: testRecord.memo,
+//            jobApplication: fetchedJobApplication,
+//            test: fetchedTest,
+//            context: managedObjectContext
+//        )
+//        
+//        try? managedObjectContext.save()
+//        
+//        return createdTestRecord.convertToGJTestRecord()
+//    }
     
     func fetchTestRecords(jobApplicationId: UUID, testId: UUID) -> [GJTestRecord] {
         let fetchRequest = CDJobApplication.fetchRequest()
