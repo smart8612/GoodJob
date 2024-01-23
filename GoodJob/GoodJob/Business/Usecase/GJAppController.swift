@@ -27,7 +27,7 @@ final class GJAppController: NSObject, ObservableObject {
             managedObjectContext: persistenceController.managedObjectContext
         )
         self.userController = GJUserController(
-            managedObjectContext: persistenceController.managedObjectContext
+            persistenceController: persistenceController
         )
         
         super.init()
@@ -162,8 +162,8 @@ extension GJAppController {
 
 extension GJAppController {
     
-    var currentUser: GJUser {
-        userController.current
+    var currentUser: GJUser? {
+        userController?.current
     }
     
     func create(user: GJUser) -> GJUser {

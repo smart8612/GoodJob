@@ -78,11 +78,3 @@ extension GJUserController {
     }
     
 }
-
-fileprivate extension CDUser {
-    
-    func convertToGJUser() -> GJUser {
-        GJUser(id: self.id, name: self.name)
-    }
-    
-}

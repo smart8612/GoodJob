@@ -12,5 +12,6 @@ struct GJUser: Identifiable, Hashable {
     
     var id: UUID = UUID()
     var name: String
+    var jobApplicationIds: Set<UUID>
     
 }

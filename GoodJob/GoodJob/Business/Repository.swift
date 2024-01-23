@@ -12,9 +12,10 @@ protocol Repository {
     
     associatedtype Entity: Identifiable
     
-    func fetch(predicate: NSPredicate?, sortDescriptors: [NSSortDescriptor]?) throws -> [Entity]
-    func create() throws -> Entity
-    func update(objectWithId: UUID, to object: Entity) throws -> Entity
-    func delete(objectWithId: UUID) throws
+    func fetchAll() throws -> [Entity]
+    func fetch(objectsWith ids: [UUID]) throws -> [Entity]
+    func create(object: Entity) throws -> Entity
+    func update(objectWith id: UUID, to object: Entity) throws -> Entity
+    func delete(objectWith id: UUID) throws
     
 }
