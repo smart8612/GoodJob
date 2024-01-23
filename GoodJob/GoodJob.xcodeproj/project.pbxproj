@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		C1052E3C2B5B800500B27620 /* JobApplicationsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1052E3B2B5B800500B27620 /* JobApplicationsListView.swift */; };
 		C1052E412B5B945C00B27620 /* DataContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1052E402B5B945C00B27620 /* DataContainer.swift */; };
-		C10655312B5BCFAC008C2A86 /* GJUserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10655302B5BCFAC008C2A86 /* GJUserController.swift */; };
+		C10655312B5BCFAC008C2A86 /* GJUserSessionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10655302B5BCFAC008C2A86 /* GJUserSessionController.swift */; };
 		C133F0D42B5A4BB300AF574C /* CDUser+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C133F0D32B5A4BB300AF574C /* CDUser+Extensions.swift */; };
 		C133F0D62B5A4D2B00AF574C /* CDJobApplication+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C133F0D52B5A4D2B00AF574C /* CDJobApplication+Extensions.swift */; };
 		C133F0D82B5A501600AF574C /* CDTestRecord+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C133F0D72B5A501600AF574C /* CDTestRecord+Extensions.swift */; };
@@ -68,7 +68,7 @@
 /* Begin PBXFileReference section */
 		C1052E3B2B5B800500B27620 /* JobApplicationsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobApplicationsListView.swift; sourceTree = "<group>"; };
 		C1052E402B5B945C00B27620 /* DataContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataContainer.swift; sourceTree = "<group>"; };
-		C10655302B5BCFAC008C2A86 /* GJUserController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GJUserController.swift; sourceTree = "<group>"; };
+		C10655302B5BCFAC008C2A86 /* GJUserSessionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GJUserSessionController.swift; sourceTree = "<group>"; };
 		C133F0D32B5A4BB300AF574C /* CDUser+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CDUser+Extensions.swift"; sourceTree = "<group>"; };
 		C133F0D52B5A4D2B00AF574C /* CDJobApplication+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CDJobApplication+Extensions.swift"; sourceTree = "<group>"; };
 		C133F0D72B5A501600AF574C /* CDTestRecord+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CDTestRecord+Extensions.swift"; sourceTree = "<group>"; };
@@ -178,11 +178,20 @@
 			isa = PBXGroup;
 			children = (
 				C19BC52F2B57A4F3004E78F6 /* GJAppController.swift */,
-				C10655302B5BCFAC008C2A86 /* GJUserController.swift */,
+				C10655302B5BCFAC008C2A86 /* GJUserSessionController.swift */,
 				C19BC5342B57BA32004E78F6 /* GJJobPostingControlller.swift */,
 				C18037E42B5BABD4000FFC97 /* GJJobApplicationControlller.swift */,
 			);
 			path = Usecase;
+			sourceTree = "<group>";
+		};
+		C16765962B5FADF50062ACCC /* Repositories */ = {
+			isa = PBXGroup;
+			children = (
+				C167658D2B5F7B420062ACCC /* GJRepository.swift */,
+				C16765922B5F95980062ACCC /* GJUserRepository.swift */,
+			);
+			path = Repositories;
 			sourceTree = "<group>";
 		};
 		C1704EA42B57F34500146201 /* Extensions */ = {
@@ -211,9 +220,8 @@
 		C19BC52D2B57A43A004E78F6 /* Business */ = {
 			isa = PBXGroup;
 			children = (
-				C167658D2B5F7B420062ACCC /* GJRepository.swift */,
-				C16765922B5F95980062ACCC /* GJUserRepository.swift */,
 				C1414DEA2B56696C00EA180F /* Usecase */,
+				C16765962B5FADF50062ACCC /* Repositories */,
 			);
 			path = Business;
 			sourceTree = "<group>";
@@ -505,7 +513,7 @@
 				C1704EA12B57EBCD00146201 /* CDCompany+Extensions.swift in Sources */,
 				C16116C32B5D7C7B003501A4 /* GJNavigationModel.swift in Sources */,
 				C1E8692E2B558DE800FDD6DA /* SummaryView.swift in Sources */,
-				C10655312B5BCFAC008C2A86 /* GJUserController.swift in Sources */,
+				C10655312B5BCFAC008C2A86 /* GJUserSessionController.swift in Sources */,
 				C1DFAEE82B5E4EB5007CACA7 /* TestRecordView.swift in Sources */,
 				C18037E32B5BA565000FFC97 /* NewJobApplicaitonView.swift in Sources */,
 				C133F0DC2B5A6B8A00AF574C /* GJJobApplication.swift in Sources */,
