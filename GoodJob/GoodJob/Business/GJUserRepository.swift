@@ -1,5 +1,5 @@
 //
-//  UserRepository.swift
+//  GJUserRepository.swift
 //  GoodJob
 //
 //  Created by JeongTaek Han on 1/23/24.
@@ -9,7 +9,7 @@ import Foundation
 import CoreData
 
 
-final class UserRepository: Repository {
+final class GJUserRepository: GJRepository {
     
     typealias Entity = GJUser
     

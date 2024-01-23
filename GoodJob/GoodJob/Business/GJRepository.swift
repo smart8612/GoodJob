@@ -1,5 +1,5 @@
 //
-//  Repository.swift
+//  GJRepository.swift
 //  GoodJob
 //
 //  Created by JeongTaek Han on 1/23/24.
@@ -8,7 +8,7 @@
 import Foundation
 
 
-protocol Repository {
+protocol GJRepository {
     
     associatedtype Entity: Identifiable
     
