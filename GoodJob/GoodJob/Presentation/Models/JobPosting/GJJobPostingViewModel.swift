@@ -15,9 +15,9 @@ final class GJJobPostingViewModel: ObservableObject {
     private let jobPostingController: GJJobPostingControlller
     
     init() {
-        let jobPostingRepository = GJJobPostingRepository()
         self.jobPostingController = GJJobPostingControlller(
-            jobPostingRepository: jobPostingRepository
+            jobPostingRepository: GJJobPostingRepository(),
+            testRepository: GJTestRepository()
         )
         fetchJobPostings()
     }

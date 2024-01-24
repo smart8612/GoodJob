@@ -11,9 +11,14 @@ import Foundation
 final class GJJobPostingControlller {
     
     private let jobPostingRepository: any GJRepository<GJJobPosting>
+    private let testRepository: any GJRepository<GJTest>
     
-    init(jobPostingRepository: any GJRepository<GJJobPosting>) {
+    init(
+        jobPostingRepository: any GJRepository<GJJobPosting>,
+        testRepository: any GJRepository<GJTest>
+    ) {
         self.jobPostingRepository = jobPostingRepository
+        self.testRepository = testRepository
     }
     
     func fetchAllJobPostings() throws -> [GJJobPosting] {
@@ -29,8 +34,29 @@ final class GJJobPostingControlller {
         return jobPostings.filter { $0.jobApplicationId == nil }
     }
     
-    func create(jobPosting: GJJobPosting) throws -> GJJobPosting {
-        try jobPostingRepository.create(object: jobPosting)
+//    func fetchTests(belongsToJobPosting id: UUID) throws -> [GJTest] {
+//        
+//    }
+    
+    func create(jobPosting: GJJobPosting, tests: [GJTest]) throws -> GJJobPosting {
+        let createdJobPosting = try jobPostingRepository.create(object: jobPosting)
+        let createdTests = try tests
+            .map {
+                var test = $0
+                test.jobPostingId = createdJobPosting.id
+                return test
+            }
+            .map { try testRepository.create(object: $0) }
+        
+        let fetchedResults = try jobPostingRepository.fetch(
+            objectsWith: [createdJobPosting.id]
+        )
+        
+        guard let fetchedResult = fetchedResults.first else {
+            throw GJJobPostingControlllerError.jobPostingCreationFail
+        }
+        
+        return fetchedResult
     }
     
     func updateJobPosting(id: UUID, to object: GJJobPosting) throws -> GJJobPosting {
@@ -39,6 +65,10 @@ final class GJJobPostingControlller {
     
     func deleteJobPosting(id: UUID) throws {
         try jobPostingRepository.delete(objectWith: id)
+    }
+    
+    enum GJJobPostingControlllerError: Error {
+        case jobPostingCreationFail
     }
     
 }

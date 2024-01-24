@@ -32,6 +32,7 @@ struct JobPostingsListView: View {
                  NewJobPostingView(isShowingSheet: isShowingSheet)
             }
             .navigationTitle(navigationModel.selectedCategory.name)
+            .environmentObject(model)
             
         }
        

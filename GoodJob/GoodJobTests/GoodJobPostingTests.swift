@@ -24,7 +24,8 @@ final class GoodJobPostingTests: XCTestCase {
             persistenceController: persistenceController
         )
         self.jobPostingController = GJJobPostingControlller(
-            jobPostingRepository: jobPostingRepository
+            jobPostingRepository: jobPostingRepository,
+            testRepository: testRepository
         )
     }
 

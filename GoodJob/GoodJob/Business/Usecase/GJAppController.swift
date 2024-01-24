@@ -29,6 +29,9 @@ final class GJAppController: NSObject, ObservableObject {
         self.jobPostingController = GJJobPostingControlller(
             jobPostingRepository: GJJobPostingRepository(
                 persistenceController: persistenceController
+            ),
+            testRepository: GJTestRepository(
+                persistenceController: persistenceController
             )
         )
         
@@ -169,12 +172,6 @@ extension GJAppController {
 // MARK: JobPosting Handler
 
 extension GJAppController {
-    
-    
-    @discardableResult
-    func create(jobPosting: GJJobPosting) -> GJJobPosting {
-        return try! jobPostingController.create(jobPosting: jobPosting)
-    }
     
     func fetchJobPostings(ids: [UUID]) -> [GJJobPosting] {
         return try! jobPostingController.fetchJobPostings(ids: ids)

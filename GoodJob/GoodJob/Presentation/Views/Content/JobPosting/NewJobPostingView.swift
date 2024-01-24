@@ -10,93 +10,77 @@ import SwiftUI
 
 struct NewJobPostingView: View {
     
-    @EnvironmentObject var model: GJAppController
-    
+    @StateObject private var model = GJNewJobPostingViewModel()
     @Binding var isShowingSheet: Bool
-    
-    @State private var jobPosting = GJJobPosting.initWithEmpty()
     
     var body: some View {
         
         DataCreationContainer(isShowingSheet: $isShowingSheet, addAction: addAction) {
             Form {
                 Section {
-                    TextField("Company Name", text: $jobPosting.companyName)
+                    TextField("Company Name", 
+                              text: $model.newJobPosting.companyName)
                 }
                 
                 Section {
-                    TextField("Job Position", text: $jobPosting.jobPositionName)
-                    TextField("Workplace Location", text: $jobPosting.workplaceLocation)
-                    TextField("Recruitment Numbers", text: $jobPosting.recruitNumbers)
-                    TextField("Job Posting Link", text: $jobPosting.link)
+                    TextField("Job Position", 
+                              text: $model.newJobPosting.jobPositionName)
+                    TextField("Workplace Location", 
+                              text: $model.newJobPosting.workplaceLocation)
+                    TextField("Recruitment Numbers", 
+                              text: $model.newJobPosting.recruitNumbers)
+                    TextField("Job Posting Link", 
+                              text: $model.newJobPosting.link)
                 }
                 
                 Section {
-                    DatePicker(selection: $jobPosting.startDate, label: { Text("Starts") })
-                    DatePicker(selection: $jobPosting.endDate, label: { Text("Ends") })
+                    DatePicker(selection: $model.newJobPosting.startDate) {
+                        Text("Starts")
+                    }
+                    DatePicker(selection: $model.newJobPosting.endDate) {
+                        Text("Ends")
+                    }
                 }
                 
                 Section {
-                    // TestSectionView(jobPosting: $jobPosting)
-                    Button("Add Tests", action: addTest)
+                    TestSectionView()
+                    Button("Add Tests", action: model.addEmptyTest)
                 }
             }
             .navigationTitle("New Job")
+            .environmentObject(model)
         }
         
     }
     
     private func addAction() {
-        model.create(jobPosting: jobPosting)
+        model.createNewJobPosting()
         isShowingSheet.toggle()
     }
     
-    private func addTest() {
-        withAnimation {
-            //jobPosting.tests.append(.initWithEmpty())
+}
+
+struct TestSectionView: View {
+    
+    @EnvironmentObject private var model: GJNewJobPostingViewModel
+    
+    var body: some View {
+        ForEach(model.enumeratedTests, id: \.1.id) { index, test in
+            HStack {
+                Menu(test.type.description) {
+                    ForEach(GJTest.TestType.allCases) { testType in
+                        Button(action: { model.changeTestType(to: testType, at: index) }) {
+                            Text(testType.description)
+                        }
+                    }
+                }
+                Divider()
+                TextField(
+                    "Test Name",
+                    text: $model.newTests[index].name
+                )
+            }
         }
     }
     
 }
-
-#Preview {
-    NewJobPostingView(isShowingSheet: .constant(true))
-        .environmentObject(
-            GJAppController(
-                persistenceController: .init(inMemory: true)
-            )
-        )
-}
-
-//struct TestSectionView: View {
-//    
-//    @Binding var jobPosting: GJJobPosting
-//    
-//    private var enumeratedTests: [(Int, GJTest)] {
-//        Array(jobPosting.tests.enumerated())
-//    }
-//    
-//    var body: some View {
-//        ForEach(enumeratedTests, id: \.1.id) { index, _ in
-//            HStack {
-//                Menu(jobPosting.tests[index].type.description) {
-//                    ForEach(GJTest.TestType.allCases) { (testType: GJTest.TestType) in
-//                        Button(action: { changeTestType(to: testType, at: index) }) {
-//                            Text(testType.description)
-//                        }
-//                    }
-//                }
-//                Divider()
-//                TextField(
-//                    "Test Name",
-//                    text: $jobPosting.tests[index].name
-//                )
-//            }
-//        }
-//    }
-//    
-//    private func changeTestType(to newTestType: GJTest.TestType, at index: Int) {
-//        jobPosting.tests[index].type = newTestType
-//    }
-//    
-//}
