@@ -29,14 +29,25 @@ final class GJJobPostingControlller {
         try jobPostingRepository.fetch(objectsWith: ids)
     }
     
+    func fetchJobPosting(with id: UUID) throws -> GJJobPosting {
+        let fetchedJobPostings = try jobPostingRepository.fetch(objectsWith: [id])
+        guard let fetchedJobPositng = fetchedJobPostings.first else {
+            throw GJJobPostingControlllerError.jobPostingNotFound
+        }
+        return fetchedJobPositng
+    }
+    
     func fetchJobApplicationRegistableJobPostings() throws -> [GJJobPosting] {
         let jobPostings = try jobPostingRepository.fetchAll()
         return jobPostings.filter { $0.jobApplicationId == nil }
     }
     
-//    func fetchTests(belongsToJobPosting id: UUID) throws -> [GJTest] {
-//        
-//    }
+    func fetchTests(belongsToJobPosting id: UUID) throws -> [GJTest] {
+        let fetchedJobPosting = try fetchJobPosting(with: id)
+        let targetTestIds = Array(fetchedJobPosting.testIds)
+        let fetchedTests = try testRepository.fetch(objectsWith: targetTestIds)
+        return fetchedTests
+    }
     
     func create(jobPosting: GJJobPosting, tests: [GJTest]) throws -> GJJobPosting {
         let createdJobPosting = try jobPostingRepository.create(object: jobPosting)
@@ -69,6 +80,7 @@ final class GJJobPostingControlller {
     
     enum GJJobPostingControlllerError: Error {
         case jobPostingCreationFail
+        case jobPostingNotFound
     }
     
 }
