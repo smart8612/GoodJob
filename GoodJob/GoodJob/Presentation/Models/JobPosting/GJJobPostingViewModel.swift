@@ -12,13 +12,18 @@ final class GJJobPostingViewModel: ObservableObject {
     
     @Published private(set) var jobPostings: [GJJobPosting] = .init()
     
-    private let jobPostingController: GJJobPostingControlller
-    
-    init() {
-        self.jobPostingController = GJJobPostingControlller(
+    private let jobPostingController: GJJobPostingControlller = {
+        GJJobPostingControlller(
             jobPostingRepository: GJJobPostingRepository(),
             testRepository: GJTestRepository()
         )
+    }()
+    
+    private let jobPostingObserver: any GJDataObserver
+    
+    init() {
+        self.jobPostingObserver = GJJobPositngDataObserver()
+        self.jobPostingObserver.delegate = self
         fetchJobPostings()
     }
     
@@ -38,6 +43,16 @@ final class GJJobPostingViewModel: ObservableObject {
         } catch {
             print(error.localizedDescription)
         }
+    }
+    
+}
+
+
+extension GJJobPostingViewModel: GJDataObserverDelegate {
+    
+    func dataWillChange() {
+        self.objectWillChange.send()
+        fetchJobPostings()
     }
     
 }

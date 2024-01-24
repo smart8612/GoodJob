@@ -28,6 +28,7 @@ struct JobPostingsListView: View {
                 .navigationDestination(for: GJJobPosting.self) {
                     JobPostingDetailView(selectedJobPostingId: $0.id)
                 }
+                .onAppear(perform: model.fetchJobPostings)
             } sheet: { isShowingSheet in
                  NewJobPostingView(isShowingSheet: isShowingSheet)
             }
