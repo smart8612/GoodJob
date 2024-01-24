@@ -16,16 +16,17 @@ final class GJJobPostingControlller {
         self.jobPostingRepository = jobPostingRepository
     }
     
-    var jobPostings: [GJJobPosting] {
-        (try? jobPostingRepository.fetchAll()) ?? .init()
+    func fetchAllJobPostings() throws -> [GJJobPosting] {
+        try jobPostingRepository.fetchAll()
     }
     
     func fetchJobPostings(ids: [UUID]) throws -> [GJJobPosting] {
         try jobPostingRepository.fetch(objectsWith: ids)
     }
     
-    func fetchJobApplicationRegistableJobPostings() -> [GJJobPosting] {
-        jobPostings.filter { $0.jobApplicationId == nil }
+    func fetchJobApplicationRegistableJobPostings() throws -> [GJJobPosting] {
+        let jobPostings = try jobPostingRepository.fetchAll()
+        return jobPostings.filter { $0.jobApplicationId == nil }
     }
     
     func create(jobPosting: GJJobPosting) throws -> GJJobPosting {

@@ -170,9 +170,6 @@ extension GJAppController {
 
 extension GJAppController {
     
-    var jobPostings: [GJJobPosting] {
-        jobPostingController.jobPostings
-    }
     
     @discardableResult
     func create(jobPosting: GJJobPosting) -> GJJobPosting {
@@ -186,13 +183,7 @@ extension GJAppController {
     // MARK: To-Do
     
     func fetchJobApplicationRegistableJobPostings() -> [GJJobPosting]  {
-        return jobPostingController.fetchJobApplicationRegistableJobPostings()
-    }
-    
-    func deleteJobPostings(on offsets: IndexSet) {
-        offsets
-            .compactMap { jobPostings[$0].id }
-            .forEach { try! jobPostingController.deleteJobPosting(id: $0) }
+        return .init()
     }
     
 }
