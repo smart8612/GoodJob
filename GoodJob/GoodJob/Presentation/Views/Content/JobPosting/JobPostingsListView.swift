@@ -32,7 +32,6 @@ struct JobPostingsListView: View {
                  NewJobPostingView(isShowingSheet: isShowingSheet)
             }
             .navigationTitle(navigationModel.selectedCategory.name)
-            .onAppear(perform: model.fetchJobPostings)
         }
        
     }
