@@ -10,7 +10,7 @@ import SwiftUI
 
 struct JobPostingsListView: View {
     
-    @EnvironmentObject private var model: GJAppController
+    @StateObject private let model = GJJobPostingViewModel()
     @EnvironmentObject private var navigationModel: GJNavigationModel
     
     var body: some View {

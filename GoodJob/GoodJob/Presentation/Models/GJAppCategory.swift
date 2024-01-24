@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+
 enum GJAppCategory: String, Identifiable, Hashable, CaseIterable {
     
     case summary

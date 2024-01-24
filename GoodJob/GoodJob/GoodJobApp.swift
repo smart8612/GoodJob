@@ -10,13 +10,10 @@ import SwiftUI
 
 @main
 struct GoodJobApp: App {
-    
-    @StateObject private var model = GJAppController()
 
     var body: some Scene {
         WindowGroup {
             MainTabView()
-                .environmentObject(model)
         }
     }
     

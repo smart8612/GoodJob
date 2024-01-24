@@ -143,9 +143,6 @@ final class GoodJobPostingTests: XCTestCase {
         }
         let fetchedTests = try testRepository.fetch(objectsWith: Array(fetchedJobPosting.testIds))
         
-        print(fetchedTests[0])
-        print(createdTests[0])
-        
         // Then
         XCTAssertTrue(
             fetchedTests[0] == createdTests[0] &&
