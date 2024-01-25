@@ -10,7 +10,7 @@ import SwiftUI
 
 struct JobApplicationsListView: View {
     
-    @EnvironmentObject private var model: GJAppController
+    @StateObject private var model = GJJobApplicationViewModel()
     @EnvironmentObject private var navigationModel: GJNavigationModel
     
     var body: some View {
@@ -26,13 +26,15 @@ struct JobApplicationsListView: View {
                         }
                     }
                 }
-                .navigationDestination(for: GJJobApplication.self) {
-                    JobApplicationDetailView(
-                        selectedJobApplicationId: $0.id
-                    )
+                .navigationDestination(for: GJJobApplication.self) { _ in
+//                    JobApplicationDetailView(
+//                        selectedJobApplicationId: $0.id
+//                    )
+                    Text("Hello World")
                 }
             } sheet: { isShowingSheet in
-                NewJobApplicaitonView(isShowingSheet: isShowingSheet)
+                // NewJobApplicaitonView(isShowingSheet: isShowingSheet)
+                Text("Hello World")
             }
             .navigationTitle(navigationModel.selectedCategory.name)
         }

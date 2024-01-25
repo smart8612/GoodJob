@@ -6,72 +6,33 @@
 //
 
 import Foundation
-import CoreData
 
 
-final class GJJobApplicationControlller: NSObject, ObservableObject {
+final class GJJobApplicationControlller {
     
-    private let controller: NSFetchedResultsController<CDJobApplication>
+    private let jobApplicationRepository: any GJRepository<GJJobApplication>
+    private var userSessionController: GJUserSessionController { .shared }
     
-    var delegate: NSFetchedResultsControllerDelegate? {
-        get { controller.delegate }
-        set { controller.delegate = newValue }
+    init(jobApplicationRepository: any GJRepository<GJJobApplication>) {
+        self.jobApplicationRepository = jobApplicationRepository
     }
     
-    var managedObjectContext: NSManagedObjectContext {
-        controller.managedObjectContext
+//    func create(jobApplication: GJJobApplication) -> GJJobApplication {
+//        return jobApplicationController.create(jobApplication: jobApplication, userId: currentUser!.id)
+//    }
+//    
+//    func fetchJobApplications(ids: [UUID]) -> [GJJobApplication] {
+//        return jobApplicationController.fetchJobApplications(ids: ids)
+//    }
+    
+    func fetchAllJobApplications() throws -> [GJJobApplication] {
+        let jobApplicationIds = Array(userSessionController.currentUser?.jobApplicationIds ?? .init())
+        let fetchedJobApplications = try jobApplicationRepository.fetch(objectsWith: jobApplicationIds)
+        return fetchedJobApplications
     }
     
-    init(managedObjectContext: NSManagedObjectContext) {
-        let fetchRequest = CDJobApplication.fetchRequest()
-        fetchRequest.sortDescriptors = [
-            NSSortDescriptor(keyPath: \CDJobApplication.createdAt_, ascending: false)
-        ]
-        
-        controller = NSFetchedResultsController(
-            fetchRequest: fetchRequest,
-            managedObjectContext: managedObjectContext,
-            sectionNameKeyPath: nil,
-            cacheName: nil
-        )
-        try? controller.performFetch()
-        
-        super.init()
-    }
-    
-    var jobApplications: [GJJobApplication] {
-        (controller.fetchedObjects ?? [])
-            .map { $0.convertToGJJobApplication() }
-    }
-    
-    func create(jobApplication: GJJobApplication, userId: UUID) -> GJJobApplication {
-        
-        try? managedObjectContext.save()
-        
-        return .initWithEmpty()
-    }
-    
-    func fetchJobApplications(ids: [UUID]) -> [GJJobApplication] {
-        guard let fetchedJobApplications = try? CDJobApplication.fetch(ids: ids, in: managedObjectContext) else {
-            return []
-        }
-        
-        let convertedJobApplications = fetchedJobApplications.map { $0.convertToGJJobApplication() }
-        return convertedJobApplications
-    }
-    
-}
-
-
-fileprivate extension CDJobApplication {
-    
-    func convertToGJJobApplication() -> GJJobApplication {
-        GJJobApplication(
-            id: self.id,
-            jobPostingId: self.jobPosting.id,
-            title: self.title,
-            createdAt: self.createdAt
-        )
-    }
+//    func fetchJobApplicationRegistableJobPostings() -> [GJJobPosting]  {
+//        return .init()
+//    }
     
 }
