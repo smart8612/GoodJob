@@ -11,14 +11,20 @@ import Foundation
 struct GJJobApplication: Identifiable, Hashable {
     
     var id: UUID = UUID()
-    
-    var jobPostingId: UUID
-    
     var title: String
     var createdAt: Date = Date()
     
+    var jobPostingId: UUID
+    var userId: UUID
+    
+    var testRecords: Set<UUID> = .init()
+    
     static func initWithEmpty() -> Self {
-        Self.init(jobPostingId: .init(), title: .init())
+        Self.init(
+            title: .init(),
+            jobPostingId: .init(),
+            userId: .init()
+        )
     }
     
 }
