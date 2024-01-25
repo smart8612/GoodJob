@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="22522" systemVersion="23C71" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="22522" systemVersion="23D56" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="CDCompany" representedClassName="CDCompany" syncable="YES" codeGenerationType="class">
         <attribute name="id_" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="name_" attributeType="String" defaultValueString=""/>
@@ -27,7 +27,7 @@
         <attribute name="id_" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="link_" optional="YES" attributeType="String"/>
         <relationship name="company_" maxCount="1" deletionRule="Nullify" destinationEntity="CDCompany" inverseName="jobPostings_" inverseEntity="CDCompany"/>
-        <relationship name="jobApplication_" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="CDJobApplication" inverseName="jobPosting_" inverseEntity="CDJobApplication"/>
+        <relationship name="jobApplication_" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CDJobApplication" inverseName="jobPosting_" inverseEntity="CDJobApplication"/>
         <relationship name="jobPosition_" maxCount="1" deletionRule="Cascade" destinationEntity="CDJobPosition" inverseName="jobPosting_" inverseEntity="CDJobPosition"/>
         <relationship name="tests_" toMany="YES" deletionRule="Cascade" destinationEntity="CDTest" inverseName="jobPosting_" inverseEntity="CDTest"/>
     </entity>

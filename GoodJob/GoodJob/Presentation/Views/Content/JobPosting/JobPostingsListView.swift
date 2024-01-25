@@ -44,21 +44,15 @@ fileprivate struct JobPostingCellView: View {
     let jobPosting: GJJobPosting
     
     var body: some View {
-        HStack(spacing: 18) {
-            Image(systemName: "building.2")
-                .resizable()
-                .scaledToFit()
-                .frame(width: 40, height: 40)
+        VStack(alignment: .leading, spacing: 8) {
+            Text(jobPosting.jobPositionName)
+                .font(.headline)
             VStack(alignment: .leading) {
-                Text(jobPosting.jobPositionName)
-                    .font(.headline)
-                Text(jobPosting.companyName)
-                    .font(.subheadline)
-                Text(jobPosting.workplaceLocation)
-                    .font(.caption)
-                Text(jobPosting.endDate.formatted())
-                    .font(.caption2)
+                Label(jobPosting.companyName, systemImage: "building.2")
+                Label(jobPosting.workplaceLocation, systemImage: "globe")
+                Label(jobPosting.endDate.formatted(), systemImage: "calendar")
             }
+            .font(.caption2)
         }
     }
 }

@@ -33,8 +33,7 @@ struct JobApplicationsListView: View {
                     Text("Hello World")
                 }
             } sheet: { isShowingSheet in
-                // NewJobApplicaitonView(isShowingSheet: isShowingSheet)
-                Text("Hello World")
+                NewJobApplicaitonView(isShowingSheet: isShowingSheet)
             }
             .navigationTitle(navigationModel.selectedCategory.name)
         }

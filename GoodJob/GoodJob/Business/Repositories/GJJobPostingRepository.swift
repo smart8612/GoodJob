@@ -141,7 +141,8 @@ fileprivate extension CDJobPosting {
             endDate: self.jobPosition.endDate,
             testIds: self.tests.reduce(into: Set<UUID>()) {
                 $0.insert($1.id)
-            }
+            },
+            jobApplicationId: self.jobApplication?.id
         )
     }
     

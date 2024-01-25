@@ -41,18 +41,17 @@ extension CDJobApplication {
         set { user_ = newValue }
     }
     
-    convenience init(title: String, user: CDUser, jobPosting: CDJobPosting,
-                     testRecords: Set<CDTestRecord>, context: NSManagedObjectContext) {
+    convenience init(title: String, user: CDUser, jobPosting: CDJobPosting, context: NSManagedObjectContext) {
         self.init(context: context)
         self.title = title
         self.user = user
         self.jobPosting = jobPosting
-        self.testRecords = testRecords
     }
     
     public override func awakeFromInsert() {
         self.id = .init()
         self.createdAt = .now
+        self.testRecords = .init()
     }
     
 }

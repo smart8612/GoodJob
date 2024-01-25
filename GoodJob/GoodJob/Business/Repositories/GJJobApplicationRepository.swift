@@ -27,7 +27,7 @@ final class GJJobApplicationRepository: GJRepository {
         let fetchRequest = CDJobApplication.fetchRequest()
         fetchRequest.predicate = NSPredicate(value: true)
         fetchRequest.sortDescriptors = [
-            NSSortDescriptor(keyPath: \CDJobApplication.createdAt, ascending: false)
+            NSSortDescriptor(keyPath: \CDJobApplication.createdAt_, ascending: false)
         ]
         
         let fetchedResults = try managedObjectContext.fetch(fetchRequest)
@@ -40,7 +40,7 @@ final class GJJobApplicationRepository: GJRepository {
             format: "id_ IN %@", ids
         )
         fetchRequest.sortDescriptors = [
-            NSSortDescriptor(keyPath: \CDJobApplication.createdAt, ascending: false)
+            NSSortDescriptor(keyPath: \CDJobApplication.createdAt_, ascending: false)
         ]
         
         let fetchedResults = try managedObjectContext.fetch(fetchRequest)
@@ -60,6 +60,9 @@ final class GJJobApplicationRepository: GJRepository {
         let jobPostingFetchRequest = CDJobPosting.fetchRequest()
         jobPostingFetchRequest.predicate = NSPredicate(
             format: "id_ = %@", object.jobPostingId as CVarArg)
+        jobPostingFetchRequest.sortDescriptors = [
+            NSSortDescriptor(key: "createdAt_", ascending: false)
+        ]
         
         let fetchedJobPostings = try managedObjectContext.fetch(jobPostingFetchRequest)
         guard let fetchedJobPosting = fetchedJobPostings.first else {
@@ -70,9 +73,9 @@ final class GJJobApplicationRepository: GJRepository {
             title: object.title,
             user: fetchedUser,
             jobPosting: fetchedJobPosting,
-            testRecords: .init(),
             context: managedObjectContext
         )
+        fetchedJobPosting.jobApplication = createdJobApplication
         
         try managedObjectContext.save()
         
@@ -82,7 +85,7 @@ final class GJJobApplicationRepository: GJRepository {
     func update(objectWith id: UUID, to object: GJJobApplication) throws -> GJJobApplication {
         let jobApplicationFetchRequest = CDJobApplication.fetchRequest()
         jobApplicationFetchRequest.predicate = NSPredicate(
-            format: "id_ = ", id as CVarArg)
+            format: "id_ = %@", id as CVarArg)
         
         let jobApplicationFetchedResults = try managedObjectContext.fetch(jobApplicationFetchRequest)
         guard let jobApplicationFetchedResult = jobApplicationFetchedResults.first else {

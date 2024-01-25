@@ -17,6 +17,10 @@
 		C133F0DC2B5A6B8A00AF574C /* GJJobApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = C133F0DB2B5A6B8A00AF574C /* GJJobApplication.swift */; };
 		C13D9C662B60C79B00A8132A /* GJNavigationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C13D9C642B60C79B00A8132A /* GJNavigationModel.swift */; };
 		C13D9C672B60C79B00A8132A /* GJUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = C13D9C652B60C79B00A8132A /* GJUser.swift */; };
+		C157F7372B6144DB001EBE74 /* GJJobApplicationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C157F7362B6144DB001EBE74 /* GJJobApplicationViewModel.swift */; };
+		C157F7392B61458C001EBE74 /* GJJobApplicationDataObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = C157F7382B61458C001EBE74 /* GJJobApplicationDataObserver.swift */; };
+		C157F73B2B621F66001EBE74 /* GJJobApplicationRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C157F73A2B621F66001EBE74 /* GJJobApplicationRepository.swift */; };
+		C157F73D2B62389F001EBE74 /* GJNewJobApplicationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C157F73C2B62389F001EBE74 /* GJNewJobApplicationViewModel.swift */; };
 		C16116C62B5D841C003501A4 /* JobApplicationDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C16116C52B5D841C003501A4 /* JobApplicationDetailView.swift */; };
 		C167658E2B5F7B420062ACCC /* GJRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C167658D2B5F7B420062ACCC /* GJRepository.swift */; };
 		C16765932B5F95980062ACCC /* GJUserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C16765922B5F95980062ACCC /* GJUserRepository.swift */; };
@@ -36,7 +40,7 @@
 		C17EB5872B58F4FF00DA9C34 /* CDJobPosition+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C17EB5862B58F4FF00DA9C34 /* CDJobPosition+Extensions.swift */; };
 		C18037E12B5BA2F0000FFC97 /* DataCreationContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C18037E02B5BA2F0000FFC97 /* DataCreationContainer.swift */; };
 		C18037E32B5BA565000FFC97 /* NewJobApplicaitonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C18037E22B5BA565000FFC97 /* NewJobApplicaitonView.swift */; };
-		C18037E52B5BABD4000FFC97 /* GJJobApplicationControlller.swift in Sources */ = {isa = PBXBuildFile; fileRef = C18037E42B5BABD4000FFC97 /* GJJobApplicationControlller.swift */; };
+		C18037E52B5BABD4000FFC97 /* GJJobApplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C18037E42B5BABD4000FFC97 /* GJJobApplicationController.swift */; };
 		C19BC5302B57A4F3004E78F6 /* GJAppController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C19BC52F2B57A4F3004E78F6 /* GJAppController.swift */; };
 		C19BC5322B57A67D004E78F6 /* GJJobPosting.swift in Sources */ = {isa = PBXBuildFile; fileRef = C19BC5312B57A67D004E78F6 /* GJJobPosting.swift */; };
 		C19BC5352B57BA32004E78F6 /* GJJobPostingControlller.swift in Sources */ = {isa = PBXBuildFile; fileRef = C19BC5342B57BA32004E78F6 /* GJJobPostingControlller.swift */; };
@@ -85,6 +89,10 @@
 		C133F0DB2B5A6B8A00AF574C /* GJJobApplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GJJobApplication.swift; sourceTree = "<group>"; };
 		C13D9C642B60C79B00A8132A /* GJNavigationModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GJNavigationModel.swift; sourceTree = "<group>"; };
 		C13D9C652B60C79B00A8132A /* GJUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GJUser.swift; sourceTree = "<group>"; };
+		C157F7362B6144DB001EBE74 /* GJJobApplicationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GJJobApplicationViewModel.swift; sourceTree = "<group>"; };
+		C157F7382B61458C001EBE74 /* GJJobApplicationDataObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GJJobApplicationDataObserver.swift; sourceTree = "<group>"; };
+		C157F73A2B621F66001EBE74 /* GJJobApplicationRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GJJobApplicationRepository.swift; sourceTree = "<group>"; };
+		C157F73C2B62389F001EBE74 /* GJNewJobApplicationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GJNewJobApplicationViewModel.swift; sourceTree = "<group>"; };
 		C16116C52B5D841C003501A4 /* JobApplicationDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JobApplicationDetailView.swift; sourceTree = "<group>"; };
 		C167658D2B5F7B420062ACCC /* GJRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GJRepository.swift; sourceTree = "<group>"; };
 		C16765922B5F95980062ACCC /* GJUserRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GJUserRepository.swift; sourceTree = "<group>"; };
@@ -102,7 +110,7 @@
 		C17EB5862B58F4FF00DA9C34 /* CDJobPosition+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CDJobPosition+Extensions.swift"; sourceTree = "<group>"; };
 		C18037E02B5BA2F0000FFC97 /* DataCreationContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DataCreationContainer.swift; path = GoodJob/Presentation/Views/Template/DataCreationContainer.swift; sourceTree = SOURCE_ROOT; };
 		C18037E22B5BA565000FFC97 /* NewJobApplicaitonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewJobApplicaitonView.swift; sourceTree = "<group>"; };
-		C18037E42B5BABD4000FFC97 /* GJJobApplicationControlller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GJJobApplicationControlller.swift; sourceTree = "<group>"; };
+		C18037E42B5BABD4000FFC97 /* GJJobApplicationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GJJobApplicationController.swift; sourceTree = "<group>"; };
 		C19BC52F2B57A4F3004E78F6 /* GJAppController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GJAppController.swift; sourceTree = "<group>"; };
 		C19BC5312B57A67D004E78F6 /* GJJobPosting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GJJobPosting.swift; sourceTree = "<group>"; };
 		C19BC5342B57BA32004E78F6 /* GJJobPostingControlller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GJJobPostingControlller.swift; sourceTree = "<group>"; };
@@ -180,6 +188,7 @@
 				C1F999DD2B55202300259FB5 /* GJAppCategory.swift */,
 				C13D9C642B60C79B00A8132A /* GJNavigationModel.swift */,
 				C17C94D42B60D3550009E064 /* JobPosting */,
+				C157F7352B6144B5001EBE74 /* JobApplication */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -208,15 +217,25 @@
 				C19BC52F2B57A4F3004E78F6 /* GJAppController.swift */,
 				C10655302B5BCFAC008C2A86 /* GJUserSessionController.swift */,
 				C19BC5342B57BA32004E78F6 /* GJJobPostingControlller.swift */,
-				C18037E42B5BABD4000FFC97 /* GJJobApplicationControlller.swift */,
+				C18037E42B5BABD4000FFC97 /* GJJobApplicationController.swift */,
 			);
 			path = Usecase;
+			sourceTree = "<group>";
+		};
+		C157F7352B6144B5001EBE74 /* JobApplication */ = {
+			isa = PBXGroup;
+			children = (
+				C157F7362B6144DB001EBE74 /* GJJobApplicationViewModel.swift */,
+				C157F73C2B62389F001EBE74 /* GJNewJobApplicationViewModel.swift */,
+			);
+			path = JobApplication;
 			sourceTree = "<group>";
 		};
 		C16765962B5FADF50062ACCC /* Repositories */ = {
 			isa = PBXGroup;
 			children = (
 				C167658D2B5F7B420062ACCC /* GJRepository.swift */,
+				C157F73A2B621F66001EBE74 /* GJJobApplicationRepository.swift */,
 				C16765922B5F95980062ACCC /* GJUserRepository.swift */,
 				C16765992B5FD5150062ACCC /* GJJobPostingRepository.swift */,
 				C1155DBA2B601B3C00963004 /* GJTestRepository.swift */,
@@ -253,6 +272,7 @@
 			children = (
 				C17C94DC2B60EEED0009E064 /* GJDataObserver.swift */,
 				C17C94DE2B60EFDD0009E064 /* GJJobPositngDataObserver.swift */,
+				C157F7382B61458C001EBE74 /* GJJobApplicationDataObserver.swift */,
 			);
 			path = "Data Observers";
 			sourceTree = "<group>";
@@ -534,12 +554,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C157F7392B61458C001EBE74 /* GJJobApplicationDataObserver.swift in Sources */,
 				C133F0D62B5A4D2B00AF574C /* CDJobApplication+Extensions.swift in Sources */,
 				C167659A2B5FD5150062ACCC /* GJJobPostingRepository.swift in Sources */,
 				C1DFAEE62B5E4DBC007CACA7 /* GJTestRecord.swift in Sources */,
 				C17C94DF2B60EFDD0009E064 /* GJJobPositngDataObserver.swift in Sources */,
 				C16765932B5F95980062ACCC /* GJUserRepository.swift in Sources */,
 				C16116C62B5D841C003501A4 /* JobApplicationDetailView.swift in Sources */,
+				C157F73D2B62389F001EBE74 /* GJNewJobApplicationViewModel.swift in Sources */,
 				C17498B52B56A9200079927F /* GoodJob.xcdatamodeld in Sources */,
 				C167658E2B5F7B420062ACCC /* GJRepository.swift in Sources */,
 				C1052E3C2B5B800500B27620 /* JobApplicationsListView.swift in Sources */,
@@ -548,6 +570,7 @@
 				C17C94D62B60D36D0009E064 /* GJNewJobPostingViewModel.swift in Sources */,
 				C17498B42B56A9070079927F /* JobPostingsListView.swift in Sources */,
 				C13D9C672B60C79B00A8132A /* GJUser.swift in Sources */,
+				C157F7372B6144DB001EBE74 /* GJJobApplicationViewModel.swift in Sources */,
 				C18037E12B5BA2F0000FFC97 /* DataCreationContainer.swift in Sources */,
 				C19BC5322B57A67D004E78F6 /* GJJobPosting.swift in Sources */,
 				C13D9C662B60C79B00A8132A /* GJNavigationModel.swift in Sources */,
@@ -561,7 +584,8 @@
 				C17EB5872B58F4FF00DA9C34 /* CDJobPosition+Extensions.swift in Sources */,
 				C1CFB6392B598B6400515DEA /* JobPostingDetailView.swift in Sources */,
 				C1704EA32B57EF9000146201 /* CDJobPosting+Extensions.swift in Sources */,
-				C18037E52B5BABD4000FFC97 /* GJJobApplicationControlller.swift in Sources */,
+				C18037E52B5BABD4000FFC97 /* GJJobApplicationController.swift in Sources */,
+				C157F73B2B621F66001EBE74 /* GJJobApplicationRepository.swift in Sources */,
 				C17C94D32B60CA130009E064 /* GJJobPostingViewModel.swift in Sources */,
 				C133F0D82B5A501600AF574C /* CDTestRecord+Extensions.swift in Sources */,
 				C1F999B02B55068E00259FB5 /* Persistence.swift in Sources */,

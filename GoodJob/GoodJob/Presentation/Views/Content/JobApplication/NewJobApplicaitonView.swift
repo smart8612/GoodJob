@@ -7,46 +7,40 @@
 
 import SwiftUI
 
+
 struct NewJobApplicaitonView: View {
     
-    @EnvironmentObject private var model: GJAppController
+    @StateObject private var model = GJNewJobApplicationViewModel()
+    
+    @State private var isShowingJobPostingSelectionSheet = false
     @Binding var isShowingSheet: Bool
     
-    @State private var title: String = .init()
-    @State private var selectedJobPosting: GJJobPosting? = nil
-    @State private var isShowingJobPostingSelectionSheet = false
-    
     var body: some View {
-        DataCreationContainer(isShowingSheet: $isShowingSheet, addAction: save) {
+        DataCreationContainer(
+            isShowingSheet: $isShowingSheet,
+            addAction: addAction
+        ) {
             Form {
                 Section {
-                    TextField("Job Application Title", text: $title)
+                    TextField("Job Application Title", text: $model.title)
                 }
                 
                 Section {
                     Button(action: { isShowingJobPostingSelectionSheet.toggle() }) {
-                        Text(selectedJobPosting?.jobPositionName ?? "Select a posting")
+                        Text(model.selectedJobPosting?.jobPositionName ?? "Select a posting")
                     }
                     .sheet(isPresented: $isShowingJobPostingSelectionSheet) {
-                        JobPostingSelectionView(
-                            selectedJobPosting: $selectedJobPosting
-                        )
+                        JobPostingSelectionView()
                     }
                 }
             }
             .navigationTitle("New Job Application")
+            .environmentObject(model)
         }
     }
     
-    private func save() {
-        if let selectedJobPosting = selectedJobPosting {
-            let _ = model.create(
-                jobApplication: .init(
-                    jobPostingId: selectedJobPosting.id,
-                    title: title
-                )
-            )
-        }
+    private func addAction() {
+        model.createJobApplication()
         isShowingSheet.toggle()
     }
     
@@ -54,26 +48,20 @@ struct NewJobApplicaitonView: View {
 
 struct JobPostingSelectionView: View {
     
-    @EnvironmentObject private var model: GJAppController
-    
-    @Binding var selectedJobPosting: GJJobPosting?
+    @EnvironmentObject private var model: GJNewJobApplicationViewModel
     @Environment(\.dismiss) private var dismiss
-    
-    private var jobPostings: [GJJobPosting] {
-        model.fetchJobApplicationRegistableJobPostings()
-    }
     
     var body: some View {
         NavigationStack {
-            List(jobPostings) { post in
-                Button(action: { selectedJobPosting = post }, label: {
+            List(model.registableJobPostings) { post in
+                Button(action: { model.selectedJobPosting = post }) {
                     HStack {
-                        if let _ = selectedJobPosting, post == selectedJobPosting {
+                        if let _ = model.selectedJobPosting, post == model.selectedJobPosting {
                             Text("✅")
                         }
                         Text("\(post.jobPositionName) @ \(post.companyName)")
                     }
-                })
+                }
             }
             .navigationTitle("Choose a Job Posting")
             .navigationBarTitleDisplayMode(.inline)

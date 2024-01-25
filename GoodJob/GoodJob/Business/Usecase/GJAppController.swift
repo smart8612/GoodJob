@@ -9,38 +9,12 @@ import Foundation
 import CoreData
 
 
-final class GJAppController: NSObject, ObservableObject {
+final class GJAppController: ObservableObject {
     
     private let persistenceController: PersistenceController
     
-    private let userSessionController: GJUserSessionController
-    private let jobPostingController: GJJobPostingControlller
-    private let jobApplicationController: GJJobApplicationControlller
-    
     init(persistenceController: PersistenceController = .init()) {
         self.persistenceController = persistenceController
-        
-        self.userSessionController = GJUserSessionController(
-            userRepository: GJUserRepository(
-                persistenceController: persistenceController
-            )
-        )
-        
-        self.jobPostingController = GJJobPostingControlller(
-            jobPostingRepository: GJJobPostingRepository(
-                persistenceController: persistenceController
-            ),
-            testRepository: GJTestRepository(
-                persistenceController: persistenceController
-            )
-        )
-        
-        self.jobApplicationController = GJJobApplicationControlller(
-            managedObjectContext: persistenceController.managedObjectContext
-        )
-        
-        super.init()
-        jobApplicationController.delegate = self
     }
     
     private var managedObjectContext: NSManagedObjectContext {
@@ -142,53 +116,6 @@ extension CDTestRecord {
             testId: self.test.id,
             memo: self.memo
         )
-    }
-    
-}
-
-
-// MARK: JobApplication Handler
-
-extension GJAppController {
-    
-    var jobApplications: [GJJobApplication] {
-        jobApplicationController.jobApplications
-    }
-    
-    var currentUser: GJUser? {
-        userSessionController.currentUser
-    }
-    
-    func create(jobApplication: GJJobApplication) -> GJJobApplication {
-        return jobApplicationController.create(jobApplication: jobApplication, userId: currentUser!.id)
-    }
-    
-    func fetchJobApplications(ids: [UUID]) -> [GJJobApplication] {
-        return jobApplicationController.fetchJobApplications(ids: ids)
-    }
-    
-}
-
-// MARK: JobPosting Handler
-
-extension GJAppController {
-    
-    func fetchJobPostings(ids: [UUID]) -> [GJJobPosting] {
-        return try! jobPostingController.fetchJobPostings(ids: ids)
-    }
-    
-    // MARK: To-Do
-    
-    func fetchJobApplicationRegistableJobPostings() -> [GJJobPosting]  {
-        return .init()
-    }
-    
-}
-
-extension GJAppController: NSFetchedResultsControllerDelegate {
-    
-    func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-        objectWillChange.send()
     }
     
 }

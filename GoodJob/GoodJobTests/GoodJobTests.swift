@@ -10,17 +10,44 @@ import XCTest
 
 
 final class GoodJobTests: XCTestCase {
-    
-    private var model: GJAppController!
 
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
-        model = GJAppController(persistenceController: .sharedForUnitTest)
     }
 
     override func tearDownWithError() throws {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
-        model = nil
+    }
+    
+    func test_JobApplication_생성_검증() throws {
+        // Given
+        let jobPostingRepo = GJJobPostingRepository(persistenceController: .sharedForUnitTest)
+        let jobApplicationRepo = GJJobApplicationRepository(persistenceController: .sharedForUnitTest)
+        let user = GJUserSessionController(userRepository: GJUserRepository(persistenceController: .sharedForUnitTest))
+        
+        // When
+        let createdJobPosting = try jobPostingRepo.create(object: .init(
+            link: "https://www.apple.com",
+            companyName: "Apple",
+            jobPositionName: "iOS Developer",
+            workplaceLocation: "USA",
+            recruitNumbers: "10",
+            startDate: .now,
+            endDate: Date(timeIntervalSinceNow: 259200),
+            testIds: .init()
+        ))
+        
+        let createdJobApplication = try jobApplicationRepo.create(object: .init(
+            title: "My Job Application",
+            jobPostingId: createdJobPosting.id,
+            userId: user.currentUser?.id ?? .init()
+        ))
+        
+        print(createdJobApplication)
+        
+        XCTFail()
+        
+        
     }
     
 

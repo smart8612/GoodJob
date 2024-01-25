@@ -12,17 +12,19 @@ final class GJJobApplicationViewModel: ObservableObject {
     
     @Published private(set) var jobApplications: [GJJobApplication] = .init()
     
-    private let jobApplicationController: GJJobApplicationControlller = {
-       GJJobApplicationControlller(
-        jobApplicationRepository: GJJobApplicationRepository()
+    private let jobApplicationController: GJJobApplicationController = {
+       GJJobApplicationController(
+        jobApplicationRepository: GJJobApplicationRepository(), 
+        jobPostingRepository: GJJobPostingRepository()
        )
     }()
     
     private let jobApplicationObserver: any GJDataObserver
     
     init() {
-        self.jobApplicationObserver = GJJobPositngDataObserver()
+        self.jobApplicationObserver = GJJobApplicationDataObserver()
         self.jobApplicationObserver.delegate = self
+        fetchJobApplication()
     }
     
     private func fetchJobApplication() {
@@ -39,6 +41,7 @@ extension GJJobApplicationViewModel: GJDataObserverDelegate {
     
     func dataWillChange() {
         self.objectWillChange.send()
+        fetchJobApplication()
     }
     
 }
