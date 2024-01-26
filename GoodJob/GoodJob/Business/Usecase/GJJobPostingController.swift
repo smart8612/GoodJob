@@ -1,5 +1,5 @@
 //
-//  GJJobPostingControlller.swift
+//  GJJobPostingController.swift
 //  GoodJob
 //
 //  Created by JeongTaek Han on 1/17/24.
@@ -8,7 +8,7 @@
 import Foundation
 
 
-final class GJJobPostingControlller {
+final class GJJobPostingController {
     
     private let jobPostingRepository: any GJRepository<GJJobPosting>
     private let testRepository: any GJRepository<GJTest>
@@ -32,7 +32,7 @@ final class GJJobPostingControlller {
     func fetchJobPosting(with id: UUID) throws -> GJJobPosting {
         let fetchedJobPostings = try jobPostingRepository.fetch(objectsWith: [id])
         guard let fetchedJobPositng = fetchedJobPostings.first else {
-            throw GJJobPostingControlllerError.jobPostingNotFound
+            throw GJJobPostingControllerError.jobPostingNotFound
         }
         return fetchedJobPositng
     }
@@ -64,7 +64,7 @@ final class GJJobPostingControlller {
         )
         
         guard let fetchedResult = fetchedResults.first else {
-            throw GJJobPostingControlllerError.jobPostingCreationFail
+            throw GJJobPostingControllerError.jobPostingCreationFail
         }
         
         return fetchedResult
@@ -78,7 +78,7 @@ final class GJJobPostingControlller {
         try jobPostingRepository.delete(objectWith: id)
     }
     
-    enum GJJobPostingControlllerError: Error {
+    enum GJJobPostingControllerError: Error {
         case jobPostingCreationFail
         case jobPostingNotFound
     }

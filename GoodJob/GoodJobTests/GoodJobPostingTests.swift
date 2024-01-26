@@ -13,7 +13,7 @@ final class GoodJobPostingTests: XCTestCase {
     
     private var testRepository: (any GJRepository<GJTest>)!
     private var jobPostingRepository: (any GJRepository<GJJobPosting>)!
-    private var jobPostingController: GJJobPostingControlller!
+    private var jobPostingController: GJJobPostingController!
 
     override func setUpWithError() throws {
         let persistenceController = PersistenceController(inMemory: true)
@@ -23,7 +23,7 @@ final class GoodJobPostingTests: XCTestCase {
         self.jobPostingRepository = GJJobPostingRepository(
             persistenceController: persistenceController
         )
-        self.jobPostingController = GJJobPostingControlller(
+        self.jobPostingController = GJJobPostingController(
             jobPostingRepository: jobPostingRepository,
             testRepository: testRepository
         )

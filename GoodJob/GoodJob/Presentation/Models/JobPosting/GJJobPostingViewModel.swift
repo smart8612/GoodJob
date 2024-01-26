@@ -12,8 +12,8 @@ final class GJJobPostingViewModel: ObservableObject {
     
     @Published private(set) var jobPostings: [GJJobPosting] = .init()
     
-    private let jobPostingController: GJJobPostingControlller = {
-        GJJobPostingControlller(
+    private let jobPostingController: GJJobPostingController = {
+        GJJobPostingController(
             jobPostingRepository: GJJobPostingRepository(),
             testRepository: GJTestRepository()
         )

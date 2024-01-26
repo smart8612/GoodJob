@@ -13,10 +13,10 @@ final class GJNewJobPostingViewModel: ObservableObject {
     @Published var newJobPosting = GJJobPosting.initWithEmpty()
     @Published var newTests: [GJTest] = .init()
     
-    private let jobPostingController: GJJobPostingControlller = {
+    private let jobPostingController: GJJobPostingController = {
         let jobPostingRepository = GJJobPostingRepository()
         let testRepository = GJTestRepository()
-        let jobPositngController = GJJobPostingControlller(
+        let jobPositngController = GJJobPostingController(
             jobPostingRepository: jobPostingRepository,
             testRepository: testRepository
         )

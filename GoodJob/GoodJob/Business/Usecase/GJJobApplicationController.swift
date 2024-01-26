@@ -31,9 +31,18 @@ final class GJJobApplicationController {
         return fetchedJobApplications
     }
     
+    func fetchJobApplication(with id: UUID) throws -> GJJobApplication {
+        let fetchedJobApplications = try jobApplicationRepository.fetch(objectsWith: [id])
+        guard let fetchedJobApplication = fetchedJobApplications.first else {
+            throw GJJobApplicationControllerError.jobApplicationNotFound
+        }
+        
+        return fetchedJobApplication
+    }
+    
     func create(jobApplication: GJJobApplication) throws -> GJJobApplication {
         guard let userId = userSessionController.currentUser?.id else {
-            throw GJJobApplicationController.currentUserNotFound
+            throw GJJobApplicationControllerError.currentUserNotFound
         }
         
         let createdJobApplication = try jobApplicationRepository.create(object: .init(
@@ -45,8 +54,9 @@ final class GJJobApplicationController {
         return createdJobApplication
     }
     
-    enum GJJobApplicationController: Error {
+    enum GJJobApplicationControllerError: Error {
         case currentUserNotFound
+        case jobApplicationNotFound
     }
     
 }

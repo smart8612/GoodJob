@@ -26,11 +26,10 @@ struct JobApplicationsListView: View {
                         }
                     }
                 }
-                .navigationDestination(for: GJJobApplication.self) { _ in
-//                    JobApplicationDetailView(
-//                        selectedJobApplicationId: $0.id
-//                    )
-                    Text("Hello World")
+                .navigationDestination(for: GJJobApplication.self) {
+                    JobApplicationDetailView(
+                        selectedJobApplicationId: $0.id
+                    )
                 }
             } sheet: { isShowingSheet in
                 NewJobApplicaitonView(isShowingSheet: isShowingSheet)
@@ -50,7 +49,9 @@ fileprivate struct JobApplicationCellView: View {
     var body: some View {
         VStack(alignment: .leading) {
             Text(jobApplication.title)
+                .font(.headline)
             Text(jobApplication.id.uuidString)
+                .font(.caption)
         }
     }
 }

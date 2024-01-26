@@ -10,8 +10,8 @@ import Foundation
 
 final class GJJobPostingDetailViewModel: ObservableObject {
     
-    private let jobPostingController: GJJobPostingControlller = {
-       GJJobPostingControlller(
+    private let jobPostingController: GJJobPostingController = {
+       GJJobPostingController(
         jobPostingRepository: GJJobPostingRepository(),
         testRepository: GJTestRepository()
        )
