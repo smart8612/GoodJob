@@ -22,60 +22,52 @@ struct JobApplicationDetailView: View {
         model.jobPosting
     }
     
+    private var tests: [GJTest]? {
+        model.tests
+    }
+    
     var body: some View {
         Group {
             if let jobApplication = jobApplication,
-               let jobPosting = jobPosting {
-                JobApplicationDetailListView(
-                    jobApplication: jobApplication,
-                    jobPosting: jobPosting
-                )
+               let jobPosting = jobPosting,
+               let tests = tests {
+                List {
+                    Section {
+                        Text(jobApplication.title)
+                        Text(jobApplication.createdAt.formatted())
+                    }
+                    
+                    Section {
+                        Text(jobPosting.companyName)
+                        Text(jobPosting.jobPositionName)
+                    }
+                    
+                    Section {
+                        ForEach(tests) { test in
+                            NavigationLink(value: test) {
+                                VStack(alignment: .leading) {
+                                    Text(test.type.description)
+                                    Text(test.name)
+                                }
+                            }
+                        }
+                    }
+                }
+                .navigationDestination(for: GJTest.self) { test in
+                    TestRecordView(
+                        jobApplication: jobApplication,
+                        test: test
+                    )
+                }
             } else {
                 Text("Select a Job Application")
             }
         }
-        .onAppear {
-            model.selectedJobApplicationId = selectedJobApplicationId
-        }
-    }
-    
-}
-
-fileprivate struct JobApplicationDetailListView: View {
-    
-    let jobApplication: GJJobApplication
-    let jobPosting: GJJobPosting
-    
-    var body: some View {
-        List {
-            Section {
-                Text(jobApplication.title)
-                Text(jobApplication.createdAt.formatted())
-            }
-            
-            Section {
-                Text(jobPosting.companyName)
-                Text(jobPosting.jobPositionName)
-            }
-            
-            Section {
-//                ForEach(jobPosting.tests) { test in
-//                    NavigationLink(value: test) {
-//                        VStack(alignment: .leading) {
-//                            Text(test.type.description)
-//                            Text(test.name)
-//                        }
-//                    }
-//                }
-            }
-        }
         .navigationTitle("Job Application Detail")
         .navigationBarTitleDisplayMode(.inline)
-        .navigationDestination(for: GJTest.self) { test in
-            TestRecordView(
-                jobApplication: jobApplication,
-                test: test
-            )
+        .environmentObject(model)
+        .onAppear {
+            model.selectedJobApplicationId = selectedJobApplicationId
         }
     }
     
