@@ -24,40 +24,33 @@ struct JobPostingDetailView: View {
     
     var body: some View {
         Group {
-            if let selectedJobPostingId = selectedJobPostingId {
-                if let jobPosting = jobPosting, let tests = tests {
-                    List {
-                        Section {
-                            Text("Company Name: \(jobPosting.companyName)")
-                        }
-                        
-                        Section {
-                            Text("Job Position: \(jobPosting.jobPositionName)")
-                            Text("Workplace Location: \(jobPosting.workplaceLocation)")
-                            Text("Recruitment Numbers: \(jobPosting.recruitNumbers)")
-                            Text("Job Posting Link: \(jobPosting.link)")
-                        }
-                        
-                        Section {
-                            Text("Starts: \(jobPosting.startDate.formatted())")
-                            Text("Ends: \(jobPosting.endDate.formatted())")
-                        }
-                        
-                        Section {
-                            ForEach(tests) { test in
-                                HStack {
-                                    Text(test.type.description)
-                                    Divider()
-                                    Text(test.name)
-                                }
+            if let jobPosting = jobPosting, let tests = tests {
+                List {
+                    Section {
+                        Text("Company Name: \(jobPosting.companyName)")
+                    }
+                    
+                    Section {
+                        Text("Job Position: \(jobPosting.jobPositionName)")
+                        Text("Workplace Location: \(jobPosting.workplaceLocation)")
+                        Text("Recruitment Numbers: \(jobPosting.recruitNumbers)")
+                        Text("Job Posting Link: \(jobPosting.link)")
+                    }
+                    
+                    Section {
+                        Text("Starts: \(jobPosting.startDate.formatted())")
+                        Text("Ends: \(jobPosting.endDate.formatted())")
+                    }
+                    
+                    Section {
+                        ForEach(tests) { test in
+                            HStack {
+                                Text(test.type.description)
+                                Divider()
+                                Text(test.name)
                             }
                         }
                     }
-                } else  {
-                    Text("Loading...")
-                        .onAppear {
-                            model.fetchJobPosting(with: selectedJobPostingId)
-                        }
                 }
             } else {
                 Text("Select a Job Posting")
@@ -66,6 +59,7 @@ struct JobPostingDetailView: View {
         .environmentObject(model)
         .navigationTitle("Jobs Details")
         .navigationBarTitleDisplayMode(.inline)
+        .onAppear { model.selectedJobPostingId = selectedJobPostingId }
     }
     
 }

@@ -17,10 +17,18 @@ final class GJJobPostingDetailViewModel: ObservableObject {
        )
     }()
     
+    var selectedJobPostingId: UUID? {
+        didSet { fetchJobPosting() }
+    }
+    
     @Published private(set) var jobPosting: GJJobPosting?
     @Published private(set) var tests: [GJTest]?
     
-    func fetchJobPosting(with id: UUID) {
+    func fetchJobPosting() {
+        guard let id = selectedJobPostingId else {
+            return
+        }
+        
         do {
             let fetchedJobPosting = try jobPostingController.fetchJobPosting(with: id)
             self.jobPosting = fetchedJobPosting
