@@ -53,12 +53,12 @@ struct JobApplicationDetailView: View {
                         }
                     }
                 }
-                .navigationDestination(for: GJTest.self) { test in
-                    TestRecordView(
-                        jobApplication: jobApplication,
-                        test: test
-                    )
-                }
+//                .navigationDestination(for: GJTest.self) { test in
+//                    TestRecordView(
+//                        jobApplication: jobApplication,
+//                        test: test
+//                    )
+//                }
             } else {
                 Text("Select a Job Application")
             }
