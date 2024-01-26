@@ -22,7 +22,7 @@ extension CDCompany {
     }
     
     var jobPostings: Set<CDJobPosting> {
-        get { (jobPostings_ as? Set<CDJobPosting>) ?? [] }
+        get { (jobPostings_ as? Set<CDJobPosting>) ?? .init() }
         set { jobPostings_ = newValue as NSSet }
     }
     

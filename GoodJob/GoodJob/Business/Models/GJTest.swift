@@ -12,12 +12,17 @@ struct GJTest: Identifiable, Hashable {
     
     var id: UUID = UUID()
     
+    var order: Int
     var name: String
     var type: TestType
     
+    var jobPostingId: UUID
+    var testRecordId: UUID?
+    
     enum TestType: Int, Identifiable, CaseIterable, CustomStringConvertible {
         
-        case writtenTest = 0
+        case test = 0
+        case writtenTest
         case inteview
         
         var id: Self {
@@ -26,6 +31,8 @@ struct GJTest: Identifiable, Hashable {
         
         var description: String {
             switch self {
+            case .test:
+                return "test"
             case .writtenTest:
                 return "writtenTest"
             case .inteview:
@@ -36,8 +43,11 @@ struct GJTest: Identifiable, Hashable {
     
     static func initWithEmpty() -> Self {
         Self(
+            id: .init(),
+            order: .zero,
             name: .init(),
-            type: .writtenTest
+            type: .test,
+            jobPostingId: .init()
         )
     }
     

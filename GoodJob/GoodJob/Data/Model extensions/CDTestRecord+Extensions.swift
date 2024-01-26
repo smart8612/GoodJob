@@ -27,7 +27,7 @@ extension CDTestRecord {
     }
     
     var test: CDTest {
-        get { test_! }
+        get { test_ ?? .init() }
         set { test_ = newValue }
     }
     

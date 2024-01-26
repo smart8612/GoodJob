@@ -7,26 +7,52 @@
 
 import SwiftUI
 
+
 struct JobApplicationsListView: View {
     
-    @EnvironmentObject private var model: GJAppController
+    @StateObject private var model = GJJobApplicationViewModel()
+    @EnvironmentObject private var navigationModel: GJNavigationModel
     
     var body: some View {
         
-        DataContainer {
-            List {
-                ForEach(model.jobApplications) { jobApplication in
-                    VStack(alignment: .leading) {
-                        Text(jobApplication.title)
-                        Text(jobApplication.id.uuidString)
+        NavigationStack {
+            DataContainer {
+                List {
+                    ForEach(model.jobApplications) { jobApplication in
+                        NavigationLink(value: jobApplication) {
+                            JobApplicationCellView(
+                                jobApplication: jobApplication
+                            )
+                        }
                     }
                 }
+                .navigationDestination(for: GJJobApplication.self) {
+                    JobApplicationDetailView(
+                        selectedJobApplicationId: $0.id
+                    )
+                }
+            } sheet: { isShowingSheet in
+                NewJobApplicaitonView(isShowingSheet: isShowingSheet)
             }
-            .listStyle(.insetGrouped)
-        } sheet: { isShowingSheet in
-            NewJobApplicaitonView(isShowingSheet: isShowingSheet)
+            .navigationTitle(navigationModel.selectedCategory.name)
         }
         
     }
     
 }
+
+
+fileprivate struct JobApplicationCellView: View {
+    
+    let jobApplication: GJJobApplication
+    
+    var body: some View {
+        VStack(alignment: .leading) {
+            Text(jobApplication.title)
+                .font(.headline)
+            Text(jobApplication.id.uuidString)
+                .font(.caption)
+        }
+    }
+}
+

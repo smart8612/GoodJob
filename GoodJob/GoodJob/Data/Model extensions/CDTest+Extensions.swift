@@ -31,11 +31,22 @@ extension CDTest {
         set { testType_ = Int64(newValue.rawValue) }
     }
     
-    convenience init(order: Int, name: String, testType: TestType, context: NSManagedObjectContext) {
+    var jobPosting: CDJobPosting {
+        get { jobPosting_! }
+        set { jobPosting_ = newValue }
+    }
+    
+    var testRecord: CDTestRecord? {
+        get { testRecord_ }
+        set { testRecord_ = newValue }
+    }
+    
+    convenience init(order: Int, name: String, testType: TestType, jobPosting: CDJobPosting, context: NSManagedObjectContext) {
         self.init(context: context)
         self.order = order
         self.name = name
         self.testType = testType
+        self.jobPosting = jobPosting
     }
     
     public override func awakeFromInsert() {
@@ -43,7 +54,8 @@ extension CDTest {
     }
     
     enum TestType: Int {
-        case writtenTest = 0
+        case test = 0
+        case writtenTest
         case interview
     }
     

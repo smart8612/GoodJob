@@ -41,6 +41,11 @@ extension CDJobPosting {
         set { tests_ = newValue as NSSet }
     }
     
+    var jobApplication: CDJobApplication? {
+        get { jobApplication_ }
+        set { jobApplication_ = newValue }
+    }
+    
     convenience init(link: String, company: CDCompany, jobPosition: CDJobPosition, tests: Set<CDTest>, context: NSManagedObjectContext) {
         self.init(context: context)
         self.link = link
@@ -52,26 +57,7 @@ extension CDJobPosting {
     public override func awakeFromInsert() {
         self.id = UUID()
         self.createdAt = .now
-    }
-    
-}
-
-
-extension CDJobPosting {
-    
-    static func fetch(ids: [UUID], in context: NSManagedObjectContext) throws -> [CDJobPosting] {
-        let fetchRequest = Self.fetchRequest()
-        fetchRequest.predicate = NSPredicate(format: "id_ IN %@", ids)
-        
-        let fetchedResult = try context.fetch(fetchRequest)
-        
-        return fetchedResult
-    }
-    
-    static func delete(ids: [UUID], in context: NSManagedObjectContext) throws {
-        try Self.fetch(ids: ids, in: context)
-            .forEach { context.delete($0) }
-        try context.save()
+        self.jobApplication = nil
     }
     
 }

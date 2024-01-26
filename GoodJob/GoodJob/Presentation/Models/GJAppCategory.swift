@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+
 enum GJAppCategory: String, Identifiable, Hashable, CaseIterable {
     
     case summary
@@ -29,6 +30,17 @@ enum GJAppCategory: String, Identifiable, Hashable, CaseIterable {
             return "figure.run"
         }
         
+    }
+    
+    @ViewBuilder var contentView: some View {
+        switch self {
+        case .summary:
+            SummaryView()
+        case .applications:
+            JobApplicationsListView()
+        case .jobs:
+            JobPostingsListView()
+        }
     }
     
     static var allCategories: [Self] = Self.allCases
