@@ -14,6 +14,8 @@ struct JobPostingDetailView: View {
     
     let selectedJobPostingId: UUID?
     
+    @State private var isShowingSheet = false
+    
     private var jobPosting: GJJobPosting? {
         model.jobPosting
     }
@@ -52,6 +54,13 @@ struct JobPostingDetailView: View {
                         }
                     }
                 }
+                .sheet(isPresented: $isShowingSheet) {
+                    EditJobPostingView(
+                        isShowingSheet: $isShowingSheet,
+                        jobPosting: jobPosting,
+                        tests: tests
+                    )
+                }
             } else {
                 Text("Select a Job Posting")
             }
@@ -59,6 +68,13 @@ struct JobPostingDetailView: View {
         .environmentObject(model)
         .navigationTitle("Jobs Details")
         .navigationBarTitleDisplayMode(.inline)
+        .toolbar {
+            ToolbarItem(placement: .topBarTrailing) {
+                Button(action: { isShowingSheet.toggle() }) {
+                    Text("Edit")
+                }
+            }
+        }
         .onAppear { model.selectedJobPostingId = selectedJobPostingId }
     }
     

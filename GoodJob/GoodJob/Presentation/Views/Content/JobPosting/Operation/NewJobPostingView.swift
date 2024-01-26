@@ -19,8 +19,7 @@ struct NewJobPostingView: View {
             JobPostingOperationView(
                 jobPosting: $model.newJobPosting,
                 tests: $model.newTests,
-                addTestAction: model.addEmptyTest,
-                changeTestType: model.changeTestType
+                addTestAction: model.addEmptyTest
             )
             .navigationTitle("New Job")
             .environmentObject(model)

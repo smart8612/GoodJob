@@ -70,8 +70,33 @@ final class GJJobPostingController {
         return fetchedResult
     }
     
-    func updateJobPosting(id: UUID, to object: GJJobPosting) throws -> GJJobPosting {
-        try jobPostingRepository.update(objectWith: id, to: object)
+    func update(jobPosting: GJJobPosting, tests: [GJTest]) throws -> GJJobPosting {
+        let targetTests = Array(tests.enumerated()).map { index, test in
+            var newTest = test
+            newTest.jobPostingId = jobPosting.id
+            newTest.order = index
+            return newTest
+        }
+        
+        let testIdSet = Set(targetTests.map { $0.id })
+        let targetTestSet = Set(targetTests)
+        
+        let createRequiredTestIds = testIdSet.subtracting(jobPosting.testIds)
+        try targetTestSet
+            .filter { createRequiredTestIds.contains($0.id) }
+            .forEach { try testRepository.create(object: $0) }
+        
+        let updateRequiredTestIds = testIdSet.intersection(jobPosting.testIds)
+        try targetTestSet
+            .filter { updateRequiredTestIds.contains($0.id) }
+            .forEach { try testRepository.update(objectWith: $0.id, to: $0) }
+        
+        let deleteRequiredTestIds = jobPosting.testIds.subtracting(testIdSet)
+        try deleteRequiredTestIds
+            .forEach { try testRepository.delete(objectWith: $0) }
+        
+        let updatedJobPosting = try jobPostingRepository.update(objectWith: jobPosting.id, to: jobPosting)
+        return updatedJobPosting
     }
     
     func deleteJobPosting(id: UUID) throws {

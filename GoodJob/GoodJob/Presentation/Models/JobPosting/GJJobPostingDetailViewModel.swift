@@ -17,12 +17,21 @@ final class GJJobPostingDetailViewModel: ObservableObject {
        )
     }()
     
+    private let jobPostingDataObserver = GJJobPositngDataObserver()
+    
     var selectedJobPostingId: UUID? {
         didSet { fetchJobPosting() }
     }
     
     @Published private(set) var jobPosting: GJJobPosting?
     @Published private(set) var tests: [GJTest]?
+    
+    init(selectedJobPostingId: UUID? = nil, jobPosting: GJJobPosting? = nil, tests: [GJTest]? = nil) {
+        self.selectedJobPostingId = selectedJobPostingId
+        self.jobPosting = jobPosting
+        self.tests = tests
+        self.jobPostingDataObserver.delegate = self
+    }
     
     func fetchJobPosting() {
         guard let id = selectedJobPostingId else {
@@ -38,6 +47,15 @@ final class GJJobPostingDetailViewModel: ObservableObject {
         } catch {
             print(error.localizedDescription)
         }
+    }
+    
+}
+
+extension GJJobPostingDetailViewModel: GJDataObserverDelegate {
+    
+    func dataWillChange() {
+        self.objectWillChange.send()
+        fetchJobPosting()
     }
     
 }

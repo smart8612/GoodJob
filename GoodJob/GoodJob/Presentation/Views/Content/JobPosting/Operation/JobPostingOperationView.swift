@@ -14,7 +14,6 @@ struct JobPostingOperationView: View {
     @Binding var tests: [GJTest]
     
     let addTestAction: (() -> Void)?
-    let changeTestType: ((GJTest.TestType, Int) -> Void)?
     
     private var enumeratedTests: [(Int, GJTest)] {
         Array(tests.enumerated())
@@ -53,7 +52,7 @@ struct JobPostingOperationView: View {
                     HStack {
                         Menu(test.type.description) {
                             ForEach(GJTest.TestType.allCases) { testType in
-                                Button(action: { changeTestType?(testType, index) }) {
+                                Button(action: { changeTestType(testType: testType, index: index) }) {
                                     Text(testType.description)
                                 }
                             }
@@ -68,6 +67,10 @@ struct JobPostingOperationView: View {
                 Button("Add Tests", action: { addTestAction?() })
             }
         }
+    }
+    
+    private func changeTestType(testType: GJTest.TestType, index: Int) {
+        tests[index].type = testType
     }
     
 }
