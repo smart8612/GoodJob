@@ -14,7 +14,8 @@ final class GJJobApplicationViewModel: ObservableObject {
     
     private let jobApplicationController: GJJobApplicationController = {
        GJJobApplicationController(
-        jobApplicationRepository: GJJobApplicationRepository(), 
+        testRecordRepository: GJTestRecordRepository(), 
+        jobApplicationRepository: GJJobApplicationRepository(),
         jobPostingRepository: GJJobPostingRepository()
        )
     }()

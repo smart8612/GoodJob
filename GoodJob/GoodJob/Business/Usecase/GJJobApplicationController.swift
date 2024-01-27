@@ -10,12 +10,13 @@ import Foundation
 
 final class GJJobApplicationController {
     
+    private let testRecordRepository: any GJRepository<GJTestRecord>
     private let jobApplicationRepository: any GJRepository<GJJobApplication>
     private let jobPostingRepository: any GJRepository<GJJobPosting>
     private var userSessionController: GJUserSessionController { .shared }
     
-    init(jobApplicationRepository: any GJRepository<GJJobApplication>,
-         jobPostingRepository: any GJRepository<GJJobPosting>) {
+    init(testRecordRepository: any GJRepository<GJTestRecord>, jobApplicationRepository: any GJRepository<GJJobApplication>, jobPostingRepository: any GJRepository<GJJobPosting>) {
+        self.testRecordRepository = testRecordRepository
         self.jobApplicationRepository = jobApplicationRepository
         self.jobPostingRepository = jobPostingRepository
     }
@@ -40,6 +41,17 @@ final class GJJobApplicationController {
         return fetchedJobApplication
     }
     
+    func fetchTestRecord(belongsTo test: GJTest) throws -> GJTestRecord {
+        guard let testRecordId = test.testRecordId else {
+            throw GJJobApplicationControllerError.testRecordNotFound
+        }
+        let fetchedResults = try testRecordRepository.fetch(objectsWith: [testRecordId])
+        guard let fetchedResult = fetchedResults.first else {
+            throw GJJobApplicationControllerError.testRecordNotFound
+        }
+        return fetchedResult
+    }
+    
     func create(jobApplication: GJJobApplication) throws -> GJJobApplication {
         guard let userId = userSessionController.currentUser?.id else {
             throw GJJobApplicationControllerError.currentUserNotFound
@@ -57,6 +69,7 @@ final class GJJobApplicationController {
     enum GJJobApplicationControllerError: Error {
         case currentUserNotFound
         case jobApplicationNotFound
+        case testRecordNotFound
     }
     
 }
