@@ -12,6 +12,9 @@ struct JobApplicationDetailView: View {
     
     @StateObject var model: GJJobApplicationDetailViewModel
     
+    @State private var isShowingSheet = false
+    @State private var isShowingJobPostingDetailSheet = false
+    
     private var selectedJobApplicationId: UUID? {
         model.selectedJobApplicationId
     }
@@ -46,7 +49,7 @@ struct JobApplicationDetailView: View {
                     
                     Section {
                         ForEach(tests) { test in
-                            NavigationLink(value: test) {
+                            Button(action: { isShowingSheet.toggle() }) {
                                 VStack(alignment: .leading) {
                                     Text(test.type.description)
                                     Text(test.name)
@@ -55,16 +58,40 @@ struct JobApplicationDetailView: View {
                         }
                     }
                 }
+                .sheet(isPresented: $isShowingSheet) {
+                    NewTestRecordView(isShowingSheet: $isShowingSheet)
+                }
+//                .sheet(isPresented: $isShowingJobPostingDetailSheet) {
+//                    JobPostingDetailView()
+//                }
             } else {
                 Text("Select a Job Application")
             }
         }
         .navigationTitle("Job Application Detail")
         .navigationBarTitleDisplayMode(.inline)
+        .toolbar {
+            EditButton()
+        }
         .environmentObject(model)
         .onAppear {
             model.fetchJobApplication()
         }
     }
+    
+}
+
+struct NewTestRecordView: View {
+    
+    @Binding var isShowingSheet: Bool
+    
+    
+    var body: some View {
+        DataCreationContainer(isShowingSheet: $isShowingSheet) {
+            Text("Hello World")
+                .navigationTitle("New Test Record")
+        }
+    }
+    
     
 }
