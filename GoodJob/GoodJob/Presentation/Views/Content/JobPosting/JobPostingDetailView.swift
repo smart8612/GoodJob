@@ -10,9 +10,7 @@ import SwiftUI
 
 struct JobPostingDetailView: View {
     
-    @StateObject private var model: GJJobPostingDetailViewModel = .init()
-    
-    let selectedJobPostingId: UUID?
+    @StateObject var model: GJJobPostingDetailViewModel
     
     @State private var isShowingSheet = false
     
@@ -75,7 +73,7 @@ struct JobPostingDetailView: View {
                 }
             }
         }
-        .onAppear { model.selectedJobPostingId = selectedJobPostingId }
+        .onAppear { model.fetchJobPosting() }
     }
     
 }

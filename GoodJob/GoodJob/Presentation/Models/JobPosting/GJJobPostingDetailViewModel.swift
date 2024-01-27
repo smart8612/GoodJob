@@ -19,9 +19,7 @@ final class GJJobPostingDetailViewModel: ObservableObject {
     
     private let jobPostingDataObserver = GJJobPositngDataObserver()
     
-    var selectedJobPostingId: UUID? {
-        didSet { fetchJobPosting() }
-    }
+    var selectedJobPostingId: UUID?
     
     @Published private(set) var jobPosting: GJJobPosting?
     @Published private(set) var tests: [GJTest]?

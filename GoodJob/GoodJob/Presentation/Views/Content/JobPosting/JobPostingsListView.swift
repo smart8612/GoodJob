@@ -26,7 +26,9 @@ struct JobPostingsListView: View {
                     .onDelete(perform: model.deleteJobPostings)
                 }
                 .navigationDestination(for: GJJobPosting.self) {
-                    JobPostingDetailView(selectedJobPostingId: $0.id)
+                    JobPostingDetailView(model: .init(
+                        selectedJobPostingId: $0.id
+                    ))
                 }
             } sheet: { isShowingSheet in
                  NewJobPostingView(isShowingSheet: isShowingSheet)

@@ -43,8 +43,13 @@ struct JobApplicationDetailView: View {
                     }
                     
                     Section {
-                        Text(jobPosting.companyName)
-                        Text(jobPosting.jobPositionName)
+                        Button(action: { isShowingJobPostingDetailSheet.toggle() }) {
+                            VStack(alignment: .leading) {
+                                Text(jobPosting.companyName)
+                                Text(jobPosting.jobPositionName)
+                            }
+                        }
+                        
                     }
                     
                     Section {
@@ -61,9 +66,20 @@ struct JobApplicationDetailView: View {
                 .sheet(isPresented: $isShowingSheet) {
                     NewTestRecordView(isShowingSheet: $isShowingSheet)
                 }
-//                .sheet(isPresented: $isShowingJobPostingDetailSheet) {
-//                    JobPostingDetailView()
-//                }
+                .sheet(isPresented: $isShowingJobPostingDetailSheet) {
+                    NavigationStack {
+                        JobPostingDetailView(model: .init(
+                            selectedJobPostingId: jobPosting.id
+                        ))
+                        .toolbar {
+                            ToolbarItem(placement: .topBarLeading) {
+                                Button(action: { isShowingJobPostingDetailSheet.toggle() }) {
+                                    Text("Close")
+                                }
+                            }
+                        }
+                    }
+                }
             } else {
                 Text("Select a Job Application")
             }
