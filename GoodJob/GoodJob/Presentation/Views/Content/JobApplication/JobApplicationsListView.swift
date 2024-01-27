@@ -27,9 +27,9 @@ struct JobApplicationsListView: View {
                     }
                 }
                 .navigationDestination(for: GJJobApplication.self) {
-                    JobApplicationDetailView(
+                    JobApplicationDetailView(model: .init(
                         selectedJobApplicationId: $0.id
-                    )
+                    ))
                 }
             } sheet: { isShowingSheet in
                 NewJobApplicaitonView(isShowingSheet: isShowingSheet)

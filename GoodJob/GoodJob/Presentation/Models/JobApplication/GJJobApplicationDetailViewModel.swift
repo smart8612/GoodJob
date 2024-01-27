@@ -12,7 +12,7 @@ final class GJJobApplicationDetailViewModel: ObservableObject {
     
     private let jobApplicationController: GJJobApplicationController = {
        GJJobApplicationController(
-        testRecordRepository: GJTestRecordRepository(), 
+        testRecordRepository: GJTestRecordRepository(),
         jobApplicationRepository: GJJobApplicationRepository(),
         jobPostingRepository: GJJobPostingRepository()
        )
@@ -31,18 +31,17 @@ final class GJJobApplicationDetailViewModel: ObservableObject {
     private let jobApplicationObserver: GJDataObserver
     private let jobPostingObserver: GJDataObserver
     
-    var selectedJobApplicationId: UUID? {
-        didSet { fetchJobApplication() }
-    }
+    var selectedJobApplicationId: UUID?
     
-    init() {
+    init(selectedJobApplicationId: UUID? = nil) {
+        self.selectedJobApplicationId = selectedJobApplicationId
         jobApplicationObserver = GJJobApplicationDataObserver()
         jobPostingObserver = GJJobPositngDataObserver()
         jobApplicationObserver.delegate = self
         jobPostingObserver.delegate = self
     }
     
-    private func fetchJobApplication() {
+    func fetchJobApplication() {
         guard let id = selectedJobApplicationId else {
             return
         }

@@ -10,9 +10,11 @@ import SwiftUI
 
 struct JobApplicationDetailView: View {
     
-    @StateObject private var model = GJJobApplicationDetailViewModel()
+    @StateObject var model: GJJobApplicationDetailViewModel
     
-    let selectedJobApplicationId: UUID?
+    private var selectedJobApplicationId: UUID? {
+        model.selectedJobApplicationId
+    }
     
     private var jobApplication: GJJobApplication? {
         model.jobApplication
@@ -61,7 +63,7 @@ struct JobApplicationDetailView: View {
         .navigationBarTitleDisplayMode(.inline)
         .environmentObject(model)
         .onAppear {
-            model.selectedJobApplicationId = selectedJobApplicationId
+            model.fetchJobApplication()
         }
     }
     
