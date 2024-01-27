@@ -53,13 +53,20 @@ struct JobPostingSelectionView: View {
     
     var body: some View {
         NavigationStack {
-            List(model.registableJobPostings) { post in
-                Button(action: { model.selectedJobPosting = post }) {
-                    HStack {
-                        Text("\(post.jobPositionName) @ \(post.companyName)")
-                        Spacer()
-                        if let _ = model.selectedJobPosting, post == model.selectedJobPosting {
-                            Text("✅")
+            Group {
+                if model.registableJobPostings.isEmpty {
+                    Text("Empty Job Posting")
+                        .foregroundStyle(.secondary)
+                } else {
+                    List(model.registableJobPostings) { post in
+                        Button(action: { model.selectedJobPosting = post }) {
+                            HStack {
+                                Text("\(post.jobPositionName) @ \(post.companyName)")
+                                Spacer()
+                                if let _ = model.selectedJobPosting, post == model.selectedJobPosting {
+                                    Text("✅")
+                                }
+                            }
                         }
                     }
                 }

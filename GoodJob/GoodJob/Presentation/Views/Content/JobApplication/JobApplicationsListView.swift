@@ -17,20 +17,25 @@ struct JobApplicationsListView: View {
         
         NavigationStack {
             DataContainer {
-                List {
-                    ForEach(model.jobApplications) { jobApplication in
-                        NavigationLink(value: jobApplication) {
-                            JobApplicationCellView(
-                                jobApplication: jobApplication
-                            )
+                if model.jobApplications.isEmpty {
+                    Text("Empty Job Application")
+                        .foregroundStyle(.secondary)
+                } else {
+                    List {
+                        ForEach(model.jobApplications) { jobApplication in
+                            NavigationLink(value: jobApplication) {
+                                JobApplicationCellView(
+                                    jobApplication: jobApplication
+                                )
+                            }
                         }
+                        .onDelete(perform: model.deleteJobApplication)
                     }
-                    .onDelete(perform: model.deleteJobApplication)
-                }
-                .navigationDestination(for: GJJobApplication.self) {
-                    JobApplicationDetailView(model: .init(
-                        selectedJobApplicationId: $0.id
-                    ))
+                    .navigationDestination(for: GJJobApplication.self) {
+                        JobApplicationDetailView(model: .init(
+                            selectedJobApplicationId: $0.id
+                        ))
+                    }
                 }
             } sheet: { isShowingSheet in
                 NewJobApplicaitonView(isShowingSheet: isShowingSheet)

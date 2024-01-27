@@ -17,18 +17,23 @@ struct JobPostingsListView: View {
         
         NavigationStack {
             DataContainer {
-                List {
-                    ForEach(model.jobPostings) { jobPost in
-                        NavigationLink(value: jobPost) {
-                            JobPostingCellView(jobPosting: jobPost)
+                if model.jobPostings.isEmpty {
+                    Text("Empty Job Posting")
+                        .foregroundStyle(.secondary)
+                } else {
+                    List {
+                        ForEach(model.jobPostings) { jobPost in
+                            NavigationLink(value: jobPost) {
+                                JobPostingCellView(jobPosting: jobPost)
+                            }
                         }
+                        .onDelete(perform: model.deleteJobPostings)
                     }
-                    .onDelete(perform: model.deleteJobPostings)
-                }
-                .navigationDestination(for: GJJobPosting.self) {
-                    JobPostingDetailView(model: .init(
-                        selectedJobPostingId: $0.id
-                    ))
+                    .navigationDestination(for: GJJobPosting.self) {
+                        JobPostingDetailView(model: .init(
+                            selectedJobPostingId: $0.id
+                        ))
+                    }
                 }
             } sheet: { isShowingSheet in
                  NewJobPostingView(isShowingSheet: isShowingSheet)
