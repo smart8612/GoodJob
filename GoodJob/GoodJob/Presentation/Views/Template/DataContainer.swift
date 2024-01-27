@@ -22,11 +22,8 @@ struct DataContainer<Content: View, Sheet: View>: View {
     
     var body: some View {
         content()
-            .sheet(isPresented: $isShowingSheet) {
-                sheet($isShowingSheet)
-            }
             .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
+                ToolbarItem {
                     EditButton()
                 }
                 
@@ -35,6 +32,9 @@ struct DataContainer<Content: View, Sheet: View>: View {
                         Label("Add Item", systemImage: "plus")
                     }
                 }
+            }
+            .sheet(isPresented: $isShowingSheet) {
+                sheet($isShowingSheet)
             }
     }
     

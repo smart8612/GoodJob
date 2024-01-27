@@ -56,10 +56,11 @@ struct JobPostingSelectionView: View {
             List(model.registableJobPostings) { post in
                 Button(action: { model.selectedJobPosting = post }) {
                     HStack {
+                        Text("\(post.jobPositionName) @ \(post.companyName)")
+                        Spacer()
                         if let _ = model.selectedJobPosting, post == model.selectedJobPosting {
                             Text("✅")
                         }
-                        Text("\(post.jobPositionName) @ \(post.companyName)")
                     }
                 }
             }

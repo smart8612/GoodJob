@@ -11,6 +11,6 @@ import Combine
 
 final class GJNavigationModel: ObservableObject {
     
-    @Published var selectedCategory: GJAppCategory = .summary
+    @Published var selectedCategory: GJAppCategory = .applications  
         
 }
