@@ -25,6 +25,7 @@ struct JobApplicationsListView: View {
                             )
                         }
                     }
+                    .onDelete(perform: model.deleteJobApplication)
                 }
                 .navigationDestination(for: GJJobApplication.self) {
                     JobApplicationDetailView(model: .init(
@@ -36,7 +37,6 @@ struct JobApplicationsListView: View {
             }
             .navigationTitle(navigationModel.selectedCategory.name)
         }
-        
     }
     
 }

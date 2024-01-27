@@ -66,6 +66,10 @@ final class GJJobApplicationController {
         return createdJobApplication
     }
     
+    func delete(jobApplication: GJJobApplication) throws {
+        try jobApplicationRepository.delete(objectWith: jobApplication.id)
+    }
+    
     enum GJJobApplicationControllerError: Error {
         case currentUserNotFound
         case jobApplicationNotFound
