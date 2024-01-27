@@ -37,12 +37,12 @@ struct JobApplicationDetailView: View {
                let jobPosting = jobPosting,
                let tests = tests {
                 List {
-                    Section {
+                    Section("Information") {
                         Text(jobApplication.title)
                         Text(jobApplication.createdAt.formatted())
                     }
                     
-                    Section {
+                    Section("Relative Job Posting") {
                         Button(action: { isShowingJobPostingDetailSheet.toggle() }) {
                             VStack(alignment: .leading) {
                                 Text(jobPosting.companyName)
@@ -52,7 +52,7 @@ struct JobApplicationDetailView: View {
                         
                     }
                     
-                    Section {
+                    Section("Recruit Tests") {
                         ForEach(tests) { test in
                             Button(action: { isShowingSheet.toggle() }) {
                                 VStack(alignment: .leading) {
