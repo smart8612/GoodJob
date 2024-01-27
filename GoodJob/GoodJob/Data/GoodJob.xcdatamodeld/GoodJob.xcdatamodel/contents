@@ -40,6 +40,7 @@
         <relationship name="testRecord_" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="CDTestRecord" inverseName="test_" inverseEntity="CDTestRecord"/>
     </entity>
     <entity name="CDTestRecord" representedClassName="CDTestRecord" syncable="YES" codeGenerationType="class">
+        <attribute name="createdAt_" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="id_" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="memo_" optional="YES" attributeType="String"/>
         <relationship name="jobApplication_" maxCount="1" deletionRule="Nullify" destinationEntity="CDJobApplication" inverseName="testRecords_" inverseEntity="CDJobApplication"/>

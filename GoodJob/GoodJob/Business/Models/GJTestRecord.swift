@@ -11,6 +11,7 @@ import Foundation
 struct GJTestRecord: Identifiable, Hashable {
     
     var id: UUID = UUID()
+    var createdAt: Date = .now
     
     var jobApplicationId: UUID
     var testId: UUID

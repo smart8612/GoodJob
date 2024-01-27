@@ -7,50 +7,38 @@
 
 import SwiftUI
 
-//struct TestRecordView: View {
-//    
-//    @EnvironmentObject private var model: GJJobApplicationDetailViewModel
-//    
-//    let jobApplication: GJJobApplication
-//    let test: GJTest
-//    
-//    private var testRecords: [GJTestRecord] {
-//        model.fetchTestRecords(
-//            jobApplicationId: jobApplication.id,
-//            testId: test.id
-//        )
-//    }
-//    
-//    var body: some View {
-//        DataContainer {
-//            List {
-//                
-//                Section {
-//                    Text(test.type.description)
-//                    Text(test.name)
-//                }
-//                
-//                Section {
-//                    
-//                    ForEach(testRecords) {
-//                        Text($0.memo)
-//                    }
-//                    
-//                }
-//                
-//            }
-//            .navigationTitle("Test Memos")
-//        } sheet: { isShowingSheet in
+
+struct TestRecordView: View {
+    
+    @State private var testRecords: [GJTestRecord] = .init()
+    
+    var body: some View {
+        DataContainer {
+            List {
+                Section {
+                    Text(test.type.description)
+                    Text(test.name)
+                }
+                
+                Section {
+                    ForEach(testRecords) {
+                        Text($0.memo)
+                    }
+                }
+            }
+        } sheet: { isShowingSheet in
 //            NewTestRecordView(
 //                isShowingSheet: isShowingSheet,
 //                jobApplication: jobApplication,
 //                test: test
 //            )
-//            Text("Hello World")
-//        }
-//    }
-//    
-//}
+            Text("Hello World")
+        }
+        .navigationTitle("Test Memos")
+        .navigationBarTitleDisplayMode(.inline)
+    }
+    
+}
 
 //struct NewTestRecordView: View {
 //    

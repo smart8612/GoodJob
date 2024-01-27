@@ -31,6 +31,11 @@ extension CDTestRecord {
         set { test_ = newValue }
     }
     
+    var createdAt: Date {
+        get { createdAt_! }
+        set { createdAt_ = newValue }
+    }
+    
     convenience init(memo: String, jobApplication: CDJobApplication, test: CDTest,
                      context: NSManagedObjectContext) {
         self.init(context: context)
@@ -41,6 +46,7 @@ extension CDTestRecord {
     
     public override func awakeFromInsert() {
         self.id = .init()
+        self.createdAt = .now
     }
     
 }
