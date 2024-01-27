@@ -37,7 +37,7 @@ struct EditJobPostingView: View {
     
     private func addAction() {
         do {
-            try jobPostingController.update(jobPosting: jobPosting, tests: tests)
+            let _ = try jobPostingController.update(jobPosting: jobPosting, tests: tests)
             isShowingSheet.toggle()
         } catch {
             print(error.localizedDescription)
