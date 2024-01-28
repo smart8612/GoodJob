@@ -51,16 +51,49 @@ fileprivate struct JobPostingCellView: View {
     let jobPosting: GJJobPosting
     
     var body: some View {
-        VStack(alignment: .leading, spacing: 8) {
-            Text(jobPosting.jobPositionName)
-                .font(.headline)
-            VStack(alignment: .leading) {
-                Label(jobPosting.companyName, systemImage: "building.2")
-                Label(jobPosting.workplaceLocation, systemImage: "globe")
-                Label(jobPosting.endDate.formatted(), systemImage: "calendar")
+        HStack(alignment: .center, spacing: 16) {
+            ConvenienceDateDisplay(date: jobPosting.endDate)
+                .frame(width: 80, height: 80)
+            
+            VStack(alignment: .leading, spacing: 8) {
+                Text(jobPosting.jobPositionName)
+                    .font(.headline)
+                VStack(alignment: .leading, spacing: 2) {
+                    Label(jobPosting.companyName, systemImage: "building.2")
+                    Label(jobPosting.workplaceLocation, systemImage: "globe")
+                    Label(jobPosting.endDate.formatted(), systemImage: "calendar")
+                }
+                .font(.caption2)
             }
-            .font(.caption2)
+            
+            Spacer()
         }
+    }
+}
+
+
+#Preview {
+    ConvenienceDateDisplay(date: .init(timeIntervalSinceNow: -20))
+}
+
+struct ConvenienceDateDisplay: View {
+    
+    let date: Date
+    
+    var body: some View {
+        RoundedRectangle(cornerRadius: 10)
+            .foregroundStyle(shapeColor)
+            .overlay {
+                Text(message)
+            }
+    }
+    
+    var message: String {
+        (date < .now) ? "End":"Ing"
+    }
+    
+    var shapeColor: Color {
+        (date < .now) ? .red:.green
     }
 }
 
