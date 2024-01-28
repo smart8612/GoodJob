@@ -15,7 +15,7 @@ struct JobPostingsListView: View {
     
     var body: some View {
         
-        NavigationStack {
+        NavigationStack(path: $navigationModel.jobPostingPath) {
             DataContainer {
                 if model.jobPostings.isEmpty {
                     Text("Empty Job Posting")
