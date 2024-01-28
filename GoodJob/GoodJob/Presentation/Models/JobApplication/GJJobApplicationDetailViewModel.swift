@@ -60,6 +60,26 @@ final class GJJobApplicationDetailViewModel: ObservableObject {
         }
     }
     
+    func fetchTestRecord(belongsTo test: GJTest) -> GJTestRecord? {
+        do {
+            return try jobApplicationController.fetchTestRecord(belongsTo: test)
+        } catch {
+            print(error.localizedDescription)
+            return nil
+        }
+    }
+    
+    func create(testRecord: GJTestRecord, belongsTo test: GJTest) {
+        guard let jobApplication = jobApplication else { return }
+        
+        do {
+            let targetTestRecord = GJTestRecord(jobApplicationId: jobApplication.id, testId: test.id, memo: testRecord.memo)
+            let result = try jobApplicationController.create(testRecord: targetTestRecord)
+        } catch {
+            print(error.localizedDescription)
+        }
+    }
+    
 }
 
 extension GJJobApplicationDetailViewModel: GJDataObserverDelegate {

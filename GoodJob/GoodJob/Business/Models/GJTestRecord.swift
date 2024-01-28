@@ -18,4 +18,7 @@ struct GJTestRecord: Identifiable, Hashable {
     
     var memo: String
     
+    static func initWithEmpty() -> Self {
+        Self(jobApplicationId: .init(), testId: .init(), memo: .init())
+    }
 }

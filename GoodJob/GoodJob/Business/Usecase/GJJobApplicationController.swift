@@ -66,6 +66,10 @@ final class GJJobApplicationController {
         return createdJobApplication
     }
     
+    func create(testRecord: GJTestRecord) throws -> GJTestRecord {
+        try testRecordRepository.create(object: testRecord)
+    }
+    
     func delete(jobApplication: GJJobApplication) throws {
         try jobApplicationRepository.delete(objectWith: jobApplication.id)
     }

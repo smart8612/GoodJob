@@ -126,7 +126,8 @@ fileprivate extension CDTest {
             order: self.order,
             name: self.name,
             type: testType,
-            jobPostingId: self.jobPosting.id
+            jobPostingId: self.jobPosting.id,
+            testRecordId: self.testRecord?.id
         )
     }
     

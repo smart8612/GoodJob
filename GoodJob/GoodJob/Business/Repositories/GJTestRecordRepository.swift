@@ -37,7 +37,7 @@ final class GJTestRecordRepository: GJRepository {
     func fetch(objectsWith ids: [UUID]) throws -> [GJTestRecord] {
         let fetchRequest = CDTestRecord.fetchRequest()
         fetchRequest.predicate = NSPredicate(
-            format: "%k IN %@", \CDTestRecord.id_ as! CVarArg, ids)
+            format: "id_ IN %@", ids)
         fetchRequest.sortDescriptors = [
             NSSortDescriptor(keyPath: \CDTestRecord.createdAt_, ascending: false)
         ]
@@ -50,8 +50,7 @@ final class GJTestRecordRepository: GJRepository {
     func create(object: GJTestRecord) throws -> GJTestRecord {
         let jobApplicationFetchRequest = CDJobApplication.fetchRequest()
         jobApplicationFetchRequest.predicate = NSPredicate(
-            format: "%K = %@", 
-            \CDJobApplication.id_ as! CVarArg,
+            format: "id_ = %@",
             object.jobApplicationId as CVarArg
         )
         
@@ -62,8 +61,7 @@ final class GJTestRecordRepository: GJRepository {
         
         let testFetchRequest = CDTest.fetchRequest()
         testFetchRequest.predicate = NSPredicate(
-            format: "%K = %@",
-            \CDTest.id_ as! CVarArg,
+            format: "id_ = %@",
             object.testId as CVarArg
         )
         
@@ -78,6 +76,8 @@ final class GJTestRecordRepository: GJRepository {
             test: fetchedTest,
             context: managedObjectContext
         )
+        
+        try managedObjectContext.save()
         
         return createdTestRecord.convertToGJTestRecord()
     }

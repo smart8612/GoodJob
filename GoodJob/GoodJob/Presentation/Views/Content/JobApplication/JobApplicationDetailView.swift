@@ -12,7 +12,6 @@ struct JobApplicationDetailView: View {
     
     @StateObject var model: GJJobApplicationDetailViewModel
     
-    @State private var isShowingSheet = false
     @State private var isShowingJobPostingDetailSheet = false
     
     private var selectedJobApplicationId: UUID? {
@@ -51,20 +50,12 @@ struct JobApplicationDetailView: View {
                         }
                         
                     }
-                    
                     Section("Recruit Tests") {
                         ForEach(tests) { test in
-                            Button(action: { isShowingSheet.toggle() }) {
-                                VStack(alignment: .leading) {
-                                    Text(test.type.description)
-                                    Text(test.name)
-                                }
-                            }
+                            TestRecordSectionView(test: test)
                         }
                     }
-                }
-                .sheet(isPresented: $isShowingSheet) {
-                    NewTestRecordView(isShowingSheet: $isShowingSheet)
+                    
                 }
                 .sheet(isPresented: $isShowingJobPostingDetailSheet) {
                     NavigationStack {
@@ -97,17 +88,58 @@ struct JobApplicationDetailView: View {
     
 }
 
-struct NewTestRecordView: View {
+struct TestRecordSectionView: View {
     
-    @Binding var isShowingSheet: Bool
+    @EnvironmentObject private var model: GJJobApplicationDetailViewModel
     
+    @State private var isShowingSheet: Bool = false
+    let test: GJTest
     
     var body: some View {
-        DataCreationContainer(isShowingSheet: $isShowingSheet) {
-            Text("Hello World")
-                .navigationTitle("New Test Record")
+        Button(action: { isShowingSheet.toggle() }) {
+            VStack(alignment: .leading) {
+                Text(test.type.description)
+                Text(test.name)
+                
+                if let testRecord = model.fetchTestRecord(belongsTo: test) {
+                    Text("Test Record")
+                    Text (testRecord.memo)
+                }
+            }
+        }
+        .sheet(isPresented: $isShowingSheet) {
+            NewTestRecordView(isShowingSheet: $isShowingSheet, test: test)
         }
     }
     
+}
+
+struct NewTestRecordView: View {
+    
+    @EnvironmentObject private var model: GJJobApplicationDetailViewModel
+    
+    @Binding var isShowingSheet: Bool
+    let test: GJTest
+    
+    @State private var testRecord: GJTestRecord = .initWithEmpty()
+    
+    var body: some View {
+        DataCreationContainer(
+            isShowingSheet: $isShowingSheet,
+            addAction: addAction
+        ) {
+            List {
+                Section("Memo") {
+                    TextField("Memo", text: $testRecord.memo)
+                }
+            }
+            .navigationTitle("New Test Record")
+        }
+    }
+    
+    private func addAction() {
+        model.create(testRecord: testRecord, belongsTo: test)
+        isShowingSheet.toggle()
+    }
     
 }
