@@ -12,65 +12,17 @@ struct JobApplicationDetailView: View {
     
     @StateObject var model: GJJobApplicationDetailViewModel
     
-    @State private var isShowingJobPostingDetailSheet = false
-    
-    private var selectedJobApplicationId: UUID? {
-        model.selectedJobApplicationId
-    }
-    
-    private var jobApplication: GJJobApplication? {
-        model.jobApplication
-    }
-    
-    private var jobPosting: GJJobPosting? {
-        model.jobPosting
-    }
-    
-    private var tests: [GJTest]? {
-        model.tests
-    }
-    
     var body: some View {
+        
         Group {
-            if let jobApplication = jobApplication,
-               let jobPosting = jobPosting,
-               let tests = tests {
-                List {
-                    Section("Information") {
-                        Text(jobApplication.title)
-                        Text(jobApplication.createdAt.formatted())
-                    }
-                    
-                    Section("Relative Job Posting") {
-                        Button(action: { isShowingJobPostingDetailSheet.toggle() }) {
-                            VStack(alignment: .leading) {
-                                Text(jobPosting.companyName)
-                                Text(jobPosting.jobPositionName)
-                            }
-                        }
-                        
-                    }
-                    Section("Recruit Tests") {
-                        ForEach(tests) { test in
-                            TestRecordSectionView(test: test)
-                        }
-                    }
-                    
-                }
-                .sheet(isPresented: $isShowingJobPostingDetailSheet) {
-                    NavigationStack {
-                        JobPostingDetailView(model: .init(
-                            selectedJobPostingId: jobPosting.id
-                        ))
-                        .toolbar {
-                            ToolbarItem(placement: .topBarLeading) {
-                                Button(action: { isShowingJobPostingDetailSheet.toggle() }) {
-                                    Text("Close")
-                                }
-                            }
-                        }
-                    }
-                }
+            if let jobApplication = model.jobApplication,
+               let jobPosting = model.jobPosting,
+               let tests = model.tests {
+                JobApplicationDetailListView(
+                    jobApplication: jobApplication,
+                    jobPosting: jobPosting,
+                    tests: tests
+                )
             } else {
                 Text("Select a Job Application")
             }
@@ -84,37 +36,118 @@ struct JobApplicationDetailView: View {
         .onAppear {
             model.fetchJobApplication()
         }
+        
     }
     
 }
 
-struct TestRecordSectionView: View {
+
+fileprivate struct JobApplicationDetailListView: View {
     
-    @EnvironmentObject private var model: GJJobApplicationDetailViewModel
+    let jobApplication: GJJobApplication
+    let jobPosting: GJJobPosting
+    let tests: [GJTest]
     
-    @State private var isShowingSheet: Bool = false
-    let test: GJTest
+    @State private var isShowingSheet = false
     
     var body: some View {
-        Button(action: { isShowingSheet.toggle() }) {
-            VStack(alignment: .leading) {
-                Text(test.type.description)
-                Text(test.name)
+        
+        List {
+            Section("Information") {
+                Text(jobApplication.title)
+                Text(jobApplication.createdAt.formatted())
+            }
+            
+            Section("Relative Job Posting") {
+                Button(action: { isShowingSheet.toggle() }) {
+                    VStack(alignment: .leading) {
+                        Text(jobPosting.companyName)
+                        Text(jobPosting.jobPositionName)
+                    }
+                }
                 
-                if let testRecord = model.fetchTestRecord(belongsTo: test) {
-                    Text("Test Record")
-                    Text (testRecord.memo)
+            }
+            Section("Recruit Tests") {
+                ForEach(tests) { test in
+                    TestRecordView(test: test)
                 }
             }
         }
         .sheet(isPresented: $isShowingSheet) {
-            NewTestRecordView(isShowingSheet: $isShowingSheet, test: test)
+            AssociatedJobPostingView(jobPosting: jobPosting)
         }
+        
+    }
+}
+
+
+fileprivate struct TestRecordView: View {
+    
+    @EnvironmentObject private var model: GJJobApplicationDetailViewModel
+    
+    let test: GJTest
+    
+    @State private var testRecord: GJTestRecord?
+    @State private var isShowingSheet: Bool = false
+    
+    var body: some View {
+        
+        Group {
+            SecondaryLabeledCell(key: test.type.description) {
+                Text(test.name)
+            }
+            
+            if let testRecord = testRecord {
+                SecondaryLabeledCell(key: "Test Record") {
+                    Text (testRecord.memo)
+                }
+            } else {
+                Button(action: { isShowingSheet.toggle() }) {
+                    Label("Add Test Record", systemImage: "plus.app")
+                }
+            }
+            
+        }
+        .sheet(isPresented: $isShowingSheet) {
+            NewTestRecordView(
+                isShowingSheet: $isShowingSheet,
+                test: test
+            )
+        }
+        .onAppear {
+            self.testRecord = model.fetchTestRecord(belongsTo: test)
+        }
+        
     }
     
 }
 
-struct NewTestRecordView: View {
+fileprivate struct AssociatedJobPostingView: View {
+    
+    let jobPosting: GJJobPosting
+    
+    @Environment(\.dismiss) private var dismiss
+    
+    var body: some View {
+        
+        NavigationStack {
+            JobPostingDetailView(model: .init(
+                selectedJobPostingId: jobPosting.id
+            ))
+            .toolbar {
+                ToolbarItem(placement: .topBarLeading) {
+                    Button(action: { dismiss() }) {
+                        Text("Close")
+                    }
+                }
+            }
+        }
+        
+    }
+    
+}
+
+fileprivate struct NewTestRecordView: View {
     
     @EnvironmentObject private var model: GJJobApplicationDetailViewModel
     

@@ -70,6 +70,7 @@ fileprivate struct JobApplicationCellView: View {
     @State private var jobPosting: GJJobPosting? = nil
     
     var body: some View {
+        
         Group {
             if let jobPosting = jobPosting {
                 VStack(alignment: .leading, spacing: 8) {
@@ -91,5 +92,6 @@ fileprivate struct JobApplicationCellView: View {
                 associatedWith: jobApplication
             )
         }
+        
     }
 }

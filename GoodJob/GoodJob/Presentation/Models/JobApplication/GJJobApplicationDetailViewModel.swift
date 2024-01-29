@@ -10,6 +10,12 @@ import Foundation
 
 final class GJJobApplicationDetailViewModel: ObservableObject {
     
+    private let selectedJobApplicationId: UUID
+    
+    @Published private(set) var jobApplication: GJJobApplication?
+    @Published private(set) var jobPosting: GJJobPosting?
+    @Published private(set) var tests: [GJTest]?
+    
     private let jobApplicationController: GJJobApplicationController = {
        GJJobApplicationController(
         testRecordRepository: GJTestRecordRepository(),
@@ -24,27 +30,19 @@ final class GJJobApplicationDetailViewModel: ObservableObject {
             testRepository: GJTestRepository())
     }()
     
-    @Published private(set) var jobApplication: GJJobApplication?
-    @Published private(set) var jobPosting: GJJobPosting?
-    @Published private(set) var tests: [GJTest]?
+    private let jobApplicationObserver = GJJobApplicationDataObserver()
+    private let jobPostingObserver = GJJobPositngDataObserver()
+    private let testRecordObserver = GJTestRecordDataObserver()
     
-    private let jobApplicationObserver: GJDataObserver
-    private let jobPostingObserver: GJDataObserver
-    
-    var selectedJobApplicationId: UUID?
-    
-    init(selectedJobApplicationId: UUID? = nil) {
+    init(selectedJobApplicationId: UUID) {
         self.selectedJobApplicationId = selectedJobApplicationId
-        jobApplicationObserver = GJJobApplicationDataObserver()
-        jobPostingObserver = GJJobPositngDataObserver()
         jobApplicationObserver.delegate = self
         jobPostingObserver.delegate = self
+        testRecordObserver.delegate = self
     }
     
     func fetchJobApplication() {
-        guard let id = selectedJobApplicationId else {
-            return
-        }
+        let id = selectedJobApplicationId
         
         do {
             let fetchedJobApplication = try jobApplicationController.fetchJobApplication(with: id)

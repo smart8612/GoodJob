@@ -69,31 +69,5 @@ fileprivate struct JobPostingCellView: View {
             Spacer()
         }
     }
+    
 }
-
-
-#Preview {
-    ConvenienceDateDisplay(date: .init(timeIntervalSinceNow: -20))
-}
-
-struct ConvenienceDateDisplay: View {
-    
-    let date: Date
-    
-    var body: some View {
-        RoundedRectangle(cornerRadius: 10)
-            .foregroundStyle(shapeColor)
-            .overlay {
-                Text(message)
-            }
-    }
-    
-    var message: String {
-        (date < .now) ? "End":"Ing"
-    }
-    
-    var shapeColor: Color {
-        (date < .now) ? .red:.green
-    }
-}
-
