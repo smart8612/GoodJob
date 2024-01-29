@@ -37,7 +37,7 @@ enum GJAppCategory: String, Identifiable, Hashable, CaseIterable {
 //        case .summary:
 //            SummaryView()
         case .applications:
-            JobApplicationsListView()
+            JobApplicationView()
         case .jobs:
             JobPostingsListView()
         }

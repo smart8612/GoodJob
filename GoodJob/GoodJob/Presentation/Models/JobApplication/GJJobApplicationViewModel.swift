@@ -20,11 +20,21 @@ final class GJJobApplicationViewModel: ObservableObject {
        )
     }()
     
+    private let jobPostingController: GJJobPostingController = {
+        GJJobPostingController(
+            jobPostingRepository: GJJobPostingRepository(),
+            testRepository: GJTestRepository()
+        )
+    }()
+    
     private let jobApplicationObserver: any GJDataObserver
+    private let jobPostingObserver: any GJDataObserver
     
     init() {
+        self.jobPostingObserver = GJJobPositngDataObserver()
         self.jobApplicationObserver = GJJobApplicationDataObserver()
         self.jobApplicationObserver.delegate = self
+        self.jobPostingObserver.delegate = self
         fetchJobApplication()
     }
     
@@ -33,6 +43,16 @@ final class GJJobApplicationViewModel: ObservableObject {
             self.jobApplications = try jobApplicationController.fetchAllJobApplications()
         } catch {
             print(error.localizedDescription)
+        }
+    }
+    
+    func fetchJobPosting(associatedWith jobApplication: GJJobApplication) -> GJJobPosting? {
+        do {
+            let jobPosting = try jobPostingController.fetchJobPosting(with: jobApplication.jobPostingId)
+            return jobPosting
+        } catch {
+            print(error.localizedDescription)
+            return nil
         }
     }
     

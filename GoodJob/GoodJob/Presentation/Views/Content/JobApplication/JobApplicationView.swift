@@ -1,5 +1,5 @@
 //
-//  JobApplicationsListView.swift
+//  JobApplicationView.swift
 //  GoodJob
 //
 //  Created by JeongTaek Han on 1/20/24.
@@ -8,7 +8,7 @@
 import SwiftUI
 
 
-struct JobApplicationsListView: View {
+struct JobApplicationView: View {
     
     @StateObject private var model = GJJobApplicationViewModel()
     @EnvironmentObject private var navigationModel: GJNavigationModel
@@ -21,27 +21,42 @@ struct JobApplicationsListView: View {
                     Text("Empty Job Application")
                         .foregroundStyle(.secondary)
                 } else {
-                    List {
-                        ForEach(model.jobApplications) { jobApplication in
-                            NavigationLink(value: jobApplication) {
-                                JobApplicationCellView(
-                                    jobApplication: jobApplication
-                                )
-                            }
-                        }
-                        .onDelete(perform: model.deleteJobApplication)
-                    }
-                    .navigationDestination(for: GJJobApplication.self) {
-                        JobApplicationDetailView(model: .init(
-                            selectedJobApplicationId: $0.id
-                        ))
-                    }
+                    JobApplicationListView()
                 }
             } sheet: { isShowingSheet in
                 NewJobApplicaitonView(isShowingSheet: isShowingSheet)
             }
             .navigationTitle(navigationModel.selectedCategory.name)
+            .environmentObject(model)
         }
+        
+    }
+    
+}
+
+
+fileprivate struct JobApplicationListView: View {
+    
+    @EnvironmentObject private var model: GJJobApplicationViewModel
+    
+    var body: some View {
+        
+        List {
+            ForEach(model.jobApplications) { jobApplication in
+                NavigationLink(value: jobApplication) {
+                    JobApplicationCellView(
+                        jobApplication: jobApplication
+                    )
+                }
+            }
+            .onDelete(perform: model.deleteJobApplication)
+        }
+        .navigationDestination(for: GJJobApplication.self) {
+            JobApplicationDetailView(model: .init(
+                selectedJobApplicationId: $0.id
+            ))
+        }
+        
     }
     
 }
@@ -49,15 +64,9 @@ struct JobApplicationsListView: View {
 
 fileprivate struct JobApplicationCellView: View {
     
+    @EnvironmentObject private var model: GJJobApplicationViewModel
+    
     let jobApplication: GJJobApplication
-    
-    private let jobPostingController: GJJobPostingController = {
-        GJJobPostingController(
-            jobPostingRepository: GJJobPostingRepository(),
-            testRepository: GJTestRepository()
-        )
-    }()
-    
     @State private var jobPosting: GJJobPosting? = nil
     
     var body: some View {
@@ -78,11 +87,9 @@ fileprivate struct JobApplicationCellView: View {
             }
         }
         .onAppear {
-            do {
-                self.jobPosting =  try jobPostingController.fetchJobPosting(with: jobApplication.jobPostingId)
-            } catch {
-                print(error.localizedDescription)
-            }
+            self.jobPosting = model.fetchJobPosting(
+                associatedWith: jobApplication
+            )
         }
     }
 }
