@@ -11,6 +11,8 @@ import Combine
 
 final class GJNavigationModel: ObservableObject {
     
-    @Published var selectedCategory: GJAppCategory = .summary
+    @Published var selectedCategory: GJAppCategory = .applications  
+    @Published var jobApplicationPath = NavigationPath()
+    @Published var jobPostingPath = NavigationPath()
         
 }

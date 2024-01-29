@@ -14,8 +14,13 @@ protocol GJRepository<Entity> {
     
     func fetchAll() throws -> [Entity]
     func fetch(objectsWith ids: [UUID]) throws -> [Entity]
+    
+    @discardableResult
     func create(object: Entity) throws -> Entity
+    
+    @discardableResult
     func update(objectWith id: UUID, to object: Entity) throws -> Entity
+    
     func delete(objectWith id: UUID) throws
     
 }

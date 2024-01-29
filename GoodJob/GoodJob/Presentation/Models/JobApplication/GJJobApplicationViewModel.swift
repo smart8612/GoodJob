@@ -14,7 +14,8 @@ final class GJJobApplicationViewModel: ObservableObject {
     
     private let jobApplicationController: GJJobApplicationController = {
        GJJobApplicationController(
-        jobApplicationRepository: GJJobApplicationRepository(), 
+        testRecordRepository: GJTestRecordRepository(), 
+        jobApplicationRepository: GJJobApplicationRepository(),
         jobPostingRepository: GJJobPostingRepository()
        )
     }()
@@ -30,6 +31,16 @@ final class GJJobApplicationViewModel: ObservableObject {
     private func fetchJobApplication() {
         do {
             self.jobApplications = try jobApplicationController.fetchAllJobApplications()
+        } catch {
+            print(error.localizedDescription)
+        }
+    }
+    
+    func deleteJobApplication(at indexSet: IndexSet) {
+        do {
+            try indexSet
+                .compactMap { jobApplications[$0] }
+                .forEach { try jobApplicationController.delete(jobApplication: $0) }
         } catch {
             print(error.localizedDescription)
         }

@@ -10,7 +10,7 @@ import SwiftUI
 
 enum GJAppCategory: String, Identifiable, Hashable, CaseIterable {
     
-    case summary
+    // case summary
     case applications
     case jobs
     
@@ -22,8 +22,8 @@ enum GJAppCategory: String, Identifiable, Hashable, CaseIterable {
     
     var symboleName: String {
         switch self {
-        case .summary:
-            return "house.fill"
+//        case .summary:
+//            return "house.fill"
         case .applications:
             return "list.bullet.clipboard.fill"
         case .jobs:
@@ -34,8 +34,8 @@ enum GJAppCategory: String, Identifiable, Hashable, CaseIterable {
     
     @ViewBuilder var contentView: some View {
         switch self {
-        case .summary:
-            SummaryView()
+//        case .summary:
+//            SummaryView()
         case .applications:
             JobApplicationsListView()
         case .jobs:

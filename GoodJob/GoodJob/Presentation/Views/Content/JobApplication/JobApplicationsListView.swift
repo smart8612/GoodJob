@@ -15,28 +15,33 @@ struct JobApplicationsListView: View {
     
     var body: some View {
         
-        NavigationStack {
+        NavigationStack(path: $navigationModel.jobApplicationPath) {
             DataContainer {
-                List {
-                    ForEach(model.jobApplications) { jobApplication in
-                        NavigationLink(value: jobApplication) {
-                            JobApplicationCellView(
-                                jobApplication: jobApplication
-                            )
+                if model.jobApplications.isEmpty {
+                    Text("Empty Job Application")
+                        .foregroundStyle(.secondary)
+                } else {
+                    List {
+                        ForEach(model.jobApplications) { jobApplication in
+                            NavigationLink(value: jobApplication) {
+                                JobApplicationCellView(
+                                    jobApplication: jobApplication
+                                )
+                            }
                         }
+                        .onDelete(perform: model.deleteJobApplication)
                     }
-                }
-                .navigationDestination(for: GJJobApplication.self) {
-                    JobApplicationDetailView(
-                        selectedJobApplicationId: $0.id
-                    )
+                    .navigationDestination(for: GJJobApplication.self) {
+                        JobApplicationDetailView(model: .init(
+                            selectedJobApplicationId: $0.id
+                        ))
+                    }
                 }
             } sheet: { isShowingSheet in
                 NewJobApplicaitonView(isShowingSheet: isShowingSheet)
             }
             .navigationTitle(navigationModel.selectedCategory.name)
         }
-        
     }
     
 }
@@ -46,13 +51,38 @@ fileprivate struct JobApplicationCellView: View {
     
     let jobApplication: GJJobApplication
     
+    private let jobPostingController: GJJobPostingController = {
+        GJJobPostingController(
+            jobPostingRepository: GJJobPostingRepository(),
+            testRepository: GJTestRepository()
+        )
+    }()
+    
+    @State private var jobPosting: GJJobPosting? = nil
+    
     var body: some View {
-        VStack(alignment: .leading) {
-            Text(jobApplication.title)
-                .font(.headline)
-            Text(jobApplication.id.uuidString)
-                .font(.caption)
+        Group {
+            if let jobPosting = jobPosting {
+                VStack(alignment: .leading, spacing: 8) {
+                    Text(jobApplication.title)
+                        .font(.headline)
+                    VStack(alignment: .leading, spacing: 2) {
+                        Label(jobPosting.companyName, systemImage: "building.2")
+                        Label(jobPosting.jobPositionName, systemImage: "figure.walk")
+                        Label(jobApplication.createdAt.formatted(), systemImage: "gauge.with.needle")
+                    }
+                    .font(.caption2)
+                }
+            } else {
+                Text("Loading...")
+            }
+        }
+        .onAppear {
+            do {
+                self.jobPosting =  try jobPostingController.fetchJobPosting(with: jobApplication.jobPostingId)
+            } catch {
+                print(error.localizedDescription)
+            }
         }
     }
 }
-

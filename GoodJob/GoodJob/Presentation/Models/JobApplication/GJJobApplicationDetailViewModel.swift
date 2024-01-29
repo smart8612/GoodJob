@@ -12,6 +12,7 @@ final class GJJobApplicationDetailViewModel: ObservableObject {
     
     private let jobApplicationController: GJJobApplicationController = {
        GJJobApplicationController(
+        testRecordRepository: GJTestRecordRepository(),
         jobApplicationRepository: GJJobApplicationRepository(),
         jobPostingRepository: GJJobPostingRepository()
        )
@@ -30,18 +31,17 @@ final class GJJobApplicationDetailViewModel: ObservableObject {
     private let jobApplicationObserver: GJDataObserver
     private let jobPostingObserver: GJDataObserver
     
-    var selectedJobApplicationId: UUID? {
-        didSet { fetchJobApplication() }
-    }
+    var selectedJobApplicationId: UUID?
     
-    init() {
+    init(selectedJobApplicationId: UUID? = nil) {
+        self.selectedJobApplicationId = selectedJobApplicationId
         jobApplicationObserver = GJJobApplicationDataObserver()
         jobPostingObserver = GJJobPositngDataObserver()
         jobApplicationObserver.delegate = self
         jobPostingObserver.delegate = self
     }
     
-    private func fetchJobApplication() {
+    func fetchJobApplication() {
         guard let id = selectedJobApplicationId else {
             return
         }
@@ -57,6 +57,26 @@ final class GJJobApplicationDetailViewModel: ObservableObject {
             self.tests = fetchedTests
         } catch {
             print(error)
+        }
+    }
+    
+    func fetchTestRecord(belongsTo test: GJTest) -> GJTestRecord? {
+        do {
+            return try jobApplicationController.fetchTestRecord(belongsTo: test)
+        } catch {
+            print(error.localizedDescription)
+            return nil
+        }
+    }
+    
+    func create(testRecord: GJTestRecord, belongsTo test: GJTest) {
+        guard let jobApplication = jobApplication else { return }
+        
+        do {
+            let targetTestRecord = GJTestRecord(jobApplicationId: jobApplication.id, testId: test.id, memo: testRecord.memo)
+            let result = try jobApplicationController.create(testRecord: targetTestRecord)
+        } catch {
+            print(error.localizedDescription)
         }
     }
     

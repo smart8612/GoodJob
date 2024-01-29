@@ -10,9 +10,11 @@ import SwiftUI
 
 struct JobPostingDetailView: View {
     
-    @StateObject private var model: GJJobPostingDetailViewModel = .init()
+    @StateObject var model: GJJobPostingDetailViewModel
     
-    let selectedJobPostingId: UUID?
+    @State private var isShowingSheet = false
+    
+    @Environment(\.openURL) var openURL
     
     private var jobPosting: GJJobPosting? {
         model.jobPosting
@@ -24,40 +26,55 @@ struct JobPostingDetailView: View {
     
     var body: some View {
         Group {
-            if let selectedJobPostingId = selectedJobPostingId {
-                if let jobPosting = jobPosting, let tests = tests {
-                    List {
-                        Section {
-                            Text("Company Name: \(jobPosting.companyName)")
+            if let jobPosting = jobPosting, let tests = tests {
+                List {
+                    Section("Company Information") {
+                        JobPostingDetailCell(key: "Company Name") {
+                            Text(jobPosting.companyName)
                         }
-                        
-                        Section {
-                            Text("Job Position: \(jobPosting.jobPositionName)")
-                            Text("Workplace Location: \(jobPosting.workplaceLocation)")
-                            Text("Recruitment Numbers: \(jobPosting.recruitNumbers)")
-                            Text("Job Posting Link: \(jobPosting.link)")
+                    }
+                    
+                    Section("Job Position Information") {
+                        JobPostingDetailCell(key: "Job Position") {
+                            Text(jobPosting.jobPositionName)
                         }
-                        
-                        Section {
-                            Text("Starts: \(jobPosting.startDate.formatted())")
-                            Text("Ends: \(jobPosting.endDate.formatted())")
+                        JobPostingDetailCell(key: "Workplace Location") {
+                            Text(jobPosting.workplaceLocation)
                         }
-                        
-                        Section {
-                            ForEach(tests) { test in
-                                HStack {
-                                    Text(test.type.description)
-                                    Divider()
-                                    Text(test.name)
-                                }
+                        JobPostingDetailCell(key: "Recruitment Numbers") {
+                            Text(jobPosting.recruitNumbers)
+                        }
+                        JobPostingDetailCell(key: "Job Posting Link") {
+                            Button(jobPosting.link) {
+                                openURL(URL(string: jobPosting.link)!)
+                            }
+                            .foregroundStyle(Color.init(uiColor: UIColor.link))
+                        }
+                    }
+                    
+                    Section("Schedule") {
+                        JobPostingDetailCell(key: "Starts") {
+                            Text(jobPosting.startDate.formatted())
+                        }
+                        JobPostingDetailCell(key: "Ends") {
+                            Text(jobPosting.endDate.formatted())
+                        }
+                    }
+                    
+                    Section("Process Information") {
+                        ForEach(tests) { test in
+                            JobPostingDetailCell(key: test.type.description) {
+                                Text(test.name)
                             }
                         }
                     }
-                } else  {
-                    Text("Loading...")
-                        .onAppear {
-                            model.fetchJobPosting(with: selectedJobPostingId)
-                        }
+                }
+                .sheet(isPresented: $isShowingSheet) {
+                    EditJobPostingView(
+                        isShowingSheet: $isShowingSheet,
+                        jobPosting: jobPosting,
+                        tests: tests
+                    )
                 }
             } else {
                 Text("Select a Job Posting")
@@ -66,6 +83,36 @@ struct JobPostingDetailView: View {
         .environmentObject(model)
         .navigationTitle("Jobs Details")
         .navigationBarTitleDisplayMode(.inline)
+        .toolbar {
+            ToolbarItem(placement: .topBarTrailing) {
+                Button(action: { isShowingSheet.toggle() }) {
+                    Text("Edit")
+                }
+            }
+        }
+        .onAppear { model.fetchJobPosting() }
     }
     
+}
+
+struct JobPostingDetailCell<Content: View>: View {
+    
+    let key: String
+    let content: () -> Content
+    
+    init(key: String, @ViewBuilder content: @escaping () -> Content) {
+        self.key = key
+        self.content = content
+    }
+    
+    var body: some View {
+        VStack(alignment: .leading) {
+            Text(key)
+                .font(.caption)
+                .foregroundStyle(.secondary)
+            content()
+                .font(.body)
+                .foregroundStyle(.primary)
+        }
+    }
 }
