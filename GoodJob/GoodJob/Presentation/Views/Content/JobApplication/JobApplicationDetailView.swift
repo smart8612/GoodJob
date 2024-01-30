@@ -56,10 +56,7 @@ fileprivate struct JobApplicationDetailListView: View {
             
             Section("Relative Job Posting") {
                 Button(action: { isShowingSheet.toggle() }) {
-                    VStack(alignment: .leading) {
-                        Text(jobPosting.companyName)
-                        Text(jobPosting.jobPositionName)
-                    }
+                    Label("\(jobPosting.jobPositionName) @ \(jobPosting.companyName)", systemImage: "link")
                 }
                 
             }
