@@ -29,13 +29,9 @@ struct JobApplicationDetailView: View {
         }
         .navigationTitle("Job Application Detail")
         .navigationBarTitleDisplayMode(.inline)
-        .toolbar {
-            EditButton()
-        }
+        .toolbar { EditButton() }
         .environmentObject(model)
-        .onAppear {
-            model.fetchJobApplication()
-        }
+        .onAppear { model.fetchJobApplication() }
         
     }
     
@@ -67,8 +63,9 @@ fileprivate struct JobApplicationDetailListView: View {
                 }
                 
             }
-            Section("Recruit Tests") {
-                ForEach(tests) { test in
+            
+            ForEach(tests) { test in
+                Section {
                     TestRecordView(test: test)
                 }
             }
@@ -86,8 +83,6 @@ fileprivate struct TestRecordView: View {
     @EnvironmentObject private var model: GJJobApplicationDetailViewModel
     
     let test: GJTest
-    
-    @State private var testRecord: GJTestRecord?
     @State private var isShowingSheet: Bool = false
     
     var body: some View {
@@ -97,10 +92,12 @@ fileprivate struct TestRecordView: View {
                 Text(test.name)
             }
             
-            if let testRecord = testRecord {
+            if let testRecords = model.testRecords,
+               let testRecord = testRecords[test] {
                 SecondaryLabeledCell(key: "Test Record") {
-                    Text (testRecord.memo)
+                    Text(testRecord?.memo ?? .init())
                 }
+                
             } else {
                 Button(action: { isShowingSheet.toggle() }) {
                     Label("Add Test Record", systemImage: "plus.app")
@@ -114,9 +111,7 @@ fileprivate struct TestRecordView: View {
                 test: test
             )
         }
-        .onAppear {
-            self.testRecord = model.fetchTestRecord(belongsTo: test)
-        }
+        .onAppear { model.fetchJobApplication() }
         
     }
     

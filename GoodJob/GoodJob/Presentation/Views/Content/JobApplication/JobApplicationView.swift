@@ -28,6 +28,7 @@ struct JobApplicationView: View {
             }
             .navigationTitle(navigationModel.selectedCategory.name)
             .environmentObject(model)
+            .onAppear { model.fetchJobApplication() }
         }
         
     }
@@ -92,6 +93,7 @@ fileprivate struct JobApplicationCellView: View {
                 associatedWith: jobApplication
             )
         }
+        
         
     }
 }

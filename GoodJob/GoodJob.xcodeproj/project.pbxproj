@@ -51,6 +51,7 @@
 		C1E07E482B67870400CD272D /* ConvenienceDateDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E07E472B67870400CD272D /* ConvenienceDateDisplay.swift */; };
 		C1E07E4A2B6787C200CD272D /* SecondaryLabeledCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E07E492B6787C200CD272D /* SecondaryLabeledCell.swift */; };
 		C1E07E4C2B678AD200CD272D /* GJTestRecordDataObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E07E4B2B678AD200CD272D /* GJTestRecordDataObserver.swift */; };
+		C1E07E4E2B68B0F700CD272D /* GJTestDataObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E07E4D2B68B0F700CD272D /* GJTestDataObserver.swift */; };
 		C1E8692C2B555B0900FDD6DA /* NewJobPostingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E8692B2B555B0900FDD6DA /* NewJobPostingView.swift */; };
 		C1E8692E2B558DE800FDD6DA /* SummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E8692D2B558DE800FDD6DA /* SummaryView.swift */; };
 		C1F20F5F2B6369FF00DF8E42 /* GJJobApplicationDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F20F5E2B6369FF00DF8E42 /* GJJobApplicationDetailViewModel.swift */; };
@@ -127,6 +128,7 @@
 		C1E07E472B67870400CD272D /* ConvenienceDateDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConvenienceDateDisplay.swift; sourceTree = "<group>"; };
 		C1E07E492B6787C200CD272D /* SecondaryLabeledCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondaryLabeledCell.swift; sourceTree = "<group>"; };
 		C1E07E4B2B678AD200CD272D /* GJTestRecordDataObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GJTestRecordDataObserver.swift; sourceTree = "<group>"; };
+		C1E07E4D2B68B0F700CD272D /* GJTestDataObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GJTestDataObserver.swift; sourceTree = "<group>"; };
 		C1E8692B2B555B0900FDD6DA /* NewJobPostingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewJobPostingView.swift; sourceTree = "<group>"; };
 		C1E8692D2B558DE800FDD6DA /* SummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryView.swift; sourceTree = "<group>"; };
 		C1F20F5E2B6369FF00DF8E42 /* GJJobApplicationDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GJJobApplicationDetailViewModel.swift; sourceTree = "<group>"; };
@@ -282,6 +284,7 @@
 			children = (
 				C17C94DC2B60EEED0009E064 /* GJDataObserver.swift */,
 				C1E07E4B2B678AD200CD272D /* GJTestRecordDataObserver.swift */,
+				C1E07E4D2B68B0F700CD272D /* GJTestDataObserver.swift */,
 				C17C94DE2B60EFDD0009E064 /* GJJobPositngDataObserver.swift */,
 				C157F7382B61458C001EBE74 /* GJJobApplicationDataObserver.swift */,
 			);
@@ -596,6 +599,7 @@
 				C13D9C672B60C79B00A8132A /* GJUser.swift in Sources */,
 				C157F7372B6144DB001EBE74 /* GJJobApplicationViewModel.swift in Sources */,
 				C18037E12B5BA2F0000FFC97 /* DataCreationContainer.swift in Sources */,
+				C1E07E4E2B68B0F700CD272D /* GJTestDataObserver.swift in Sources */,
 				C19BC5322B57A67D004E78F6 /* GJJobPosting.swift in Sources */,
 				C13D9C662B60C79B00A8132A /* GJNavigationModel.swift in Sources */,
 				C1E8692C2B555B0900FDD6DA /* NewJobPostingView.swift in Sources */,

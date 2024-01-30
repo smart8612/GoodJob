@@ -35,10 +35,9 @@ final class GJJobApplicationViewModel: ObservableObject {
         self.jobApplicationObserver = GJJobApplicationDataObserver()
         self.jobApplicationObserver.delegate = self
         self.jobPostingObserver.delegate = self
-        fetchJobApplication()
     }
     
-    private func fetchJobApplication() {
+    func fetchJobApplication() {
         do {
             self.jobApplications = try jobApplicationController.fetchAllJobApplications()
         } catch {

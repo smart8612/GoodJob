@@ -15,6 +15,7 @@ final class GJJobApplicationDetailViewModel: ObservableObject {
     @Published private(set) var jobApplication: GJJobApplication?
     @Published private(set) var jobPosting: GJJobPosting?
     @Published private(set) var tests: [GJTest]?
+    @Published private(set) var testRecords: [GJTest:GJTestRecord?]?
     
     private let jobApplicationController: GJJobApplicationController = {
        GJJobApplicationController(
@@ -32,13 +33,13 @@ final class GJJobApplicationDetailViewModel: ObservableObject {
     
     private let jobApplicationObserver = GJJobApplicationDataObserver()
     private let jobPostingObserver = GJJobPositngDataObserver()
-    private let testRecordObserver = GJTestRecordDataObserver()
+    private let testObserver = GJTestDataObserver()
     
     init(selectedJobApplicationId: UUID) {
         self.selectedJobApplicationId = selectedJobApplicationId
         jobApplicationObserver.delegate = self
         jobPostingObserver.delegate = self
-        testRecordObserver.delegate = self
+        testObserver.delegate = self
     }
     
     func fetchJobApplication() {
@@ -53,6 +54,9 @@ final class GJJobApplicationDetailViewModel: ObservableObject {
             
             let fetchedTests = try jobPostingController.fetchTests(belongsToJobPosting: fetchedJobPosting.id)
             self.tests = fetchedTests
+            self.testRecords = fetchedTests.reduce(into: [GJTest:GJTestRecord?]()) { prevDict, test in
+                prevDict[test] = try? jobApplicationController.fetchTestRecord(belongsTo: test)
+            }
         } catch {
             print(error)
         }
