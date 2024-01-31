@@ -81,20 +81,12 @@ fileprivate struct TestRecordView: View {
     
     let test: GJTest
     @State private var isShowingNewSheet: Bool = false
-    @State private var isShowingEditSheet: Bool = false
-    
+
     private var testRecord: GJTestRecord? {
         guard let testRecord = model.testRecords?[test] else {
             return nil
         }
         return testRecord
-    }
-    
-    private var testRecords: [GJTestRecord] {
-        guard let testRecord = testRecord else {
-            return .init()
-        }
-        return [testRecord]
     }
     
     var body: some View {
@@ -105,39 +97,55 @@ fileprivate struct TestRecordView: View {
             }
             
             if let testRecord = testRecord {
-                ForEach(testRecords) { _ in
-                    Button(action: { isShowingEditSheet.toggle() }) {
-                        SecondaryLabeledCell(key: "Test Record") {
-                            HStack {
-                                Text(testRecord.memo)
-                                Spacer()
-                                Text(testRecord.result.description)
-                            }
-                        }
-                    }
-                    
-                }
-                .onDelete(perform: deleteTestRecord)
-                .sheet(isPresented: $isShowingEditSheet) {
-                    EditTestRecordView(
-                        isShowingSheet: $isShowingEditSheet,
-                        testRecord: testRecord
-                    )
-                }
+                TestRecordCell(testRecord: testRecord)
             } else {
                 Button(action: { isShowingNewSheet.toggle() }) {
                     Label("Add Test Record", systemImage: "plus.app")
                 }
+                .sheet(isPresented: $isShowingNewSheet) {
+                    NewTestRecordView(
+                        isShowingSheet: $isShowingNewSheet,
+                        test: test
+                    )
+                }
+            }
+        }
+        .onAppear { model.fetchJobApplication() }
+        
+    }
+    
+}
+
+fileprivate struct TestRecordCell: View {
+    
+    @EnvironmentObject private var model: GJJobApplicationDetailViewModel
+    
+    let testRecord: GJTestRecord
+    private var testRecords: [GJTestRecord] { [testRecord] }
+    
+    @State private var isShowingEditSheet: Bool = false
+    
+    var body: some View {
+        
+        ForEach(testRecords) { _ in
+            Button(action: { isShowingEditSheet.toggle() }) {
+                SecondaryLabeledCell(key: "Test Record") {
+                    HStack {
+                        Text(testRecord.memo)
+                        Spacer()
+                        Text(testRecord.result.description)
+                    }
+                }
             }
             
         }
-        .sheet(isPresented: $isShowingNewSheet) {
-            NewTestRecordView(
-                isShowingSheet: $isShowingNewSheet,
-                test: test
+        .onDelete(perform: deleteTestRecord)
+        .sheet(isPresented: $isShowingEditSheet) {
+            EditTestRecordView(
+                isShowingSheet: $isShowingEditSheet,
+                testRecord: testRecord
             )
         }
-        .onAppear { model.fetchJobApplication() }
         
     }
     
