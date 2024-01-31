@@ -27,24 +27,29 @@ struct JobPostingOperationView: View {
             Section {
                 TextField("Company Name",
                           text: $jobPosting.companyName)
+                .keyboardType(.default)
             }
             
             Section {
                 TextField("Job Position",
                           text: $jobPosting.jobPositionName)
+                .keyboardType(.default)
                 TextField("Workplace Location",
                           text: $jobPosting.workplaceLocation)
+                .keyboardType(.default)
                 TextField("Recruitment Numbers",
                           text: $jobPosting.recruitNumbers)
+                .keyboardType(.numberPad)
                 TextField("Job Posting Link",
                           text: $jobPosting.link)
+                .keyboardType(.URL)
             }
             
             Section {
                 DatePicker(selection: $jobPosting.startDate) {
                     Text("Starts")
                 }
-                DatePicker(selection: $jobPosting.endDate) {
+                DatePicker(selection: $jobPosting.endDate, in: jobPosting.startDate...) {
                     Text("Ends")
                 }
             }
