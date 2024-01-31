@@ -34,12 +34,14 @@ final class GJJobApplicationDetailViewModel: ObservableObject {
     private let jobApplicationObserver = GJJobApplicationDataObserver()
     private let jobPostingObserver = GJJobPositngDataObserver()
     private let testObserver = GJTestDataObserver()
+    private let testRecordObserver = GJTestRecordDataObserver()
     
     init(selectedJobApplicationId: UUID) {
         self.selectedJobApplicationId = selectedJobApplicationId
         jobApplicationObserver.delegate = self
         jobPostingObserver.delegate = self
         testObserver.delegate = self
+        testRecordObserver.delegate = self
     }
     
     func fetchJobApplication() {
@@ -76,7 +78,15 @@ final class GJJobApplicationDetailViewModel: ObservableObject {
         
         do {
             let targetTestRecord = GJTestRecord(jobApplicationId: jobApplication.id, testId: test.id, result: testRecord.result, memo: testRecord.memo)
-            let result = try jobApplicationController.create(testRecord: targetTestRecord)
+            let _ = try jobApplicationController.create(testRecord: targetTestRecord)
+        } catch {
+            print(error.localizedDescription)
+        }
+    }
+    
+    func update(testRecord: GJTestRecord) {
+        do {
+            let _ = try jobApplicationController.update(testRecord: testRecord)
         } catch {
             print(error.localizedDescription)
         }

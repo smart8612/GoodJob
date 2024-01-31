@@ -70,6 +70,10 @@ final class GJJobApplicationController {
         try testRecordRepository.create(object: testRecord)
     }
     
+    func update(testRecord: GJTestRecord) throws -> GJTestRecord {
+        try testRecordRepository.update(objectWith: testRecord.id, to: testRecord)
+    }
+    
     func delete(jobApplication: GJJobApplication) throws {
         try jobApplicationRepository.delete(objectWith: jobApplication.id)
     }

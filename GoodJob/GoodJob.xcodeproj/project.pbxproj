@@ -52,6 +52,9 @@
 		C1E07E4A2B6787C200CD272D /* SecondaryLabeledCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E07E492B6787C200CD272D /* SecondaryLabeledCell.swift */; };
 		C1E07E4C2B678AD200CD272D /* GJTestRecordDataObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E07E4B2B678AD200CD272D /* GJTestRecordDataObserver.swift */; };
 		C1E07E4E2B68B0F700CD272D /* GJTestDataObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E07E4D2B68B0F700CD272D /* GJTestDataObserver.swift */; };
+		C1E07E532B6A4ED500CD272D /* TestRecordOperationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E07E522B6A4ED500CD272D /* TestRecordOperationView.swift */; };
+		C1E07E552B6A4EFE00CD272D /* NewTestRecordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E07E542B6A4EFE00CD272D /* NewTestRecordView.swift */; };
+		C1E07E572B6A4F2E00CD272D /* EditTestRecordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E07E562B6A4F2E00CD272D /* EditTestRecordView.swift */; };
 		C1E8692C2B555B0900FDD6DA /* NewJobPostingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E8692B2B555B0900FDD6DA /* NewJobPostingView.swift */; };
 		C1E8692E2B558DE800FDD6DA /* SummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E8692D2B558DE800FDD6DA /* SummaryView.swift */; };
 		C1F20F5F2B6369FF00DF8E42 /* GJJobApplicationDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F20F5E2B6369FF00DF8E42 /* GJJobApplicationDetailViewModel.swift */; };
@@ -129,6 +132,9 @@
 		C1E07E492B6787C200CD272D /* SecondaryLabeledCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondaryLabeledCell.swift; sourceTree = "<group>"; };
 		C1E07E4B2B678AD200CD272D /* GJTestRecordDataObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GJTestRecordDataObserver.swift; sourceTree = "<group>"; };
 		C1E07E4D2B68B0F700CD272D /* GJTestDataObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GJTestDataObserver.swift; sourceTree = "<group>"; };
+		C1E07E522B6A4ED500CD272D /* TestRecordOperationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestRecordOperationView.swift; sourceTree = "<group>"; };
+		C1E07E542B6A4EFE00CD272D /* NewTestRecordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTestRecordView.swift; sourceTree = "<group>"; };
+		C1E07E562B6A4F2E00CD272D /* EditTestRecordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTestRecordView.swift; sourceTree = "<group>"; };
 		C1E8692B2B555B0900FDD6DA /* NewJobPostingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewJobPostingView.swift; sourceTree = "<group>"; };
 		C1E8692D2B558DE800FDD6DA /* SummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryView.swift; sourceTree = "<group>"; };
 		C1F20F5E2B6369FF00DF8E42 /* GJJobApplicationDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GJJobApplicationDetailViewModel.swift; sourceTree = "<group>"; };
@@ -177,6 +183,7 @@
 		C1052E3D2B5B89D100B27620 /* JobApplication */ = {
 			isa = PBXGroup;
 			children = (
+				C1E07E512B6A4EC100CD272D /* Operation */,
 				C1052E3B2B5B800500B27620 /* JobApplicationView.swift */,
 				C18037E22B5BA565000FFC97 /* NewJobApplicaitonView.swift */,
 				C16116C52B5D841C003501A4 /* JobApplicationDetailView.swift */,
@@ -368,6 +375,16 @@
 				C1E07E492B6787C200CD272D /* SecondaryLabeledCell.swift */,
 			);
 			path = Component;
+			sourceTree = "<group>";
+		};
+		C1E07E512B6A4EC100CD272D /* Operation */ = {
+			isa = PBXGroup;
+			children = (
+				C1E07E522B6A4ED500CD272D /* TestRecordOperationView.swift */,
+				C1E07E542B6A4EFE00CD272D /* NewTestRecordView.swift */,
+				C1E07E562B6A4F2E00CD272D /* EditTestRecordView.swift */,
+			);
+			path = Operation;
 			sourceTree = "<group>";
 		};
 		C1F20F602B63873600DF8E42 /* Operation */ = {
@@ -599,11 +616,13 @@
 				C13D9C672B60C79B00A8132A /* GJUser.swift in Sources */,
 				C157F7372B6144DB001EBE74 /* GJJobApplicationViewModel.swift in Sources */,
 				C18037E12B5BA2F0000FFC97 /* DataCreationContainer.swift in Sources */,
+				C1E07E532B6A4ED500CD272D /* TestRecordOperationView.swift in Sources */,
 				C1E07E4E2B68B0F700CD272D /* GJTestDataObserver.swift in Sources */,
 				C19BC5322B57A67D004E78F6 /* GJJobPosting.swift in Sources */,
 				C13D9C662B60C79B00A8132A /* GJNavigationModel.swift in Sources */,
 				C1E8692C2B555B0900FDD6DA /* NewJobPostingView.swift in Sources */,
 				C17C94E12B60F64D0009E064 /* GJJobPostingDetailViewModel.swift in Sources */,
+				C1E07E572B6A4F2E00CD272D /* EditTestRecordView.swift in Sources */,
 				C19BC5352B57BA32004E78F6 /* GJJobPostingController.swift in Sources */,
 				C17EB5852B58EB9800DA9C34 /* CDTest+Extensions.swift in Sources */,
 				C1DFAEE32B5E29ED007CACA7 /* MainTabView.swift in Sources */,
@@ -619,6 +638,7 @@
 				C1E07E4A2B6787C200CD272D /* SecondaryLabeledCell.swift in Sources */,
 				C133F0D82B5A501600AF574C /* CDTestRecord+Extensions.swift in Sources */,
 				C1F999B02B55068E00259FB5 /* Persistence.swift in Sources */,
+				C1E07E552B6A4EFE00CD272D /* NewTestRecordView.swift in Sources */,
 				C1F20F642B6387C000DF8E42 /* EditJobPostingView.swift in Sources */,
 				C133F0D42B5A4BB300AF574C /* CDUser+Extensions.swift in Sources */,
 				C1CFB6372B5945C800515DEA /* GJTest.swift in Sources */,

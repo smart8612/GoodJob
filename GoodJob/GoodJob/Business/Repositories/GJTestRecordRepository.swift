@@ -89,8 +89,7 @@ final class GJTestRecordRepository: GJRepository {
         
         let jobApplicationFetchRequest = CDJobApplication.fetchRequest()
         jobApplicationFetchRequest.predicate = NSPredicate(
-            format: "%K = %@",
-            \CDJobApplication.id_ as! CVarArg,
+            format: "id_ = %@",
             object.jobApplicationId as CVarArg
         )
         
@@ -101,8 +100,7 @@ final class GJTestRecordRepository: GJRepository {
         
         let testFetchRequest = CDTest.fetchRequest()
         testFetchRequest.predicate = NSPredicate(
-            format: "%K = %@",
-            \CDTest.id_ as! CVarArg,
+            format: "id_ = %@",
             object.testId as CVarArg
         )
         
@@ -113,8 +111,7 @@ final class GJTestRecordRepository: GJRepository {
         
         let fetchRequest = CDTestRecord.fetchRequest()
         fetchRequest.predicate = NSPredicate(
-            format: "%K = %@",
-            \CDTestRecord.id_ as! CVarArg,
+            format: "id_ = %@",
             id as CVarArg
         )
         
