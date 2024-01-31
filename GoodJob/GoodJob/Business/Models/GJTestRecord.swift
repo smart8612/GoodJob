@@ -16,9 +16,34 @@ struct GJTestRecord: Identifiable, Hashable {
     var jobApplicationId: UUID
     var testId: UUID
     
+    var result: TestResult
     var memo: String
     
     static func initWithEmpty() -> Self {
-        Self(jobApplicationId: .init(), testId: .init(), memo: .init())
+        Self(jobApplicationId: .init(), testId: .init(), result: .inProgress, memo: .init())
     }
+    
+    enum TestResult: Int, Identifiable,CustomStringConvertible, CaseIterable {
+        
+        case inProgress = 0
+        case pass
+        case fail
+        
+        var id: Self {
+            self
+        }
+        
+        var description: String {
+            switch self {
+            case .inProgress:
+                return "inProgress"
+            case .pass:
+                return "pass"
+            case .fail:
+                return "fail"
+            }
+        }
+        
+    }
+    
 }

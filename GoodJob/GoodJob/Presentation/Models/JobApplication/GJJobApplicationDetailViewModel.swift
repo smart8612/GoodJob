@@ -75,7 +75,7 @@ final class GJJobApplicationDetailViewModel: ObservableObject {
         guard let jobApplication = jobApplication else { return }
         
         do {
-            let targetTestRecord = GJTestRecord(jobApplicationId: jobApplication.id, testId: test.id, memo: testRecord.memo)
+            let targetTestRecord = GJTestRecord(jobApplicationId: jobApplication.id, testId: test.id, result: testRecord.result, memo: testRecord.memo)
             let result = try jobApplicationController.create(testRecord: targetTestRecord)
         } catch {
             print(error.localizedDescription)

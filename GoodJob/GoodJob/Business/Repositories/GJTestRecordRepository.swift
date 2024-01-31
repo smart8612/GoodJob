@@ -70,7 +70,10 @@ final class GJTestRecordRepository: GJRepository {
             throw GJTestRecordRepositoryError.testNotFound
         }
         
+        let result = CDTestRecord.TestResult(rawValue: object.result.rawValue) ?? .inProgress
+        
         let createdTestRecord = CDTestRecord(
+            result: result,
             memo: object.memo,
             jobApplication: fetchedJobApplication,
             test: fetchedTest,
@@ -123,6 +126,7 @@ final class GJTestRecordRepository: GJRepository {
         fetchedResult.jobApplication = fetchedJobApplication
         fetchedResult.test = fetchedTest
         fetchedResult.memo = object.memo
+        fetchedResult.result = CDTestRecord.TestResult(rawValue: object.result.rawValue) ?? .inProgress
         
         try managedObjectContext.save()
         
@@ -157,11 +161,13 @@ final class GJTestRecordRepository: GJRepository {
 fileprivate extension CDTestRecord {
     
     func convertToGJTestRecord() -> GJTestRecord {
-        GJTestRecord(
+        let result = GJTestRecord.TestResult(rawValue: self.result.rawValue) ?? .inProgress
+        return GJTestRecord(
             id: self.id,
             createdAt: self.createdAt,
             jobApplicationId: self.jobApplication.id,
-            testId: self.test.id,
+            testId: self.test.id, 
+            result: result,
             memo: self.memo
         )
     }

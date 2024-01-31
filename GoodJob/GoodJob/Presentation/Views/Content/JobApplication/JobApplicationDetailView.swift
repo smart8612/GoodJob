@@ -106,7 +106,11 @@ fileprivate struct TestRecordView: View {
             if let testRecord = testRecord {
                 ForEach(testRecords) { _ in
                     SecondaryLabeledCell(key: "Test Record") {
-                        Text(testRecord.memo)
+                        HStack {
+                            Text(testRecord.memo)
+                            Spacer()
+                            Text(testRecord.result.description)
+                        }
                     }
                 }
                 .onDelete(perform: deleteTestRecord)
@@ -178,6 +182,16 @@ fileprivate struct NewTestRecordView: View {
             List {
                 Section("Memo") {
                     TextField("Memo", text: $testRecord.memo)
+                }
+                
+                Section("Status") {
+                    Menu(testRecord.result.description) {
+                        ForEach(GJTestRecord.TestResult.allCases) { resultType in
+                            Button(action: { testRecord.result = resultType }) {
+                                Text(resultType.description)
+                            }
+                        }
+                    }
                 }
             }
             .navigationTitle("New Test Record")
