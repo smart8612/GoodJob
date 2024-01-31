@@ -74,6 +74,10 @@ final class GJJobApplicationController {
         try jobApplicationRepository.delete(objectWith: jobApplication.id)
     }
     
+    func delete(testRecord: GJTestRecord) throws {
+        try testRecordRepository.delete(objectWith: testRecord.id)
+    }
+    
     enum GJJobApplicationControllerError: Error {
         case currentUserNotFound
         case jobApplicationNotFound

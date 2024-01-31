@@ -82,6 +82,20 @@ fileprivate struct TestRecordView: View {
     let test: GJTest
     @State private var isShowingSheet: Bool = false
     
+    private var testRecord: GJTestRecord? {
+        guard let testRecord = model.testRecords?[test] else {
+            return nil
+        }
+        return testRecord
+    }
+    
+    private var testRecords: [GJTestRecord] {
+        guard let testRecord = testRecord else {
+            return .init()
+        }
+        return [testRecord]
+    }
+    
     var body: some View {
         
         Group {
@@ -89,12 +103,13 @@ fileprivate struct TestRecordView: View {
                 Text(test.name)
             }
             
-            if let testRecords = model.testRecords,
-               let testRecord = testRecords[test] {
-                SecondaryLabeledCell(key: "Test Record") {
-                    Text(testRecord?.memo ?? .init())
+            if let testRecord = testRecord {
+                ForEach(testRecords) { _ in
+                    SecondaryLabeledCell(key: "Test Record") {
+                        Text(testRecord.memo)
+                    }
                 }
-                
+                .onDelete(perform: deleteTestRecord)
             } else {
                 Button(action: { isShowingSheet.toggle() }) {
                     Label("Add Test Record", systemImage: "plus.app")
@@ -110,6 +125,13 @@ fileprivate struct TestRecordView: View {
         }
         .onAppear { model.fetchJobApplication() }
         
+    }
+    
+    private func deleteTestRecord(at indexSet: IndexSet) {
+        let testRecords = testRecords
+        indexSet
+            .compactMap { testRecords[$0] }
+            .forEach { model.delete(testRecord: $0) }
     }
     
 }

@@ -82,6 +82,14 @@ final class GJJobApplicationDetailViewModel: ObservableObject {
         }
     }
     
+    func delete(testRecord: GJTestRecord) {
+        do {
+            try jobApplicationController.delete(testRecord: testRecord)
+        } catch {
+            print(error.localizedDescription)
+        }
+    }
+    
 }
 
 extension GJJobApplicationDetailViewModel: GJDataObserverDelegate {

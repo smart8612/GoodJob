@@ -132,8 +132,7 @@ final class GJTestRecordRepository: GJRepository {
     func delete(objectWith id: UUID) throws {
         let fetchRequest = CDTestRecord.fetchRequest()
         fetchRequest.predicate = NSPredicate(
-            format: "%K = %@",
-            \CDTestRecord.id_ as! CVarArg,
+            format: "id_ = %@",
             id as CVarArg
         )
         
