@@ -10,29 +10,63 @@ import SwiftUI
 
 struct ConvenienceDateDisplay: View {
     
-    let date: Date
+    let jobPosting: GJJobPosting
+    
+    var startDate: Date {
+        jobPosting.startDate
+    }
+    
+    var endDate: Date {
+        jobPosting.endDate
+    }
     
     var body: some View {
         
-        RoundedRectangle(cornerRadius: 10)
+        Capsule()
             .foregroundStyle(shapeColor)
             .overlay {
                 Text(message)
+                    .foregroundStyle(.white)
             }
         
     }
     
     var message: String {
-        (date < .now) ? "End":"Ing"
+        let now = Date.now
+        if now < startDate {
+            return "before"
+        } else if (startDate <= now && now <= endDate) {
+            return "In-Progress"
+        } else {
+            return "complete"
+        }
     }
     
     var shapeColor: Color {
-        (date < .now) ? .red:.green
+        let now = Date.now
+        if now < startDate {
+            return .blue
+        } else if (startDate <= now && now <= endDate) {
+            return .green
+        } else {
+            return .red
+        }
     }
     
 }
 
-
 #Preview {
-    ConvenienceDateDisplay(date: .init(timeIntervalSinceNow: -20))
+    
+    ConvenienceDateDisplay(jobPosting: .init(
+        link: .init(),
+        companyName: .init(),
+        jobPositionName: .init(),
+        workplaceLocation: .init(),
+        recruitNumbers: .init(), 
+        startDate: .init(timeIntervalSinceNow: 10),
+        endDate: .init(timeIntervalSinceNow: 500),
+        testIds: .init()
+    ))
+    .frame(width: 150, height: 40)
+    
 }
