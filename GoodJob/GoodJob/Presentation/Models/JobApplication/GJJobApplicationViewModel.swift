@@ -27,12 +27,10 @@ final class GJJobApplicationViewModel: ObservableObject {
         )
     }()
     
-    private let jobApplicationObserver: any GJDataObserver
-    private let jobPostingObserver: any GJDataObserver
+    private let jobApplicationObserver = GJJobPositngDataObserver()
+    private let jobPostingObserver = GJJobApplicationDataObserver()
     
     init() {
-        self.jobPostingObserver = GJJobPositngDataObserver()
-        self.jobApplicationObserver = GJJobApplicationDataObserver()
         self.jobApplicationObserver.delegate = self
         self.jobPostingObserver.delegate = self
     }

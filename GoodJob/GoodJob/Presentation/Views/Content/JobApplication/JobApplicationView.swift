@@ -45,9 +45,9 @@ fileprivate struct JobApplicationListView: View {
         List {
             ForEach(model.jobApplications) { jobApplication in
                 NavigationLink(value: jobApplication) {
-                    JobApplicationCellView(
-                        jobApplication: jobApplication
-                    )
+                    JobApplicationCellView(model: .init(
+                        selectedJobApplicationId: jobApplication.id
+                    ))
                 }
             }
             .onDelete(perform: model.deleteJobApplication)
@@ -65,15 +65,13 @@ fileprivate struct JobApplicationListView: View {
 
 fileprivate struct JobApplicationCellView: View {
     
-    @EnvironmentObject private var model: GJJobApplicationViewModel
-    
-    let jobApplication: GJJobApplication
-    @State private var jobPosting: GJJobPosting? = nil
+    @StateObject var model: GJJobApplicationDetailViewModel
     
     var body: some View {
         
         Group {
-            if let jobPosting = jobPosting {
+            if let jobPosting = model.jobPosting,
+               let jobApplication = model.jobApplication {
                 VStack(alignment: .leading, spacing: 8) {
                     Text(jobApplication.title)
                         .font(.headline)
@@ -83,17 +81,13 @@ fileprivate struct JobApplicationCellView: View {
                         Label(jobApplication.createdAt.formatted(), systemImage: "gauge.with.needle")
                     }
                     .font(.caption2)
+                    ProgressView(value: model.progress)
                 }
             } else {
                 Text("Loading...")
             }
         }
-        .onAppear {
-            self.jobPosting = model.fetchJobPosting(
-                associatedWith: jobApplication
-            )
-        }
-        
+        .onAppear { model.fetchJobApplication() }
         
     }
 }

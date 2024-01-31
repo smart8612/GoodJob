@@ -44,6 +44,13 @@ final class GJJobApplicationDetailViewModel: ObservableObject {
         testRecordObserver.delegate = self
     }
     
+    var progress: Double {
+        guard let tests = tests else { return .zero }
+        let count = tests.compactMap { testRecords?[$0] }.count
+        let average = Double(count) / Double(tests.count)
+        return average
+    }
+    
     func fetchJobApplication() {
         let id = selectedJobApplicationId
         
