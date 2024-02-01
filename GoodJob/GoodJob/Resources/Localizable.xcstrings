@@ -8,6 +8,12 @@
             "state" : "new",
             "value" : "%1$@ @ %2$@"
           }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%2$@의 %1$@"
+          }
         }
       }
     },
@@ -44,12 +50,33 @@
         }
       }
     },
+    "Applications" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "지원서"
+          }
+        }
+      }
+    },
     "Are you sure want to discard?" : {
       "localizations" : {
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "수정을 취소하겠습니까?"
+          }
+        }
+      }
+    },
+    "before" : {
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "시작전"
           }
         }
       }
@@ -104,6 +131,16 @@
         }
       }
     },
+    "complete" : {
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "마감"
+          }
+        }
+      }
+    },
     "Discard Changes" : {
       "localizations" : {
         "ko" : {
@@ -129,7 +166,7 @@
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "채용 공고 편집"
+            "value" : "채용공고 편집"
           }
         }
       }
@@ -174,12 +211,52 @@
         }
       }
     },
+    "fail" : {
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "불합격"
+          }
+        }
+      }
+    },
+    "In-Progress" : {
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "진행중"
+          }
+        }
+      }
+    },
     "Information" : {
       "localizations" : {
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "정보"
+          }
+        }
+      }
+    },
+    "inProgress" : {
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "진행중"
+          }
+        }
+      }
+    },
+    "interview" : {
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "면접 시험"
           }
         }
       }
@@ -234,12 +311,23 @@
         }
       }
     },
+    "Jobs" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "채용공고"
+          }
+        }
+      }
+    },
     "Jobs Details" : {
       "localizations" : {
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "채용 공고 세부 사항"
+            "value" : "채용공고 세부사항"
           }
         }
       }
@@ -279,7 +367,7 @@
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "채용 공고 신규 등록"
+            "value" : "채용공고 신규등록"
           }
         }
       }
@@ -299,7 +387,17 @@
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "시험 기록 신규 등록"
+            "value" : "시험기록 신규등록"
+          }
+        }
+      }
+    },
+    "pass" : {
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "합격"
           }
         }
       }
@@ -374,6 +472,16 @@
         }
       }
     },
+    "Select a posting" : {
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "채용공고 선택"
+          }
+        }
+      }
+    },
     "Starts" : {
       "localizations" : {
         "ko" : {
@@ -390,6 +498,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "상태"
+          }
+        }
+      }
+    },
+    "test" : {
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "시험"
           }
         }
       }
@@ -420,6 +538,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "근무지"
+          }
+        }
+      }
+    },
+    "writtenTest" : {
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "필기 시험"
           }
         }
       }

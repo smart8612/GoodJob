@@ -17,7 +17,7 @@ enum GJAppCategory: String, Identifiable, Hashable, CaseIterable {
     var id: GJAppCategory { self }
     
     var name: String {
-        self.rawValue.capitalized
+        NSLocalizedString(self.rawValue.capitalized, comment: .init())
     }
     
     var symboleName: String {

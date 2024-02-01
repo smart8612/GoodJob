@@ -27,7 +27,7 @@ struct NewJobApplicaitonView: View {
                 
                 Section {
                     Button(action: { isShowingJobPostingSelectionSheet.toggle() }) {
-                        Text(model.selectedJobPosting?.jobPositionName ?? "Select a posting")
+                        Text(model.selectedJobPosting?.jobPositionName ?? NSLocalizedString("Select a posting", comment: .init()))
                     }
                     .sheet(isPresented: $isShowingJobPostingSelectionSheet) {
                         JobPostingSelectionView()

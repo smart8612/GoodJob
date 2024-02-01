@@ -34,11 +34,11 @@ struct ConvenienceDateDisplay: View {
     var message: String {
         let now = Date.now
         if now < startDate {
-            return "before"
+            return NSLocalizedString("before", comment: .init())
         } else if (startDate <= now && now <= endDate) {
-            return "In-Progress"
+            return NSLocalizedString("In-Progress", comment: .init())
         } else {
-            return "complete"
+            return NSLocalizedString("complete", comment: .init())
         }
     }
     

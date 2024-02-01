@@ -19,7 +19,7 @@ struct SecondaryLabeledCell<Content: View>: View {
     
     var body: some View {
         VStack(alignment: .leading) {
-            Text(key)
+            Text(NSLocalizedString(key, comment: .init()))
                 .font(.caption)
                 .foregroundStyle(.secondary)
             content()
