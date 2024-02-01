@@ -12,12 +12,10 @@ struct MainTabView: View {
     
     @StateObject private var navigationModel = GJNavigationModel()
     
-    private let categories = GJAppCategory.allCategories
-    
     var body: some View {
         
         TabView(selection: $navigationModel.selectedCategory) {
-            ForEach(categories) { category in
+            ForEach(navigationModel.categories) { category in
                 category.contentView
                     .tabItem {
                         Label(

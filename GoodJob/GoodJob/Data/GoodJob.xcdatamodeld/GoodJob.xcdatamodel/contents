@@ -41,8 +41,9 @@
     </entity>
     <entity name="CDTestRecord" representedClassName="CDTestRecord" syncable="YES" codeGenerationType="class">
         <attribute name="createdAt_" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
-        <attribute name="id_" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="id_" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="memo_" optional="YES" attributeType="String"/>
+        <attribute name="result_" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <relationship name="jobApplication_" maxCount="1" deletionRule="Nullify" destinationEntity="CDJobApplication" inverseName="testRecords_" inverseEntity="CDJobApplication"/>
         <relationship name="test_" maxCount="1" deletionRule="Nullify" destinationEntity="CDTest" inverseName="testRecord_" inverseEntity="CDTest"/>
     </entity>

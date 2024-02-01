@@ -29,22 +29,22 @@ struct JobPostingDetailView: View {
             if let jobPosting = jobPosting, let tests = tests {
                 List {
                     Section("Company Information") {
-                        JobPostingDetailCell(key: "Company Name") {
+                        SecondaryLabeledCell(key: "Company Name") {
                             Text(jobPosting.companyName)
                         }
                     }
                     
                     Section("Job Position Information") {
-                        JobPostingDetailCell(key: "Job Position") {
+                        SecondaryLabeledCell(key: "Job Position") {
                             Text(jobPosting.jobPositionName)
                         }
-                        JobPostingDetailCell(key: "Workplace Location") {
+                        SecondaryLabeledCell(key: "Workplace Location") {
                             Text(jobPosting.workplaceLocation)
                         }
-                        JobPostingDetailCell(key: "Recruitment Numbers") {
+                        SecondaryLabeledCell(key: "Recruitment Numbers") {
                             Text(jobPosting.recruitNumbers)
                         }
-                        JobPostingDetailCell(key: "Job Posting Link") {
+                        SecondaryLabeledCell(key: "Job Posting Link") {
                             Button(jobPosting.link) {
                                 openURL(URL(string: jobPosting.link)!)
                             }
@@ -53,17 +53,17 @@ struct JobPostingDetailView: View {
                     }
                     
                     Section("Schedule") {
-                        JobPostingDetailCell(key: "Starts") {
+                        SecondaryLabeledCell(key: "Starts") {
                             Text(jobPosting.startDate.formatted())
                         }
-                        JobPostingDetailCell(key: "Ends") {
+                        SecondaryLabeledCell(key: "Ends") {
                             Text(jobPosting.endDate.formatted())
                         }
                     }
                     
                     Section("Process Information") {
                         ForEach(tests) { test in
-                            JobPostingDetailCell(key: test.type.description) {
+                            SecondaryLabeledCell(key: test.type.description) {
                                 Text(test.name)
                             }
                         }
@@ -93,26 +93,4 @@ struct JobPostingDetailView: View {
         .onAppear { model.fetchJobPosting() }
     }
     
-}
-
-struct JobPostingDetailCell<Content: View>: View {
-    
-    let key: String
-    let content: () -> Content
-    
-    init(key: String, @ViewBuilder content: @escaping () -> Content) {
-        self.key = key
-        self.content = content
-    }
-    
-    var body: some View {
-        VStack(alignment: .leading) {
-            Text(key)
-                .font(.caption)
-                .foregroundStyle(.secondary)
-            content()
-                .font(.body)
-                .foregroundStyle(.primary)
-        }
-    }
 }

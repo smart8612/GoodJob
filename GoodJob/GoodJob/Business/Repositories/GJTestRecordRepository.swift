@@ -70,7 +70,10 @@ final class GJTestRecordRepository: GJRepository {
             throw GJTestRecordRepositoryError.testNotFound
         }
         
+        let result = CDTestRecord.TestResult(rawValue: object.result.rawValue) ?? .inProgress
+        
         let createdTestRecord = CDTestRecord(
+            result: result,
             memo: object.memo,
             jobApplication: fetchedJobApplication,
             test: fetchedTest,
@@ -86,8 +89,7 @@ final class GJTestRecordRepository: GJRepository {
         
         let jobApplicationFetchRequest = CDJobApplication.fetchRequest()
         jobApplicationFetchRequest.predicate = NSPredicate(
-            format: "%K = %@",
-            \CDJobApplication.id_ as! CVarArg,
+            format: "id_ = %@",
             object.jobApplicationId as CVarArg
         )
         
@@ -98,8 +100,7 @@ final class GJTestRecordRepository: GJRepository {
         
         let testFetchRequest = CDTest.fetchRequest()
         testFetchRequest.predicate = NSPredicate(
-            format: "%K = %@",
-            \CDTest.id_ as! CVarArg,
+            format: "id_ = %@",
             object.testId as CVarArg
         )
         
@@ -110,8 +111,7 @@ final class GJTestRecordRepository: GJRepository {
         
         let fetchRequest = CDTestRecord.fetchRequest()
         fetchRequest.predicate = NSPredicate(
-            format: "%K = %@",
-            \CDTestRecord.id_ as! CVarArg,
+            format: "id_ = %@",
             id as CVarArg
         )
         
@@ -123,6 +123,7 @@ final class GJTestRecordRepository: GJRepository {
         fetchedResult.jobApplication = fetchedJobApplication
         fetchedResult.test = fetchedTest
         fetchedResult.memo = object.memo
+        fetchedResult.result = CDTestRecord.TestResult(rawValue: object.result.rawValue) ?? .inProgress
         
         try managedObjectContext.save()
         
@@ -132,8 +133,7 @@ final class GJTestRecordRepository: GJRepository {
     func delete(objectWith id: UUID) throws {
         let fetchRequest = CDTestRecord.fetchRequest()
         fetchRequest.predicate = NSPredicate(
-            format: "%K = %@",
-            \CDTestRecord.id_ as! CVarArg,
+            format: "id_ = %@",
             id as CVarArg
         )
         
@@ -158,11 +158,13 @@ final class GJTestRecordRepository: GJRepository {
 fileprivate extension CDTestRecord {
     
     func convertToGJTestRecord() -> GJTestRecord {
-        GJTestRecord(
+        let result = GJTestRecord.TestResult(rawValue: self.result.rawValue) ?? .inProgress
+        return GJTestRecord(
             id: self.id,
             createdAt: self.createdAt,
             jobApplicationId: self.jobApplication.id,
-            testId: self.test.id,
+            testId: self.test.id, 
+            result: result,
             memo: self.memo
         )
     }

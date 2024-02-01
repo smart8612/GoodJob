@@ -31,14 +31,20 @@ extension CDTestRecord {
         set { test_ = newValue }
     }
     
+    var result: TestResult {
+        get { TestResult(rawValue: Int(result_)) ?? .inProgress }
+        set { result_ = Int64(newValue.rawValue) }
+    }
+    
     var createdAt: Date {
         get { createdAt_! }
         set { createdAt_ = newValue }
     }
     
-    convenience init(memo: String, jobApplication: CDJobApplication, test: CDTest,
+    convenience init(result: TestResult, memo: String, jobApplication: CDJobApplication, test: CDTest,
                      context: NSManagedObjectContext) {
         self.init(context: context)
+        self.result = result
         self.memo = memo
         self.jobApplication = jobApplication
         self.test = test
@@ -47,6 +53,12 @@ extension CDTestRecord {
     public override func awakeFromInsert() {
         self.id = .init()
         self.createdAt = .now
+    }
+    
+    enum TestResult: Int {
+        case inProgress = 0
+        case pass
+        case fail
     }
     
 }

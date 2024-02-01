@@ -17,12 +17,12 @@ struct JobPostingsListView: View {
         
         NavigationStack(path: $navigationModel.jobPostingPath) {
             DataContainer {
-                if model.jobPostings.isEmpty {
+                if model.filteredJobPostings.isEmpty {
                     Text("Empty Job Posting")
                         .foregroundStyle(.secondary)
                 } else {
                     List {
-                        ForEach(model.jobPostings) { jobPost in
+                        ForEach(model.filteredJobPostings) { jobPost in
                             NavigationLink(value: jobPost) {
                                 JobPostingCellView(jobPosting: jobPost)
                             }
@@ -39,6 +39,7 @@ struct JobPostingsListView: View {
                  NewJobPostingView(isShowingSheet: isShowingSheet)
             }
             .navigationTitle(navigationModel.selectedCategory.name)
+            .searchable(text: $model.searchText)
         }
        
     }
@@ -51,49 +52,24 @@ fileprivate struct JobPostingCellView: View {
     let jobPosting: GJJobPosting
     
     var body: some View {
-        HStack(alignment: .center, spacing: 16) {
-            ConvenienceDateDisplay(date: jobPosting.endDate)
-                .frame(width: 80, height: 80)
             
-            VStack(alignment: .leading, spacing: 8) {
+        VStack(alignment: .leading, spacing: 8) {
+            HStack {
                 Text(jobPosting.jobPositionName)
                     .font(.headline)
-                VStack(alignment: .leading, spacing: 2) {
-                    Label(jobPosting.companyName, systemImage: "building.2")
-                    Label(jobPosting.workplaceLocation, systemImage: "globe")
-                    Label(jobPosting.endDate.formatted(), systemImage: "calendar")
-                }
-                .font(.caption2)
+                Spacer()
+                ConvenienceDateDisplay(jobPosting: jobPosting)
+                    .frame(width: 105, height: 20)
+                    .font(.subheadline)
             }
-            
-            Spacer()
+            VStack(alignment: .leading, spacing: 2) {
+                Label(jobPosting.companyName, systemImage: "building.2")
+                Label(jobPosting.workplaceLocation, systemImage: "globe")
+                Label(jobPosting.endDate.formatted(), systemImage: "calendar")
+            }
+            .font(.caption2)
         }
+            
     }
+    
 }
-
-
-#Preview {
-    ConvenienceDateDisplay(date: .init(timeIntervalSinceNow: -20))
-}
-
-struct ConvenienceDateDisplay: View {
-    
-    let date: Date
-    
-    var body: some View {
-        RoundedRectangle(cornerRadius: 10)
-            .foregroundStyle(shapeColor)
-            .overlay {
-                Text(message)
-            }
-    }
-    
-    var message: String {
-        (date < .now) ? "End":"Ing"
-    }
-    
-    var shapeColor: Color {
-        (date < .now) ? .red:.green
-    }
-}
-
