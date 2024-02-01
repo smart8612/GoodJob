@@ -17,7 +17,7 @@ struct JobApplicationView: View {
         
         NavigationStack(path: $navigationModel.jobApplicationPath) {
             DataContainer {
-                if model.jobApplications.isEmpty {
+                if model.filteredJobApplications.isEmpty {
                     Text("Empty Job Application")
                         .foregroundStyle(.secondary)
                 } else {
@@ -28,8 +28,8 @@ struct JobApplicationView: View {
             }
             .navigationTitle(navigationModel.selectedCategory.name)
             .environmentObject(model)
-            .onAppear { model.fetchJobApplication() }
         }
+        .searchable(text: $model.searchText)
         
     }
     
@@ -43,7 +43,7 @@ fileprivate struct JobApplicationListView: View {
     var body: some View {
         
         List {
-            ForEach(model.jobApplications) { jobApplication in
+            ForEach(model.filteredJobApplications) { jobApplication in
                 NavigationLink(value: jobApplication) {
                     JobApplicationCellView(model: .init(
                         selectedJobApplicationId: jobApplication.id
