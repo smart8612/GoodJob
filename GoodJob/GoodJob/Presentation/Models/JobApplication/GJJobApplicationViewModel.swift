@@ -74,7 +74,7 @@ final class GJJobApplicationViewModel: ObservableObject {
     func deleteJobApplication(at indexSet: IndexSet) {
         do {
             try indexSet
-                .compactMap { jobApplications[$0] }
+                .compactMap { filteredJobApplications[$0] }
                 .forEach { try jobApplicationController.delete(jobApplication: $0) }
         } catch {
             print(error.localizedDescription)

@@ -17,12 +17,12 @@ struct JobPostingsListView: View {
         
         NavigationStack(path: $navigationModel.jobPostingPath) {
             DataContainer {
-                if model.jobPostings.isEmpty {
+                if model.filteredJobPostings.isEmpty {
                     Text("Empty Job Posting")
                         .foregroundStyle(.secondary)
                 } else {
                     List {
-                        ForEach(model.jobPostings) { jobPost in
+                        ForEach(model.filteredJobPostings) { jobPost in
                             NavigationLink(value: jobPost) {
                                 JobPostingCellView(jobPosting: jobPost)
                             }
@@ -39,6 +39,7 @@ struct JobPostingsListView: View {
                  NewJobPostingView(isShowingSheet: isShowingSheet)
             }
             .navigationTitle(navigationModel.selectedCategory.name)
+            .searchable(text: $model.searchText)
         }
        
     }
