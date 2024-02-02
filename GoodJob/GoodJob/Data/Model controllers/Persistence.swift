@@ -12,10 +12,10 @@ struct PersistenceController {
     static let shared: PersistenceController = .init()
     static let sharedForUnitTest: PersistenceController = .init(inMemory: true)
 
-    let container: NSPersistentContainer
+    let container: NSPersistentCloudKitContainer
 
     init(inMemory: Bool = false) {
-        container = NSPersistentContainer(name: "GoodJob")
+        container = NSPersistentCloudKitContainer(name: "GoodJob")
         if inMemory {
             container.persistentStoreDescriptions.first!.url = URL(fileURLWithPath: "/dev/null")
         }
