@@ -18,7 +18,14 @@
       }
     },
     "✅" : {
-
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "✅"
+          }
+        }
+      }
     },
     "Add Item" : {
       "localizations" : {
@@ -142,13 +149,34 @@
       }
     },
     "Contact" : {
-
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "연락"
+          }
+        }
+      }
     },
     "Contact to Developer" : {
-
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "개발자에게 연락"
+          }
+        }
+      }
     },
     "Developer: singularis7" : {
-
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "개발자: singularis7"
+          }
+        }
+      }
     },
     "Discard Changes" : {
       "localizations" : {
@@ -191,7 +219,14 @@
       }
     },
     "email: smart8612@gmail.com" : {
-
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "이메일: smart8612@gmail.com"
+          }
+        }
+      }
     },
     "Empty Job Application" : {
       "localizations" : {
@@ -234,7 +269,14 @@
       }
     },
     "FeedBack" : {
-
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "피드백"
+          }
+        }
+      }
     },
     "In-Progress" : {
       "localizations" : {
@@ -378,7 +420,14 @@
       }
     },
     "Menu" : {
-
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "메뉴"
+          }
+        }
+      }
     },
     "New Job" : {
       "localizations" : {
