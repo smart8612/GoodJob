@@ -141,6 +141,9 @@
         }
       }
     },
+    "Contact to Developer" : {
+
+    },
     "Discard Changes" : {
       "localizations" : {
         "ko" : {
@@ -220,6 +223,9 @@
           }
         }
       }
+    },
+    "FeedBack" : {
+
     },
     "In-Progress" : {
       "localizations" : {
@@ -361,6 +367,9 @@
           }
         }
       }
+    },
+    "Menu" : {
+
     },
     "New Job" : {
       "localizations" : {

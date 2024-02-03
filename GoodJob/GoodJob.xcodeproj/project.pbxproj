@@ -51,6 +51,7 @@
 		C1B03B262B64C9B200081CBC /* GJTestRecordRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1B03B252B64C9B200081CBC /* GJTestRecordRepository.swift */; };
 		C1CFB6372B5945C800515DEA /* GJTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1CFB6362B5945C800515DEA /* GJTest.swift */; };
 		C1CFB6392B598B6400515DEA /* JobPostingDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1CFB6382B598B6400515DEA /* JobPostingDetailView.swift */; };
+		C1D4279D2B6E12DB00195237 /* Feedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D4279C2B6E12DB00195237 /* Feedback.swift */; };
 		C1DFAEE32B5E29ED007CACA7 /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1DFAEE22B5E29ED007CACA7 /* MainTabView.swift */; };
 		C1DFAEE62B5E4DBC007CACA7 /* GJTestRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1DFAEE52B5E4DBC007CACA7 /* GJTestRecord.swift */; };
 		C1E07E482B67870400CD272D /* ConvenienceDateDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E07E472B67870400CD272D /* ConvenienceDateDisplay.swift */; };
@@ -134,6 +135,7 @@
 		C1BB6F332B6CCB8400F9332C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		C1CFB6362B5945C800515DEA /* GJTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GJTest.swift; sourceTree = "<group>"; };
 		C1CFB6382B598B6400515DEA /* JobPostingDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobPostingDetailView.swift; sourceTree = "<group>"; };
+		C1D4279C2B6E12DB00195237 /* Feedback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Feedback.swift; sourceTree = "<group>"; };
 		C1DFAEE22B5E29ED007CACA7 /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
 		C1DFAEE52B5E4DBC007CACA7 /* GJTestRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GJTestRecord.swift; sourceTree = "<group>"; };
 		C1E07E472B67870400CD272D /* ConvenienceDateDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConvenienceDateDisplay.swift; sourceTree = "<group>"; };
@@ -375,8 +377,17 @@
 				C1DFAEE42B5E37C8007CACA7 /* Summary */,
 				C1052E3D2B5B89D100B27620 /* JobApplication */,
 				C1414DE62B5667FE00EA180F /* JobPosting */,
+				C1D4279B2B6E12C000195237 /* Feedback */,
 			);
 			path = Content;
+			sourceTree = "<group>";
+		};
+		C1D4279B2B6E12C000195237 /* Feedback */ = {
+			isa = PBXGroup;
+			children = (
+				C1D4279C2B6E12DB00195237 /* Feedback.swift */,
+			);
+			path = Feedback;
 			sourceTree = "<group>";
 		};
 		C1DFAEE42B5E37C8007CACA7 /* Summary */ = {
@@ -693,6 +704,7 @@
 				C1F20F5F2B6369FF00DF8E42 /* GJJobApplicationDetailViewModel.swift in Sources */,
 				C1F20F622B63874A00DF8E42 /* JobPostingOperationView.swift in Sources */,
 				C157F73B2B621F66001EBE74 /* GJJobApplicationRepository.swift in Sources */,
+				C1D4279D2B6E12DB00195237 /* Feedback.swift in Sources */,
 				C17C94D32B60CA130009E064 /* GJJobPostingViewModel.swift in Sources */,
 				C1E07E4A2B6787C200CD272D /* SecondaryLabeledCell.swift in Sources */,
 				C133F0D82B5A501600AF574C /* CDTestRecord+Extensions.swift in Sources */,
@@ -1091,8 +1103,8 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
 			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 10.20.0;
+				kind = exactVersion;
+				version = 10.20.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
