@@ -136,7 +136,6 @@ Packages
 .build/
 xcuserdata
 DerivedData/
-*.xcodeproj
 
 **/GoogleService-Info.plist
 GoodJob/GoodJob/GoogleService-Info.plist
