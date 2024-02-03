@@ -13,11 +13,12 @@ enum GJAppCategory: String, Identifiable, Hashable, CaseIterable {
     // case summary
     case applications
     case jobs
+    case menu
     
     var id: GJAppCategory { self }
     
     var name: String {
-        self.rawValue.capitalized
+        NSLocalizedString(self.rawValue.capitalized, comment: .init())
     }
     
     var symboleName: String {
@@ -28,6 +29,8 @@ enum GJAppCategory: String, Identifiable, Hashable, CaseIterable {
             return "list.bullet.clipboard.fill"
         case .jobs:
             return "figure.run"
+        case .menu:
+            return "ellipsis"
         }
         
     }
@@ -40,6 +43,8 @@ enum GJAppCategory: String, Identifiable, Hashable, CaseIterable {
             JobApplicationView()
         case .jobs:
             JobPostingsListView()
+        case .menu:
+            MenuView()
         }
     }
     

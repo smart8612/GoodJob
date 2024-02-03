@@ -32,11 +32,11 @@ struct GJTest: Identifiable, Hashable {
         var description: String {
             switch self {
             case .test:
-                return "test"
+                return NSLocalizedString("test", comment: .init())
             case .writtenTest:
-                return "writtenTest"
+                return NSLocalizedString("writtenTest", comment: .init())
             case .inteview:
-                return "interview"
+                return NSLocalizedString("interview", comment: .init())
             }
         }
     }

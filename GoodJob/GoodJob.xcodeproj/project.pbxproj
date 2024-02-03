@@ -17,6 +17,10 @@
 		C133F0DC2B5A6B8A00AF574C /* GJJobApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = C133F0DB2B5A6B8A00AF574C /* GJJobApplication.swift */; };
 		C13D9C662B60C79B00A8132A /* GJNavigationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C13D9C642B60C79B00A8132A /* GJNavigationModel.swift */; };
 		C13D9C672B60C79B00A8132A /* GJUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = C13D9C652B60C79B00A8132A /* GJUser.swift */; };
+		C14FB2A22B6DFD420078EE51 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C14FB2A12B6DFD420078EE51 /* GoogleService-Info.plist */; };
+		C14FB2A52B6DFDCA0078EE51 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = C14FB2A42B6DFDCA0078EE51 /* FirebaseAnalytics */; };
+		C14FB2A82B6DFF3E0078EE51 /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = C14FB2A72B6DFF3E0078EE51 /* FirebaseCrashlytics */; };
+		C14FB2AA2B6E00ED0078EE51 /* FirebasePerformance in Frameworks */ = {isa = PBXBuildFile; productRef = C14FB2A92B6E00ED0078EE51 /* FirebasePerformance */; };
 		C157F7372B6144DB001EBE74 /* GJJobApplicationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C157F7362B6144DB001EBE74 /* GJJobApplicationViewModel.swift */; };
 		C157F7392B61458C001EBE74 /* GJJobApplicationDataObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = C157F7382B61458C001EBE74 /* GJJobApplicationDataObserver.swift */; };
 		C157F73B2B621F66001EBE74 /* GJJobApplicationRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C157F73A2B621F66001EBE74 /* GJJobApplicationRepository.swift */; };
@@ -41,11 +45,13 @@
 		C18037E12B5BA2F0000FFC97 /* DataCreationContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C18037E02B5BA2F0000FFC97 /* DataCreationContainer.swift */; };
 		C18037E32B5BA565000FFC97 /* NewJobApplicaitonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C18037E22B5BA565000FFC97 /* NewJobApplicaitonView.swift */; };
 		C18037E52B5BABD4000FFC97 /* GJJobApplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C18037E42B5BABD4000FFC97 /* GJJobApplicationController.swift */; };
+		C19817112B6BF47500E7F26D /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = C19817102B6BF47500E7F26D /* Localizable.xcstrings */; };
 		C19BC5322B57A67D004E78F6 /* GJJobPosting.swift in Sources */ = {isa = PBXBuildFile; fileRef = C19BC5312B57A67D004E78F6 /* GJJobPosting.swift */; };
 		C19BC5352B57BA32004E78F6 /* GJJobPostingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C19BC5342B57BA32004E78F6 /* GJJobPostingController.swift */; };
 		C1B03B262B64C9B200081CBC /* GJTestRecordRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1B03B252B64C9B200081CBC /* GJTestRecordRepository.swift */; };
 		C1CFB6372B5945C800515DEA /* GJTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1CFB6362B5945C800515DEA /* GJTest.swift */; };
 		C1CFB6392B598B6400515DEA /* JobPostingDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1CFB6382B598B6400515DEA /* JobPostingDetailView.swift */; };
+		C1D4279D2B6E12DB00195237 /* Feedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D4279C2B6E12DB00195237 /* Feedback.swift */; };
 		C1DFAEE32B5E29ED007CACA7 /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1DFAEE22B5E29ED007CACA7 /* MainTabView.swift */; };
 		C1DFAEE62B5E4DBC007CACA7 /* GJTestRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1DFAEE52B5E4DBC007CACA7 /* GJTestRecord.swift */; };
 		C1E07E482B67870400CD272D /* ConvenienceDateDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E07E472B67870400CD272D /* ConvenienceDateDisplay.swift */; };
@@ -98,6 +104,7 @@
 		C133F0DB2B5A6B8A00AF574C /* GJJobApplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GJJobApplication.swift; sourceTree = "<group>"; };
 		C13D9C642B60C79B00A8132A /* GJNavigationModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GJNavigationModel.swift; sourceTree = "<group>"; };
 		C13D9C652B60C79B00A8132A /* GJUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GJUser.swift; sourceTree = "<group>"; };
+		C14FB2A12B6DFD420078EE51 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		C157F7362B6144DB001EBE74 /* GJJobApplicationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GJJobApplicationViewModel.swift; sourceTree = "<group>"; };
 		C157F7382B61458C001EBE74 /* GJJobApplicationDataObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GJJobApplicationDataObserver.swift; sourceTree = "<group>"; };
 		C157F73A2B621F66001EBE74 /* GJJobApplicationRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GJJobApplicationRepository.swift; sourceTree = "<group>"; };
@@ -120,12 +127,15 @@
 		C18037E02B5BA2F0000FFC97 /* DataCreationContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DataCreationContainer.swift; path = GoodJob/Presentation/Views/Template/DataCreationContainer.swift; sourceTree = SOURCE_ROOT; };
 		C18037E22B5BA565000FFC97 /* NewJobApplicaitonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewJobApplicaitonView.swift; sourceTree = "<group>"; };
 		C18037E42B5BABD4000FFC97 /* GJJobApplicationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GJJobApplicationController.swift; sourceTree = "<group>"; };
+		C19817102B6BF47500E7F26D /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		C19BC5312B57A67D004E78F6 /* GJJobPosting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GJJobPosting.swift; sourceTree = "<group>"; };
 		C19BC5342B57BA32004E78F6 /* GJJobPostingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GJJobPostingController.swift; sourceTree = "<group>"; };
 		C1A68C482B55419000CE92D4 /* JobPostingsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobPostingsListView.swift; sourceTree = "<group>"; };
 		C1B03B252B64C9B200081CBC /* GJTestRecordRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GJTestRecordRepository.swift; sourceTree = "<group>"; };
+		C1BB6F332B6CCB8400F9332C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		C1CFB6362B5945C800515DEA /* GJTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GJTest.swift; sourceTree = "<group>"; };
 		C1CFB6382B598B6400515DEA /* JobPostingDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobPostingDetailView.swift; sourceTree = "<group>"; };
+		C1D4279C2B6E12DB00195237 /* Feedback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Feedback.swift; sourceTree = "<group>"; };
 		C1DFAEE22B5E29ED007CACA7 /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
 		C1DFAEE52B5E4DBC007CACA7 /* GJTestRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GJTestRecord.swift; sourceTree = "<group>"; };
 		C1E07E472B67870400CD272D /* ConvenienceDateDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConvenienceDateDisplay.swift; sourceTree = "<group>"; };
@@ -160,6 +170,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C14FB2A52B6DFDCA0078EE51 /* FirebaseAnalytics in Frameworks */,
+				C14FB2A82B6DFF3E0078EE51 /* FirebaseCrashlytics in Frameworks */,
+				C14FB2AA2B6E00ED0078EE51 /* FirebasePerformance in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -237,6 +250,13 @@
 				C18037E42B5BABD4000FFC97 /* GJJobApplicationController.swift */,
 			);
 			path = Usecase;
+			sourceTree = "<group>";
+		};
+		C14FB2A62B6DFF3E0078EE51 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		C157F7352B6144B5001EBE74 /* JobApplication */ = {
@@ -346,6 +366,7 @@
 				C1F999B92B55069000259FB5 /* Preview Content */,
 				C1F999B62B55069000259FB5 /* Assets.xcassets */,
 				C1F999B82B55069000259FB5 /* GoodJob.entitlements */,
+				C19817102B6BF47500E7F26D /* Localizable.xcstrings */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -356,8 +377,17 @@
 				C1DFAEE42B5E37C8007CACA7 /* Summary */,
 				C1052E3D2B5B89D100B27620 /* JobApplication */,
 				C1414DE62B5667FE00EA180F /* JobPosting */,
+				C1D4279B2B6E12C000195237 /* Feedback */,
 			);
 			path = Content;
+			sourceTree = "<group>";
+		};
+		C1D4279B2B6E12C000195237 /* Feedback */ = {
+			isa = PBXGroup;
+			children = (
+				C1D4279C2B6E12DB00195237 /* Feedback.swift */,
+			);
+			path = Feedback;
 			sourceTree = "<group>";
 		};
 		C1DFAEE42B5E37C8007CACA7 /* Summary */ = {
@@ -404,6 +434,7 @@
 				C1F999C32B55069000259FB5 /* GoodJobTests */,
 				C1F999CD2B55069000259FB5 /* GoodJobUITests */,
 				C1F999AB2B55068E00259FB5 /* Products */,
+				C14FB2A62B6DFF3E0078EE51 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -420,6 +451,8 @@
 		C1F999AC2B55068E00259FB5 /* GoodJob */ = {
 			isa = PBXGroup;
 			children = (
+				C14FB2A12B6DFD420078EE51 /* GoogleService-Info.plist */,
+				C1BB6F332B6CCB8400F9332C /* Info.plist */,
 				C1F999AD2B55068E00259FB5 /* GoodJobApp.swift */,
 				C19BC52B2B57A3F2004E78F6 /* Presentation */,
 				C19BC52D2B57A43A004E78F6 /* Business */,
@@ -477,12 +510,18 @@
 				C1F999A62B55068E00259FB5 /* Sources */,
 				C1F999A72B55068E00259FB5 /* Frameworks */,
 				C1F999A82B55068E00259FB5 /* Resources */,
+				C14FB2AC2B6E05D00078EE51 /* ShellScript */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = GoodJob;
+			packageProductDependencies = (
+				C14FB2A42B6DFDCA0078EE51 /* FirebaseAnalytics */,
+				C14FB2A72B6DFF3E0078EE51 /* FirebaseCrashlytics */,
+				C14FB2A92B6E00ED0078EE51 /* FirebasePerformance */,
+			);
 			productName = GoodJob;
 			productReference = C1F999AA2B55068E00259FB5 /* GoodJob.app */;
 			productType = "com.apple.product-type.application";
@@ -553,8 +592,12 @@
 			knownRegions = (
 				en,
 				Base,
+				ko,
 			);
 			mainGroup = C1F999A12B55068E00259FB5;
+			packageReferences = (
+				C14FB2A32B6DFDCA0078EE51 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
 			productRefGroup = C1F999AB2B55068E00259FB5 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -572,7 +615,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				C1F999BB2B55069000259FB5 /* Preview Assets.xcassets in Resources */,
+				C14FB2A22B6DFD420078EE51 /* GoogleService-Info.plist in Resources */,
 				C1F999B72B55069000259FB5 /* Assets.xcassets in Resources */,
+				C19817112B6BF47500E7F26D /* Localizable.xcstrings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -591,6 +636,31 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		C14FB2AC2B6E05D00078EE51 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}",
+				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Resources/DWARF/${PRODUCT_NAME}",
+				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Info.plist",
+				"$(TARGET_BUILD_DIR)/$(UNLOCALIZED_RESOURCES_FOLDER_PATH)/GoogleService-Info.plist",
+				"$(TARGET_BUILD_DIR)/$(EXECUTABLE_PATH)",
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\"${BUILD_DIR%/Build/*}/SourcePackages/checkouts/firebase-ios-sdk/Crashlytics/run\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		C1F999A62B55068E00259FB5 /* Sources */ = {
@@ -634,6 +704,7 @@
 				C1F20F5F2B6369FF00DF8E42 /* GJJobApplicationDetailViewModel.swift in Sources */,
 				C1F20F622B63874A00DF8E42 /* JobPostingOperationView.swift in Sources */,
 				C157F73B2B621F66001EBE74 /* GJJobApplicationRepository.swift in Sources */,
+				C1D4279D2B6E12DB00195237 /* Feedback.swift in Sources */,
 				C17C94D32B60CA130009E064 /* GJJobPostingViewModel.swift in Sources */,
 				C1E07E4A2B6787C200CD272D /* SecondaryLabeledCell.swift in Sources */,
 				C133F0D82B5A501600AF574C /* CDTestRecord+Extensions.swift in Sources */,
@@ -813,13 +884,17 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = GoodJob/Resources/GoodJob.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_ASSET_PATHS = "\"GoodJob/Resources/Preview Content\"";
 				DEVELOPMENT_TEAM = MLY2NY4CXP;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = GoodJob/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = GoodJob;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
@@ -837,10 +912,13 @@
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 13.0;
 				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.tistory.singularis7.GoodJob;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = auto;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -853,13 +931,16 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = GoodJob/Resources/GoodJob.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"GoodJob/Resources/Preview Content\"";
 				DEVELOPMENT_TEAM = MLY2NY4CXP;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = GoodJob/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = GoodJob;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
@@ -877,10 +958,13 @@
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 13.0;
 				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.tistory.singularis7.GoodJob;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = auto;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1017,6 +1101,35 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		C14FB2A32B6DFDCA0078EE51 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = exactVersion;
+				version = 10.20.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		C14FB2A42B6DFDCA0078EE51 /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C14FB2A32B6DFDCA0078EE51 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
+		};
+		C14FB2A72B6DFF3E0078EE51 /* FirebaseCrashlytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C14FB2A32B6DFDCA0078EE51 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseCrashlytics;
+		};
+		C14FB2A92B6E00ED0078EE51 /* FirebasePerformance */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C14FB2A32B6DFDCA0078EE51 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebasePerformance;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		C1F999B12B55068E00259FB5 /* GoodJob.xcdatamodeld */ = {

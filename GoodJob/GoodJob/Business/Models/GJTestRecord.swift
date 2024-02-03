@@ -36,11 +36,11 @@ struct GJTestRecord: Identifiable, Hashable {
         var description: String {
             switch self {
             case .inProgress:
-                return "inProgress"
+                return NSLocalizedString("inProgress", comment: .init())
             case .pass:
-                return "pass"
+                return NSLocalizedString("pass", comment: .init())
             case .fail:
-                return "fail"
+                return NSLocalizedString("fail", comment: .init())
             }
         }
         
