@@ -45,10 +45,16 @@ struct JobPostingDetailView: View {
                             Text(jobPosting.recruitNumbers)
                         }
                         SecondaryLabeledCell(key: "Job Posting Link") {
-                            Button(jobPosting.link) {
-                                openURL(URL(string: jobPosting.link)!)
+                            Group {
+                                if let url = URL(string: jobPosting.link) {
+                                    Button(jobPosting.link) {
+                                        openURL(url)
+                                    }
+                                    .foregroundStyle(Color.init(uiColor: UIColor.link))
+                                } else {
+                                    Text(jobPosting.link)
+                                }
                             }
-                            .foregroundStyle(Color.init(uiColor: UIColor.link))
                         }
                     }
                     
