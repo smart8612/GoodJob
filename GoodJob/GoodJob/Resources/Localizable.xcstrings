@@ -141,7 +141,13 @@
         }
       }
     },
+    "Contact" : {
+
+    },
     "Contact to Developer" : {
+
+    },
+    "Developer: singularis7" : {
 
     },
     "Discard Changes" : {
@@ -183,6 +189,9 @@
           }
         }
       }
+    },
+    "email: smart8612@gmail.com" : {
+
     },
     "Empty Job Application" : {
       "localizations" : {

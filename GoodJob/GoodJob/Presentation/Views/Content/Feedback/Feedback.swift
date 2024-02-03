@@ -26,8 +26,16 @@ struct MenuView: View {
             .navigationTitle("Menu")
             .navigationBarTitleDisplayMode(.inline)
             .sheet(isPresented: $isShowingSheet) {
-                MailView(recipient: "smart8612@gmail.com", subject: "App Feedback", message: .init())
-                    .edgesIgnoringSafeArea(.bottom)
+                if MFMailComposeViewController.canSendMail() {
+                    MailView(recipient: "smart8612@gmail.com", subject: "App Feedback", message: .init())
+                        .edgesIgnoringSafeArea(.bottom)
+                } else {
+                    VStack {
+                        Text("Contact")
+                        Text("Developer: singularis7")
+                        Text("email: smart8612@gmail.com")
+                    }
+                }
             }
         }
     }
