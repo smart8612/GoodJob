@@ -131,4 +131,14 @@ iOSInjectionProject/
 /*.gcno
 **/xcshareddata/WorkspaceSettings.xcsettings
 
+### SwiftPackageManager ###
+Packages
+.build/
+xcuserdata
+DerivedData/
+*.xcodeproj
+
+**/GoogleService-Info.plist
+GoodJob/GoodJob/GoogleService-Info.plist
+
 # End of https://www.toptal.com/developers/gitignore/api/macos,xcode,swift
