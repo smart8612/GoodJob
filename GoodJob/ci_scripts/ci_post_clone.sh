@@ -17,3 +17,5 @@ if [ -n "$GOOGLE_SERVICE_INFO_PLIST" ]; then
 else
     echo "GOOGLE_SERVICE_INFO_PLIST 환경변수가 존재하지 않습니다. 스크립트를 종료합니다."
 fi
+
+exit 0
