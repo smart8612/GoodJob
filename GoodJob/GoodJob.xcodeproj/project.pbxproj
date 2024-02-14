@@ -45,7 +45,6 @@
 		C18037E32B5BA565000FFC97 /* NewJobApplicaitonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C18037E22B5BA565000FFC97 /* NewJobApplicaitonView.swift */; };
 		C18037E52B5BABD4000FFC97 /* GJJobApplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C18037E42B5BABD4000FFC97 /* GJJobApplicationController.swift */; };
 		C1827E8A2B7C9D4500D201DB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C14FB2A12B6DFD420078EE51 /* GoogleService-Info.plist */; };
-		C1827E8F2B7CFA8700D201DB /* GoogleService-Info.plist in CopyFiles */ = {isa = PBXBuildFile; fileRef = C14FB2A12B6DFD420078EE51 /* GoogleService-Info.plist */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		C19817112B6BF47500E7F26D /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = C19817102B6BF47500E7F26D /* Localizable.xcstrings */; };
 		C19BC5322B57A67D004E78F6 /* GJJobPosting.swift in Sources */ = {isa = PBXBuildFile; fileRef = C19BC5312B57A67D004E78F6 /* GJJobPosting.swift */; };
 		C19BC5352B57BA32004E78F6 /* GJJobPostingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C19BC5342B57BA32004E78F6 /* GJJobPostingController.swift */; };
@@ -93,19 +92,6 @@
 			remoteInfo = GoodJob;
 		};
 /* End PBXContainerItemProxy section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		C1827E8C2B7CF9A800D201DB /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 7;
-			files = (
-				C1827E8F2B7CFA8700D201DB /* GoogleService-Info.plist in CopyFiles */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		C1052E3B2B5B800500B27620 /* JobApplicationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobApplicationView.swift; sourceTree = "<group>"; };
@@ -524,7 +510,6 @@
 				C1F999A62B55068E00259FB5 /* Sources */,
 				C1F999A72B55068E00259FB5 /* Frameworks */,
 				C1827E8B2B7CAF3600D201DB /* Run Script */,
-				C1827E8C2B7CF9A800D201DB /* CopyFiles */,
 				C1F999A82B55068E00259FB5 /* Resources */,
 				C14FB2AC2B6E05D00078EE51 /* ShellScript */,
 			);
@@ -693,7 +678,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "#!/bin/bash\n\n# 1. GOOGLE_SERVICE_INFO_PLIST 환경변수가 존재하는지 확인\nif [ -n \"$GOOGLE_SERVICE_INFO_PLIST\" ]; then\n    echo \"GOOGLE_SERVICE_INFO_PLIST 환경변수가 발견되었습니다.\"\n    \n    # 환경변수 값을 GoogleService-Info.plist 파일에 저장\n    echo \"$GOOGLE_SERVICE_INFO_PLIST\" > \"$PROJECT_DIR\"/\"$CI_PRODUCT\"/GoogleService-Info.plist\n    \n    echo \"$PROJECT_DIR\"/\"$CI_PRODUCT\"/GoogleService-Info.plist\n    cat \"$PROJECT_DIR\"/\"$CI_PRODUCT\"/GoogleService-Info.plist \n    \n    echo \"GoogleService-Info.plist 파일을 프로젝트 디렉토리 내에 생성하였습니다.\"\nelse\n    echo \"GOOGLE_SERVICE_INFO_PLIST 환경변수가 존재하지 않습니다. 스크립트를 종료합니다.\"\nfi\n";
+			shellScript = "#!/bin/bash\n\n# 1. GOOGLE_SERVICE_INFO_PLIST 환경변수가 존재하는지 확인\nif [ -n \"$GOOGLE_SERVICE_INFO_PLIST\" ]; then\n    echo \"GOOGLE_SERVICE_INFO_PLIST 환경변수가 발견되었습니다.\"\n    \n    # 환경변수 값을 GoogleService-Info.plist 파일에 저장\n    echo \"$GOOGLE_SERVICE_INFO_PLIST\" > \"$PROJECT_DIR\"/\"$CI_PRODUCT\"/GoogleService-Info.plist\n    \n    echo \"$PROJECT_DIR\"/\"$CI_PRODUCT\"/GoogleService-Info.plist\n    ls -al \"$PROJECT_DIR\"/\"$CI_PRODUCT\"/GoogleService-Info.plist \n    \n    echo \"GoogleService-Info.plist 파일을 프로젝트 디렉토리 내에 생성하였습니다.\"\nelse\n    echo \"GOOGLE_SERVICE_INFO_PLIST 환경변수가 존재하지 않습니다. 스크립트를 종료합니다.\"\nfi\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
