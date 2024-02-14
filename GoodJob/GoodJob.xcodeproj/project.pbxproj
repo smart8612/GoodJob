@@ -674,6 +674,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
+				"($CI_PRIMARY_REPOSITORY_PATH)/($CI_PRODUCT)/($CI_PRODUCT)/GoogleService-Info.plist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
