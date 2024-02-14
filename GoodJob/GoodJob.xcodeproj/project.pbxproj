@@ -127,6 +127,7 @@
 		C18037E02B5BA2F0000FFC97 /* DataCreationContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DataCreationContainer.swift; path = GoodJob/Presentation/Views/Template/DataCreationContainer.swift; sourceTree = SOURCE_ROOT; };
 		C18037E22B5BA565000FFC97 /* NewJobApplicaitonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewJobApplicaitonView.swift; sourceTree = "<group>"; };
 		C18037E42B5BABD4000FFC97 /* GJJobApplicationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GJJobApplicationController.swift; sourceTree = "<group>"; };
+		C1827E912B7CFF7800D201DB /* ci_post_clone.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = ci_post_clone.sh; sourceTree = "<group>"; };
 		C19817102B6BF47500E7F26D /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		C19BC5312B57A67D004E78F6 /* GJJobPosting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GJJobPosting.swift; sourceTree = "<group>"; };
 		C19BC5342B57BA32004E78F6 /* GJJobPostingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GJJobPostingController.swift; sourceTree = "<group>"; };
@@ -318,6 +319,14 @@
 			path = "Data Observers";
 			sourceTree = "<group>";
 		};
+		C1827E902B7CFF2B00D201DB /* ci_scripts */ = {
+			isa = PBXGroup;
+			children = (
+				C1827E912B7CFF7800D201DB /* ci_post_clone.sh */,
+			);
+			path = ci_scripts;
+			sourceTree = "<group>";
+		};
 		C19BC52B2B57A3F2004E78F6 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
@@ -430,6 +439,7 @@
 		C1F999A12B55068E00259FB5 = {
 			isa = PBXGroup;
 			children = (
+				C1827E902B7CFF2B00D201DB /* ci_scripts */,
 				C1F999AC2B55068E00259FB5 /* GoodJob */,
 				C1F999C32B55069000259FB5 /* GoodJobTests */,
 				C1F999CD2B55069000259FB5 /* GoodJobUITests */,
@@ -509,7 +519,6 @@
 			buildPhases = (
 				C1F999A62B55068E00259FB5 /* Sources */,
 				C1F999A72B55068E00259FB5 /* Frameworks */,
-				C1827E8B2B7CAF3600D201DB /* Run Script */,
 				C1F999A82B55068E00259FB5 /* Resources */,
 				C14FB2AC2B6E05D00078EE51 /* ShellScript */,
 			);
@@ -660,25 +669,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\"${BUILD_DIR%/Build/*}/SourcePackages/checkouts/firebase-ios-sdk/Crashlytics/run\"\n";
-		};
-		C1827E8B2B7CAF3600D201DB /* Run Script */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			name = "Run Script";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"($PROJECT_DIR)/($CI_PRODUCT)/GoogleService-Info.plist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "#!/bin/bash\n\n# 1. GOOGLE_SERVICE_INFO_PLIST 환경변수가 존재하는지 확인\nif [ -n \"$GOOGLE_SERVICE_INFO_PLIST\" ]; then\n    echo \"GOOGLE_SERVICE_INFO_PLIST 환경변수가 발견되었습니다.\"\n    \n    # 환경변수 값을 GoogleService-Info.plist 파일에 저장\n    echo \"$GOOGLE_SERVICE_INFO_PLIST\" > \"$PROJECT_DIR\"/\"$CI_PRODUCT\"/GoogleService-Info.plist\n    \n    echo \"$PROJECT_DIR\"/\"$CI_PRODUCT\"/GoogleService-Info.plist\n    ls -al \"$PROJECT_DIR\"/\"$CI_PRODUCT\"/GoogleService-Info.plist \n    \n    echo \"GoogleService-Info.plist 파일을 프로젝트 디렉토리 내에 생성하였습니다.\"\nelse\n    echo \"GOOGLE_SERVICE_INFO_PLIST 환경변수가 존재하지 않습니다. 스크립트를 종료합니다.\"\nfi\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
