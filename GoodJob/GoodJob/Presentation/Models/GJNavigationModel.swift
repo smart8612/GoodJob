@@ -16,5 +16,16 @@ final class GJNavigationModel: ObservableObject {
     @Published var jobPostingPath = NavigationPath()
     
     let categories = GJAppCategory.allCategories
+    
+    func popToRoot() {
+        switch selectedCategory {
+        case .applications:
+            jobApplicationPath.removeLast(jobApplicationPath.count)
+        case .jobs:
+            jobPostingPath.removeLast(jobPostingPath.count)
+        case .menu:
+            break
+        }
+    }
         
 }

@@ -14,7 +14,7 @@ struct MainTabView: View {
     
     var body: some View {
         
-        TabView(selection: $navigationModel.selectedCategory) {
+        TabView(selection: tabSelection) {
             ForEach(navigationModel.categories) { category in
                 category.contentView
                     .tabItem {
@@ -28,6 +28,18 @@ struct MainTabView: View {
         }
         .environmentObject(navigationModel)
         
+    }
+    
+    private var tabSelection: Binding<GJAppCategory> {
+        return .init {
+            return navigationModel.selectedCategory
+        } set: { newValue in
+            if newValue == navigationModel.selectedCategory {
+                navigationModel.popToRoot()
+            }
+            navigationModel.selectedCategory = newValue
+        }
+
     }
     
 }
