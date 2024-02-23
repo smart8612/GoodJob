@@ -17,7 +17,18 @@ final class GJNavigationModel: ObservableObject {
     
     let categories = GJAppCategory.allCategories
     
-    func popToRoot() {
+    var tabSelection: Binding<GJAppCategory> {
+        return .init {
+            return self.selectedCategory
+        } set: { newValue in
+            if newValue == self.selectedCategory {
+                self.popToRoot()
+            }
+            self.selectedCategory = newValue
+        }
+    }
+    
+    private func popToRoot() {
         switch selectedCategory {
         case .applications:
             jobApplicationPath.removeLast(jobApplicationPath.count)
