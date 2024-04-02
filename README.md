@@ -4,8 +4,9 @@
 
 이 시대를 살아가는 청년들을 위한 채용 구직 관리 시스템을 iOS 앱으로 개발해보았습니다. 구직자가 마음에 드는 채용 공고를 스크랩하고 채용 프로세스의 진행 과정에서 경험을 회고할 수 있도록 구현되었습니다. 취준생의 가벼운 주머니 사정을 고려해 앱 스토어에서 무료로 배포하고 있습니다.
 
-<img src="https://github.com/smart8612/GoodJob/assets/25794814/783e5732-6a0e-40ad-8499-4a797083e14c" alt="GoodJob Logo Image" style="zoom:15%;"/>
-
+<p align="center">
+    <img src="https://github.com/smart8612/GoodJob/assets/25794814/783e5732-6a0e-40ad-8499-4a797083e14c" height="150" alt="GoodJob Logo Image"/>
+</p>
 
 
 ## 프로모션
@@ -32,12 +33,14 @@
 ### 다운로드
 최소 요구사양을 충족하는 단말기에서 다음의 QR 코드를 스캔하거나 "App Store에서 다운로드 하기" 버튼을 클릭하여 서비스 이용이 가능합니다.
 
-<p align="center"> 
-  <img src="https://github.com/smart8612/GoodJob/assets/25794814/50c15bac-e2e2-41df-873d-2746ab0ce997" alt="AppStore Download qr-code" style="zoom:25%;" />
+<p align="center">
+  <img src="https://github.com/smart8612/GoodJob/assets/25794814/50c15bac-e2e2-41df-873d-2746ab0ce997" height="100" alt="AppStore Download qr-code" />
+  
   <a href="https://apps.apple.com/kr/app/goodjob-%ED%94%8C%EB%9E%98%EB%84%88-%EC%B1%84%EC%9A%A9%EC%A7%80%EC%9B%90%EA%B4%80%EB%A6%AC/id6477273615?l=en-GB"> 
-    <img src="https://github.com/smart8612/GoodJob/assets/25794814/e12726cb-0e09-499b-ad33-12bcc9d5c054" alt="Download_on_the_App_Store_Badge" style="zoom:150%;"/>
+    <img src="https://github.com/smart8612/GoodJob/assets/25794814/e12726cb-0e09-499b-ad33-12bcc9d5c054" height="100" alt="Download_on_the_App_Store_Badge"/>
   </a>
 </p>
+
 ### 최소 요구사양
 
 * iPhone
