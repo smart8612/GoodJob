@@ -14,7 +14,7 @@ struct MainTabView: View {
     
     var body: some View {
         
-        TabView(selection: $navigationModel.selectedCategory) {
+        TabView(selection: navigationModel.tabSelection) {
             ForEach(navigationModel.categories) { category in
                 category.contentView
                     .tabItem {
